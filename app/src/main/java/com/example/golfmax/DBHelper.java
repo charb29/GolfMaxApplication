@@ -22,6 +22,7 @@ public class DBHelper extends SQLiteOpenHelper {
     private static final String USER_SCORES = "scores";
     private static final String COURSE_RATING = "courseRating";
     private static final String SLOPE_RATING = "slopeRating";
+    private static final String SCORE_ID = "id";
 
     public DBHelper(Context context) {
         super(context, DB_NAME, null, DB_VERSION);
@@ -39,8 +40,10 @@ public class DBHelper extends SQLiteOpenHelper {
         String userScores = "CREATE TABLE " + TABLE_SCORES + " ("
                 + COURSE_NAME + " TEXT UNIQUE, "
                 + USER_SCORES + " REAL UNIQUE,"
-                + COURSE_RATING + " REAL UNIQUE,"
-                + SLOPE_RATING + " REAL UNIQUE)";
+                + COURSE_RATING + " REAL, "
+                + SLOPE_RATING + " REAL, "
+                + SCORE_ID + " INTEGER, "
+                + " FOREIGN KEY ("+SCORE_ID+") REFERENCES "+TABLE_USERS+" ("+USER_ID+"));";
         db.execSQL(userScores);
     }
 
@@ -118,10 +121,10 @@ public class DBHelper extends SQLiteOpenHelper {
 
         if (cursor.moveToFirst()) {
             do {
-                userScores.add(new UserScores(cursor.getString(1),
-                        cursor.getInt(2),
-                        cursor.getDouble(3),
-                        cursor.getDouble(4)));
+                userScores.add(new UserScores(cursor.getString(0),
+                        cursor.getInt(1),
+                        cursor.getDouble(2),
+                        cursor.getDouble(3)));
             } while(cursor.moveToNext());
         }
         cursor.close();
