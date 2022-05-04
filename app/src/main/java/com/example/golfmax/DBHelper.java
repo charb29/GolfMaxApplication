@@ -24,6 +24,8 @@ public class DBHelper extends SQLiteOpenHelper {
     private static final String SLOPE_RATING = "slopeRating";
     private static final String SCORE_ID = "id";
 
+// Change to parametrized queries to avoid SQL injection //
+
     public DBHelper(Context context) {
         super(context, DB_NAME, null, DB_VERSION);
     }
