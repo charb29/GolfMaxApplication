@@ -2,15 +2,15 @@ package com.example.golfmax;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import java.util.ArrayList;
-import java.util.zip.CheckedOutputStream;
 
 public class DBHelper extends SQLiteOpenHelper {
 
-    private static final int userScoreId = 0;
+
     private static final String DB_NAME = "GolfMax.db";
     private static final int DB_VERSION = 1;
     private static final String DROP_TABLE_IF_USER_EXISTS = "Drop table if exists USERS";
@@ -35,6 +35,14 @@ public class DBHelper extends SQLiteOpenHelper {
         """;
 
     // change to parameterized queries to avoid SQL injection //
+
+    @Override
+    public void onOpen(SQLiteDatabase db) {
+        super.onOpen(db);
+        if (!db.isReadOnly()) {
+            db.execSQL("PRAGMA foreign_keys=ON;");
+        }
+    }
 
     public DBHelper(Context context) {
         super(context, DB_NAME, null, DB_VERSION);
@@ -96,14 +104,14 @@ public class DBHelper extends SQLiteOpenHelper {
 
     public void saveScores(UserScore score) {
         SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues values = createSaveScoresContentValues(score, userScoreId);
+        ContentValues values = createSaveScoresContentValues(score);
         db.insert("SCORES",null, values);
         db.close();
     }
 
     public ArrayList<UserScore> getScores() {
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor cursor = db.rawQuery("SELECT * FROM SCORES", null);
+        Cursor cursor = db.rawQuery("Select * from SCORES", null);
         ArrayList<UserScore> UserScores = new ArrayList<>();
 
         if (cursor.moveToFirst()) {
@@ -118,13 +126,27 @@ public class DBHelper extends SQLiteOpenHelper {
         return UserScores;
     }
 
-    private ContentValues createSaveScoresContentValues(UserScore score, int userScoreId) {
+    private ContentValues createSaveScoresContentValues(UserScore score) {
         ContentValues values = new ContentValues();
         values.put("COURSE_NAME", score.getCourseName());
         values.put("SCORE", score.getUserScore());
         values.put("COURSE_RATING", score.getCourseRating());
         values.put("SLOPE_RATING", score.getSlopeRating());
-        values.put("USER_ID", userScoreId);
+        values.put("USER_ID", getUserId());
         return values;
+    }
+
+    private int getUserId() {
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = db.rawQuery("Select USER_ID from USERS",null);
+        int id = 0;
+
+        if (cursor.moveToFirst()) {
+            id = cursor.getInt(0);
+            cursor.close();
+        }
+
+        return id;
     }
 }

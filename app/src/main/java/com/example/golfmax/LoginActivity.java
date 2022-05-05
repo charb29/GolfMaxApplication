@@ -1,6 +1,7 @@
 package com.example.golfmax;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.Window;
@@ -45,6 +46,12 @@ public class LoginActivity extends AppCompatActivity {
                 }
                 Boolean validatePasswordEmail = db.validatePasswordEmail(user, pass);
                 if (validatePasswordEmail) {
+
+                    SharedPreferences sp = getSharedPreferences("username", MODE_PRIVATE);
+                    SharedPreferences.Editor e = sp.edit();
+                    e.putString("user", user);
+                    e.apply();
+
                     Toast.makeText(LoginActivity.this, "Login successful", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
                     startActivity(intent);

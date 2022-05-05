@@ -55,6 +55,7 @@ public class RegistrationActivity extends AppCompatActivity {
                         Toast.makeText(RegistrationActivity.this, "Registration successful", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
                         startActivity(intent);
+
                         textInputUsername.getEditText().setText("");
                         textInputPassword.getEditText().setText("");
                         textInputEmail.getEditText().setText("");
