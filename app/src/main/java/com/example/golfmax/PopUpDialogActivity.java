@@ -60,11 +60,11 @@ public class PopUpDialogActivity extends AppCompatDialogFragment {
                             textInputSlopeRating.setError("Please do not leave empty");
                         }
                         else {
-                            int parseScoreToInt = Integer.parseInt(userScores);
-                            double parseCourseRatingToDouble = Double.parseDouble(userCourseRating);
-                            double parseSlopeRatingToDouble = Double.parseDouble(userSlopeRating);
+                            int userScore = Integer.parseInt(userScores);
+                            double courseRating = Double.parseDouble(userCourseRating);
+                            double slopeRating = Double.parseDouble(userSlopeRating);
 
-                            db.saveScores(courseName, parseScoreToInt, parseCourseRatingToDouble, parseSlopeRatingToDouble);
+                            db.saveScores(courseName, userScore, courseRating, slopeRating);
                             Toast.makeText(getActivity(), "Score has been saved", Toast.LENGTH_SHORT).show();
 
                             textInputCourseName.getEditText().setText("");

@@ -11,6 +11,9 @@ public class DBHelper extends SQLiteOpenHelper {
 
     private static final String DB_NAME = "GolfMax.db";
     private static final int DB_VERSION = 1;
+
+    private static final String DROP_TABLE_IF_USER_EXISTS = "Drop table if exists USERS";
+    private static final String DROP_TABLE_IF_SCORES_EXISTS = "Drop table if exists SCORES";
     private static final String CREATE_USER_TABLE_QUERY = """
         CREATE TABLE USERS (
         USER_ID INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -42,8 +45,8 @@ public class DBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int i, int i1) {
-        db.execSQL("Drop table if exists USERS");
-        db.execSQL("Drop table if exists SCORES");
+        db.execSQL(DROP_TABLE_IF_USER_EXISTS);
+        db.execSQL(DROP_TABLE_IF_SCORES_EXISTS);
         onCreate(db);
     }
 

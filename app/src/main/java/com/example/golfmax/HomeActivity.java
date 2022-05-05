@@ -10,7 +10,7 @@ import android.os.Bundle;
 
 public class HomeActivity extends AppCompatActivity {
 
-    Button addScoresBtn, viewScoresBtn;
+    Button addScoresButton, viewScoresButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,17 +20,17 @@ public class HomeActivity extends AppCompatActivity {
         getSupportActionBar().hide();
         setContentView(R.layout.activity_home);
 
-        addScoresBtn = findViewById(R.id.btnAddScores);
-        viewScoresBtn = findViewById(R.id.btnViewScores);
+        addScoresButton = findViewById(R.id.btnAddScores);
+        viewScoresButton = findViewById(R.id.btnViewScores);
 
-        addScoresBtn.setOnClickListener(new View.OnClickListener() {
+        addScoresButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 openDialog();
             }
         });
 
-        viewScoresBtn.setOnClickListener(new View.OnClickListener() {
+        viewScoresButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(HomeActivity.this, ViewScoresActivity.class);
