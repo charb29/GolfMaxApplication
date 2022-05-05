@@ -1,7 +1,6 @@
 package com.example.golfmax;
 
 import android.content.Intent;
-import android.text.TextPaint;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.Window;
@@ -10,7 +9,6 @@ import android.widget.Button;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import androidx.appcompat.view.menu.ShowableListMenu;
 import com.google.android.material.textfield.TextInputLayout;
 
 public class RegistrationActivity extends AppCompatActivity {
@@ -50,9 +48,9 @@ public class RegistrationActivity extends AppCompatActivity {
                     email.setError("Do not leave empty");
                 }
 
-                Boolean checkUser = db.checkUserEmail(userEmail);
-                if (!checkUser) {
-                    boolean insert = db.addUserInfo(user, pass, userEmail);
+                Boolean validateEmail = db.validateEmail(userEmail);
+                if (!validateEmail) {
+                    boolean insert = db.registerUser(user, pass, userEmail);
                     if (insert) {
                         Toast.makeText(RegistrationActivity.this, "Registration successful", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(getApplicationContext(), HomeActivity.class);

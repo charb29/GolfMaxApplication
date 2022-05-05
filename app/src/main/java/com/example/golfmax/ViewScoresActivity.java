@@ -24,10 +24,9 @@ public class ViewScoresActivity extends AppCompatActivity {
         getSupportActionBar().hide();
         setContentView(R.layout.activity_view_scores);
 
-
         userScoresArrayList = new ArrayList<>();
         db = new DBHelper(ViewScoresActivity.this);
-        userScoresArrayList = db.readScores();
+        userScoresArrayList = db.getScores();
         scoresRV = new ScoresRecyclerView(userScoresArrayList, ViewScoresActivity.this);
         rv = findViewById(R.id.RvScores);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(ViewScoresActivity.this, RecyclerView.VERTICAL, false);

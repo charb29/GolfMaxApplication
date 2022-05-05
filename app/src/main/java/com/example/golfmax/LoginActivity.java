@@ -1,18 +1,11 @@
 package com.example.golfmax;
 
-import android.app.ActivityOptions;
 import android.content.Intent;
-import android.os.Build;
 import android.text.TextUtils;
-import android.util.Pair;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
@@ -50,8 +43,8 @@ public class LoginActivity extends AppCompatActivity {
                 else if (TextUtils.isEmpty(pass)){
                     password.setError("Do not leave empty");
                 }
-                Boolean checkUserPass = db.checkUserPass(user, pass);
-                if (checkUserPass) {
+                Boolean validatePasswordEmail = db.validatePasswordEmail(user, pass);
+                if (validatePasswordEmail) {
                     Toast.makeText(LoginActivity.this, "Login successful", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
                     startActivity(intent);
