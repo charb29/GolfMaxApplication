@@ -10,9 +10,9 @@ import java.util.zip.CheckedOutputStream;
 
 public class DBHelper extends SQLiteOpenHelper {
 
+    private static final int userScoreId = 0;
     private static final String DB_NAME = "GolfMax.db";
     private static final int DB_VERSION = 1;
-    private static final int userScoreId = 0;
     private static final String DROP_TABLE_IF_USER_EXISTS = "Drop table if exists USERS";
     private static final String DROP_TABLE_IF_SCORES_EXISTS = "Drop table if exists SCORES";
 
@@ -30,7 +30,7 @@ public class DBHelper extends SQLiteOpenHelper {
         SCORE INTEGER,
         COURSE_RATING REAL,
         SLOPE_RATING REAL,
-        USER_ID_SCORE INTEGER,
+        USER_ID INTEGER,
         FOREIGN KEY (USER_ID_SCORE) REFERENCES USERS(USER_ID))
         """;
 
@@ -96,10 +96,8 @@ public class DBHelper extends SQLiteOpenHelper {
 
     public void saveScores(UserScore score) {
         SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues values = createSaveScoresContentValues(score);
-        ContentValues saveUserId = createUserScoreIdContentValues(userScoreId);
+        ContentValues values = createSaveScoresContentValues(score, userScoreId);
         db.insert("SCORES",null, values);
-        db.insert("SCORES", null, saveUserId);
         db.close();
     }
 
@@ -120,20 +118,13 @@ public class DBHelper extends SQLiteOpenHelper {
         return UserScores;
     }
 
-    private ContentValues createSaveScoresContentValues(UserScore score) {
+    private ContentValues createSaveScoresContentValues(UserScore score, int userScoreId) {
         ContentValues values = new ContentValues();
         values.put("COURSE_NAME", score.getCourseName());
         values.put("SCORE", score.getUserScore());
         values.put("COURSE_RATING", score.getCourseRating());
         values.put("SLOPE_RATING", score.getSlopeRating());
-
-        return values;
-    }
-
-    private ContentValues createUserScoreIdContentValues(int userScoreId) {
-        ContentValues values = new ContentValues();
-        values.put("USER_ID_SCORE", userScoreId);
-
+        values.put("USER_ID", userScoreId);
         return values;
     }
 }
