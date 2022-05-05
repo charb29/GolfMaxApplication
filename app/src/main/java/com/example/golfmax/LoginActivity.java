@@ -14,7 +14,7 @@ import com.google.android.material.textfield.TextInputLayout;
 public class LoginActivity extends AppCompatActivity {
 
     TextInputLayout username, password;
-    Button forgotPassword, signIn, createAccount;
+    Button forgotPasswordBtn, signInBtn, createAccountBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,12 +26,12 @@ public class LoginActivity extends AppCompatActivity {
 
         username = findViewById(R.id.username);
         password = findViewById(R.id.password);
-        forgotPassword = findViewById(R.id.btnForgotPassword);
-        signIn = findViewById(R.id.btnSignIn);
-        createAccount = findViewById(R.id.btnCreateAccount);
+        forgotPasswordBtn = findViewById(R.id.btnForgotPassword);
+        signInBtn = findViewById(R.id.btnSignIn);
+        createAccountBtn = findViewById(R.id.btnCreateAccount);
         DBHelper db = new DBHelper(this);
 
-        signIn.setOnClickListener(new View.OnClickListener() {
+        signInBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String user = username.getEditText().getText().toString();
@@ -55,7 +55,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        createAccount.setOnClickListener(new View.OnClickListener() {
+        createAccountBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(LoginActivity.this, RegistrationActivity.class);

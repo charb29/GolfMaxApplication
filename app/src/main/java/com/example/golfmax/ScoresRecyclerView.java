@@ -30,10 +30,10 @@ public class ScoresRecyclerView extends RecyclerView.Adapter<ScoresRecyclerView.
     @Override
     public void onBindViewHolder(@NonNull ScoresRecyclerView.ViewHolder holder, int position) {
         UserScores scores = userScoresArrayList.get(position);
-        holder.courseName.setText(scores.getCourseName());
+        holder.viewCourseName.setText(scores.getCourseName());
 
         String userScores = Integer.toString(scores.getUserScore());
-        holder.viewUserScores.setText(userScores);
+        holder.viewUserScore.setText(userScores);
 
         String courseRating = Double.toString(scores.getCourseRating());
         holder.viewCourseRating.setText(courseRating);
@@ -48,15 +48,15 @@ public class ScoresRecyclerView extends RecyclerView.Adapter<ScoresRecyclerView.
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        private TextView courseName;
-        private TextView viewUserScores;
+        private TextView viewCourseName;
+        private TextView viewUserScore;
         private TextView viewCourseRating;
         private TextView viewSlopeRating;
 
         public ViewHolder(View itemView) {
             super(itemView);
-            courseName = itemView.findViewById(R.id.viewCourseName);
-            viewUserScores = itemView.findViewById(R.id.viewUserScore);
+            viewCourseName = itemView.findViewById(R.id.viewCourseName);
+            viewUserScore = itemView.findViewById(R.id.viewUserScore);
             viewCourseRating = itemView.findViewById(R.id.viewCourseRating);
             viewSlopeRating = itemView.findViewById(R.id.viewSlopeRating);
         }

@@ -11,8 +11,8 @@ import java.util.ArrayList;
 
 public class ViewScoresActivity extends AppCompatActivity {
 
-    private RecyclerView rv;
-    private ScoresRecyclerView scoresRV;
+    private RecyclerView recyclerView;
+    private ScoresRecyclerView scoresRecyclerView;
     private DBHelper db;
     private ArrayList<UserScores> userScoresArrayList;
 
@@ -27,10 +27,10 @@ public class ViewScoresActivity extends AppCompatActivity {
         userScoresArrayList = new ArrayList<>();
         db = new DBHelper(ViewScoresActivity.this);
         userScoresArrayList = db.getScores();
-        scoresRV = new ScoresRecyclerView(userScoresArrayList, ViewScoresActivity.this);
-        rv = findViewById(R.id.RvScores);
+        scoresRecyclerView = new ScoresRecyclerView(userScoresArrayList, ViewScoresActivity.this);
+        recyclerView = findViewById(R.id.RvScores);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(ViewScoresActivity.this, RecyclerView.VERTICAL, false);
-        rv.setLayoutManager(linearLayoutManager);
-        rv.setAdapter(scoresRV);
+        recyclerView.setLayoutManager(linearLayoutManager);
+        recyclerView.setAdapter(scoresRecyclerView);
     }
 }

@@ -15,17 +15,17 @@ import com.google.android.material.textfield.TextInputLayout;
 
 public class PopUpDialogActivity extends AppCompatDialogFragment {
 
-    TextInputLayout TiScore, TiCourseRating, TiSlopeRating, TiCourse;
+    TextInputLayout textInputScore, textInputCourseRating, textInputSlopeRating, textInputCourseName;
 
     @Override
     public AlertDialog onCreateDialog(Bundle savedInstanceState) {
         LayoutInflater inflater = getLayoutInflater();
         View view = inflater.inflate(R.layout.activity_pop_up_dialog, null);
 
-        TiCourse = view.findViewById(R.id.enterCourseName);
-        TiScore = view.findViewById(R.id.inputScore);
-        TiCourseRating = view.findViewById(R.id.inputCourseRating);
-        TiSlopeRating = view.findViewById(R.id.inputSlopeRating);
+        textInputCourseName = view.findViewById(R.id.enterCourseName);
+        textInputScore = view.findViewById(R.id.inputScore);
+        textInputCourseRating = view.findViewById(R.id.inputCourseRating);
+        textInputSlopeRating = view.findViewById(R.id.inputSlopeRating);
         DBHelper db = new DBHelper(getActivity());
 
         final AlertDialog dialog = new AlertDialog.Builder(getActivity())
@@ -42,35 +42,35 @@ public class PopUpDialogActivity extends AppCompatDialogFragment {
                 saveRound.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        String courseName = TiCourse.getEditText().getText().toString();
-                        String userScores = TiScore.getEditText().getText().toString();
-                        String userCourseRating = TiCourseRating.getEditText().getText().toString();
-                        String userSlopeRating = TiSlopeRating.getEditText().getText().toString();
+                        String courseName = textInputCourseName.getEditText().getText().toString();
+                        String userScores = textInputScore.getEditText().getText().toString();
+                        String userCourseRating = textInputCourseRating.getEditText().getText().toString();
+                        String userSlopeRating = textInputSlopeRating.getEditText().getText().toString();
 
                         if (TextUtils.isEmpty(courseName)) {
-                            TiCourse.setError("Please do not leave empty");
+                            textInputCourseName.setError("Please do not leave empty");
                         }
                         else if (TextUtils.isEmpty(userScores)) {
-                            TiScore.setError("Please do not leave empty");
+                            textInputScore.setError("Please do not leave empty");
                         }
                         else if (TextUtils.isEmpty(userCourseRating)) {
-                            TiCourseRating.setError("Please do not leave empty");
+                            textInputCourseRating.setError("Please do not leave empty");
                         }
                         else if (TextUtils.isEmpty(userSlopeRating)) {
-                            TiSlopeRating.setError("Please do not leave empty");
+                            textInputSlopeRating.setError("Please do not leave empty");
                         }
                         else {
-                            int saveScore = Integer.parseInt(userScores);
-                            double saveCourseRating = Double.parseDouble(userCourseRating);
-                            double saveSlopeRating = Double.parseDouble(userSlopeRating);
+                            int parseScoreToInt = Integer.parseInt(userScores);
+                            double parseCourseRatingToDouble = Double.parseDouble(userCourseRating);
+                            double parseSlopeRatingToDouble = Double.parseDouble(userSlopeRating);
 
-                            db.saveScores(courseName, saveScore, saveCourseRating, saveSlopeRating);
+                            db.saveScores(courseName, parseScoreToInt, parseCourseRatingToDouble, parseSlopeRatingToDouble);
                             Toast.makeText(getActivity(), "Score has been saved", Toast.LENGTH_SHORT).show();
 
-                            TiCourse.getEditText().setText("");
-                            TiScore.getEditText().setText("");
-                            TiCourseRating.getEditText().setText("");
-                            TiSlopeRating.getEditText().setText("");
+                            textInputCourseName.getEditText().setText("");
+                            textInputScore.getEditText().setText("");
+                            textInputCourseRating.getEditText().setText("");
+                            textInputSlopeRating.getEditText().setText("");
                             dialog.dismiss();
                         }
                     }

@@ -13,7 +13,7 @@ import com.google.android.material.textfield.TextInputLayout;
 
 public class RegistrationActivity extends AppCompatActivity {
 
-    TextInputLayout username, email, password;
+    TextInputLayout textInputUsername, textInputEmail, textInputPassword;
     Button register, returningMember;
 
     @Override
@@ -24,9 +24,9 @@ public class RegistrationActivity extends AppCompatActivity {
         getSupportActionBar().hide();
         setContentView(R.layout.activity_registration);
 
-        username = findViewById(R.id.enterUsername);
-        password = findViewById(R.id.enterPassword);
-        email = findViewById(R.id.enterEmail);
+        textInputUsername = findViewById(R.id.enterUsername);
+        textInputPassword = findViewById(R.id.enterPassword);
+        textInputEmail = findViewById(R.id.enterEmail);
         register = findViewById(R.id.btnRegister);
         returningMember = findViewById(R.id.btnAlreadyMember);
         DBHelper db = new DBHelper(this);
@@ -34,30 +34,30 @@ public class RegistrationActivity extends AppCompatActivity {
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String user = username.getEditText().getText().toString();
-                String pass = password.getEditText().getText().toString();
-                String userEmail = email.getEditText().getText().toString();
+                String username = textInputUsername.getEditText().getText().toString();
+                String password = textInputPassword.getEditText().getText().toString();
+                String email = textInputEmail.getEditText().getText().toString();
 
-                if (TextUtils.isEmpty(user)) {
-                    username.setError("Do not leave empty");
+                if (TextUtils.isEmpty(username)) {
+                    textInputUsername.setError("Do not leave empty");
                 }
-                else if (TextUtils.isEmpty(pass)) {
-                    password.setError("Do not leave empty");
+                else if (TextUtils.isEmpty(password)) {
+                    textInputPassword.setError("Do not leave empty");
                 }
-                else if (TextUtils.isEmpty(userEmail)) {
-                    email.setError("Do not leave empty");
+                else if (TextUtils.isEmpty(email)) {
+                    textInputEmail.setError("Do not leave empty");
                 }
 
-                Boolean validateEmail = db.validateEmail(userEmail);
+                Boolean validateEmail = db.validateEmail(email);
                 if (!validateEmail) {
-                    boolean insert = db.registerUser(user, pass, userEmail);
+                    boolean insert = db.registerUser(username, password, email);
                     if (insert) {
                         Toast.makeText(RegistrationActivity.this, "Registration successful", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
                         startActivity(intent);
-                        username.getEditText().setText("");
-                        password.getEditText().setText("");
-                        email.getEditText().setText("");
+                        textInputUsername.getEditText().setText("");
+                        textInputPassword.getEditText().setText("");
+                        textInputEmail.getEditText().setText("");
                     }
                     else {
                         Toast.makeText(RegistrationActivity.this, "Registration failed", Toast.LENGTH_SHORT).show();
@@ -65,7 +65,7 @@ public class RegistrationActivity extends AppCompatActivity {
                 }
                 else {
                     Toast.makeText(RegistrationActivity.this, "Existing user, please sign in", Toast.LENGTH_SHORT).show();
-                    email.setError("Existing user");
+                    textInputEmail.setError("Existing user");
                 }
             }
         });
