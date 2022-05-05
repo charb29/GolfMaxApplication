@@ -14,7 +14,7 @@ public class ViewScoresActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private ScoresRecyclerView scoresRecyclerView;
     private DBHelper db;
-    private ArrayList<UserScores> userScoresArrayList;
+    private ArrayList<UserScore> userScoresArrayList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

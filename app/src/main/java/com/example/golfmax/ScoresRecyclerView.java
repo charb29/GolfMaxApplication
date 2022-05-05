@@ -12,10 +12,10 @@ import java.util.ArrayList;
 
 public class ScoresRecyclerView extends RecyclerView.Adapter<ScoresRecyclerView.ViewHolder> {
 
-    private ArrayList<UserScores> userScoresArrayList;
+    private ArrayList<UserScore> userScoresArrayList;
     private Context context;
 
-    public ScoresRecyclerView(ArrayList<UserScores> userScoresArrayList, Context context) {
+    public ScoresRecyclerView(ArrayList<UserScore> userScoresArrayList, Context context) {
         this.userScoresArrayList = userScoresArrayList;
         this.context = context;
     }
@@ -29,7 +29,7 @@ public class ScoresRecyclerView extends RecyclerView.Adapter<ScoresRecyclerView.
 
     @Override
     public void onBindViewHolder(@NonNull ScoresRecyclerView.ViewHolder holder, int position) {
-        UserScores scores = userScoresArrayList.get(position);
+        UserScore scores = userScoresArrayList.get(position);
         holder.viewCourseName.setText(scores.getCourseName());
 
         String userScores = Integer.toString(scores.getUserScore());

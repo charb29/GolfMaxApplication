@@ -14,6 +14,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     private static final String DROP_TABLE_IF_USER_EXISTS = "Drop table if exists USERS";
     private static final String DROP_TABLE_IF_SCORES_EXISTS = "Drop table if exists SCORES";
+
     private static final String CREATE_USER_TABLE_QUERY = """
         CREATE TABLE USERS (
         USER_ID INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -21,6 +22,7 @@ public class DBHelper extends SQLiteOpenHelper {
         PASSWORD TEXT,
         EMAIL TEXT
         )""";
+
     private static final String CREATE_USER_SCORE_QUERY = """
         CREATE TABLE SCORES (
         COURSE_NAME TEXT,
@@ -93,29 +95,35 @@ public class DBHelper extends SQLiteOpenHelper {
 
     public void saveScores(String courseName, int userScores, double courseRating, double slopeRating) {
         SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues values = new ContentValues();
-        values.put("COURSE_NAME", courseName);
-        values.put("SCORE", userScores);
-        values.put("COURSE_RATING", courseRating);
-        values.put("SLOPE_RATING", slopeRating);
+        ContentValues values = createSaveScoresContentValues(courseName, userScores, courseRating, slopeRating);
         db.insert("SCORES",null, values);
         db.close();
     }
 
-    public ArrayList<UserScores> getScores() {
+    public ArrayList<UserScore> getScores() {
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor cursor = db.rawQuery("Select * from SCORES where USER_ID_SCORES = USER_ID", null);
-        ArrayList<UserScores> userScores = new ArrayList<>();
+        Cursor cursor = db.rawQuery("SELECT * FROM SCORES", null);
+        ArrayList<UserScore> UserScores = new ArrayList<>();
 
         if (cursor.moveToFirst()) {
             do {
-                userScores.add(new UserScores(cursor.getString(0),
+                UserScores.add(new UserScore(cursor.getString(0),
                         cursor.getInt(1),
                         cursor.getDouble(2),
                         cursor.getDouble(3)));
             } while (cursor.moveToNext());
         }
         cursor.close();
-        return userScores;
+        return UserScores;
+    }
+
+    private ContentValues createSaveScoresContentValues(String courseName, int userScores, double courseRating, double slopeRating) {
+        ContentValues values = new ContentValues();
+        values.put("COURSE_NAME", courseName);
+        values.put("SCORE", userScores);
+        values.put("COURSE_RATING", courseRating);
+        values.put("SLOPE_RATING", slopeRating);
+
+        return values;
     }
 }

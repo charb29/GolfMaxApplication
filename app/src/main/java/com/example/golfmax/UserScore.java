@@ -2,7 +2,7 @@ package com.example.golfmax;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class UserScores extends AppCompatActivity {
+public class UserScore extends AppCompatActivity {
 
     DBHelper db = new DBHelper(this);
 
@@ -49,7 +49,7 @@ public class UserScores extends AppCompatActivity {
         this.slopeRating = slopeRating;
     }
 
-    public UserScores(String courseName, int userScore, double courseRating, double slopeRating) {
+    public UserScore(String courseName, int userScore, double courseRating, double slopeRating) {
         this.courseName = courseName;
         this.userScore = userScore;
         this.courseRating = courseRating;
