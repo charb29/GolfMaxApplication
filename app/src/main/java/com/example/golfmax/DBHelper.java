@@ -31,7 +31,7 @@ public class DBHelper extends SQLiteOpenHelper {
         COURSE_RATING REAL,
         SLOPE_RATING REAL,
         USER_ID INTEGER,
-        FOREIGN KEY (USER_ID_SCORE) REFERENCES USERS(USER_ID))
+        FOREIGN KEY (USER_ID) REFERENCES USERS(USER_ID))
         """;
 
     // change to parameterized queries to avoid SQL injection //
