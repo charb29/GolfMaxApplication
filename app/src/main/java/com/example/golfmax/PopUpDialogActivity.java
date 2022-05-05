@@ -16,6 +16,7 @@ import com.google.android.material.textfield.TextInputLayout;
 public class PopUpDialogActivity extends AppCompatDialogFragment {
 
     TextInputLayout textInputScore, textInputCourseRating, textInputSlopeRating, textInputCourseName;
+    UserScore score;
 
     @Override
     public AlertDialog onCreateDialog(Bundle savedInstanceState) {
@@ -64,7 +65,12 @@ public class PopUpDialogActivity extends AppCompatDialogFragment {
                             double courseRating = Double.parseDouble(userCourseRating);
                             double slopeRating = Double.parseDouble(userSlopeRating);
 
-                            db.saveScores(courseName, userScore, courseRating, slopeRating);
+                            score.setCourseName(courseName);
+                            score.setUserScores(userScore);
+                            score.setCourseRating(courseRating);
+                            score.setSlopeRating(slopeRating);
+
+                            db.saveScores(score);
                             Toast.makeText(getActivity(), "Score has been saved", Toast.LENGTH_SHORT).show();
 
                             textInputCourseName.getEditText().setText("");

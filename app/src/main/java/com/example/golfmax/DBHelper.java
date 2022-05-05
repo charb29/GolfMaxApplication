@@ -93,9 +93,9 @@ public class DBHelper extends SQLiteOpenHelper {
         }
     }
 
-    public void saveScores(String courseName, int userScores, double courseRating, double slopeRating) {
+    public void saveScores(UserScore score) {
         SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues values = createSaveScoresContentValues(courseName, userScores, courseRating, slopeRating);
+        ContentValues values = createSaveScoresContentValues(score);
         db.insert("SCORES",null, values);
         db.close();
     }
@@ -117,12 +117,12 @@ public class DBHelper extends SQLiteOpenHelper {
         return UserScores;
     }
 
-    private ContentValues createSaveScoresContentValues(String courseName, int userScores, double courseRating, double slopeRating) {
+    private ContentValues createSaveScoresContentValues(UserScore score) {
         ContentValues values = new ContentValues();
-        values.put("COURSE_NAME", courseName);
-        values.put("SCORE", userScores);
-        values.put("COURSE_RATING", courseRating);
-        values.put("SLOPE_RATING", slopeRating);
+        values.put("COURSE_NAME", score.getCourseName());
+        values.put("SCORE", score.getUserScore());
+        values.put("COURSE_RATING", score.getCourseRating());
+        values.put("SLOPE_RATING", score.getSlopeRating());
 
         return values;
     }
