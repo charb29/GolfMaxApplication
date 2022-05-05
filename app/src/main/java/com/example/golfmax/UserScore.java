@@ -36,6 +36,7 @@ public class UserScore extends AppCompatActivity {
     }
 
     public void setCourseRating(double courseRating) {
+
         this.courseRating = courseRating;
     }
 

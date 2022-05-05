@@ -65,10 +65,7 @@ public class PopUpDialogActivity extends AppCompatDialogFragment {
                             double courseRating = Double.parseDouble(userCourseRating);
                             double slopeRating = Double.parseDouble(userSlopeRating);
 
-                            score.setCourseName(courseName);
-                            score.setUserScores(userScore);
-                            score.setCourseRating(courseRating);
-                            score.setSlopeRating(slopeRating);
+                            score = new UserScore(courseName, userScore, courseRating, slopeRating);
 
                             db.saveScores(score);
                             Toast.makeText(getActivity(), "Score has been saved", Toast.LENGTH_SHORT).show();

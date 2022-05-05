@@ -6,12 +6,13 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import java.util.ArrayList;
+import java.util.zip.CheckedOutputStream;
 
 public class DBHelper extends SQLiteOpenHelper {
 
     private static final String DB_NAME = "GolfMax.db";
     private static final int DB_VERSION = 1;
-
+    private static final int userScoreId = 0;
     private static final String DROP_TABLE_IF_USER_EXISTS = "Drop table if exists USERS";
     private static final String DROP_TABLE_IF_SCORES_EXISTS = "Drop table if exists SCORES";
 
@@ -96,7 +97,9 @@ public class DBHelper extends SQLiteOpenHelper {
     public void saveScores(UserScore score) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = createSaveScoresContentValues(score);
+        ContentValues saveUserId = createUserScoreIdContentValues(userScoreId);
         db.insert("SCORES",null, values);
+        db.insert("SCORES", null, saveUserId);
         db.close();
     }
 
@@ -123,6 +126,13 @@ public class DBHelper extends SQLiteOpenHelper {
         values.put("SCORE", score.getUserScore());
         values.put("COURSE_RATING", score.getCourseRating());
         values.put("SLOPE_RATING", score.getSlopeRating());
+
+        return values;
+    }
+
+    private ContentValues createUserScoreIdContentValues(int userScoreId) {
+        ContentValues values = new ContentValues();
+        values.put("USER_ID_SCORE", userScoreId);
 
         return values;
     }
