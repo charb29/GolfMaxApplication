@@ -1,7 +1,5 @@
 package com.example.golfmax;
 
-import android.content.Intent;
-import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -22,25 +20,5 @@ public class HomeActivity extends AppCompatActivity {
 
         addScoresButton = findViewById(R.id.btnAddScores);
         viewScoresButton = findViewById(R.id.btnViewScores);
-
-        addScoresButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                openDialog();
-            }
-        });
-
-        viewScoresButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(HomeActivity.this, ViewScoresActivity.class);
-                startActivity(intent);
-            }
-        });
-    }
-
-    public void openDialog() {
-        PopUpDialogActivity popUpDialog = new PopUpDialogActivity();
-        popUpDialog.show(getSupportFragmentManager(), "pop-up dialog");
     }
 }

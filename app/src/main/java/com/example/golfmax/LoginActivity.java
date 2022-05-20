@@ -30,35 +30,12 @@ public class LoginActivity extends AppCompatActivity {
         forgotPasswordButton = findViewById(R.id.btnForgotPassword);
         signInButton = findViewById(R.id.btnSignIn);
         createAccountButton = findViewById(R.id.btnCreateAccount);
-        DBHelper db = new DBHelper(this);
 
         signInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String user = username.getEditText().getText().toString();
-                String pass = password.getEditText().getText().toString();
-
-                if (TextUtils.isEmpty(user)) {
-                    username.setError("Do not leave empty");
-                }
-                else if (TextUtils.isEmpty(pass)){
-                    password.setError("Do not leave empty");
-                }
-                Boolean validatePasswordEmail = db.validatePasswordEmail(user, pass);
-                if (validatePasswordEmail) {
-
-                    SharedPreferences sp = getSharedPreferences("username", MODE_PRIVATE);
-                    SharedPreferences.Editor e = sp.edit();
-                    e.putString("user", user);
-                    e.apply();
-
-                    Toast.makeText(LoginActivity.this, "Login successful", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
-                    startActivity(intent);
-                }
-                else {
-                    Toast.makeText(LoginActivity.this, "Invalid credentials", Toast.LENGTH_SHORT).show();
-                }
+                 Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+                 startActivity(intent);
             }
         });
 

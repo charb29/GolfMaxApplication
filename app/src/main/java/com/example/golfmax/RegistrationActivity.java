@@ -11,6 +11,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import com.google.android.material.textfield.TextInputLayout;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class RegistrationActivity extends AppCompatActivity {
 
     TextInputLayout textInputUsername, textInputEmail, textInputPassword;
@@ -29,45 +33,19 @@ public class RegistrationActivity extends AppCompatActivity {
         textInputEmail = findViewById(R.id.enterEmail);
         registerButton = findViewById(R.id.btnRegister);
         returningMemberButton = findViewById(R.id.btnAlreadyMember);
-        DBHelper db = new DBHelper(this);
+
+        String username = textInputUsername.getEditText().getText().toString();
+        String password = textInputPassword.getEditText().getText().toString();
+        String email = textInputEmail.getEditText().getText().toString();
 
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String username = textInputUsername.getEditText().getText().toString();
-                String password = textInputPassword.getEditText().getText().toString();
-                String email = textInputEmail.getEditText().getText().toString();
-
-                if (TextUtils.isEmpty(username)) {
-                    textInputUsername.setError("Do not leave empty");
-                }
-                else if (TextUtils.isEmpty(password)) {
-                    textInputPassword.setError("Do not leave empty");
-                }
-                else if (TextUtils.isEmpty(email)) {
-                    textInputEmail.setError("Do not leave empty");
-                }
-
-                Boolean validateEmail = db.validateEmail(email);
-                if (!validateEmail) {
-                    boolean insert = db.registerUser(username, password, email);
-                    if (insert) {
-                        Toast.makeText(RegistrationActivity.this, "Registration successful", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
-                        startActivity(intent);
-
-                        textInputUsername.getEditText().setText("");
-                        textInputPassword.getEditText().setText("");
-                        textInputEmail.getEditText().setText("");
-                    }
-                    else {
-                        Toast.makeText(RegistrationActivity.this, "Registration failed", Toast.LENGTH_SHORT).show();
-                    }
-                }
-                else {
-                    Toast.makeText(RegistrationActivity.this, "Existing user, please sign in", Toast.LENGTH_SHORT).show();
-                    textInputEmail.setError("Existing user");
-                }
+                RegistrationRequest registrationRequest = new RegistrationRequest();
+                registrationRequest.setUsername(username);
+                registrationRequest.setPassword(password);
+                registrationRequest.setEmail(email);
+                registerUser(registrationRequest);
             }
         });
 
@@ -76,6 +54,29 @@ public class RegistrationActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(RegistrationActivity.this, LoginActivity.class);
                 startActivity(intent);
+            }
+        });
+    }
+
+    public void registerUser(RegistrationRequest registrationRequest) {
+        Call<RegistrationResponse> registrationResponseCall = ApiClient.getUserService().registerUser(registrationRequest);
+        registrationResponseCall.enqueue(new Callback<RegistrationResponse>() {
+            @Override
+            public void onResponse(Call<RegistrationResponse> call, Response<RegistrationResponse> response) {
+                if (response.isSuccessful()) {
+                    Toast.makeText(RegistrationActivity.this, "Registration successful.", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
+                else {
+                    Toast.makeText(RegistrationActivity.this, "Registration failed.", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<RegistrationResponse> call, Throwable t) {
+                Toast.makeText(RegistrationActivity.this, t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }
