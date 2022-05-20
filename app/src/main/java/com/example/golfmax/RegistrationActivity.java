@@ -18,6 +18,7 @@ public class RegistrationActivity extends AppCompatActivity {
 
     TextInputLayout textInputUsername, textInputEmail, textInputPassword;
     Button registerButton, returningMemberButton;
+    RegistrationRequest registrationRequest = new RegistrationRequest();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,17 +34,16 @@ public class RegistrationActivity extends AppCompatActivity {
         registerButton = findViewById(R.id.btnRegister);
         returningMemberButton = findViewById(R.id.btnAlreadyMember);
 
-        String username = textInputUsername.getEditText().getText().toString();
-        String password = textInputPassword.getEditText().getText().toString();
-        String email = textInputEmail.getEditText().getText().toString();
-
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                RegistrationRequest registrationRequest = new RegistrationRequest();
-                registrationRequest.setUsername(username);
-                registrationRequest.setPassword(password);
-                registrationRequest.setEmail(email);
+                registrationRequest.setUsername(textInputUsername.getEditText().getText().toString());
+                registrationRequest.setPassword(textInputPassword.getEditText().getText().toString());
+                registrationRequest.setEmail(textInputEmail.getEditText().getText().toString());
+
+                registrationRequest.getUsername();
+                registrationRequest.getPassword();
+                registrationRequest.getEmail();
                 registerUser(registrationRequest);
             }
         });
