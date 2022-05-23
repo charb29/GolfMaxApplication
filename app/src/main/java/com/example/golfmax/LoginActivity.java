@@ -12,10 +12,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import com.google.android.material.textfield.TextInputLayout;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class LoginActivity extends AppCompatActivity {
 
-    TextInputLayout username, password;
+    TextInputLayout textInputUsername, textInputPassword;
     Button forgotPasswordButton, signInButton, createAccountButton;
+    LoginRequest loginRequest = new LoginRequest();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,8 +30,9 @@ public class LoginActivity extends AppCompatActivity {
         getSupportActionBar().hide();
         setContentView(R.layout.activity_login);
 
-        username = findViewById(R.id.username);
-        password = findViewById(R.id.password);
+        textInputUsername = findViewById(R.id.username);
+        textInputPassword = findViewById(R.id.password);
+
         forgotPasswordButton = findViewById(R.id.btnForgotPassword);
         signInButton = findViewById(R.id.btnSignIn);
         createAccountButton = findViewById(R.id.btnCreateAccount);
@@ -34,8 +40,20 @@ public class LoginActivity extends AppCompatActivity {
         signInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                 Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
-                 startActivity(intent);
+                String username = textInputUsername.getEditText().getText().toString();
+                String password = textInputPassword.getEditText().getText().toString();
+
+                if (TextUtils.isEmpty(username)) {
+                    textInputUsername.setError("Do not leave empty.");
+                }
+                if (TextUtils.isEmpty(password)) {
+                    textInputPassword.setError("Do not leave empty.");
+                }
+                else {
+                    loginRequest.setUsername(username);
+                    loginRequest.setPassword(password);
+                    loginUser(loginRequest);
+                }
             }
         });
 
@@ -44,6 +62,29 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(LoginActivity.this, RegistrationActivity.class);
                 startActivity(intent);
+            }
+        });
+    }
+
+    public void loginUser(LoginRequest loginRequest) {
+        Call<LoginResponse> loginResponseCall = ApiClient.getUserService().loginUser(loginRequest);
+        loginResponseCall.enqueue(new Callback<LoginResponse>() {
+            @Override
+            public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
+                if (response.isSuccessful()) {
+                    LoginResponse loginResponse = response.body();
+                    startActivity(new Intent(LoginActivity.this, HomeActivity.class).putExtra("data", loginResponse));
+                    finish();
+                }
+                else {
+                    Toast.makeText(LoginActivity.this, "Login failed.", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<LoginResponse> call, Throwable t) {
+                String message = t.getLocalizedMessage();
+                Toast.makeText(LoginActivity.this, message, Toast.LENGTH_SHORT).show();
             }
         });
     }

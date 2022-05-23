@@ -1,6 +1,8 @@
 package com.example.golfmax;
 
-public class LoginResponse {
+import java.io.Serializable;
+
+public class LoginResponse implements Serializable {
 
     private String username;
     private String password;

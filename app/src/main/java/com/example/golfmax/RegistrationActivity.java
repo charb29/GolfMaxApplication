@@ -31,20 +31,36 @@ public class RegistrationActivity extends AppCompatActivity {
         textInputUsername = findViewById(R.id.enterUsername);
         textInputPassword = findViewById(R.id.enterPassword);
         textInputEmail = findViewById(R.id.enterEmail);
+
         registerButton = findViewById(R.id.btnRegister);
         returningMemberButton = findViewById(R.id.btnAlreadyMember);
 
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                registrationRequest.setUsername(textInputUsername.getEditText().getText().toString());
-                registrationRequest.setPassword(textInputPassword.getEditText().getText().toString());
-                registrationRequest.setEmail(textInputEmail.getEditText().getText().toString());
+                String username = textInputUsername.getEditText().getText().toString();
+                String password = textInputPassword.getEditText().getText().toString();
+                String email = textInputEmail.getEditText().getText().toString();
 
-                registrationRequest.getUsername();
-                registrationRequest.getPassword();
-                registrationRequest.getEmail();
-                registerUser(registrationRequest);
+                if (TextUtils.isEmpty(username)) {
+                    textInputUsername.setError("Do not leave empty.");
+                }
+                if (TextUtils.isEmpty(password)) {
+                    textInputPassword.setError("Do not leave empty.");
+                }
+                if (TextUtils.isEmpty(email)) {
+                    textInputEmail.setError("Do not leave empty.");
+                }
+                else {
+                    registrationRequest.setUsername(username);
+                    registrationRequest.setPassword(password);
+                    registrationRequest.setEmail(email);
+
+                    registrationRequest.getUsername();
+                    registrationRequest.getPassword();
+                    registrationRequest.getEmail();
+                    registerUser(registrationRequest);
+                }
             }
         });
 

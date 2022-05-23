@@ -1,5 +1,7 @@
 package com.example.golfmax;
 
+import android.content.Intent;
+import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -9,6 +11,7 @@ import android.os.Bundle;
 public class HomeActivity extends AppCompatActivity {
 
     Button addScoresButton, viewScoresButton;
+    LoginResponse loginResponse;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,5 +23,11 @@ public class HomeActivity extends AppCompatActivity {
 
         addScoresButton = findViewById(R.id.btnAddScores);
         viewScoresButton = findViewById(R.id.btnViewScores);
+
+        Intent intent = getIntent();
+        if (intent.getExtras() != null) {
+            loginResponse = (LoginResponse) intent.getSerializableExtra("data");
+            Log.e("TAG", "====> " + loginResponse.getEmail());
+        }
     }
 }
