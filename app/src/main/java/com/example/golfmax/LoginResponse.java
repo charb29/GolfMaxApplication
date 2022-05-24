@@ -7,6 +7,11 @@ public class LoginResponse implements Serializable {
     private String username;
     private String password;
     private String email;
+    private long id;
+
+    public long getId() {
+        return id;
+    }
 
     public String getUsername() {
         return username;
@@ -30,5 +35,9 @@ public class LoginResponse implements Serializable {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 }

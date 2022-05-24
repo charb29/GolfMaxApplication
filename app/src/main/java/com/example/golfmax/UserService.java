@@ -2,6 +2,7 @@ package com.example.golfmax;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.GET;
 import retrofit2.http.POST;
 
 public interface UserService {
@@ -11,4 +12,8 @@ public interface UserService {
 
     @POST("register")
     Call<RegistrationResponse> registerUser(@Body RegistrationRequest registrationRequest);
+
+    @POST("scores/add_score")
+    Call<ScoreResponse> addScore(@Body ScoreRequest scoreRequest);
+
 }

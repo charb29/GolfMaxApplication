@@ -2,12 +2,12 @@ package com.example.golfmax;
 
 public class RegistrationResponse {
 
-    private int id;
+    private long id;
     private String username;
     private String password;
     private String email;
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 

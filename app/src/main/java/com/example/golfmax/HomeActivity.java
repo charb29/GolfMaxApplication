@@ -2,6 +2,7 @@ package com.example.golfmax;
 
 import android.content.Intent;
 import android.util.Log;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -10,7 +11,7 @@ import android.os.Bundle;
 
 public class HomeActivity extends AppCompatActivity {
 
-    Button addScoresButton, viewScoresButton;
+    Button buttonAddScores, buttonViewScores;
     LoginResponse loginResponse;
 
     @Override
@@ -21,13 +22,34 @@ public class HomeActivity extends AppCompatActivity {
         getSupportActionBar().hide();
         setContentView(R.layout.activity_home);
 
-        addScoresButton = findViewById(R.id.btnAddScores);
-        viewScoresButton = findViewById(R.id.btnViewScores);
+        buttonAddScores = findViewById(R.id.btnAddScores);
+        buttonViewScores = findViewById(R.id.btnViewScores);
 
         Intent intent = getIntent();
         if (intent.getExtras() != null) {
             loginResponse = (LoginResponse) intent.getSerializableExtra("data");
             Log.e("TAG", "====> " + loginResponse.getEmail());
+            Log.e("TAG", "====>" + loginResponse.getId());
         }
+
+        buttonAddScores.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openDialog();
+            }
+        });
+
+        buttonViewScores.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(HomeActivity.this, ViewScoresActivity.class);
+                startActivity(intent);
+            }
+        });
+    }
+
+    public void openDialog() {
+        PopUpDialog popUp = new PopUpDialog();
+        popUp.show(getSupportFragmentManager(), "pop-up dialog");
     }
 }

@@ -17,7 +17,7 @@ import retrofit2.Response;
 public class RegistrationActivity extends AppCompatActivity {
 
     TextInputLayout textInputUsername, textInputEmail, textInputPassword;
-    Button registerButton, returningMemberButton;
+    Button buttonRegister, buttonReturningMember;
     RegistrationRequest registrationRequest = new RegistrationRequest();
 
     @Override
@@ -32,10 +32,10 @@ public class RegistrationActivity extends AppCompatActivity {
         textInputPassword = findViewById(R.id.enterPassword);
         textInputEmail = findViewById(R.id.enterEmail);
 
-        registerButton = findViewById(R.id.btnRegister);
-        returningMemberButton = findViewById(R.id.btnAlreadyMember);
+        buttonRegister = findViewById(R.id.btnRegister);
+        buttonReturningMember = findViewById(R.id.btnAlreadyMember);
 
-        registerButton.setOnClickListener(new View.OnClickListener() {
+        buttonRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String username = textInputUsername.getEditText().getText().toString();
@@ -52,6 +52,7 @@ public class RegistrationActivity extends AppCompatActivity {
                     textInputEmail.setError("Do not leave empty.");
                 }
                 else {
+
                     registrationRequest.setUsername(username);
                     registrationRequest.setPassword(password);
                     registrationRequest.setEmail(email);
@@ -64,7 +65,7 @@ public class RegistrationActivity extends AppCompatActivity {
             }
         });
 
-        returningMemberButton.setOnClickListener(new View.OnClickListener() {
+        buttonReturningMember.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(RegistrationActivity.this, LoginActivity.class);
