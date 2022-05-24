@@ -1,7 +1,6 @@
 package com.example.golfmax;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.Window;
@@ -18,9 +17,12 @@ import retrofit2.Response;
 
 public class LoginActivity extends AppCompatActivity {
 
+    // implement forgot password //
+
     TextInputLayout textInputUsername, textInputPassword;
-    Button forgotPasswordButton, signInButton, createAccountButton;
+    Button buttonForgotPassword, buttonLogin, buttonRegister;
     LoginRequest loginRequest = new LoginRequest();
+    ScoreRequest scoreRequest = new ScoreRequest();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,11 +35,11 @@ public class LoginActivity extends AppCompatActivity {
         textInputUsername = findViewById(R.id.username);
         textInputPassword = findViewById(R.id.password);
 
-        forgotPasswordButton = findViewById(R.id.btnForgotPassword);
-        signInButton = findViewById(R.id.btnSignIn);
-        createAccountButton = findViewById(R.id.btnCreateAccount);
+        buttonForgotPassword = findViewById(R.id.btnForgotPassword);
+        buttonLogin = findViewById(R.id.btnSignIn);
+        buttonRegister = findViewById(R.id.btnCreateAccount);
 
-        signInButton.setOnClickListener(new View.OnClickListener() {
+        buttonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String username = textInputUsername.getEditText().getText().toString();
@@ -50,6 +52,7 @@ public class LoginActivity extends AppCompatActivity {
                     textInputPassword.setError("Do not leave empty.");
                 }
                 else {
+
                     loginRequest.setUsername(username);
                     loginRequest.setPassword(password);
                     loginUser(loginRequest);
@@ -57,7 +60,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        createAccountButton.setOnClickListener(new View.OnClickListener() {
+        buttonRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(LoginActivity.this, RegistrationActivity.class);
@@ -74,10 +77,11 @@ public class LoginActivity extends AppCompatActivity {
                 if (response.isSuccessful()) {
                     LoginResponse loginResponse = response.body();
                     startActivity(new Intent(LoginActivity.this, HomeActivity.class).putExtra("data", loginResponse));
+                    scoreRequest.setUserId(loginResponse.getId());
                     finish();
                 }
                 else {
-                    Toast.makeText(LoginActivity.this, "Login failed.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(LoginActivity.this, "Login failed. Invalid username or password.", Toast.LENGTH_SHORT).show();
                 }
             }
 
