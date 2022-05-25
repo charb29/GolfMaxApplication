@@ -13,7 +13,7 @@ public interface UserService {
     @POST("register")
     Call<RegistrationResponse> registerUser(@Body RegistrationRequest registrationRequest);
 
-    @POST("scores/add_score")
+    @POST("scores/add/score")
     Call<ScoreResponse> addScore(@Body ScoreRequest scoreRequest);
 
 }

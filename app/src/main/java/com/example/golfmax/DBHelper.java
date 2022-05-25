@@ -13,7 +13,6 @@ public class DBHelper extends SQLiteOpenHelper {
     private static final String tableName = "userScores";
     private static final String userId = "id";
     private static final String user = "username";
-    // String blocks unavailable with my Java version (java 11)
     private static final String createTable = "CREATE TABLE " + tableName + " ("
             + userId + " REAL,"
             + user + " TEXT)";
@@ -46,7 +45,7 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
     public long getUserId(String username) {
-        SQLiteDatabase db = this.getWritableDatabase();
+        SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery("SELECT id FROM userScores WHERE username = ?", new String[] {username});
         long id = -1;
         if (cursor.moveToFirst()) {
@@ -55,17 +54,5 @@ public class DBHelper extends SQLiteOpenHelper {
         }
         db.close();
         return id;
-    }
-
-    public String getUsername(String username) {
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery("SELECT username FROM userScores WHERE username = ?", new String[] {username});
-        String user = "";
-        if (cursor.moveToFirst()) {
-            user = cursor.getString(0);
-            cursor.close();
-        }
-        db.close();
-        return user;
     }
 }
