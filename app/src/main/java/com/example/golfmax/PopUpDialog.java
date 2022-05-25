@@ -69,7 +69,6 @@ public class PopUpDialog extends AppCompatDialogFragment {
                             double slopeRating = Double.parseDouble(userSlopeRating);
 
                             db = new DBHelper(getActivity());
-
                             scoreRequest.setId(db.getUserId(LoginActivity.username));
                             scoreRequest.setCourseName(courseName);
                             scoreRequest.setScore(score);

@@ -19,6 +19,7 @@ public class RegistrationActivity extends AppCompatActivity {
     TextInputLayout textInputUsername, textInputEmail, textInputPassword;
     Button buttonRegister, buttonReturningMember;
     RegistrationRequest registrationRequest = new RegistrationRequest();
+    public static String username;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,7 +82,7 @@ public class RegistrationActivity extends AppCompatActivity {
             public void onResponse(Call<RegistrationResponse> call, Response<RegistrationResponse> response) {
                 if (response.isSuccessful()) {
                     Toast.makeText(RegistrationActivity.this, "Registration successful.", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+                    Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
                     startActivity(intent);
                     finish();
                 }
