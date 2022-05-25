@@ -7,6 +7,7 @@ public class ScoreRequest {
     private int score;
     private double courseRating, slopeRating;
 
+
     public String getCourseName() {
         return courseName;
     }
@@ -31,8 +32,7 @@ public class ScoreRequest {
         this.courseName = courseName;
     }
 
-    public void setUserId(long userId) {
-
+    public void setId(long userId) {
         this.userId = userId;
     }
 

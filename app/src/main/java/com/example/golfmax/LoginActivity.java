@@ -22,7 +22,6 @@ public class LoginActivity extends AppCompatActivity {
     TextInputLayout textInputUsername, textInputPassword;
     Button buttonForgotPassword, buttonLogin, buttonRegister;
     LoginRequest loginRequest = new LoginRequest();
-    ScoreRequest scoreRequest = new ScoreRequest();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +51,6 @@ public class LoginActivity extends AppCompatActivity {
                     textInputPassword.setError("Do not leave empty.");
                 }
                 else {
-
                     loginRequest.setUsername(username);
                     loginRequest.setPassword(password);
                     loginUser(loginRequest);
@@ -77,7 +75,6 @@ public class LoginActivity extends AppCompatActivity {
                 if (response.isSuccessful()) {
                     LoginResponse loginResponse = response.body();
                     startActivity(new Intent(LoginActivity.this, HomeActivity.class).putExtra("data", loginResponse));
-                    scoreRequest.setUserId(loginResponse.getId());
                     finish();
                 }
                 else {

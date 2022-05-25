@@ -10,9 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
-
 import com.google.android.material.textfield.TextInputLayout;
-
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -21,6 +19,8 @@ public class PopUpDialog extends AppCompatDialogFragment {
 
     TextInputLayout textInputCourseName, textInputScore, textInputCourseRating, textInputSlopeRating;
     ScoreRequest scoreRequest = new ScoreRequest();
+    DBHelper db = new DBHelper(getContext());
+    LoginResponse loginResponse = new LoginResponse();
 
     @Override
     public AlertDialog onCreateDialog(Bundle savedInstanceState) {
@@ -68,6 +68,7 @@ public class PopUpDialog extends AppCompatDialogFragment {
                             double courseRating = Double.parseDouble(userCourseRating);
                             double slopeRating = Double.parseDouble(userSlopeRating);
 
+                            scoreRequest.setId(db.getUserId(loginResponse.getUsername()));
                             scoreRequest.setCourseName(courseName);
                             scoreRequest.setScore(score);
                             scoreRequest.setCourseRating(courseRating);
