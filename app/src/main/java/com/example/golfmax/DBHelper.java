@@ -46,7 +46,7 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
     public long getUserId(String username) {
-        SQLiteDatabase db = this.getReadableDatabase();
+        SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery("SELECT id FROM userScores WHERE username = ?", new String[] {username});
         long id = -1;
         if (cursor.moveToFirst()) {

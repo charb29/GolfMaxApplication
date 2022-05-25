@@ -4,8 +4,10 @@ package com.example.golfmax;
 import androidx.appcompat.app.AppCompatDialogFragment;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -19,8 +21,8 @@ public class PopUpDialog extends AppCompatDialogFragment {
 
     TextInputLayout textInputCourseName, textInputScore, textInputCourseRating, textInputSlopeRating;
     ScoreRequest scoreRequest = new ScoreRequest();
-    DBHelper db = new DBHelper(getContext());
-    LoginResponse loginResponse = new LoginResponse();
+    DBHelper db = new DBHelper(getActivity());
+    LoginResponse loginResponse;
 
     @Override
     public AlertDialog onCreateDialog(Bundle savedInstanceState) {
@@ -68,7 +70,7 @@ public class PopUpDialog extends AppCompatDialogFragment {
                             double courseRating = Double.parseDouble(userCourseRating);
                             double slopeRating = Double.parseDouble(userSlopeRating);
 
-                            scoreRequest.setId(db.getUserId(loginResponse.getUsername()));
+                            scoreRequest.setId(db.getUserId("Olivier"));
                             scoreRequest.setCourseName(courseName);
                             scoreRequest.setScore(score);
                             scoreRequest.setCourseRating(courseRating);

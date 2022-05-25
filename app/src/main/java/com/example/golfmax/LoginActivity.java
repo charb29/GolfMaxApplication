@@ -22,6 +22,7 @@ public class LoginActivity extends AppCompatActivity {
     TextInputLayout textInputUsername, textInputPassword;
     Button buttonForgotPassword, buttonLogin, buttonRegister;
     LoginRequest loginRequest = new LoginRequest();
+    DBHelper db = new DBHelper(LoginActivity.this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,6 +76,7 @@ public class LoginActivity extends AppCompatActivity {
                 if (response.isSuccessful()) {
                     LoginResponse loginResponse = response.body();
                     startActivity(new Intent(LoginActivity.this, HomeActivity.class).putExtra("data", loginResponse));
+                    db.saveUser(loginResponse.getUsername(), loginResponse.getId());
                     finish();
                 }
                 else {

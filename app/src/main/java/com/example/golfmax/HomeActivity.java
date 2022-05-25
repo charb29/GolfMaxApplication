@@ -12,7 +12,6 @@ import android.os.Bundle;
 public class HomeActivity extends AppCompatActivity {
 
     Button buttonAddScores, buttonViewScores;
-    ScoreRequest scoreRequest = new ScoreRequest();
     LoginResponse loginResponse;
     DBHelper db = new DBHelper(HomeActivity.this);
 
@@ -26,6 +25,13 @@ public class HomeActivity extends AppCompatActivity {
 
         buttonAddScores = findViewById(R.id.btnAddScores);
         buttonViewScores = findViewById(R.id.btnViewScores);
+
+        Intent intent = getIntent();
+        if (intent.getExtras() != null) {
+            loginResponse = (LoginResponse) intent.getSerializableExtra("data");
+            Log.i("LoginActivity", "====> " + loginResponse.getEmail());
+            Log.i("LoginActivity", "====> " + loginResponse.getId());
+        }
 
         buttonAddScores.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -45,13 +51,6 @@ public class HomeActivity extends AppCompatActivity {
 
     public void openDialog() {
         PopUpDialog popUp = new PopUpDialog();
-        Intent intent = getIntent();
-        if (intent.getExtras() != null) {
-            loginResponse = (LoginResponse) intent.getSerializableExtra("data");
-            Log.e("TAG", "====> " + loginResponse.getEmail());
-            Log.e("TAG", "====>" + loginResponse.getId());
-            db.saveUser(loginResponse.getUsername(), loginResponse.getId());
-        }
         popUp.show(getSupportFragmentManager(), "pop-up dialog");
     }
 }
