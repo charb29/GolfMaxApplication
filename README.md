@@ -14,6 +14,7 @@ I have decided to create this program with the goal of being able to have an app
 - Leaderboard option for local courses
 - Local courses to select from
 - The ability for a user to add a course that is not already in the application and having it saved for all the other users
+- Deploying it on the Google Play Store
 
 ## Golf Definitions 🏌️‍♂️
 Score = What the player scores during their round.
