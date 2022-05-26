@@ -4,6 +4,17 @@ This program creates a user profile and then gets the users scores, course ratin
 ## Motivation 🚀
 I have decided to create this program with the goal of being able to have an app on my phone that simply calculates my Handicap Index when I am on the golf course. It is also a good program to start developping an app with, due to the exciting challenges that it comes with.
 
+## Current Features
+- The abililty to login and create a new profile
+- Adding a round to your profile
+- Having your handicap index and average score displayed in the HomeActivity
+
+## Futre Features
+- Live scorecard
+- Leaderboard option for local courses
+- Local courses to select from
+- The ability for a user to add a course that is not already in the application and having it saved for all the other users
+
 ## Golf Definitions 🏌️‍♂️
 Score = What the player scores during their round.
 
