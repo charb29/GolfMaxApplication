@@ -10,10 +10,10 @@ public interface UserService {
     @POST("login")
     Call<LoginResponse> loginUser(@Body LoginRequest loginRequest);
 
-    @POST("register")
+    @POST("account")
     Call<RegistrationResponse> registerUser(@Body RegistrationRequest registrationRequest);
 
-    @POST("scores/add/score")
+    @POST("/scores")
     Call<ScoreResponse> addScore(@Body ScoreRequest scoreRequest);
 
 }
