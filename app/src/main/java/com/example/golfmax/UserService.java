@@ -1,5 +1,7 @@
 package com.example.golfmax;
 
+import java.util.List;
+
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
@@ -15,5 +17,8 @@ public interface UserService {
 
     @POST("/scores")
     Call<ScoreResponse> addScore(@Body ScoreRequest scoreRequest);
+
+    @GET("/scores")
+    Call<List<Scores>> getScores();
 
 }
