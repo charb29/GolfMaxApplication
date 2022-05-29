@@ -21,6 +21,7 @@ public class PopUpDialog extends AppCompatDialogFragment {
     TextInputLayout textInputCourseName, textInputScore, textInputCourseRating, textInputSlopeRating;
     ScoreRequest scoreRequest = new ScoreRequest();
     DBHelper db;
+    User user;
 
     @Override
     public AlertDialog onCreateDialog(Bundle savedInstanceState) {
@@ -69,17 +70,14 @@ public class PopUpDialog extends AppCompatDialogFragment {
                             double slopeRating = Double.parseDouble(userSlopeRating);
 
                             db = new DBHelper(getActivity());
-                            scoreRequest.setId(db.getUserId(LoginActivity.username));
+                            user = new User();
+
+                            user.setId(db.getUserId(LoginActivity.username));
                             scoreRequest.setCourseName(courseName);
-                            scoreRequest.setScore(score);
+                            scoreRequest.setUserScore(score);
                             scoreRequest.setCourseRating(courseRating);
                             scoreRequest.setSlopeRating(slopeRating);
-
-                            scoreRequest.getUserId();
-                            scoreRequest.getCourseName();
-                            scoreRequest.getScore();
-                            scoreRequest.getCourseRating();
-                            scoreRequest.getSlopeRating();
+                            scoreRequest.setUser(user);
 
                             saveRound(scoreRequest);
                         }

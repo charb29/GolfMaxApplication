@@ -8,55 +8,55 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
+import java.util.List;
 
-public class ScoresRecyclerView extends RecyclerView.Adapter<ScoresRecyclerView.ViewHolder> {
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
-    private ArrayList<ScoreRequest> scoreArrayList;
+public class ScoresRecyclerView extends RecyclerView.Adapter<ScoresRecyclerView.MyViewHolder> {
+
     private Context context;
+    private List<Scores> scoresList;
 
-    public ScoresRecyclerView(ArrayList<ScoreRequest> scoreArrayList, Context context) {
-        this.scoreArrayList = scoreArrayList;
+    public ScoresRecyclerView(Context context, List<Scores> scoresList) {
         this.context = context;
+        this.scoresList = scoresList;
     }
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.scores_rv_item, parent, false);
-        return new ViewHolder(view);
+    public ScoresRecyclerView.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(context).inflate(R.layout.scores_rv_item, parent, false);
+        return new MyViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-
-        ScoreRequest score = scoreArrayList.get(position);
-        holder.textViewCourseName.setText(score.getCourseName());
-
-        String userScores = Double.toString(score.getScore());
-        holder.textViewScore.setText(userScores);
-
-        String courseRating = Double.toString(score.getCourseRating());
-        holder.textViewCourseRating.setText(courseRating);
-
-        String slopeRating = Double.toString(score.getSlopeRating());
-        holder.textViewSlopeRating.setText(slopeRating);
+    public void onBindViewHolder(@NonNull ScoresRecyclerView.MyViewHolder holder, int position) {
+        holder.textViewCourseName.setText(scoresList.get(position).getCourseName());
+        holder.textViewUserScore.setText(scoresList.get(position).getUserScore());
+        holder.textViewCourseRating.setText(scoresList.get(position).getCourseRating());
+        holder.textViewSlopeRating.setText(scoresList.get(position).getSlopeRating());
     }
 
     @Override
     public int getItemCount() {
-        return scoreArrayList.size();
+        return scoresList.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
-        private TextView textViewCourseName, textViewScore, textViewCourseRating, textViewSlopeRating;
+    public class MyViewHolder extends RecyclerView.ViewHolder {
+        TextView textViewCourseName, textViewUserScore, textViewCourseRating, textViewSlopeRating;
 
-        public ViewHolder(@NonNull View itemView) {
+        public MyViewHolder(View itemView) {
             super(itemView);
-            textViewCourseName = itemView.findViewById(R.id.viewCourseName);
-            textViewScore = itemView.findViewById(R.id.viewUserScore);
-            textViewCourseRating = itemView.findViewById(R.id.viewCourseRating);
-            textViewSlopeRating = itemView.findViewById(R.id.viewSlopeRating);
+            textViewCourseName = (TextView) itemView.findViewById(R.id.courseName);
+            textViewUserScore = (TextView) itemView.findViewById(R.id.userScore);
+            textViewCourseRating = (TextView) itemView.findViewById(R.id.courseRating);
+            textViewSlopeRating = (TextView) itemView.findViewById(R.id.slopeRating);
         }
     }
 }
+

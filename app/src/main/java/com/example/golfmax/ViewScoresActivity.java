@@ -1,15 +1,28 @@
 package com.example.golfmax;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.ListView;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class ViewScoresActivity extends AppCompatActivity {
 
-    // display scores //
-    // add back button //
+    List<Scores> scoresList;
+    ScoresRecyclerView scoresRecyclerView;
+    RecyclerView recyclerView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,5 +31,27 @@ public class ViewScoresActivity extends AppCompatActivity {
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getSupportActionBar().hide();
         setContentView(R.layout.activity_view_scores);
+
+        scoresList = new ArrayList<>();
+        recyclerView = (RecyclerView) findViewById(R.id.idRVScores);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(layoutManager);
+
+        Call<List<Scores>> scoresCall = ApiClient.getUserService().getScores();
+        scoresCall.enqueue(new Callback<List<Scores>>() {
+            @Override
+            public void onResponse(Call<List<Scores>> call, Response<List<Scores>> response) {
+                scoresList = response.body();
+
+                Log.i("TAG ====> ", scoresList.toString());
+                scoresRecyclerView = new ScoresRecyclerView(getApplicationContext(), scoresList);
+                recyclerView.setAdapter(scoresRecyclerView);
+            }
+
+            @Override
+            public void onFailure(Call<List<Scores>> call, Throwable t) {
+                Log.e("ViewScoresActivity", t.toString());
+            }
+        });
     }
 }
