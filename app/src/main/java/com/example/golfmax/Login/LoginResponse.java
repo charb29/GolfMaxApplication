@@ -1,4 +1,4 @@
-package com.example.golfmax;
+package com.example.golfmax.Login;
 
 import java.io.Serializable;
 
