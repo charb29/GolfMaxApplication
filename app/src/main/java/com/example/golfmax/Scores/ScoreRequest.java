@@ -1,4 +1,6 @@
-package com.example.golfmax;
+package com.example.golfmax.Scores;
+
+import com.example.golfmax.User;
 
 public class ScoreRequest {
 

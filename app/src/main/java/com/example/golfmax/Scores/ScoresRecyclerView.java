@@ -1,4 +1,4 @@
-package com.example.golfmax;
+package com.example.golfmax.Scores;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -8,14 +8,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import org.w3c.dom.Text;
+import com.example.golfmax.R;
 
-import java.util.ArrayList;
 import java.util.List;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class ScoresRecyclerView extends RecyclerView.Adapter<ScoresRecyclerView.MyViewHolder> {
 
