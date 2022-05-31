@@ -6,6 +6,7 @@ import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
 
 public interface UserService {
 
@@ -18,7 +19,7 @@ public interface UserService {
     @POST("/scores")
     Call<ScoreResponse> addScore(@Body ScoreRequest scoreRequest);
 
-    @GET("/scores")
-    Call<List<Scores>> getScores();
+    @GET("/scores/user/{id}")
+    Call<List<Scores>> getScores(@Path("id") long id);
 
 }
