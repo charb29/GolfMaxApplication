@@ -1,4 +1,4 @@
-package com.example.golfmax;
+package com.example.golfmax.Backend;
 
 import android.content.ContentValues;
 import android.content.Context;

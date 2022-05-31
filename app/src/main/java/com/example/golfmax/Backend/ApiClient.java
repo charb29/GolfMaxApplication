@@ -1,4 +1,6 @@
-package com.example.golfmax;
+package com.example.golfmax.Backend;
+
+import com.example.golfmax.Backend.UserService;
 
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;

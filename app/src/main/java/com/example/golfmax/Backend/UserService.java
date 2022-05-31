@@ -1,4 +1,12 @@
-package com.example.golfmax;
+package com.example.golfmax.Backend;
+
+import com.example.golfmax.Login.LoginRequest;
+import com.example.golfmax.Login.LoginResponse;
+import com.example.golfmax.Registration.RegistrationRequest;
+import com.example.golfmax.Registration.RegistrationResponse;
+import com.example.golfmax.Scores.ScoreRequest;
+import com.example.golfmax.Scores.ScoreResponse;
+import com.example.golfmax.Scores.Scores;
 
 import java.util.List;
 
