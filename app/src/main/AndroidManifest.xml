@@ -13,16 +13,16 @@
         android:theme="@style/Theme.GolfMax"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".PopUpDialog"
+            android:name=".Scores.PopUpDialog"
             android:exported="false" />
         <activity
-            android:name=".ViewScoresActivity"
+            android:name=".Scores.ViewScoresActivity"
             android:exported="false" />
         <activity
-            android:name=".RegistrationActivity"
+            android:name=".Registration.RegistrationActivity"
             android:exported="true" />
         <activity
-            android:name=".LoginActivity"
+            android:name=".Login.LoginActivity"
             android:exported="true" />
         <activity
             android:name=".HomeActivity"
