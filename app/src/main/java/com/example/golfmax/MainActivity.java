@@ -15,6 +15,8 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
+import com.example.golfmax.Login.LoginActivity;
+
 public class MainActivity extends AppCompatActivity {
 
     private static int SPLASH_SCREEN = 4000;

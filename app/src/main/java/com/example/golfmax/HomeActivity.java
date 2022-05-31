@@ -9,9 +9,14 @@ import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
+import com.example.golfmax.Backend.DBHelper;
+import com.example.golfmax.Login.LoginResponse;
+import com.example.golfmax.Scores.PopUpDialog;
+import com.example.golfmax.Scores.ViewScoresActivity;
+
 public class HomeActivity extends AppCompatActivity {
 
-    Button buttonAddScores, buttonViewScores;
+    Button buttonViewScores, buttonAddScores, buttonPlay, buttonLeaderBoards, buttonSettings;
     LoginResponse loginResponse;
     DBHelper db = new DBHelper(HomeActivity.this);
 
@@ -23,8 +28,11 @@ public class HomeActivity extends AppCompatActivity {
         getSupportActionBar().hide();
         setContentView(R.layout.activity_home);
 
-        buttonAddScores = findViewById(R.id.btnAddScores);
-        buttonViewScores = findViewById(R.id.btnViewScores);
+        buttonViewScores = findViewById(R.id.buttonViewScores);
+        buttonAddScores = findViewById(R.id.buttonAddScores);
+        buttonPlay = findViewById(R.id.buttonPlay);
+        buttonLeaderBoards = findViewById(R.id.buttonLeaderboards);
+        buttonSettings = findViewById(R.id.buttonSettings);
 
         Intent intent = getIntent();
         if (intent.getExtras() != null) {
