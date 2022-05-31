@@ -22,7 +22,8 @@ public class ViewScoresActivity extends AppCompatActivity {
     List<Scores> scoresList;
     ScoresRecyclerView scoresRecyclerView;
     RecyclerView recyclerView;
-
+    User user;
+    DBHelper db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,11 +34,15 @@ public class ViewScoresActivity extends AppCompatActivity {
         setContentView(R.layout.activity_view_scores);
 
         scoresList = new ArrayList<>();
+        user = new User();
+        db = new DBHelper(this);
         recyclerView = (RecyclerView) findViewById(R.id.idRVScores);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
+        user.setId(db.getUserId(LoginActivity.username));
+        long userId = user.getId();
 
-        Call<List<Scores>> scoresCall = ApiClient.getUserService().getScores();
+        Call<List<Scores>> scoresCall = ApiClient.getUserService().getScores(userId);
         scoresCall.enqueue(new Callback<List<Scores>>() {
             @Override
             public void onResponse(Call<List<Scores>> call, Response<List<Scores>> response) {
