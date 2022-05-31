@@ -1,6 +1,6 @@
-package com.example.golfmax;
+package com.example.golfmax.Registration;
 
-public class RegistrationRequest {
+public class RegistrationResponse {
 
     private long id;
     private String username;
@@ -23,7 +23,7 @@ public class RegistrationRequest {
         return email;
     }
 
-    public void setId(long id) {
+    public void setId(int id) {
         this.id = id;
     }
 

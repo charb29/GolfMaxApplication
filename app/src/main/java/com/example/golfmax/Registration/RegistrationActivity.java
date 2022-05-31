@@ -1,8 +1,7 @@
-package com.example.golfmax;
+package com.example.golfmax.Registration;
 
 import android.content.Intent;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -10,6 +9,10 @@ import android.widget.Button;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.example.golfmax.Backend.ApiClient;
+import com.example.golfmax.Login.LoginActivity;
+import com.example.golfmax.R;
 import com.google.android.material.textfield.TextInputLayout;
 import retrofit2.Call;
 import retrofit2.Callback;
