@@ -13,6 +13,7 @@ import com.example.golfmax.Backend.DBHelper;
 import com.example.golfmax.PopUpDialog;
 import com.example.golfmax.Responses.LoginResponse;
 import com.example.golfmax.R;
+import com.example.golfmax.TestDialog;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -58,7 +59,7 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     public void openDialog() {
-        PopUpDialog popUp = new PopUpDialog();
+        TestDialog popUp = new TestDialog();
         popUp.show(getSupportFragmentManager(), "pop-up dialog");
     }
 }

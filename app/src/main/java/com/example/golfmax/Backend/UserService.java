@@ -18,10 +18,10 @@ import retrofit2.http.Path;
 
 public interface UserService {
 
-    @POST("login")
+    @POST("users/login")
     Call<LoginResponse> loginUser(@Body LoginRequest loginRequest);
 
-    @POST("account")
+    @POST("users/account")
     Call<RegistrationResponse> registerUser(@Body RegistrationRequest registrationRequest);
 
     @POST("/scores")
@@ -30,4 +30,6 @@ public interface UserService {
     @GET("/scores/user/{id}")
     Call<List<Scores>> getScores(@Path("id") long id);
 
+    @GET("/courses/course-names")
+    Call<String> getCourseNames();
 }
