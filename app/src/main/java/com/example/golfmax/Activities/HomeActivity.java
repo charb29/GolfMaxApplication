@@ -10,14 +10,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.example.golfmax.Backend.DBHelper;
-import com.example.golfmax.PopUpDialog;
 import com.example.golfmax.Responses.LoginResponse;
 import com.example.golfmax.R;
-import com.example.golfmax.TestDialog;
 
 public class HomeActivity extends AppCompatActivity {
 
-    Button buttonViewScores, buttonAddScores, buttonPlay, buttonLeaderBoards, buttonSettings;
+    Button buttonViewScores, buttonPlay, buttonLeaderBoards, buttonSettings;
     LoginResponse loginResponse;
     DBHelper db = new DBHelper(HomeActivity.this);
 
@@ -30,7 +28,6 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
 
         buttonViewScores = findViewById(R.id.buttonViewScores);
-        buttonAddScores = findViewById(R.id.buttonAddScores);
         buttonPlay = findViewById(R.id.buttonPlay);
         buttonLeaderBoards = findViewById(R.id.buttonLeaderboards);
         buttonSettings = findViewById(R.id.buttonSettings);
@@ -42,13 +39,6 @@ public class HomeActivity extends AppCompatActivity {
             Log.i("LoginActivity", "====> " + loginResponse.getId());
         }
 
-        buttonAddScores.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                openDialog();
-            }
-        });
-
         buttonViewScores.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -56,10 +46,5 @@ public class HomeActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-    }
-
-    public void openDialog() {
-        TestDialog popUp = new TestDialog();
-        popUp.show(getSupportFragmentManager(), "pop-up dialog");
     }
 }

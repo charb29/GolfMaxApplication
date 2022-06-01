@@ -66,7 +66,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:paddingTop="30dp">
+        android:paddingTop="50dp">
 
         <Button
             android:id="@+id/buttonViewScores"
@@ -79,44 +79,34 @@
             android:textColor="#013220" />
 
         <Button
-            android:id="@+id/buttonAddScores"
-            android:layout_gravity="center"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Add Scores"
-            android:backgroundTint="#fff"
-            android:textColor="#013220"
-            android:layout_marginBottom="20dp"/>
-
-        <Button
             android:id="@+id/buttonPlay"
-            android:layout_gravity="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Play a round"
+            android:layout_gravity="center"
+            android:layout_marginBottom="20dp"
             android:backgroundTint="#fff"
-            android:textColor="#013220"
-            android:layout_marginBottom="20dp"/>
+            android:text="Play a round"
+            android:textColor="#013220" />
 
         <Button
             android:id="@+id/buttonLeaderboards"
-            android:layout_gravity="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Course Leaderboards"
+            android:layout_gravity="center"
+            android:layout_marginBottom="20dp"
             android:backgroundTint="#fff"
-            android:textColor="#013220"
-            android:layout_marginBottom="20dp"/>
+            android:text="Course Leaderboards"
+            android:textColor="#013220" />
 
         <Button
             android:id="@+id/buttonSettings"
-            android:layout_gravity="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="settings"
+            android:layout_gravity="center"
+            android:layout_marginBottom="20dp"
             android:backgroundTint="#fff"
-            android:textColor="#013220"
-            android:layout_marginBottom="20dp"/>
+            android:text="settings"
+            android:textColor="#013220" />
 
     </LinearLayout>
 
