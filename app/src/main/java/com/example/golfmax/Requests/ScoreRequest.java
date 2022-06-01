@@ -1,6 +1,6 @@
-package com.example.golfmax.Scores;
+package com.example.golfmax.Requests;
 
-import com.example.golfmax.User;
+import com.example.golfmax.Models.User;
 
 public class ScoreRequest {
 

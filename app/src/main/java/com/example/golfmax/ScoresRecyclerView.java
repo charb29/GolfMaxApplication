@@ -1,4 +1,4 @@
-package com.example.golfmax.Scores;
+package com.example.golfmax;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -8,7 +8,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.golfmax.R;
+import com.example.golfmax.Models.Scores;
 
 import java.util.List;
 

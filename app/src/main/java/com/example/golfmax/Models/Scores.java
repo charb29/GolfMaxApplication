@@ -1,4 +1,4 @@
-package com.example.golfmax.Scores;
+package com.example.golfmax.Models;
 
 import com.google.gson.annotations.SerializedName;
 

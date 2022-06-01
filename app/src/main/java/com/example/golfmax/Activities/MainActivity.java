@@ -1,4 +1,4 @@
-package com.example.golfmax;
+package com.example.golfmax.Activities;
 
 import android.app.ActivityOptions;
 import android.content.Intent;
@@ -15,7 +15,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
-import com.example.golfmax.Login.LoginActivity;
+import com.example.golfmax.R;
 
 public class MainActivity extends AppCompatActivity {
 

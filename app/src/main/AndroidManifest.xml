@@ -13,22 +13,22 @@
         android:theme="@style/Theme.GolfMax"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".Scores.PopUpDialog"
+            android:name=".PopUpDialog"
             android:exported="false" />
         <activity
-            android:name=".Scores.ViewScoresActivity"
+            android:name=".Activities.ViewScoresActivity"
             android:exported="false" />
         <activity
-            android:name=".Registration.RegistrationActivity"
+            android:name=".Activities.RegistrationActivity"
             android:exported="true" />
         <activity
-            android:name=".Login.LoginActivity"
+            android:name=".Activities.LoginActivity"
             android:exported="true" />
         <activity
-            android:name=".HomeActivity"
+            android:name=".Activities.HomeActivity"
             android:exported="true" />
         <activity
-            android:name=".MainActivity"
+            android:name=".Activities.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

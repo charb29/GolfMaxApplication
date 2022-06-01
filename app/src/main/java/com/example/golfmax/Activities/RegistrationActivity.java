@@ -1,4 +1,4 @@
-package com.example.golfmax.Registration;
+package com.example.golfmax.Activities;
 
 import android.content.Intent;
 import android.text.TextUtils;
@@ -11,8 +11,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.example.golfmax.Backend.ApiClient;
-import com.example.golfmax.Login.LoginActivity;
 import com.example.golfmax.R;
+import com.example.golfmax.Requests.RegistrationRequest;
+import com.example.golfmax.Responses.RegistrationResponse;
 import com.google.android.material.textfield.TextInputLayout;
 import retrofit2.Call;
 import retrofit2.Callback;

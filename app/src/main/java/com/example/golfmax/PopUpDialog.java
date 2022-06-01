@@ -1,4 +1,4 @@
-package com.example.golfmax.Scores;
+package com.example.golfmax;
 
 
 import androidx.appcompat.app.AppCompatDialogFragment;
@@ -14,9 +14,11 @@ import android.widget.Toast;
 
 import com.example.golfmax.Backend.ApiClient;
 import com.example.golfmax.Backend.DBHelper;
-import com.example.golfmax.Login.LoginActivity;
+import com.example.golfmax.Activities.LoginActivity;
 import com.example.golfmax.R;
-import com.example.golfmax.User;
+import com.example.golfmax.Requests.ScoreRequest;
+import com.example.golfmax.Responses.ScoreResponse;
+import com.example.golfmax.Models.User;
 import com.google.android.material.textfield.TextInputLayout;
 import retrofit2.Call;
 import retrofit2.Callback;

@@ -1,4 +1,4 @@
-package com.example.golfmax.Scores;
+package com.example.golfmax.Responses;
 
 public class ScoreResponse {
 

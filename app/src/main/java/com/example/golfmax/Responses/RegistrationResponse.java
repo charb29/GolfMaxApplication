@@ -1,13 +1,11 @@
-package com.example.golfmax.Login;
+package com.example.golfmax.Responses;
 
-import java.io.Serializable;
+public class RegistrationResponse {
 
-public class LoginResponse implements Serializable {
-
+    private long id;
     private String username;
     private String password;
     private String email;
-    private long id;
 
     public long getId() {
         return id;
@@ -25,6 +23,10 @@ public class LoginResponse implements Serializable {
         return email;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public void setUsername(String username) {
         this.username = username;
     }
@@ -35,9 +37,5 @@ public class LoginResponse implements Serializable {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public void setId(long id) {
-        this.id = id;
     }
 }

@@ -1,4 +1,4 @@
-package com.example.golfmax;
+package com.example.golfmax.Activities;
 
 import android.content.Intent;
 import android.util.Log;
@@ -10,9 +10,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.example.golfmax.Backend.DBHelper;
-import com.example.golfmax.Login.LoginResponse;
-import com.example.golfmax.Scores.PopUpDialog;
-import com.example.golfmax.Scores.ViewScoresActivity;
+import com.example.golfmax.PopUpDialog;
+import com.example.golfmax.Responses.LoginResponse;
+import com.example.golfmax.R;
 
 public class HomeActivity extends AppCompatActivity {
 

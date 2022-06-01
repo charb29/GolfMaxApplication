@@ -1,4 +1,4 @@
-package com.example.golfmax.Login;
+package com.example.golfmax.Requests;
 
 public class LoginRequest {
 

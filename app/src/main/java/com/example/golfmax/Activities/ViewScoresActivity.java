@@ -1,4 +1,4 @@
-package com.example.golfmax.Scores;
+package com.example.golfmax.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -11,9 +11,10 @@ import android.view.WindowManager;
 
 import com.example.golfmax.Backend.ApiClient;
 import com.example.golfmax.Backend.DBHelper;
-import com.example.golfmax.Login.LoginActivity;
 import com.example.golfmax.R;
-import com.example.golfmax.User;
+import com.example.golfmax.Models.Scores;
+import com.example.golfmax.ScoresRecyclerView;
+import com.example.golfmax.Models.User;
 
 import java.util.ArrayList;
 import java.util.List;

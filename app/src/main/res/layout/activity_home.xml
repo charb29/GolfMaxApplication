@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
-    tools:context=".Registration.RegistrationActivity"
+    tools:context=".Activities.RegistrationActivity"
     android:padding="30dp"
     android:background="#fff">
 
@@ -74,9 +74,9 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginBottom="20dp"
-            android:backgroundTint="#013220"
+            android:backgroundTint="#fff"
             android:text="View Scores"
-            android:textColor="#fff" />
+            android:textColor="#013220" />
 
         <Button
             android:id="@+id/buttonAddScores"
@@ -84,8 +84,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Add Scores"
-            android:backgroundTint="#013220"
-            android:textColor="#fff"
+            android:backgroundTint="#fff"
+            android:textColor="#013220"
             android:layout_marginBottom="20dp"/>
 
         <Button
@@ -94,8 +94,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Play a round"
-            android:backgroundTint="#013220"
-            android:textColor="#fff"
+            android:backgroundTint="#fff"
+            android:textColor="#013220"
             android:layout_marginBottom="20dp"/>
 
         <Button
@@ -104,8 +104,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Course Leaderboards"
-            android:backgroundTint="#013220"
-            android:textColor="#fff"
+            android:backgroundTint="#fff"
+            android:textColor="#013220"
             android:layout_marginBottom="20dp"/>
 
         <Button
@@ -114,8 +114,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="settings"
-            android:backgroundTint="#013220"
-            android:textColor="#fff"
+            android:backgroundTint="#fff"
+            android:textColor="#013220"
             android:layout_marginBottom="20dp"/>
 
     </LinearLayout>
