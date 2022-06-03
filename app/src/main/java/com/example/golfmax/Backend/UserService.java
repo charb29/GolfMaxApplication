@@ -24,12 +24,6 @@ public interface UserService {
     @POST("users/account")
     Call<RegistrationResponse> registerUser(@Body RegistrationRequest registrationRequest);
 
-    @POST("/scores")
-    Call<ScoreResponse> addScore(@Body ScoreRequest scoreRequest);
-
     @GET("/scores/user/{id}")
     Call<List<Scores>> getScores(@Path("id") long id);
-
-    @GET("/courses/course-names")
-    Call<String> getCourseNames();
 }

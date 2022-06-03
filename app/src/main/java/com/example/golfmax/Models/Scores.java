@@ -1,8 +1,13 @@
 package com.example.golfmax.Models;
 
+import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 public class Scores {
+
+    @SerializedName("course")
+    @Expose
+    private Courses course;
 
     @SerializedName("courseName")
     private String courseName;
@@ -10,58 +15,39 @@ public class Scores {
     @SerializedName("userScore")
     private String userScore;
 
-    @SerializedName("courseRating")
-    private String courseRating;
-
-    @SerializedName("slopeRating")
-    private String slopeRating;
-
-    public Scores(String courseName, String userScore, String courseRating, String slopeRating) {
-        this.courseName = courseName;
+    public Scores(Courses course, String userScore) {
         this.userScore = userScore;
-        this.courseRating = courseRating;
-        this.slopeRating = slopeRating;
+        this.course = course;
+    }
+
+    public Courses getCourse() {
+        return course;
+    }
+
+    public void setCourse(Courses course) {
+        this.course = course;
     }
 
     public String getCourseName() {
         return courseName;
     }
 
-    public String getUserScore() {
-        return userScore;
-    }
-
-    public String getCourseRating() {
-        return courseRating;
-    }
-
-    public String getSlopeRating() {
-        return slopeRating;
-    }
-
     public void setCourseName(String courseName) {
         this.courseName = courseName;
+    }
+
+    public String getUserScore() {
+        return userScore;
     }
 
     public void setUserScore(String userScore) {
         this.userScore = userScore;
     }
 
-    public void setCourseRating(String courseRating) {
-        this.courseRating = courseRating;
-    }
-
-    public void setSlopeRating(String slopeRating) {
-        this.slopeRating = slopeRating;
-    }
-
     @Override
     public String toString() {
         return "Scores(" +
-                "courseName='" + courseName + '\'' +
-                ", userScore='" + userScore + '\'' +
-                ", courseRating='" + courseRating + '\'' +
-                ", slopeRating='" + slopeRating + '\'' +
+                "courseName='" + course + '\'' +
                 ')';
     }
 }

@@ -7,7 +7,6 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.example.golfmax.Models.Scores;
 
 import java.util.List;
@@ -26,15 +25,12 @@ public class ScoresRecyclerView extends RecyclerView.Adapter<ScoresRecyclerView.
     @Override
     public ScoresRecyclerView.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.scores_rv_item, parent, false);
-        return new MyViewHolder(view);
+        return new ScoresRecyclerView.MyViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ScoresRecyclerView.MyViewHolder holder, int position) {
-        holder.textViewCourseName.setText(scoresList.get(position).getCourseName());
-        holder.textViewUserScore.setText(scoresList.get(position).getUserScore());
-        holder.textViewCourseRating.setText(scoresList.get(position).getCourseRating());
-        holder.textViewSlopeRating.setText(scoresList.get(position).getSlopeRating());
+        holder.textViewCourseName.setText(scoresList.get(position).getCourse().getCourseName());
     }
 
     @Override
@@ -43,14 +39,11 @@ public class ScoresRecyclerView extends RecyclerView.Adapter<ScoresRecyclerView.
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView textViewCourseName, textViewUserScore, textViewCourseRating, textViewSlopeRating;
+        TextView textViewCourseName;
 
         public MyViewHolder(View itemView) {
             super(itemView);
-            textViewCourseName = (TextView) itemView.findViewById(R.id.courseName);
-            textViewUserScore = (TextView) itemView.findViewById(R.id.userScore);
-            textViewCourseRating = (TextView) itemView.findViewById(R.id.courseRating);
-            textViewSlopeRating = (TextView) itemView.findViewById(R.id.slopeRating);
+            textViewCourseName = (TextView) itemView.findViewById(R.id.textViewCourseName);
         }
     }
 }

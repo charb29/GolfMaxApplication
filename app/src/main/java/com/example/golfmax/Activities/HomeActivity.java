@@ -5,13 +5,12 @@ import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.Button;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
 import android.os.Bundle;
 
-import com.example.golfmax.Backend.DBHelper;
 import com.example.golfmax.Responses.LoginResponse;
 import com.example.golfmax.R;
 

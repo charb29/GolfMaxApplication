@@ -13,18 +13,6 @@
         android:theme="@style/Theme.GolfMax"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".HomeTest"
-            android:exported="false" />
-        <activity
-            android:name=".DashBoardActivity"
-            android:exported="false" />
-        <activity
-            android:name=".TesViewScoresActivity"
-            android:exported="false" />
-        <activity
-            android:name=".PopUpDialog"
-            android:exported="false" />
-        <activity
             android:name=".Activities.ViewScoresActivity"
             android:exported="false" />
         <activity
