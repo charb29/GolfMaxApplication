@@ -7,6 +7,8 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
+
 import android.os.Bundle;
 
 import com.example.golfmax.Backend.DBHelper;
@@ -15,9 +17,8 @@ import com.example.golfmax.R;
 
 public class HomeActivity extends AppCompatActivity {
 
-    Button buttonViewScores, buttonPlay, buttonLeaderBoards, buttonSettings;
+    CardView cardViewMyScores, cardViewPlayRound, cardViewLeaderboard, cardViewSettings;
     LoginResponse loginResponse;
-    DBHelper db = new DBHelper(HomeActivity.this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,10 +28,10 @@ public class HomeActivity extends AppCompatActivity {
         getSupportActionBar().hide();
         setContentView(R.layout.activity_home);
 
-        buttonViewScores = findViewById(R.id.buttonViewScores);
-        buttonPlay = findViewById(R.id.buttonPlay);
-        buttonLeaderBoards = findViewById(R.id.buttonLeaderboards);
-        buttonSettings = findViewById(R.id.buttonSettings);
+        cardViewMyScores = findViewById(R.id.cardViewMyScores);
+        cardViewPlayRound = findViewById(R.id.cardViewPlayRound);
+        cardViewLeaderboard = findViewById(R.id.cardViewLeaderboard);
+        cardViewSettings = findViewById(R.id.cardViewSettings);
 
         Intent intent = getIntent();
         if (intent.getExtras() != null) {
@@ -39,9 +40,9 @@ public class HomeActivity extends AppCompatActivity {
             Log.i("LoginActivity", "====> " + loginResponse.getId());
         }
 
-        buttonViewScores.setOnClickListener(new View.OnClickListener() {
+        cardViewMyScores.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View v) {
                 Intent intent = new Intent(HomeActivity.this, ViewScoresActivity.class);
                 startActivity(intent);
             }
