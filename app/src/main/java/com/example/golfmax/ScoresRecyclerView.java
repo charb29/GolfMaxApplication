@@ -9,7 +9,10 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.golfmax.Models.Scores;
 
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 public class ScoresRecyclerView extends RecyclerView.Adapter<ScoresRecyclerView.MyViewHolder> {
 
