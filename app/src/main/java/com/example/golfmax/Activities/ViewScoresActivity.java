@@ -1,20 +1,23 @@
 package com.example.golfmax.Activities;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
+import android.view.MenuItem;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.ImageButton;
 
 import com.example.golfmax.Backend.ApiClient;
 import com.example.golfmax.Backend.DBHelper;
-import com.example.golfmax.Models.Courses;
 import com.example.golfmax.Models.Scores;
 import com.example.golfmax.Models.User;
 import com.example.golfmax.R;
@@ -29,23 +32,32 @@ import retrofit2.Response;
 
 public class ViewScoresActivity extends AppCompatActivity {
 
-
+    public DrawerLayout drawerLayout;
+    public ActionBarDrawerToggle actionBarDrawerToggle;
     List<Scores> scoresList;
     ScoresRecyclerView scoresRecyclerView;
     RecyclerView recyclerView;
-    ImageButton imageButtonHome;
     DBHelper db;
     User user;
+    ActionBar actionBar;
+    ColorDrawable colorDrawable;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        getSupportActionBar().hide();
         setContentView(R.layout.activity_view_scores);
+        actionBar = getSupportActionBar();
+        colorDrawable = new ColorDrawable(Color.parseColor("#013220"));
+        actionBar.setBackgroundDrawable(colorDrawable);
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        setTitle("My Scores");
+        
+        drawerLayout = findViewById(R.id.drawerLayout);
+        actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.navOpen, R.string.navClose);
+        drawerLayout.addDrawerListener(actionBarDrawerToggle);
+        actionBarDrawerToggle.syncState();
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        imageButtonHome = findViewById(R.id.imageButtonHome);
         scoresList = new ArrayList<>();
         recyclerView = (RecyclerView) findViewById(R.id.recyclerViewScores);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
@@ -54,14 +66,6 @@ public class ViewScoresActivity extends AppCompatActivity {
         user = new User();
         user.setId(db.getUserId(LoginActivity.username));
         long userId = user.getId();
-
-        imageButtonHome.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(ViewScoresActivity.this, HomeActivity.class);
-                startActivity(intent);
-            }
-        });
 
         ApiClient.getUserService().getScores(userId).enqueue(new Callback<List<Scores>>() {
             @Override
@@ -77,5 +81,13 @@ public class ViewScoresActivity extends AppCompatActivity {
                 Log.i("FAILED ===>", t.toString());
             }
         });
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem menuItem) {
+        if (actionBarDrawerToggle.onOptionsItemSelected(menuItem)) {
+            return true;
+        }
+        return super.onOptionsItemSelected(menuItem);
     }
 }
