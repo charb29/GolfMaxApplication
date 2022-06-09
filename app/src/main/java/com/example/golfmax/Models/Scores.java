@@ -9,15 +9,20 @@ public class Scores {
     @Expose
     private Courses course;
 
+    @SerializedName("courseImages")
+    @Expose
+    private CourseImages courseImages;
+
     @SerializedName("courseName")
     private String courseName;
 
     @SerializedName("userScore")
     private String userScore;
 
-    public Scores(Courses course, String userScore) {
+    public Scores(Courses course, String userScore, CourseImages courseImages) {
         this.userScore = userScore;
         this.course = course;
+        this.courseImages = courseImages;
     }
 
     public Courses getCourse() {
@@ -42,6 +47,14 @@ public class Scores {
 
     public void setUserScore(String userScore) {
         this.userScore = userScore;
+    }
+
+    public CourseImages getCourseImages() {
+        return courseImages;
+    }
+
+    public void setCourseImages(CourseImages courseImages) {
+        this.courseImages = courseImages;
     }
 
     @Override

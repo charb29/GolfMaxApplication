@@ -1,9 +1,11 @@
 package com.example.golfmax;
 
 import android.content.Context;
+import android.media.Image;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -34,6 +36,7 @@ public class ScoresRecyclerView extends RecyclerView.Adapter<ScoresRecyclerView.
     @Override
     public void onBindViewHolder(@NonNull ScoresRecyclerView.MyViewHolder holder, int position) {
         holder.textViewCourseName.setText(scoresList.get(position).getCourse().getCourseName());
+        holder.imageViewCourseImage.setImageResource(scoresList.get(position).getCourseImages().getData()[position]);
     }
 
     @Override
@@ -43,10 +46,12 @@ public class ScoresRecyclerView extends RecyclerView.Adapter<ScoresRecyclerView.
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
         TextView textViewCourseName;
+        ImageView imageViewCourseImage;
 
         public MyViewHolder(View itemView) {
             super(itemView);
             textViewCourseName = (TextView) itemView.findViewById(R.id.textViewCourseName);
+            imageViewCourseImage = (ImageView) itemView.findViewById(R.id.imageViewCourse);
         }
     }
 }
