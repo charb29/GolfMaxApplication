@@ -13,15 +13,14 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
-import android.view.Window;
 import android.view.WindowManager;
 
 import com.example.golfmax.Backend.ApiClient;
 import com.example.golfmax.Backend.DBHelper;
-import com.example.golfmax.Models.Scores;
+import com.example.golfmax.Models.Score;
 import com.example.golfmax.Models.User;
 import com.example.golfmax.R;
-import com.example.golfmax.ScoresRecyclerView;
+import com.example.golfmax.RecyclerViews.ScoresRV;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,13 +33,14 @@ public class ViewScoresActivity extends AppCompatActivity {
 
     public DrawerLayout drawerLayout;
     public ActionBarDrawerToggle actionBarDrawerToggle;
-    List<Scores> scoresList;
-    ScoresRecyclerView scoresRecyclerView;
+    List<Score> scoreList;
+    ScoresRV scoresRV;
     RecyclerView recyclerView;
     DBHelper db;
     User user;
     ActionBar actionBar;
     ColorDrawable colorDrawable;
+    long userId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,27 +58,27 @@ public class ViewScoresActivity extends AppCompatActivity {
         actionBarDrawerToggle.syncState();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        scoresList = new ArrayList<>();
+        scoreList = new ArrayList<>();
         recyclerView = (RecyclerView) findViewById(R.id.recyclerViewScores);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
         db = new DBHelper(this);
         user = new User();
         user.setId(db.getUserId(LoginActivity.username));
-        long userId = user.getId();
+        userId = user.getId();
 
-        ApiClient.getUserService().getScores(userId).enqueue(new Callback<List<Scores>>() {
+        ApiClient.getUserService().getScores(userId).enqueue(new Callback<List<Score>>() {
             @Override
-            public void onResponse(Call<List<Scores>> call, Response<List<Scores>> response) {
-                scoresList = response.body();
-                Log.i("TAG ====> ", scoresList.toString());
-                scoresRecyclerView = new ScoresRecyclerView(getApplicationContext(), scoresList);
-                recyclerView.setAdapter(scoresRecyclerView);
+            public void onResponse(Call<List<Score>> call, Response<List<Score>> response) {
+                scoreList = response.body();
+                Log.i("TAG ====> ", scoreList.toString());
+                scoresRV = new ScoresRV(getApplicationContext(), scoreList);
+                recyclerView.setAdapter(scoresRV);
             }
 
             @Override
-            public void onFailure(Call<List<Scores>> call, Throwable t) {
-                Log.i("FAILED ===>", t.toString());
+            public void onFailure(Call<List<Score>> call, Throwable t) {
+                Log.e("FAILED ====> ", t.toString());
             }
         });
     }
