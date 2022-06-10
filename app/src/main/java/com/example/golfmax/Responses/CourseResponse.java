@@ -2,7 +2,7 @@ package com.example.golfmax.Responses;
 
 import androidx.annotation.NonNull;
 
-import com.example.golfmax.Models.Courses;
+import com.example.golfmax.Models.Course;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
@@ -12,9 +12,9 @@ public class CourseResponse {
 
     @SerializedName("courseNames")
     @Expose
-    private ArrayList<Courses> courseNames;
+    private ArrayList<Course> courseNames;
 
-    public ArrayList<Courses> getCourseNames() {
+    public ArrayList<Course> getCourseNames() {
         return courseNames;
     }
 
