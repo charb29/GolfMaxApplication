@@ -46,5 +46,13 @@ public class HomeActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        cardViewLeaderboard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomeActivity.this, LeaderboardsActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }
