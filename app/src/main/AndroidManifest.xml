@@ -13,6 +13,9 @@
         android:theme="@style/Theme.GolfMax"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".Activities.LeaderboardsActivity"
+            android:exported="false" />
+        <activity
             android:name=".Activities.ViewScoresActivity"
             android:exported="false" />
         <activity
