@@ -1,0 +1,53 @@
+package com.example.golfmax.RecyclerViews;
+
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+import com.example.golfmax.Models.Score;
+import com.example.golfmax.R;
+
+import java.util.List;
+
+public class ScoresRV extends RecyclerView.Adapter<ScoresRV.MyViewHolder> {
+
+    private Context context;
+    private List<Score> scoreList;
+
+    public ScoresRV(Context context, List<Score> scoreList) {
+        this.context = context;
+        this.scoreList = scoreList;
+    }
+
+    @NonNull
+    @Override
+    public ScoresRV.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(context).inflate(R.layout.scores_rv_item, parent, false);
+        return new ScoresRV.MyViewHolder(view);
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull ScoresRV.MyViewHolder holder, int position) {
+        holder.textViewCourseName.setText(scoreList.get(position).getCourse().getCourseName());
+        holder.textViewUserScore.setText(scoreList.get(position).getUserScore());
+    }
+
+    @Override
+    public int getItemCount() {
+        return scoreList.size();
+    }
+
+    public class MyViewHolder extends RecyclerView.ViewHolder {
+        TextView textViewCourseName, textViewUserScore;
+
+        public MyViewHolder(View itemView) {
+            super(itemView);
+            textViewCourseName = (TextView) itemView.findViewById(R.id.textViewCourseName);
+            textViewUserScore = (TextView) itemView.findViewById(R.id.textViewUserScore);
+        }
+    }
+}
+
