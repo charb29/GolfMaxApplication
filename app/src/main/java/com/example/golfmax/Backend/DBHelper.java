@@ -10,14 +10,21 @@ public class DBHelper extends SQLiteOpenHelper {
 
     private static final String dbName = "scores.db";
     private static final int version = 1;
-    private static final String tableName = "userScores";
+    private static final String userTable = "userScores";
     private static final String userId = "id";
     private static final String user = "username";
-    private static final String createTable = "CREATE TABLE " + tableName + " ("
+    private static final String createUserTable = "CREATE TABLE " + userTable + " ("
             + userId + " REAL,"
             + user + " TEXT)";
+    private static final String dropUserTable = "DROP TABLE IF EXISTS " + userTable;
 
-    private static final String dropTable = "DROP TABLE IF EXISTS " + tableName;
+    private static final String courseTable = "courses";
+    private static final String course = "courseName";
+    private static final String courseId = "id";
+    private static final String createCourseTable = "CREATE TABLE " + courseTable + " ("
+            + courseId + " REAL,"
+            + course + " TEXT)";
+    private static final String dropCourseTable = "DROP TABLE IF EXISTS " + courseTable;
 
     public DBHelper(Context context) {
         super(context, dbName, null, version);
@@ -25,12 +32,14 @@ public class DBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL(createTable);
+        db.execSQL(createUserTable);
+        db.execSQL(createCourseTable);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL(dropTable);
+        db.execSQL(dropUserTable);
+        db.execSQL(dropCourseTable);
         onCreate(db);
     }
 
@@ -40,7 +49,7 @@ public class DBHelper extends SQLiteOpenHelper {
         contentValues.put(userId, id);
         contentValues.put(user, username);
 
-        long result = db.insert(tableName, null, contentValues);
+        long result = db.insert(userTable, null, contentValues);
         return result;
     }
 
@@ -48,11 +57,37 @@ public class DBHelper extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery("SELECT id FROM userScores WHERE username = ?", new String[] {username});
         long id = -1;
+
         if (cursor.moveToFirst()) {
             id = cursor.getLong(0);
             cursor.close();
         }
         db.close();
+
+        return id;
+    }
+
+    public long saveCourse(String courseName, long id) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(courseId, id);
+        contentValues.put(course, courseName);
+
+        long result = db.insert(courseTable, null, contentValues);
+        return result;
+    }
+
+    public long getCourseId(String courseName) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery("SELECT id FROM courses WHERE courseName = ?", new String[] {courseName});
+        long id = -1;
+
+        if (cursor.moveToFirst()) {
+            id = cursor.getLong(0);
+            cursor.close();
+        }
+        db.close();
+
         return id;
     }
 }
