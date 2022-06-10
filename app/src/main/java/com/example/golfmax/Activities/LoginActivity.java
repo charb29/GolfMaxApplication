@@ -23,8 +23,6 @@ import retrofit2.Response;
 
 public class LoginActivity extends AppCompatActivity {
 
-    // implement forgot password //
-
     TextInputLayout textInputUsername, textInputPassword;
     Button buttonForgotPassword, buttonLogin, buttonRegister;
     LoginRequest loginRequest = new LoginRequest();
