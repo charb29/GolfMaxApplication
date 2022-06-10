@@ -2,13 +2,13 @@ package com.example.golfmax.Models;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Courses {
+public class Course {
 
     @SerializedName("courseName")
     private String courseName;
 
     @SerializedName("id")
-    private String id;
+    private long id;
 
     private double courseRating;
     private double slopeRating;
@@ -17,7 +17,7 @@ public class Courses {
         return courseName;
     }
 
-    public String getId() {
+    public long getId() {
         return id;
     }
 
@@ -33,7 +33,7 @@ public class Courses {
         this.courseName = courseName;
     }
 
-    public void setId(String id) {
+    public void setId(long id) {
         this.id = id;
     }
 

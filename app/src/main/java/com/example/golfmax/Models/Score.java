@@ -3,15 +3,15 @@ package com.example.golfmax.Models;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Scores {
+public class Score {
 
     @SerializedName("course")
     @Expose
-    private Courses course;
+    private Course course;
 
-    @SerializedName("courseImages")
+    @SerializedName("user")
     @Expose
-    private CourseImages courseImages;
+    private User user;
 
     @SerializedName("courseName")
     private String courseName;
@@ -19,17 +19,20 @@ public class Scores {
     @SerializedName("userScore")
     private String userScore;
 
-    public Scores(Courses course, String userScore, CourseImages courseImages) {
+    @SerializedName("username")
+    private String username;
+
+    public Score(Course course, String userScore, User user) {
         this.userScore = userScore;
         this.course = course;
-        this.courseImages = courseImages;
+        this.user = user;
     }
 
-    public Courses getCourse() {
+    public Course getCourse() {
         return course;
     }
 
-    public void setCourse(Courses course) {
+    public void setCourse(Course course) {
         this.course = course;
     }
 
@@ -49,18 +52,20 @@ public class Scores {
         this.userScore = userScore;
     }
 
-    public CourseImages getCourseImages() {
-        return courseImages;
+    public User getUser() {
+        return user;
     }
 
-    public void setCourseImages(CourseImages courseImages) {
-        this.courseImages = courseImages;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     @Override
     public String toString() {
         return "Scores(" +
                 "courseName='" + course + '\'' +
+                "userScore='" + userScore + '\'' +
+                "username='" + user + '\'' +
                 ')';
     }
 }
