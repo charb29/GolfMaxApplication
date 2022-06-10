@@ -23,6 +23,7 @@ import com.example.golfmax.R;
 import com.example.golfmax.RecyclerViews.ScoresRV;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import retrofit2.Call;
@@ -50,7 +51,7 @@ public class ViewScoresActivity extends AppCompatActivity {
         colorDrawable = new ColorDrawable(Color.parseColor("#013220"));
         actionBar.setBackgroundDrawable(colorDrawable);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setTitle("My Scores");
+        setTitle("");
         
         drawerLayout = findViewById(R.id.drawerLayout);
         actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.navOpen, R.string.navClose);

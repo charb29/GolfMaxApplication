@@ -3,4 +3,5 @@
 
     <item name="spinnerScores" type="id" />
     <item name="imageButtonHome" type="id" />
+    <item name="textViewRank" type="id" />
 </resources>

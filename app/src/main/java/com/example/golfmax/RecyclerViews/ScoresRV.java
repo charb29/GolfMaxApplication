@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.golfmax.Models.Score;
 import com.example.golfmax.R;
 
+import java.util.Collections;
 import java.util.List;
 
 public class ScoresRV extends RecyclerView.Adapter<ScoresRV.MyViewHolder> {
@@ -33,6 +34,11 @@ public class ScoresRV extends RecyclerView.Adapter<ScoresRV.MyViewHolder> {
     public void onBindViewHolder(@NonNull ScoresRV.MyViewHolder holder, int position) {
         holder.textViewCourseName.setText(scoreList.get(position).getCourse().getCourseName());
         holder.textViewUserScore.setText(scoreList.get(position).getUserScore());
+
+        for (int i = 0; i < getItemCount(); i++) {
+            holder.textViewRank.setText(String.valueOf(position + 1));
+        }
+
     }
 
     @Override
@@ -41,12 +47,13 @@ public class ScoresRV extends RecyclerView.Adapter<ScoresRV.MyViewHolder> {
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView textViewCourseName, textViewUserScore;
+        TextView textViewCourseName, textViewUserScore, textViewRank;
 
         public MyViewHolder(View itemView) {
             super(itemView);
             textViewCourseName = (TextView) itemView.findViewById(R.id.textViewCourseName);
             textViewUserScore = (TextView) itemView.findViewById(R.id.textViewUserScore);
+            textViewRank = (TextView) itemView.findViewById(R.id.textViewRank);
         }
     }
 }

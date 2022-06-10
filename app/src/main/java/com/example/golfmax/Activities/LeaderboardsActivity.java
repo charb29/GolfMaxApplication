@@ -53,7 +53,7 @@ public class LeaderboardsActivity extends AppCompatActivity {
         colorDrawable = new ColorDrawable(Color.parseColor("#013220"));
         actionBar.setBackgroundDrawable(colorDrawable);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setTitle("Leaderboards");
+        setTitle("");
 
         drawerLayout = findViewById(R.id.drawerLayout);
         actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.navOpen, R.string.navClose);
