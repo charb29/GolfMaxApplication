@@ -26,7 +26,7 @@ public interface UserService {
     @GET("/scores/user/{id}")
     Call<List<Score>> getScores(@Path("id") long id);
 
-    @GET("/courses/course_names")
+    @GET("/courses")
     Call<List<Course>> getCourseNames();
 
     @GET("/scores/course/{id}")
