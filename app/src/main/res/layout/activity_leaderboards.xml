@@ -6,7 +6,7 @@
     android:id="@+id/drawerLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activities.LeaderboardsActivity"
+    tools:context=".Activities.CourseListActivity"
     tools:ignore="HardcodedText">
 
     <com.google.android.material.navigation.NavigationView
@@ -58,7 +58,7 @@
                 <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    tools:context=".Activities.LeaderboardsActivity">
+                    tools:context=".Activities.CourseListActivity">
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/recyclerViewLeaderboard"
