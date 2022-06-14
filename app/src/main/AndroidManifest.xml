@@ -13,10 +13,10 @@
         android:theme="@style/Theme.GolfMax"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".CourseLeaderboardActivity"
+            android:name=".Activities.CourseLeaderboardActivity"
             android:exported="false" />
         <activity
-            android:name=".Activities.LeaderboardsActivity"
+            android:name=".Activities.CourseListActivity"
             android:exported="false" />
         <activity
             android:name=".Activities.ViewScoresActivity"
