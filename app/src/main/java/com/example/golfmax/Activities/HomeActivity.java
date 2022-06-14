@@ -50,7 +50,7 @@ public class HomeActivity extends AppCompatActivity {
         cardViewLeaderboard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(HomeActivity.this, LeaderboardsActivity.class);
+                Intent intent = new Intent(HomeActivity.this, CourseListActivity.class);
                 startActivity(intent);
             }
         });
