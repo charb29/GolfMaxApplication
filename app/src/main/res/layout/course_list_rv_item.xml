@@ -19,6 +19,8 @@
             android:fontFamily="sans-serif-light"
             android:gravity="center|left"
             android:text="Course Name"
+            android:clickable="true"
+            android:background="?attr/selectableItemBackground"
             android:textColor="@color/black"
             android:textSize="25dp"
             android:textStyle="italic"/>

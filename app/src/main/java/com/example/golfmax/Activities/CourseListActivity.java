@@ -4,7 +4,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -12,20 +11,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.transition.AutoTransition;
-import android.transition.TransitionManager;
 import android.util.Log;
 import android.view.MenuItem;
-import android.view.View;
 import android.view.WindowManager;
-import android.widget.ImageButton;
-import android.widget.LinearLayout;
 
 import com.example.golfmax.Backend.ApiClient;
-import com.example.golfmax.Backend.DBHelper;
 import com.example.golfmax.Models.Course;
-import com.example.golfmax.Models.Score;
-import com.example.golfmax.RecyclerViews.LeaderboardRV;
+import com.example.golfmax.RecyclerViews.CourseListRV;
 import com.example.golfmax.R;
 
 import java.util.ArrayList;
@@ -35,13 +27,13 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class LeaderboardsActivity extends AppCompatActivity {
+public class CourseListActivity extends AppCompatActivity {
 
     public DrawerLayout drawerLayout;
     public ActionBarDrawerToggle actionBarDrawerToggle;
     ActionBar actionBar;
     ColorDrawable colorDrawable;
-    LeaderboardRV leaderboardRV;
+    CourseListRV courseListRV;
     RecyclerView courseNameRv;
     List<Course> courseList;
 
@@ -71,8 +63,8 @@ public class LeaderboardsActivity extends AppCompatActivity {
             public void onResponse(Call<List<Course>> call, Response<List<Course>> response) {
                 courseList = response.body();
                 Log.i("TAG ====> ", courseList.toString());
-                leaderboardRV = new LeaderboardRV(getApplicationContext(), courseList);
-                courseNameRv.setAdapter(leaderboardRV);
+                courseListRV = new CourseListRV(getApplicationContext(), courseList);
+                courseNameRv.setAdapter(courseListRV);
             }
 
             @Override
