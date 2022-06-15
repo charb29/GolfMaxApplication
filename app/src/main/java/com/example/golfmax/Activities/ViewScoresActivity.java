@@ -17,6 +17,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.WindowManager;
 
 import com.example.golfmax.Backend.ApiClient;
@@ -25,6 +26,7 @@ import com.example.golfmax.Models.Score;
 import com.example.golfmax.Models.User;
 import com.example.golfmax.R;
 import com.example.golfmax.RecyclerViews.ScoresRV;
+import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -46,6 +48,7 @@ public class ViewScoresActivity extends AppCompatActivity {
     ActionBar actionBar;
     ColorDrawable colorDrawable;
     long userId;
+    NavigationView navigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +65,7 @@ public class ViewScoresActivity extends AppCompatActivity {
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
         actionBarDrawerToggle.syncState();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        navigationView = (NavigationView) findViewById(R.id.navigationView);
 
         scoreList = new ArrayList<>();
         recyclerView = (RecyclerView) findViewById(R.id.recyclerViewScores);
@@ -71,6 +75,26 @@ public class ViewScoresActivity extends AppCompatActivity {
         user = new User();
         user.setId(db.getUserId(LoginActivity.username));
         userId = user.getId();
+
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                int menuItemId = menuItem.getItemId();
+
+                switch (menuItemId) {
+                    case R.id.navHome:
+                        Intent intent = new Intent(ViewScoresActivity.this, HomeActivity.class);
+                        startActivity(intent);
+
+                    case R.id.navLeaderboard:
+                        Intent intent1 = new Intent(ViewScoresActivity.this, CourseLeaderboardActivity.class);
+                        startActivity(intent1);
+
+                    default:
+                        return true;
+                }
+            }
+        });
 
         ApiClient.getUserService().getScores(userId).enqueue(new Callback<List<Score>>() {
             @Override
@@ -89,12 +113,10 @@ public class ViewScoresActivity extends AppCompatActivity {
     }
 
     @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem menuItem) {
-
+    public boolean onOptionsItemSelected(MenuItem menuItem) {
         if (actionBarDrawerToggle.onOptionsItemSelected(menuItem)) {
             return true;
         }
-
         return super.onOptionsItemSelected(menuItem);
     }
 }

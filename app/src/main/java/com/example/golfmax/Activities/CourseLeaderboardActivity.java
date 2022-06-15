@@ -8,6 +8,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -23,6 +24,7 @@ import com.example.golfmax.Models.Score;
 import com.example.golfmax.R;
 import com.example.golfmax.RecyclerViews.CourseLeaderboardRV;
 import com.example.golfmax.RecyclerViews.CourseListRV;
+import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,8 +35,9 @@ import retrofit2.Response;
 
 public class CourseLeaderboardActivity extends AppCompatActivity {
 
-    public DrawerLayout drawerLayout;
-    public ActionBarDrawerToggle actionBarDrawerToggle;
+    DrawerLayout drawerLayout;
+    ActionBarDrawerToggle actionBarDrawerToggle;
+    NavigationView navigationView;
     ActionBar actionBar;
     ColorDrawable colorDrawable;
     CourseLeaderboardRV courseLeaderboardRV;
@@ -60,6 +63,30 @@ public class CourseLeaderboardActivity extends AppCompatActivity {
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
         actionBarDrawerToggle.syncState();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        navigationView = (NavigationView) findViewById(R.id.navigationView);
+
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                int menuItemId = menuItem.getItemId();
+
+                switch (menuItemId) {
+                    case R.id.navHome:
+                        Intent intent = new Intent(CourseLeaderboardActivity.this, HomeActivity.class);
+                        startActivity(intent);
+                        break;
+
+                    case R.id.navMyScores:
+                        Intent intent1 = new Intent(CourseLeaderboardActivity.this, ViewScoresActivity.class);
+                        startActivity(intent1);
+                        break;
+
+                    default:
+                        return true;
+                }
+                return true;
+            }
+        });
 
         textViewCourseName = findViewById(R.id.textViewCourseName);
         textViewCourseName.setText(CourseListRV.courseNameForTextView);
