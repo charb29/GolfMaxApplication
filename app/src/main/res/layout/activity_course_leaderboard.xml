@@ -62,7 +62,7 @@
                     android:layout_height="match_parent"
                     android:layout_gravity="center|left"
                     android:fontFamily="sans-serif-light"
-                    android:text="Course Name"
+                    android:text="Username"
                     android:textSize="15dp"
                     android:textStyle="bold" />
 
