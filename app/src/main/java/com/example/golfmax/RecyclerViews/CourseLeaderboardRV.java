@@ -1,6 +1,8 @@
 package com.example.golfmax.RecyclerViews;
 
 import android.content.Context;
+import android.graphics.Typeface;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.golfmax.Activities.LoginActivity;
 import com.example.golfmax.Models.Score;
 import com.example.golfmax.R;
 
@@ -36,6 +39,11 @@ public class CourseLeaderboardRV extends RecyclerView.Adapter<CourseLeaderboardR
         holder.textViewUsername.setText(scoreList.get(position).getUser().getUsername());
         holder.textViewUserScore.setText(scoreList.get(position).getUserScore());
 
+        if (scoreList.get(position).getUser().getUsername().equals(LoginActivity.username)) {
+            holder.textViewUsername.setTypeface(null, Typeface.BOLD);
+            holder.textViewUsername.setTypeface(null, Typeface.ITALIC);
+        }
+
         for (int i = 0; i < getItemCount(); i++) {
             holder.textViewRank.setText(String.valueOf(position + 1));
         }
@@ -54,6 +62,7 @@ public class CourseLeaderboardRV extends RecyclerView.Adapter<CourseLeaderboardR
             textViewUsername = (TextView) itemView.findViewById(R.id.textViewUsername);
             textViewUserScore = (TextView) itemView.findViewById(R.id.textViewUserScore);
             textViewRank = (TextView) itemView.findViewById(R.id.textViewRank);
+
         }
     }
 }

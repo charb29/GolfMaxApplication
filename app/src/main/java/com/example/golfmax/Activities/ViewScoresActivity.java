@@ -4,14 +4,18 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.WindowManager;
 
@@ -32,8 +36,8 @@ import retrofit2.Response;
 
 public class ViewScoresActivity extends AppCompatActivity {
 
-    public DrawerLayout drawerLayout;
-    public ActionBarDrawerToggle actionBarDrawerToggle;
+    DrawerLayout drawerLayout;
+    ActionBarDrawerToggle actionBarDrawerToggle;
     List<Score> scoreList;
     ScoresRV scoresRV;
     RecyclerView recyclerView;
@@ -52,7 +56,7 @@ public class ViewScoresActivity extends AppCompatActivity {
         actionBar.setBackgroundDrawable(colorDrawable);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setTitle("");
-        
+
         drawerLayout = findViewById(R.id.drawerLayout);
         actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.navOpen, R.string.navClose);
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
@@ -86,9 +90,11 @@ public class ViewScoresActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem menuItem) {
+
         if (actionBarDrawerToggle.onOptionsItemSelected(menuItem)) {
             return true;
         }
+
         return super.onOptionsItemSelected(menuItem);
     }
 }
