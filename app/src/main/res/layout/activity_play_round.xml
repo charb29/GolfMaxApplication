@@ -21,11 +21,11 @@
             android:background="#013220">
 
             <ImageView
-                android:id="@+id/imageViewMyScores"
+                android:id="@+id/imageViewPlayRound"
                 android:layout_width="75dp"
                 android:layout_height="195dp"
                 android:layout_gravity="center|top"
-                android:src="@drawable/leaderboards" />
+                android:src="@drawable/play_round_white" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -33,7 +33,7 @@
                 android:layout_gravity="bottom|center"
                 android:fontFamily="sans-serif-light"
                 android:gravity="center"
-                android:text="Leaderboards"
+                android:text="Select Course"
                 android:textColor="@color/white"
                 android:textSize="30dp"/>
         </FrameLayout>
@@ -55,7 +55,7 @@
                     tools:context=".Activities.CourseListActivity">
 
                     <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/recyclerViewLeaderboard"
+                        android:id="@+id/recyclerViewCourseList"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_marginStart="10dp"
@@ -76,7 +76,6 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        app:menu="@menu/navigation_menu_leaderboard" />
-
+        app:menu="@menu/navigation_menu_play_round" />
 
 </androidx.drawerlayout.widget.DrawerLayout>

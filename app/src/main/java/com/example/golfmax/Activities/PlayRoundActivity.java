@@ -1,12 +1,12 @@
 package com.example.golfmax.Activities;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.appcompat.app.ActionBar;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -17,11 +17,9 @@ import android.view.MenuItem;
 import android.view.WindowManager;
 
 import com.example.golfmax.Backend.ApiClient;
-import com.example.golfmax.Backend.DBHelper;
-import com.example.golfmax.Models.Score;
-import com.example.golfmax.Models.User;
+import com.example.golfmax.Models.Course;
 import com.example.golfmax.R;
-import com.example.golfmax.RecyclerViews.ScoresRV;
+import com.example.golfmax.RecyclerViews.PlayRoundRV;
 import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
@@ -31,24 +29,21 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class ViewScoresActivity extends AppCompatActivity {
+public class PlayRoundActivity extends AppCompatActivity {
 
-    DrawerLayout drawerLayout;
+    List<Course> courseList;
+    PlayRoundRV playRoundRV;
+    RecyclerView courseNameRV;
     ActionBarDrawerToggle actionBarDrawerToggle;
-    List<Score> scoreList;
-    ScoresRV scoresRV;
-    RecyclerView recyclerView;
-    DBHelper db;
-    User user;
     ActionBar actionBar;
     ColorDrawable colorDrawable;
-    long userId;
+    DrawerLayout drawerLayout;
     NavigationView navigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_view_scores);
+        setContentView(R.layout.activity_play_round);
         actionBar = getSupportActionBar();
         colorDrawable = new ColorDrawable(Color.parseColor("#013220"));
         actionBar.setBackgroundDrawable(colorDrawable);
@@ -67,49 +62,45 @@ public class ViewScoresActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch (menuItem.getItemId()) {
                     case R.id.navHome:
-                        Intent intentHome = new Intent(ViewScoresActivity.this, HomeActivity.class);
+                        Intent intentHome = new Intent(PlayRoundActivity.this, HomeActivity.class);
                         startActivity(intentHome);
                         return true;
 
                     case R.id.navLeaderboard:
-                        Intent intentLeaderboards = new Intent(ViewScoresActivity.this, CourseListActivity.class);
+                        Intent intentLeaderboards = new Intent(PlayRoundActivity.this, CourseListActivity.class);
                         startActivity(intentLeaderboards);
                         return true;
 
                     case R.id.navSettings:
-                        Intent intentSettings = new Intent(ViewScoresActivity.this, SettingsActivity.class);
+                        Intent intentSettings = new Intent(PlayRoundActivity.this, SettingsActivity.class);
                         startActivity(intentSettings);
                         return true;
 
-                    case R.id.navPlayRound:
-                        Intent intentPlayRound = new Intent(ViewScoresActivity.this, PlayRoundActivity.class);
-                        startActivity(intentPlayRound);
+                    case R.id.navMyScores:
+                        Intent intentMyScores = new Intent(PlayRoundActivity.this, ViewScoresActivity.class);
+                        startActivity(intentMyScores);
                         return true;
                 }
                 return false;
             }
         });
 
-        scoreList = new ArrayList<>();
-        recyclerView = (RecyclerView) findViewById(R.id.recyclerViewScores);
+        courseList = new ArrayList<>();
+        courseNameRV = (RecyclerView) findViewById(R.id.recyclerViewCourseList);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(layoutManager);
-        db = new DBHelper(this);
-        user = new User();
-        user.setId(db.getUserId(LoginActivity.username));
-        userId = user.getId();
+        courseNameRV.setLayoutManager(layoutManager);
 
-        ApiClient.getUserService().getScores(userId).enqueue(new Callback<List<Score>>() {
+        ApiClient.getUserService().getCourseNames().enqueue(new Callback<List<Course>>() {
             @Override
-            public void onResponse(Call<List<Score>> call, Response<List<Score>> response) {
-                scoreList = response.body();
-                Log.i("TAG ====> ", scoreList.toString());
-                scoresRV = new ScoresRV(getApplicationContext(), scoreList);
-                recyclerView.setAdapter(scoresRV);
+            public void onResponse(Call<List<Course>> call, Response<List<Course>> response) {
+                courseList = response.body();
+                Log.i("TAG ====> ", courseList.toString());
+                playRoundRV = new PlayRoundRV(getApplicationContext(), courseList);
+                courseNameRV.setAdapter(playRoundRV);
             }
 
             @Override
-            public void onFailure(Call<List<Score>> call, Throwable t) {
+            public void onFailure(Call<List<Course>> call, Throwable t) {
                 Log.e("FAILED ====> ", t.toString());
             }
         });

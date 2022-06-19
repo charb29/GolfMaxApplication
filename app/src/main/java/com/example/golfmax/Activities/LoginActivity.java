@@ -47,6 +47,7 @@ public class LoginActivity extends AppCompatActivity {
         buttonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 String username = textInputUsername.getEditText().getText().toString();
                 String password = textInputPassword.getEditText().getText().toString();
 
@@ -76,6 +77,7 @@ public class LoginActivity extends AppCompatActivity {
     public void loginUser(LoginRequest loginRequest) {
         Call<LoginResponse> loginResponseCall = ApiClient.getUserService().loginUser(loginRequest);
         loginResponseCall.enqueue(new Callback<LoginResponse>() {
+
             @Override
             public void onResponse(Call<LoginResponse> call, Response<LoginResponse> response) {
                 if (response.isSuccessful()) {

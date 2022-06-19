@@ -40,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
         textViewSlogan.setAnimation(animationSlogan);
 
         new Handler().postDelayed(new Runnable() {
+
             @Override
             public void run() {
                 Intent intent = new Intent(MainActivity.this, LoginActivity.class);

@@ -58,7 +58,6 @@ public class RegistrationActivity extends AppCompatActivity {
                     textInputEmail.setError("Do not leave empty.");
                 }
                 else {
-
                     registrationRequest.setUsername(username);
                     registrationRequest.setPassword(password);
                     registrationRequest.setEmail(email);

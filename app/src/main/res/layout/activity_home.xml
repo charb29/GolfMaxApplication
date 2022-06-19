@@ -31,7 +31,7 @@
             android:textColor="#013220"/>
 
         <TextView
-            android:id="@+id/texViewHandicapIndex"
+            android:id="@+id/textViewHandicapIndex"
             android:layout_width="175dp"
             android:layout_height="wrap_content"
             android:ellipsize="end"
@@ -104,7 +104,7 @@
                 <ImageView
                     android:layout_width="60dp"
                     android:layout_height="60dp"
-                    android:src="@drawable/my_scores" />
+                    android:src="@drawable/my_scores_white" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -144,7 +144,7 @@
                 <ImageView
                     android:layout_width="60dp"
                     android:layout_height="60dp"
-                    android:src="@drawable/settings" />
+                    android:src="@drawable/settings_white" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -224,7 +224,7 @@
                 <ImageView
                     android:layout_width="60dp"
                     android:layout_height="60dp"
-                    android:src="@drawable/play_round" />
+                    android:src="@drawable/play_round_white" />
 
                 <TextView
                     android:layout_width="wrap_content"

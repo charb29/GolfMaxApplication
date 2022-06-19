@@ -68,23 +68,33 @@ public class CourseLeaderboardActivity extends AppCompatActivity {
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                int menuItemId = menuItem.getItemId();
-
-                switch (menuItemId) {
+                switch (menuItem.getItemId()) {
                     case R.id.navHome:
-                        Intent intent = new Intent(CourseLeaderboardActivity.this, HomeActivity.class);
-                        startActivity(intent);
-                        break;
+                        Intent intentHome = new Intent(CourseLeaderboardActivity.this, HomeActivity.class);
+                        startActivity(intentHome);
+                        return true;
 
                     case R.id.navMyScores:
-                        Intent intent1 = new Intent(CourseLeaderboardActivity.this, ViewScoresActivity.class);
-                        startActivity(intent1);
-                        break;
+                        Intent intentMyScores = new Intent(CourseLeaderboardActivity.this, ViewScoresActivity.class);
+                        startActivity(intentMyScores);
+                        return true;
 
-                    default:
+                    case R.id.navLeaderboard:
+                        Intent intentLeaderboards = new Intent(CourseLeaderboardActivity.this, CourseListActivity.class);
+                        startActivity(intentLeaderboards);
+                        return true;
+
+                    case R.id.navSettings:
+                        Intent intentSettings = new Intent(CourseLeaderboardActivity.this, SettingsActivity.class);
+                        startActivity(intentSettings);
+                        return true;
+
+                    case R.id.navPlayRound:
+                        Intent intentPlayRound = new Intent(CourseLeaderboardActivity.this, PlayRoundActivity.class);
+                        startActivity(intentPlayRound);
                         return true;
                 }
-                return true;
+                return false;
             }
         });
 

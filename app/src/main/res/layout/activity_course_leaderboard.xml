@@ -117,6 +117,6 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        app:menu="@menu/navigation_menu_leaderboard" />
+        app:menu="@menu/navigation_menu_course_leaderboard" />
 
 </androidx.drawerlayout.widget.DrawerLayout>

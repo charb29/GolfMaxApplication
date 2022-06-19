@@ -43,7 +43,7 @@ public class CourseListActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_leaderboards);
+        setContentView(R.layout.activity_course_list_leaderboards);
         actionBar = getSupportActionBar();
         colorDrawable = new ColorDrawable(Color.parseColor("#013220"));
         actionBar.setBackgroundDrawable(colorDrawable);
@@ -60,23 +60,28 @@ public class CourseListActivity extends AppCompatActivity {
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                int menuItemId = menuItem.getItemId();
-
-                switch (menuItemId) {
+                switch (menuItem.getItemId()) {
                     case R.id.navHome:
-                        Intent intent = new Intent(CourseListActivity.this, HomeActivity.class);
-                        startActivity(intent);
-                        break;
+                        Intent intentHome = new Intent(CourseListActivity.this, HomeActivity.class);
+                        startActivity(intentHome);
+                        return true;
 
                     case R.id.navMyScores:
-                        Intent intent1 = new Intent(CourseListActivity.this, ViewScoresActivity.class);
-                        startActivity(intent1);
-                        break;
+                        Intent intentMyScores = new Intent(CourseListActivity.this, ViewScoresActivity.class);
+                        startActivity(intentMyScores);
+                        return true;
 
-                    default:
+                    case R.id.navSettings:
+                        Intent intentSettings = new Intent(CourseListActivity.this, SettingsActivity.class);
+                        startActivity(intentSettings);
+                        return true;
+
+                    case R.id.navPlayRound:
+                        Intent intentPlayRound = new Intent(CourseListActivity.this, PlayRoundActivity.class);
+                        startActivity(intentPlayRound);
                         return true;
                 }
-                return true;
+                return false;
             }
         });
 
