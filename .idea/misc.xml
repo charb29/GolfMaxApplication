@@ -24,18 +24,26 @@
         <entry key="..\:/Users/laxlo/GolfMaxApplication/app/src/main/res/drawable/my_scores.xml" value="0.213" />
         <entry key="..\:/Users/laxlo/GolfMaxApplication/app/src/main/res/drawable/play_round.xml" value="0.213" />
         <entry key="..\:/Users/laxlo/GolfMaxApplication/app/src/main/res/drawable/settings.xml" value="0.213" />
+        <entry key="..\:/Users/laxlo/GolfMaxApplication/app/src/main/res/drawable/settings_green.xml" value="0.233" />
         <entry key="..\:/Users/laxlo/GolfMaxApplication/app/src/main/res/drawable/stativ_rv_background.xml" value="0.2985" />
+        <entry key="..\:/Users/laxlo/GolfMaxApplication/app/src/main/res/drawable/user_icon_green.xml" value="0.233" />
         <entry key="..\:/Users/laxlo/GolfMaxApplication/app/src/main/res/layout/activity_course_leaderboard.xml" value="0.358695652173913" />
+        <entry key="..\:/Users/laxlo/GolfMaxApplication/app/src/main/res/layout/activity_course_list_leaderboards.xml" value="0.358695652173913" />
         <entry key="..\:/Users/laxlo/GolfMaxApplication/app/src/main/res/layout/activity_dash_board.xml" value="0.358695652173913" />
         <entry key="..\:/Users/laxlo/GolfMaxApplication/app/src/main/res/layout/activity_home.xml" value="0.358695652173913" />
         <entry key="..\:/Users/laxlo/GolfMaxApplication/app/src/main/res/layout/activity_leaderboards.xml" value="0.358695652173913" />
         <entry key="..\:/Users/laxlo/GolfMaxApplication/app/src/main/res/layout/activity_login.xml" value="0.358695652173913" />
         <entry key="..\:/Users/laxlo/GolfMaxApplication/app/src/main/res/layout/activity_main.xml" value="0.358695652173913" />
+        <entry key="..\:/Users/laxlo/GolfMaxApplication/app/src/main/res/layout/activity_play_round.xml" value="0.358695652173913" />
+        <entry key="..\:/Users/laxlo/GolfMaxApplication/app/src/main/res/layout/activity_registration.xml" value="0.358695652173913" />
+        <entry key="..\:/Users/laxlo/GolfMaxApplication/app/src/main/res/layout/activity_settings.xml" value="0.25" />
         <entry key="..\:/Users/laxlo/GolfMaxApplication/app/src/main/res/layout/activity_tes_view_scores.xml" value="0.358695652173913" />
         <entry key="..\:/Users/laxlo/GolfMaxApplication/app/src/main/res/layout/activity_test.xml" value="0.14722222222222223" />
+        <entry key="..\:/Users/laxlo/GolfMaxApplication/app/src/main/res/layout/activity_user_info.xml" value="0.358695652173913" />
         <entry key="..\:/Users/laxlo/GolfMaxApplication/app/src/main/res/layout/activity_view_scores.xml" value="0.33" />
         <entry key="..\:/Users/laxlo/GolfMaxApplication/app/src/main/res/layout/activity_view_scores_act_test.xml" value="0.358695652173913" />
         <entry key="..\:/Users/laxlo/GolfMaxApplication/app/src/main/res/layout/child_layout.xml" value="0.358695652173913" />
+        <entry key="..\:/Users/laxlo/GolfMaxApplication/app/src/main/res/layout/course_list_rv_item.xml" value="0.358695652173913" />
         <entry key="..\:/Users/laxlo/GolfMaxApplication/app/src/main/res/layout/header_layout.xml" value="0.3175213675213675" />
         <entry key="..\:/Users/laxlo/GolfMaxApplication/app/src/main/res/layout/home_test.xml" value="0.1" />
         <entry key="..\:/Users/laxlo/GolfMaxApplication/app/src/main/res/layout/leaderboard_child_items.xml" value="0.358695652173913" />
@@ -54,47 +62,18 @@
         <entry key="..\:/Users/laxlo/GolfMaxApplication/app/src/main/res/layout/user_score_and_name_rv_item.xml" value="0.358695652173913" />
         <entry key="..\:/Users/laxlo/GolfMaxApplication/app/src/main/res/layout/username_scores_rv_item.xml" value="0.358695652173913" />
         <entry key="..\:/Users/laxlo/GolfMaxApplication/app/src/main/res/layout/usernames_scores_rv_item.xml" value="0.33" />
+        <entry key="..\:/Users/laxlo/GolfMaxApplication/app/src/main/res/menu/navigation_menu_course_leaderboard.xml" value="0.38697916666666665" />
         <entry key="..\:/Users/laxlo/GolfMaxApplication/app/src/main/res/menu/navigation_menu_leaderboard.xml" value="0.38697916666666665" />
+        <entry key="..\:/Users/laxlo/GolfMaxApplication/app/src/main/res/menu/navigation_menu_user_info.xml" value="0.3859375" />
         <entry key="..\:/Users/laxlo/GolfMaxApplication/app/src/main/res/menu/navigation_menu_view_scores.xml" value="0.38697916666666665" />
         <entry key="..\:/Users/laxlo/GolfMaxApplication/app/src/main/res/menu/popup_menu.xml" value="0.3859375" />
-        <entry key="app/src/main/res/drawable/arrow_right_green.xml" value="0.1" />
-        <entry key="app/src/main/res/drawable/home_green.xml" value="0.2085" />
-        <entry key="app/src/main/res/drawable/leaderboards.xml" value="0.2085" />
-        <entry key="app/src/main/res/drawable/leaderboards_green.xml" value="0.2085" />
-        <entry key="app/src/main/res/drawable/list.xml" value="0.2085" />
-        <entry key="app/src/main/res/drawable/list_green.xml" value="0.2085" />
-        <entry key="app/src/main/res/drawable/my_scores.xml" value="0.2085" />
-        <entry key="app/src/main/res/drawable/my_scores_green.xml" value="0.2085" />
-        <entry key="app/src/main/res/drawable/my_scores_white.xml" value="0.2085" />
-        <entry key="app/src/main/res/drawable/play_round_green.xml" value="0.2085" />
-        <entry key="app/src/main/res/drawable/play_round_white.xml" value="0.2085" />
-        <entry key="app/src/main/res/drawable/settings.xml" value="0.2085" />
-        <entry key="app/src/main/res/drawable/settings_green.xml" value="0.2085" />
         <entry key="app/src/main/res/layout/activity_course_leaderboard.xml" value="0.19610507246376813" />
-        <entry key="app/src/main/res/layout/activity_course_list_leaderboards.xml" value="0.19610507246376813" />
-        <entry key="app/src/main/res/layout/activity_front9.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/activity_home.xml" value="0.16893115942028986" />
         <entry key="app/src/main/res/layout/activity_leaderboards.xml" value="0.19610507246376813" />
-        <entry key="app/src/main/res/layout/activity_login.xml" value="0.19610507246376813" />
-        <entry key="app/src/main/res/layout/activity_play_round.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/activity_settings.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_view_scores.xml" value="0.15070921985815602" />
         <entry key="app/src/main/res/layout/course_leaderboard_rv_item.xml" value="0.19610507246376813" />
-        <entry key="app/src/main/res/layout/course_list_rv_item.xml" value="0.19610507246376813" />
-        <entry key="app/src/main/res/layout/fragment_view_scores.xml" value="0.19610507246376813" />
-        <entry key="app/src/main/res/layout/home_fragment.xml" value="0.19610507246376813" />
         <entry key="app/src/main/res/layout/leaderboards_rv_item.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/play_round_rv_item.xml" value="0.19610507246376813" />
-        <entry key="app/src/main/res/layout/settings_activity.xml" value="0.19610507246376813" />
-        <entry key="app/src/main/res/menu/navigation.xml" value="0.30885416666666665" />
-        <entry key="app/src/main/res/menu/navigation_menu_cou.xml" value="0.3098958333333333" />
-        <entry key="app/src/main/res/menu/navigation_menu_course_leaderboard.xml" value="0.1" />
-        <entry key="app/src/main/res/menu/navigation_menu_course_list.xml" value="0.3098958333333333" />
+        <entry key="app/src/main/res/menu/navigation_menu_course_leaderboard.xml" value="0.3098958333333333" />
         <entry key="app/src/main/res/menu/navigation_menu_leaderboard.xml" value="0.3098958333333333" />
-        <entry key="app/src/main/res/menu/navigation_menu_play_round.xml" value="0.1" />
-        <entry key="app/src/main/res/menu/navigation_menu_settings.xml" value="0.30885416666666665" />
-        <entry key="app/src/main/res/menu/navigation_menu_view_scores.xml" value="0.3098958333333333" />
-        <entry key="app/src/main/res/xml/root_preferences.xml" value="0.19610507246376813" />
       </map>
     </option>
   </component>

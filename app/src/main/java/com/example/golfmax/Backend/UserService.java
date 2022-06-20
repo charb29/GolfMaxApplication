@@ -1,6 +1,7 @@
 package com.example.golfmax.Backend;
 
 import com.example.golfmax.Models.Course;
+import com.example.golfmax.Models.User;
 import com.example.golfmax.Requests.LoginRequest;
 import com.example.golfmax.Responses.LoginResponse;
 import com.example.golfmax.Requests.RegistrationRequest;
@@ -31,5 +32,8 @@ public interface UserService {
 
     @GET("/scores/course/{id}")
     Call<List<Score>> getScoresByCourseId(@Path("id") long id);
+
+    @GET("users/{id}")
+    Call<User> getUserInfoById(@Path("id") long id);
 
 }
