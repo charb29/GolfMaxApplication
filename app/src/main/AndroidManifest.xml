@@ -19,7 +19,7 @@
             android:name=".Activities.PlayRoundActivity"
             android:exported="false" />
         <activity
-            android:name=".Activities.SettingsActivity"
+            android:name=".Activities.UserProfileActivity"
             android:exported="false"
             android:label="@string/title_activity_settings" />
         <activity

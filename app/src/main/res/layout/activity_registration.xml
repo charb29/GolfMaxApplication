@@ -20,7 +20,7 @@
         android:id="@+id/registrationMessage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/bangers"
+        android:fontFamily="sans-serif-black"
         android:text="Welcome to Golf Max, register here!"
         android:textSize="30dp"
         android:textColor="#013220"/>

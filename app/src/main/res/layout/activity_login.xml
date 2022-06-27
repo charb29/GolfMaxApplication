@@ -19,7 +19,7 @@
         android:id="@+id/textViewWelcome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/bangers"
+        android:fontFamily="sans-serif-black"
         android:text="Hello there, welcome back"
         android:textSize="40dp"
         android:textColor="#013220"/>

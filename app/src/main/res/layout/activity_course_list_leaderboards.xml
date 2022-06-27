@@ -14,29 +14,73 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <FrameLayout
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="500dp"
-            android:layout_weight="1"
-            android:background="#013220">
+            android:layout_height="300dp"
+            android:background="#013220"
+            android:padding="20dp">
 
             <ImageView
                 android:id="@+id/imageViewLeaderboard"
-                android:layout_width="75dp"
-                android:layout_height="195dp"
-                android:layout_gravity="center|top"
-                android:src="@drawable/leaderboards" />
+                android:layout_width="125dp"
+                android:layout_height="125dp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/leaderboard_icon_white"/>
 
             <TextView
                 android:layout_width="wrap_content"
-                android:layout_height="195dp"
-                android:layout_gravity="bottom|center"
-                android:fontFamily="sans-serif-light"
-                android:gravity="center"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@+id/imageViewLeaderboard"
+                android:fontFamily="sans-serif-black"
+                android:includeFontPadding="false"
                 android:text="Leaderboards"
                 android:textColor="@color/white"
-                android:textSize="30dp"/>
-        </FrameLayout>
+                android:textSize="30sp" />
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_gravity="bottom"
+            android:background="#2f5c47"
+            android:columnCount="3"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="65dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="left"
+                android:fontFamily="sans-serif"
+                android:paddingTop="5dp"
+                android:paddingLeft="10dp"
+                android:text="Rank"
+                android:textColor="@color/white"
+                android:textSize="15dp" />
+
+            <TextView
+                android:layout_width="245dp"
+                android:paddingTop="5dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center|left"
+                android:fontFamily="sans-serif"
+                android:text="Username"
+                android:textColor="@color/white"
+                android:textSize="15dp" />
+
+            <TextView
+                android:layout_width="100dp"
+                android:paddingTop="5dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center|left"
+                android:fontFamily="sans-serif"
+                android:text="Score"
+                android:textColor="@color/white"
+                android:textSize="15dp" />
+
+        </LinearLayout>
 
         <FrameLayout
             android:layout_width="match_parent"
@@ -76,7 +120,6 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        app:menu="@menu/navigation_menu_course_list" />
-
+        app:menu="@menu/navigation_menu_course_leaderboard" />
 
 </androidx.drawerlayout.widget.DrawerLayout>
