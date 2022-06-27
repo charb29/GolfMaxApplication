@@ -16,7 +16,7 @@ import com.example.golfmax.R;
 
 public class HomeActivity extends AppCompatActivity {
 
-    CardView cardViewMyScores, cardViewPlayRound, cardViewLeaderboard, cardViewSettings;
+    CardView cardViewMyScores, cardViewPlayRound, cardViewLeaderboard, cardViewProfile;
     LoginResponse loginResponse;
 
     @Override
@@ -30,7 +30,7 @@ public class HomeActivity extends AppCompatActivity {
         cardViewMyScores = findViewById(R.id.cardViewMyScores);
         cardViewPlayRound = findViewById(R.id.cardViewPlayRound);
         cardViewLeaderboard = findViewById(R.id.cardViewLeaderboard);
-        cardViewSettings = findViewById(R.id.cardViewSettings);
+        cardViewProfile = findViewById(R.id.cardViewProfile);
 
         Intent intent = getIntent();
         if (intent.getExtras() != null) {
@@ -55,10 +55,10 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
-        cardViewSettings.setOnClickListener(new View.OnClickListener() {
+        cardViewProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(HomeActivity.this, SettingsActivity.class);
+                Intent intent = new Intent(HomeActivity.this, UserProfileActivity.class);
                 startActivity(intent);
             }
         });

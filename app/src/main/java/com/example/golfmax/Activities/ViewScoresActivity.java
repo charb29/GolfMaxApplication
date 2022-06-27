@@ -50,7 +50,7 @@ public class ViewScoresActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_scores);
         actionBar = getSupportActionBar();
-        colorDrawable = new ColorDrawable(Color.parseColor("#013220"));
+        colorDrawable = new ColorDrawable(Color.parseColor("#000f00"));
         actionBar.setBackgroundDrawable(colorDrawable);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setTitle("");
@@ -76,8 +76,8 @@ public class ViewScoresActivity extends AppCompatActivity {
                         startActivity(intentLeaderboards);
                         return true;
 
-                    case R.id.navSettings:
-                        Intent intentSettings = new Intent(ViewScoresActivity.this, SettingsActivity.class);
+                    case R.id.navUserProfile:
+                        Intent intentSettings = new Intent(ViewScoresActivity.this, UserProfileActivity.class);
                         startActivity(intentSettings);
                         return true;
 
