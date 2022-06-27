@@ -20,35 +20,29 @@ import com.example.golfmax.Backend.ApiClient;
 import com.example.golfmax.Backend.DBHelper;
 import com.example.golfmax.Models.User;
 import com.example.golfmax.R;
-import com.example.golfmax.RecyclerViews.ScoresRV;
 import com.google.android.material.navigation.NavigationView;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class SettingsActivity extends AppCompatActivity {
+public class UserProfileActivity extends AppCompatActivity {
 
     ActionBar actionBar;
     ColorDrawable colorDrawable;
     DrawerLayout drawerLayout;
     ActionBarDrawerToggle actionBarDrawerToggle;
     NavigationView navigationView;
-    ImageButton imageBtnEditUsername, imageBtnEditEmail, imageBtnEditPassword;
-    TextView textViewUsername, textViewEmail, textViewRoundsPlayed;
-    User user;
-    DBHelper db;
-    long userId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_settings);
+        setContentView(R.layout.activity_user_profile);
         actionBar = getSupportActionBar();
-        colorDrawable = new ColorDrawable(Color.parseColor("#013220"));
+        colorDrawable = new ColorDrawable(Color.parseColor("#000f00"));
         actionBar.setBackgroundDrawable(colorDrawable);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setTitle("Settings");
+        setTitle("");
 
         drawerLayout = findViewById(R.id.drawerLayout);
         actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.navOpen, R.string.navClose);
@@ -62,22 +56,22 @@ public class SettingsActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch (menuItem.getItemId()) {
                     case R.id.navHome:
-                        Intent intentHome = new Intent(SettingsActivity.this, HomeActivity.class);
+                        Intent intentHome = new Intent(UserProfileActivity.this, HomeActivity.class);
                         startActivity(intentHome);
                         return true;
 
                     case R.id.navLeaderboard:
-                        Intent intentLeaderboards = new Intent(SettingsActivity.this, CourseListActivity.class);
+                        Intent intentLeaderboards = new Intent(UserProfileActivity.this, CourseListActivity.class);
                         startActivity(intentLeaderboards);
                         return true;
 
                     case R.id.navMyScores:
-                        Intent intentMyScores = new Intent(SettingsActivity.this, ViewScoresActivity.class);
+                        Intent intentMyScores = new Intent(UserProfileActivity.this, ViewScoresActivity.class);
                         startActivity(intentMyScores);
                         return true;
 
                     case R.id.navPlayRound:
-                        Intent intentPlayRound = new Intent(SettingsActivity.this, PlayRoundActivity.class);
+                        Intent intentPlayRound = new Intent(UserProfileActivity.this, PlayRoundActivity.class);
                         startActivity(intentPlayRound);
                         return true;
                 }
@@ -85,34 +79,6 @@ public class SettingsActivity extends AppCompatActivity {
             }
         });
 
-        imageBtnEditUsername = findViewById(R.id.imageBtnEditUsername);
-        imageBtnEditEmail = findViewById(R.id.imageBtnEditEmail);
-        imageBtnEditPassword = findViewById(R.id.imageBtnEditUsername);
-
-        textViewUsername = findViewById(R.id.textViewUsername);
-        textViewEmail = findViewById(R.id.textViewEmail);
-        textViewRoundsPlayed = findViewById(R.id.textViewRoundsPlayed);
-        textViewRoundsPlayed.setText(Integer.toString(ScoresRV.roundsPlayed));
-
-        db = new DBHelper(this);
-        user = new User();
-        user.setId(db.getUserId(LoginActivity.username));
-        userId = user.getId();
-
-        ApiClient.getUserService().getUserInfoById(userId).enqueue(new Callback<User>() {
-            @Override
-            public void onResponse(Call<User> call, Response<User> response) {
-                user = response.body();
-                textViewUsername.setText(user.getUsername());
-                textViewEmail.setText(user.getEmail());
-                Log.i("TAG ====> ", response.body().toString());
-            }
-
-            @Override
-            public void onFailure(Call<User> call, Throwable t) {
-                Log.e("FAILED ====> ", t.toString());
-            }
-        });
     }
 
     @Override
