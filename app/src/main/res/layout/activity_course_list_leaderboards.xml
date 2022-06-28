@@ -47,40 +47,7 @@
             android:layout_gravity="bottom"
             android:background="#2f5c47"
             android:columnCount="3"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="65dp"
-                android:layout_height="match_parent"
-                android:layout_gravity="left"
-                android:fontFamily="sans-serif"
-                android:paddingTop="5dp"
-                android:paddingLeft="10dp"
-                android:text="Rank"
-                android:textColor="@color/white"
-                android:textSize="15dp" />
-
-            <TextView
-                android:layout_width="245dp"
-                android:paddingTop="5dp"
-                android:layout_height="match_parent"
-                android:layout_gravity="center|left"
-                android:fontFamily="sans-serif"
-                android:text="Username"
-                android:textColor="@color/white"
-                android:textSize="15dp" />
-
-            <TextView
-                android:layout_width="100dp"
-                android:paddingTop="5dp"
-                android:layout_height="match_parent"
-                android:layout_gravity="center|left"
-                android:fontFamily="sans-serif"
-                android:text="Score"
-                android:textColor="@color/white"
-                android:textSize="15dp" />
-
-        </LinearLayout>
+            android:orientation="horizontal"/>
 
         <FrameLayout
             android:layout_width="match_parent"

@@ -22,6 +22,7 @@
         <entry key="..\:/Users/laxlo/GolfMaxApplication/app/src/main/res/drawable/dialog_background.xml" value="0.233" />
         <entry key="..\:/Users/laxlo/GolfMaxApplication/app/src/main/res/drawable/edit_grey.xml" value="0.233" />
         <entry key="..\:/Users/laxlo/GolfMaxApplication/app/src/main/res/drawable/email_icon_blue.xml" value="0.233" />
+        <entry key="..\:/Users/laxlo/GolfMaxApplication/app/src/main/res/drawable/email_icon_dark.xml" value="0.233" />
         <entry key="..\:/Users/laxlo/GolfMaxApplication/app/src/main/res/drawable/email_icon_green.xml" value="0.233" />
         <entry key="..\:/Users/laxlo/GolfMaxApplication/app/src/main/res/drawable/expand_less.xml" value="0.284" />
         <entry key="..\:/Users/laxlo/GolfMaxApplication/app/src/main/res/drawable/expand_more.xml" value="0.284" />
@@ -48,6 +49,7 @@
         <entry key="..\:/Users/laxlo/GolfMaxApplication/app/src/main/res/drawable/my_scores_icon_white.xml" value="0.233" />
         <entry key="..\:/Users/laxlo/GolfMaxApplication/app/src/main/res/drawable/my_scores_white.xml" value="0.233" />
         <entry key="..\:/Users/laxlo/GolfMaxApplication/app/src/main/res/drawable/password_icon_blue.xml" value="0.233" />
+        <entry key="..\:/Users/laxlo/GolfMaxApplication/app/src/main/res/drawable/password_icon_dark.xml" value="0.233" />
         <entry key="..\:/Users/laxlo/GolfMaxApplication/app/src/main/res/drawable/play_round.xml" value="0.213" />
         <entry key="..\:/Users/laxlo/GolfMaxApplication/app/src/main/res/drawable/play_round_black.xml" value="0.233" />
         <entry key="..\:/Users/laxlo/GolfMaxApplication/app/src/main/res/drawable/play_round_green.xml" value="0.233" />
@@ -61,6 +63,7 @@
         <entry key="..\:/Users/laxlo/GolfMaxApplication/app/src/main/res/drawable/user_icon_black.xml" value="0.233" />
         <entry key="..\:/Users/laxlo/GolfMaxApplication/app/src/main/res/drawable/user_icon_blue.xml" value="0.233" />
         <entry key="..\:/Users/laxlo/GolfMaxApplication/app/src/main/res/drawable/user_icon_dark.xml" value="0.233" />
+        <entry key="..\:/Users/laxlo/GolfMaxApplication/app/src/main/res/drawable/user_icon_dark_small.xml" value="0.233" />
         <entry key="..\:/Users/laxlo/GolfMaxApplication/app/src/main/res/drawable/user_icon_green.xml" value="0.233" />
         <entry key="..\:/Users/laxlo/GolfMaxApplication/app/src/main/res/drawable/user_icon_white.xml" value="0.233" />
         <entry key="..\:/Users/laxlo/GolfMaxApplication/app/src/main/res/font-v26/proxima_nova.xml" value="0.4107692307692308" />
@@ -70,7 +73,7 @@
         <entry key="..\:/Users/laxlo/GolfMaxApplication/app/src/main/res/font/custom_font.xml" value="0.40974358974358976" />
         <entry key="..\:/Users/laxlo/GolfMaxApplication/app/src/main/res/font/lobster.xml" value="0.3084942084942085" />
         <entry key="..\:/Users/laxlo/GolfMaxApplication/app/src/main/res/font/proxima_nova.xml" value="0.40974358974358976" />
-        <entry key="..\:/Users/laxlo/GolfMaxApplication/app/src/main/res/layout/activity_course_leaderboard.xml" value="0.358695652173913" />
+        <entry key="..\:/Users/laxlo/GolfMaxApplication/app/src/main/res/layout/activity_course_leaderboard.xml" value="0.25" />
         <entry key="..\:/Users/laxlo/GolfMaxApplication/app/src/main/res/layout/activity_course_list_leaderboards.xml" value="0.358695652173913" />
         <entry key="..\:/Users/laxlo/GolfMaxApplication/app/src/main/res/layout/activity_dash_board.xml" value="0.358695652173913" />
         <entry key="..\:/Users/laxlo/GolfMaxApplication/app/src/main/res/layout/activity_front9.xml" value="0.358695652173913" />

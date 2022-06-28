@@ -38,12 +38,7 @@ public class CourseLeaderboardRV extends RecyclerView.Adapter<CourseLeaderboardR
     public void onBindViewHolder(@NonNull CourseLeaderboardRV.MyViewHolder holder, int position) {
         holder.textViewUsername.setText(scoreList.get(position).getUser().getUsername());
         holder.textViewUserScore.setText(scoreList.get(position).getUserScore());
-
-        if (scoreList.get(position).getUser().getUsername().equals(LoginActivity.username)) {
-            holder.textViewUsername.setTypeface(null, Typeface.BOLD);
-            holder.textViewUsername.setTypeface(null, Typeface.ITALIC);
-        }
-
+        
         for (int i = 0; i < getItemCount(); i++) {
             holder.textViewRank.setText(String.valueOf(position + 1));
         }

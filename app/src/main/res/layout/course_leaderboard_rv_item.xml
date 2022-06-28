@@ -16,7 +16,7 @@
             android:layout_width="62dp"
             android:layout_height="match_parent"
             android:layout_gravity="left"
-            android:fontFamily="sans-serif-light"
+            android:fontFamily="sans-serif-black"
             android:gravity="center"
             android:paddingRight="15dp"
             android:text="0"
@@ -27,19 +27,18 @@
             android:layout_width="227dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:fontFamily="sans-serif-light"
+            android:fontFamily="sans-serif-black"
             android:gravity="center|left"
             android:text="Username"
             android:textColor="@color/black"
-            android:textSize="20dp"
-            android:textStyle="italic" />
+            android:textSize="20dp"/>
 
         <TextView
             android:id="@+id/textViewUserScore"
             android:layout_width="69dp"
             android:layout_height="match_parent"
             android:layout_gravity="center|left"
-            android:fontFamily="sans-serif-light"
+            android:fontFamily="sans-serif-black"
             android:gravity="center"
             android:paddingLeft="8dp"
             android:text="00"

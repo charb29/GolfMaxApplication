@@ -16,7 +16,7 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="300dp"
+            android:layout_height="200dp"
             android:background="#2f5c47"
             android:padding="20dp">
 
@@ -43,7 +43,7 @@
         </RelativeLayout>
 
         <LinearLayout
-            android:layout_width="250dp"
+            android:layout_width="225dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:padding="20dp"
@@ -100,15 +100,13 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:clickable="false"
                 android:hint="username"
                 android:layout_marginBottom="10dp">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/textInputUsername"
                     android:layout_width="match_parent"
-                    android:clickable="false"
-                    android:editable="false"
+                    android:drawableLeft="@drawable/user_icon_dark_small"
                     android:layout_height="wrap_content"
                     android:drawablePadding="10dp"
                     android:text="Admin"
@@ -120,15 +118,13 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:clickable="false"
                 android:hint="E-mail"
                 android:layout_marginBottom="10dp">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/textInputEmail"
                     android:layout_width="match_parent"
-                    android:editable="false"
-                    android:clickable="false"
+                    android:drawableLeft="@drawable/email_icon_dark"
                     android:layout_height="wrap_content"
                     android:drawablePadding="10dp"
                     android:text="admin@email.com"
@@ -140,15 +136,13 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:clickable="false"
                 android:hint="Password"
                 android:layout_marginBottom="10dp">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/textInputPassword"
                     android:layout_width="match_parent"
-                    android:editable="false"
-                    android:clickable="false"
+                    android:drawableLeft="@drawable/password_icon_dark"
                     android:layout_height="wrap_content"
                     android:drawablePadding="10dp"
                     android:text="password1234"
@@ -158,6 +152,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <Button
+                android:id="@+id/btnUpdateInfo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="update info"

@@ -4,11 +4,14 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.WindowManager;
-import android.widget.ImageButton;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
@@ -20,7 +23,10 @@ import com.example.golfmax.Backend.ApiClient;
 import com.example.golfmax.Backend.DBHelper;
 import com.example.golfmax.Models.User;
 import com.example.golfmax.R;
+import com.example.golfmax.Requests.UserRequest;
+import com.example.golfmax.Responses.UserResponse;
 import com.google.android.material.navigation.NavigationView;
+import com.google.android.material.textfield.TextInputEditText;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -33,6 +39,14 @@ public class UserProfileActivity extends AppCompatActivity {
     DrawerLayout drawerLayout;
     ActionBarDrawerToggle actionBarDrawerToggle;
     NavigationView navigationView;
+
+    TextView textViewUsername, textViewRoundsPlayed;
+    TextInputEditText textInputUsername, textInputEmail, textInputPassword;
+    Button btnUpdateInfo;
+    long userId;
+    User user;
+    DBHelper db;
+    UserRequest userRequest;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,6 +93,53 @@ public class UserProfileActivity extends AppCompatActivity {
             }
         });
 
+        textViewUsername = findViewById(R.id.textViewUsername);
+        textViewRoundsPlayed = findViewById(R.id.textViewRoundsPlayed);
+
+        textInputUsername = findViewById(R.id.textInputUsername);
+        textInputEmail = findViewById(R.id.textInputEmail);
+        textInputPassword = findViewById(R.id.textInputPassword);
+
+        btnUpdateInfo = findViewById(R.id.btnUpdateInfo);
+
+        userRequest = new UserRequest();
+        db = new DBHelper(this);
+        user = new User();
+        user.setId(db.getUserId(LoginActivity.username));
+        userId = user.getId();
+
+        ApiClient.getUserService().getUserInfoById(userId).enqueue(new Callback<User>() {
+            @Override
+            public void onResponse(Call<User> call, Response<User> response) {
+                user = response.body();
+                textInputUsername.setText(user.getUsername());
+                textInputEmail.setText(user.getEmail());
+                textInputPassword.setText(user.getPassword());
+                Log.i("USER INFO ====> ", response.toString());
+            }
+
+            @Override
+            public void onFailure(Call<User> call, Throwable t) {
+                Log.e("ERROR ====> ", t.toString());
+            }
+        });
+
+        btnUpdateInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                userRequest.setId(userId);
+                userRequest.setUsername(textInputUsername.toString());
+                userRequest.setPassword(textInputPassword.toString());
+                userRequest.setEmail(textInputEmail.toString());
+
+                userRequest.getUsername();
+                userRequest.getPassword();
+                userRequest.getEmail();
+                updateUserInfo(userRequest);
+
+            }
+        });
     }
 
     @Override
@@ -87,5 +148,26 @@ public class UserProfileActivity extends AppCompatActivity {
             return true;
         }
         return super.onOptionsItemSelected(menuItem);
+    }
+
+    public void updateUserInfo(UserRequest userRequest) {
+        Call<UserResponse> userResponseCall = ApiClient.getUserService().updateUserInfo(userRequest.getId());
+        userResponseCall.enqueue(new Callback<UserResponse>() {
+            @Override
+            public void onResponse(Call<UserResponse> call, Response<UserResponse> response) {
+                if (response.isSuccessful()) {
+                    Toast.makeText(UserProfileActivity.this, "User info update successful.", Toast.LENGTH_SHORT).show();
+                    Log.i("USER INFO ====> ", response.toString());
+                }
+                else {
+                    Toast.makeText(UserProfileActivity.this,"Failed.", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<UserResponse> call, Throwable t) {
+                Log.e("FAILURE ====> ", t.toString());
+            }
+        });
     }
 }
