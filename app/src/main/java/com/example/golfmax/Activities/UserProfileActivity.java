@@ -20,6 +20,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.example.golfmax.Backend.ApiClient;
 import com.example.golfmax.Backend.DBHelper;
+import com.example.golfmax.Models.PlayerStatistics;
 import com.example.golfmax.Models.User;
 import com.example.golfmax.R;
 import com.example.golfmax.Requests.UserRequest;
@@ -44,6 +45,7 @@ public class UserProfileActivity extends AppCompatActivity {
     long userId;
     User user;
     DBHelper db;
+    PlayerStatistics statistics;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -101,6 +103,8 @@ public class UserProfileActivity extends AppCompatActivity {
 
         db = new DBHelper(this);
         user = new User();
+        statistics = new PlayerStatistics();
+
         user.setId(db.getUserId(LoginActivity.username));
         userId = user.getId();
 
@@ -108,6 +112,7 @@ public class UserProfileActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
                 user = response.body();
+                tvUsername.setText(user.getUsername());
                 tiUsername.setText(user.getUsername());
                 tiEmail.setText(user.getEmail());
                 tiPassword.setText(user.getPassword());
@@ -116,6 +121,20 @@ public class UserProfileActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<User> call, Throwable t) {
+                Log.e("ERROR ====> ", t.toString());
+            }
+        });
+
+        ApiClient.getUserService().getStatsByUserId(userId).enqueue(new Callback<PlayerStatistics>() {
+            @Override
+            public void onResponse(Call<PlayerStatistics> call, Response<PlayerStatistics> response) {
+                statistics = response.body();
+                tvRoundsPlayed.setText(String.valueOf(statistics.getRoundsPlayed()));
+                Log.i("INFO ====> ", response.toString());
+            }
+
+            @Override
+            public void onFailure(Call<PlayerStatistics> call, Throwable t) {
                 Log.e("ERROR ====> ", t.toString());
             }
         });

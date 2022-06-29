@@ -1,11 +1,13 @@
 package com.example.golfmax.Backend;
 
 import com.example.golfmax.Models.Course;
+import com.example.golfmax.Models.PlayerStatistics;
 import com.example.golfmax.Models.User;
 import com.example.golfmax.Requests.LoginRequest;
 import com.example.golfmax.Requests.UserRequest;
 import com.example.golfmax.Responses.LoginResponse;
 import com.example.golfmax.Requests.RegistrationRequest;
+import com.example.golfmax.Responses.PlayerStatisticsResponse;
 import com.example.golfmax.Responses.RegistrationResponse;
 import com.example.golfmax.Models.Score;
 import com.example.golfmax.Responses.UserResponse;
@@ -41,4 +43,7 @@ public interface UserService {
 
     @PUT("users/{id}/update")
     Call<UserResponse> updateUserInfo(@Path("id") long id, @Body User user);
+
+    @GET("stats/user/{id}")
+    Call<PlayerStatistics> getStatsByUserId(@Path("id") long id);
 }
