@@ -21,21 +21,22 @@
             android:padding="20dp">
 
             <ImageView
-                android:id="@+id/imageViewLeaderboard"
+                android:id="@+id/image_view_leaderboard_icon"
                 android:layout_width="125dp"
                 android:layout_height="125dp"
                 android:layout_centerVertical="true"
-                android:src="@drawable/leaderboard_icon_white"/>
+                android:src="@drawable/my_scores_icon_white" />
 
             <TextView
+                android:id="@+id/text_view_course_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="10dp"
-                android:layout_toRightOf="@+id/imageViewLeaderboard"
+                android:layout_toRightOf="@+id/image_view_leaderboard_icon"
                 android:fontFamily="sans-serif-black"
                 android:includeFontPadding="false"
-                android:text="Leaderboards"
+                android:text="My Scores"
                 android:textColor="@color/white"
                 android:textSize="30sp" />
 
@@ -47,7 +48,40 @@
             android:layout_gravity="bottom"
             android:background="#2f5c47"
             android:columnCount="3"
-            android:orientation="horizontal"/>
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="65dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="left"
+                android:fontFamily="sans-serif"
+                android:paddingTop="5dp"
+                android:paddingLeft="10dp"
+                android:text="Rank"
+                android:textColor="@color/white"
+                android:textSize="15dp" />
+
+            <TextView
+                android:layout_width="245dp"
+                android:paddingTop="5dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center|left"
+                android:fontFamily="sans-serif"
+                android:text="Username"
+                android:textColor="@color/white"
+                android:textSize="15dp" />
+
+            <TextView
+                android:layout_width="100dp"
+                android:paddingTop="5dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center|left"
+                android:fontFamily="sans-serif"
+                android:text="Score"
+                android:textColor="@color/white"
+                android:textSize="15dp" />
+
+        </LinearLayout>
 
         <FrameLayout
             android:layout_width="match_parent"
@@ -66,7 +100,7 @@
                     tools:context=".Activities.CourseListActivity">
 
                     <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/recyclerViewLeaderboard"
+                        android:id="@+id/recycler_view_my_scores"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_marginStart="10dp"
@@ -83,10 +117,10 @@
     </LinearLayout>
 
     <com.google.android.material.navigation.NavigationView
-        android:id="@+id/navigationView"
+        android:id="@+id/navigation_view"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        app:menu="@menu/navigation_menu_course_leaderboard" />
+        app:menu="@menu/navigation_menu_play_round" />
 
 </androidx.drawerlayout.widget.DrawerLayout>

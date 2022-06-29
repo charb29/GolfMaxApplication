@@ -31,7 +31,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class ViewScoresActivity extends AppCompatActivity {
+public class MyScoresActivity extends AppCompatActivity {
 
     DrawerLayout drawerLayout;
     ActionBarDrawerToggle actionBarDrawerToggle;
@@ -48,7 +48,7 @@ public class ViewScoresActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_view_scores);
+        setContentView(R.layout.activity_my_scores);
         actionBar = getSupportActionBar();
         colorDrawable = new ColorDrawable(Color.parseColor("#000f00"));
         actionBar.setBackgroundDrawable(colorDrawable);
@@ -60,29 +60,29 @@ public class ViewScoresActivity extends AppCompatActivity {
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
         actionBarDrawerToggle.syncState();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        navigationView = (NavigationView) findViewById(R.id.navigationView);
+        navigationView = (NavigationView) findViewById(R.id.navigation_view);
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch (menuItem.getItemId()) {
                     case R.id.navHome:
-                        Intent intentHome = new Intent(ViewScoresActivity.this, HomeActivity.class);
+                        Intent intentHome = new Intent(MyScoresActivity.this, HomeActivity.class);
                         startActivity(intentHome);
                         return true;
 
                     case R.id.navLeaderboard:
-                        Intent intentLeaderboards = new Intent(ViewScoresActivity.this, CourseListActivity.class);
+                        Intent intentLeaderboards = new Intent(MyScoresActivity.this, CourseListActivity.class);
                         startActivity(intentLeaderboards);
                         return true;
 
                     case R.id.navUserProfile:
-                        Intent intentSettings = new Intent(ViewScoresActivity.this, UserProfileActivity.class);
+                        Intent intentSettings = new Intent(MyScoresActivity.this, UserProfileActivity.class);
                         startActivity(intentSettings);
                         return true;
 
                     case R.id.navPlayRound:
-                        Intent intentPlayRound = new Intent(ViewScoresActivity.this, PlayRoundActivity.class);
+                        Intent intentPlayRound = new Intent(MyScoresActivity.this, PlayRoundActivity.class);
                         startActivity(intentPlayRound);
                         return true;
                 }
@@ -91,7 +91,7 @@ public class ViewScoresActivity extends AppCompatActivity {
         });
 
         scoreList = new ArrayList<>();
-        recyclerView = (RecyclerView) findViewById(R.id.recyclerViewScores);
+        recyclerView = (RecyclerView) findViewById(R.id.recycler_view_my_scores);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
         db = new DBHelper(this);

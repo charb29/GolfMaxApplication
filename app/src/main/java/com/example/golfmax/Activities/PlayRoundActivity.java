@@ -55,7 +55,7 @@ public class PlayRoundActivity extends AppCompatActivity {
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
         actionBarDrawerToggle.syncState();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        navigationView = (NavigationView) findViewById(R.id.navigationView);
+        navigationView = (NavigationView) findViewById(R.id.navigation_view);
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -77,7 +77,7 @@ public class PlayRoundActivity extends AppCompatActivity {
                         return true;
 
                     case R.id.navMyScores:
-                        Intent intentMyScores = new Intent(PlayRoundActivity.this, ViewScoresActivity.class);
+                        Intent intentMyScores = new Intent(PlayRoundActivity.this, MyScoresActivity.class);
                         startActivity(intentMyScores);
                         return true;
                 }
@@ -86,7 +86,7 @@ public class PlayRoundActivity extends AppCompatActivity {
         });
 
         courseList = new ArrayList<>();
-        courseNameRV = (RecyclerView) findViewById(R.id.recyclerViewCourseList);
+        courseNameRV = (RecyclerView) findViewById(R.id.recycler_view_course_list);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         courseNameRV.setLayoutManager(layoutManager);
 

@@ -32,11 +32,11 @@ public class ScoresRV extends RecyclerView.Adapter<ScoresRV.MyViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull ScoresRV.MyViewHolder holder, int position) {
-        holder.textViewCourseName.setText(scoreList.get(position).getCourse().getCourseName());
-        holder.textViewUserScore.setText(scoreList.get(position).getUserScore());
+        holder.tvCourseName.setText(scoreList.get(position).getCourse().getCourseName());
+        holder.tvUserScore.setText(scoreList.get(position).getUserScore());
 
         for (int i = 0; i < getItemCount(); i++) {
-            holder.textViewRank.setText(String.valueOf(position + 1));
+            holder.tvRank.setText(String.valueOf(position + 1));
         }
 
     }
@@ -47,13 +47,13 @@ public class ScoresRV extends RecyclerView.Adapter<ScoresRV.MyViewHolder> {
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView textViewCourseName, textViewUserScore, textViewRank;
+        TextView tvCourseName, tvUserScore, tvRank;
 
         public MyViewHolder(View itemView) {
             super(itemView);
-            textViewCourseName = (TextView) itemView.findViewById(R.id.textViewCourseName);
-            textViewUserScore = (TextView) itemView.findViewById(R.id.textViewUserScore);
-            textViewRank = (TextView) itemView.findViewById(R.id.textViewRank);
+            tvCourseName = (TextView) itemView.findViewById(R.id.text_view_course_name);
+            tvUserScore = (TextView) itemView.findViewById(R.id.text_view_user_score);
+            tvRank = (TextView) itemView.findViewById(R.id.text_view_rank);
         }
     }
 }

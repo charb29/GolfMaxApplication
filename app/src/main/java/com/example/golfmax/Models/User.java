@@ -6,16 +6,14 @@ public class User {
     private String username;
     private String email;
     private String password;
-    public int roundsPlayed;
 
     public User() {}
 
-    public User(long id, String username, String email, String password, int roundsPlayed) {
+    public User(long id, String username, String email, String password) {
         this.id = id;
         this.username = username;
         this.email = email;
         this.password = password;
-        this.roundsPlayed = roundsPlayed;
     }
 
     public long getId() {
@@ -48,13 +46,5 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public int getRoundsPlayed() {
-        return roundsPlayed;
-    }
-
-    public void setRoundsPlayed(int roundsPlayed) {
-        this.roundsPlayed = roundsPlayed;
     }
 }

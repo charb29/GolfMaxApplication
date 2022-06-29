@@ -74,6 +74,7 @@
         <entry key="..\:/Users/laxlo/GolfMaxApplication/app/src/main/res/font/lobster.xml" value="0.3084942084942085" />
         <entry key="..\:/Users/laxlo/GolfMaxApplication/app/src/main/res/font/proxima_nova.xml" value="0.40974358974358976" />
         <entry key="..\:/Users/laxlo/GolfMaxApplication/app/src/main/res/layout/activity_course_leaderboard.xml" value="0.25" />
+        <entry key="..\:/Users/laxlo/GolfMaxApplication/app/src/main/res/layout/activity_course_list.xml" value="0.14722222222222223" />
         <entry key="..\:/Users/laxlo/GolfMaxApplication/app/src/main/res/layout/activity_course_list_leaderboards.xml" value="0.358695652173913" />
         <entry key="..\:/Users/laxlo/GolfMaxApplication/app/src/main/res/layout/activity_dash_board.xml" value="0.358695652173913" />
         <entry key="..\:/Users/laxlo/GolfMaxApplication/app/src/main/res/layout/activity_front9.xml" value="0.358695652173913" />
@@ -81,13 +82,14 @@
         <entry key="..\:/Users/laxlo/GolfMaxApplication/app/src/main/res/layout/activity_leaderboards.xml" value="0.358695652173913" />
         <entry key="..\:/Users/laxlo/GolfMaxApplication/app/src/main/res/layout/activity_login.xml" value="0.33" />
         <entry key="..\:/Users/laxlo/GolfMaxApplication/app/src/main/res/layout/activity_main.xml" value="0.358695652173913" />
+        <entry key="..\:/Users/laxlo/GolfMaxApplication/app/src/main/res/layout/activity_my_scores.xml" value="0.358695652173913" />
         <entry key="..\:/Users/laxlo/GolfMaxApplication/app/src/main/res/layout/activity_play_round.xml" value="0.33" />
         <entry key="..\:/Users/laxlo/GolfMaxApplication/app/src/main/res/layout/activity_registration.xml" value="0.358695652173913" />
         <entry key="..\:/Users/laxlo/GolfMaxApplication/app/src/main/res/layout/activity_settings.xml" value="0.33" />
         <entry key="..\:/Users/laxlo/GolfMaxApplication/app/src/main/res/layout/activity_tes_view_scores.xml" value="0.358695652173913" />
         <entry key="..\:/Users/laxlo/GolfMaxApplication/app/src/main/res/layout/activity_test.xml" value="0.14722222222222223" />
         <entry key="..\:/Users/laxlo/GolfMaxApplication/app/src/main/res/layout/activity_user_info.xml" value="0.358695652173913" />
-        <entry key="..\:/Users/laxlo/GolfMaxApplication/app/src/main/res/layout/activity_user_profile.xml" value="0.33" />
+        <entry key="..\:/Users/laxlo/GolfMaxApplication/app/src/main/res/layout/activity_user_profile.xml" value="0.5" />
         <entry key="..\:/Users/laxlo/GolfMaxApplication/app/src/main/res/layout/activity_view_scores.xml" value="0.33" />
         <entry key="..\:/Users/laxlo/GolfMaxApplication/app/src/main/res/layout/activity_view_scores_act_test.xml" value="0.358695652173913" />
         <entry key="..\:/Users/laxlo/GolfMaxApplication/app/src/main/res/layout/child_layout.xml" value="0.358695652173913" />

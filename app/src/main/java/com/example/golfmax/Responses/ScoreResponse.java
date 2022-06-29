@@ -11,36 +11,36 @@ public class ScoreResponse {
         return courseName;
     }
 
-    private long getUserId() {
-        return userId;
-    }
-
-    public int getScore() {
-        return score;
-    }
-
-    public double getCourseRating() {
-        return courseRating;
-    }
-
-    public double getSlopeRating() {
-        return slopeRating;
-    }
-
     public void setCourseName(String courseName) {
         this.courseName = courseName;
+    }
+
+    public long getUserId() {
+        return userId;
     }
 
     public void setUserId(long userId) {
         this.userId = userId;
     }
 
+    public int getScore() {
+        return score;
+    }
+
     public void setScore(int score) {
         this.score = score;
     }
 
+    public double getCourseRating() {
+        return courseRating;
+    }
+
     public void setCourseRating(double courseRating) {
         this.courseRating = courseRating;
+    }
+
+    public double getSlopeRating() {
+        return slopeRating;
     }
 
     public void setSlopeRating(double slopeRating) {

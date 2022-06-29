@@ -21,19 +21,19 @@
             android:padding="20dp">
 
             <ImageView
-                android:id="@+id/imageViewUserIcon"
+                android:id="@+id/image_view_user_icon"
                 android:layout_width="125dp"
                 android:layout_height="125dp"
                 android:layout_centerVertical="true"
                 android:src="@drawable/user_icon_white" />
 
             <TextView
-                android:id="@+id/textViewUsername"
+                android:id="@+id/text_view_username"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="10dp"
-                android:layout_toRightOf="@+id/imageViewUserIcon"
+                android:layout_toRightOf="@+id/image_view_user_icon"
                 android:fontFamily="sans-serif-black"
                 android:includeFontPadding="false"
                 android:text="Username"
@@ -63,22 +63,22 @@
                     android:padding="5dp">
 
                     <TextView
-                        android:id="@+id/textViewRoundsPlayed"
+                        android:id="@+id/text_view_rounds_played"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_centerInParent="true"
                         android:fontFamily="sans-serif-light"
                         android:gravity="center"
                         android:text="00"
+                        android:textColor="@color/white"
                         android:textSize="20sp"
-                        android:textStyle="bold"
-                        android:textColor="@color/white"/>
+                        android:textStyle="bold" />
 
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/textViewRoundsPlayed"
+                        android:layout_below="@+id/text_view_rounds_played"
                         android:layout_centerInParent="true"
                         android:fontFamily="sans-serif"
                         android:text="Rounds Played"
@@ -104,7 +104,7 @@
                 android:layout_marginBottom="10dp">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/textInputUsername"
+                    android:id="@+id/text_input_username"
                     android:layout_width="match_parent"
                     android:drawableLeft="@drawable/user_icon_dark_small"
                     android:layout_height="wrap_content"
@@ -122,7 +122,7 @@
                 android:layout_marginBottom="10dp">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/textInputEmail"
+                    android:id="@+id/text_input_email"
                     android:layout_width="match_parent"
                     android:drawableLeft="@drawable/email_icon_dark"
                     android:layout_height="wrap_content"
@@ -140,7 +140,7 @@
                 android:layout_marginBottom="10dp">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/textInputPassword"
+                    android:id="@+id/text_input_password"
                     android:layout_width="match_parent"
                     android:drawableLeft="@drawable/password_icon_dark"
                     android:layout_height="wrap_content"
@@ -152,7 +152,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <Button
-                android:id="@+id/btnUpdateInfo"
+                android:id="@+id/button_update_info"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="update info"

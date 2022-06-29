@@ -23,10 +23,10 @@ import retrofit2.Response;
 
 public class LoginActivity extends AppCompatActivity {
 
-    TextInputLayout textInputUsername, textInputPassword;
-    Button buttonForgotPassword, buttonLogin, buttonRegister;
-    LoginRequest loginRequest = new LoginRequest();
-    DBHelper db = new DBHelper(LoginActivity.this);
+    TextInputLayout tiUsername, tiPassword;
+    Button btnForgotPassword, btnLogin, btnRegister;
+    LoginRequest loginRequest;
+    DBHelper db;
     public static String username;
 
     @Override
@@ -37,25 +37,28 @@ public class LoginActivity extends AppCompatActivity {
         getSupportActionBar().hide();
         setContentView(R.layout.activity_login);
 
-        textInputUsername = findViewById(R.id.username);
-        textInputPassword = findViewById(R.id.password);
+        loginRequest = new LoginRequest();
+        db = new DBHelper(LoginActivity.this);
 
-        buttonForgotPassword = findViewById(R.id.btnForgotPassword);
-        buttonLogin = findViewById(R.id.btnSignIn);
-        buttonRegister = findViewById(R.id.btnCreateAccount);
+        tiUsername = findViewById(R.id.text_input_username);
+        tiPassword = findViewById(R.id.text_input_password);
 
-        buttonLogin.setOnClickListener(new View.OnClickListener() {
+        btnForgotPassword = findViewById(R.id.button_forgot_password);
+        btnLogin = findViewById(R.id.button_sign_in);
+        btnRegister = findViewById(R.id.button_create_Account);
+
+        btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                String username = textInputUsername.getEditText().getText().toString();
-                String password = textInputPassword.getEditText().getText().toString();
+                String username = tiUsername.getEditText().getText().toString();
+                String password = tiPassword.getEditText().getText().toString();
 
                 if (TextUtils.isEmpty(username)) {
-                    textInputUsername.setError("Do not leave empty.");
+                    tiUsername.setError("Do not leave empty.");
                 }
                 if (TextUtils.isEmpty(password)) {
-                    textInputPassword.setError("Do not leave empty.");
+                    tiPassword.setError("Do not leave empty.");
                 }
                 else {
                     loginRequest.setUsername(username);
@@ -65,7 +68,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        buttonRegister.setOnClickListener(new View.OnClickListener() {
+        btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(LoginActivity.this, RegistrationActivity.class);

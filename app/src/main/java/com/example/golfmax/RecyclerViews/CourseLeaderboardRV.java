@@ -36,11 +36,11 @@ public class CourseLeaderboardRV extends RecyclerView.Adapter<CourseLeaderboardR
 
     @Override
     public void onBindViewHolder(@NonNull CourseLeaderboardRV.MyViewHolder holder, int position) {
-        holder.textViewUsername.setText(scoreList.get(position).getUser().getUsername());
-        holder.textViewUserScore.setText(scoreList.get(position).getUserScore());
+        holder.tvUsername.setText(scoreList.get(position).getUser().getUsername());
+        holder.tvUserScore.setText(scoreList.get(position).getUserScore());
         
         for (int i = 0; i < getItemCount(); i++) {
-            holder.textViewRank.setText(String.valueOf(position + 1));
+            holder.tvRank.setText(String.valueOf(position + 1));
         }
     }
 
@@ -50,13 +50,13 @@ public class CourseLeaderboardRV extends RecyclerView.Adapter<CourseLeaderboardR
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView textViewUsername, textViewUserScore, textViewRank;
+        TextView tvUsername, tvUserScore, tvRank;
 
         public MyViewHolder(View itemView) {
             super(itemView);
-            textViewUsername = (TextView) itemView.findViewById(R.id.textViewUsername);
-            textViewUserScore = (TextView) itemView.findViewById(R.id.textViewUserScore);
-            textViewRank = (TextView) itemView.findViewById(R.id.textViewRank);
+            tvUsername = (TextView) itemView.findViewById(R.id.text_view_username);
+            tvUserScore = (TextView) itemView.findViewById(R.id.text_view_user_score);
+            tvRank = (TextView) itemView.findViewById(R.id.text_view_rank);
 
         }
     }

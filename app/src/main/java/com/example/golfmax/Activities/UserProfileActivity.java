@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -39,14 +38,12 @@ public class UserProfileActivity extends AppCompatActivity {
     DrawerLayout drawerLayout;
     ActionBarDrawerToggle actionBarDrawerToggle;
     NavigationView navigationView;
-
-    TextView textViewUsername, textViewRoundsPlayed;
-    TextInputEditText textInputUsername, textInputEmail, textInputPassword;
+    TextView tvUsername, tvRoundsPlayed;
+    TextInputEditText tiUsername, tiEmail, tiPassword;
     Button btnUpdateInfo;
     long userId;
     User user;
     DBHelper db;
-    UserRequest userRequest;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,7 +77,7 @@ public class UserProfileActivity extends AppCompatActivity {
                         return true;
 
                     case R.id.navMyScores:
-                        Intent intentMyScores = new Intent(UserProfileActivity.this, ViewScoresActivity.class);
+                        Intent intentMyScores = new Intent(UserProfileActivity.this, MyScoresActivity.class);
                         startActivity(intentMyScores);
                         return true;
 
@@ -93,16 +90,15 @@ public class UserProfileActivity extends AppCompatActivity {
             }
         });
 
-        textViewUsername = findViewById(R.id.textViewUsername);
-        textViewRoundsPlayed = findViewById(R.id.textViewRoundsPlayed);
+        tvUsername = findViewById(R.id.text_view_username);
+        tvRoundsPlayed = findViewById(R.id.text_view_rounds_played);
 
-        textInputUsername = findViewById(R.id.textInputUsername);
-        textInputEmail = findViewById(R.id.textInputEmail);
-        textInputPassword = findViewById(R.id.textInputPassword);
+        tiUsername = findViewById(R.id.text_input_username);
+        tiEmail = findViewById(R.id.text_input_email);
+        tiPassword = findViewById(R.id.text_input_password);
 
-        btnUpdateInfo = findViewById(R.id.btnUpdateInfo);
+        btnUpdateInfo = findViewById(R.id.button_update_info);
 
-        userRequest = new UserRequest();
         db = new DBHelper(this);
         user = new User();
         user.setId(db.getUserId(LoginActivity.username));
@@ -112,9 +108,9 @@ public class UserProfileActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
                 user = response.body();
-                textInputUsername.setText(user.getUsername());
-                textInputEmail.setText(user.getEmail());
-                textInputPassword.setText(user.getPassword());
+                tiUsername.setText(user.getUsername());
+                tiEmail.setText(user.getEmail());
+                tiPassword.setText(user.getPassword());
                 Log.i("USER INFO ====> ", response.toString());
             }
 
@@ -128,16 +124,14 @@ public class UserProfileActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                userRequest.setId(userId);
-                userRequest.setUsername(textInputUsername.toString());
-                userRequest.setPassword(textInputPassword.toString());
-                userRequest.setEmail(textInputEmail.toString());
+                user.setUsername(tiUsername.getText().toString());
+                user.setPassword(tiPassword.getText().toString());
+                user.setEmail(tiEmail.getText().toString());
 
-                userRequest.getUsername();
-                userRequest.getPassword();
-                userRequest.getEmail();
-                updateUserInfo(userRequest);
-
+                user.getUsername();
+                user.getPassword();
+                user.getEmail();
+                updateUserInfo(user);
             }
         });
     }
@@ -150,8 +144,8 @@ public class UserProfileActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(menuItem);
     }
 
-    public void updateUserInfo(UserRequest userRequest) {
-        Call<UserResponse> userResponseCall = ApiClient.getUserService().updateUserInfo(userRequest.getId());
+    public void updateUserInfo(User user) {
+        Call<UserResponse> userResponseCall = ApiClient.getUserService().updateUserInfo(user.getId(), user);
         userResponseCall.enqueue(new Callback<UserResponse>() {
             @Override
             public void onResponse(Call<UserResponse> call, Response<UserResponse> response) {

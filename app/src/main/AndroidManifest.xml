@@ -29,7 +29,7 @@
             android:name=".Activities.CourseListActivity"
             android:exported="false" />
         <activity
-            android:name=".Activities.ViewScoresActivity"
+            android:name=".Activities.MyScoresActivity"
             android:exported="false" />
         <activity
             android:name=".Activities.RegistrationActivity"

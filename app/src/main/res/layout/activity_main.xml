@@ -9,7 +9,7 @@
     tools:context=".Activities.MainActivity">
 
     <ImageView
-        android:id="@+id/imageViewLogo"
+        android:id="@+id/image_view_logo_icon"
         android:layout_width="425dp"
         android:layout_height="493dp"
         android:layout_marginStart="10dp"
@@ -26,7 +26,7 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:id="@+id/textViewSlogan"
+        android:id="@+id/text_view_slogan"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
@@ -39,7 +39,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageViewLogo" />
+        app:layout_constraintTop_toBottomOf="@+id/image_view_logo_icon" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

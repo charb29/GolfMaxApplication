@@ -3,6 +3,7 @@ package com.example.golfmax.Backend;
 import com.example.golfmax.Models.Course;
 import com.example.golfmax.Models.User;
 import com.example.golfmax.Requests.LoginRequest;
+import com.example.golfmax.Requests.UserRequest;
 import com.example.golfmax.Responses.LoginResponse;
 import com.example.golfmax.Requests.RegistrationRequest;
 import com.example.golfmax.Responses.RegistrationResponse;
@@ -39,5 +40,5 @@ public interface UserService {
     Call<User> getUserInfoById(@Path("id") long id);
 
     @PUT("users/{id}/update")
-    Call<UserResponse> updateUserInfo(@Path("id") long id);
+    Call<UserResponse> updateUserInfo(@Path("id") long id, @Body User user);
 }

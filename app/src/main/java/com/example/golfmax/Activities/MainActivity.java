@@ -20,9 +20,9 @@ import com.example.golfmax.R;
 public class MainActivity extends AppCompatActivity {
 
     private static int SPLASH_SCREEN = 4000;
-    Animation animationLogo, animationSlogan;
-    ImageView imageViewLogo;
-    TextView textViewSlogan;
+    Animation animLogo, animSlogan;
+    ImageView ivLogo;
+    TextView tvSlogan;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,12 +32,12 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().hide();
         setContentView(R.layout.activity_main);
 
-        animationLogo = AnimationUtils.loadAnimation(this,R.anim.top_logo_animation);
-        animationSlogan = AnimationUtils.loadAnimation(this,R.anim.bottom_slogan_animation);
-        imageViewLogo = findViewById(R.id.imageViewLogo);
-        textViewSlogan = findViewById(R.id.textViewSlogan);
-        imageViewLogo.setAnimation(animationLogo);
-        textViewSlogan.setAnimation(animationSlogan);
+        animLogo = AnimationUtils.loadAnimation(this,R.anim.top_logo_animation);
+        animSlogan = AnimationUtils.loadAnimation(this,R.anim.bottom_slogan_animation);
+        ivLogo = findViewById(R.id.image_view_logo_icon);
+        tvSlogan = findViewById(R.id.text_view_slogan);
+        ivLogo.setAnimation(animLogo);
+        tvSlogan.setAnimation(animSlogan);
 
         new Handler().postDelayed(new Runnable() {
 
@@ -45,8 +45,8 @@ public class MainActivity extends AppCompatActivity {
             public void run() {
                 Intent intent = new Intent(MainActivity.this, LoginActivity.class);
                 Pair[] pairs = new Pair[2];
-                pairs[0] = new Pair<View, String>(imageViewLogo, "logo_image");
-                pairs[1] = new Pair<View,  String>(textViewSlogan, "logo_text");
+                pairs[0] = new Pair<View, String>(ivLogo, "logo_image");
+                pairs[1] = new Pair<View,  String>(tvSlogan, "logo_text");
 
                 if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                     ActivityOptions activityOptions = ActivityOptions.makeSceneTransitionAnimation(MainActivity.this, pairs);

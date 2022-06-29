@@ -21,9 +21,9 @@ import retrofit2.Response;
 
 public class RegistrationActivity extends AppCompatActivity {
 
-    TextInputLayout textInputUsername, textInputEmail, textInputPassword;
-    Button buttonRegister, buttonReturningMember;
-    RegistrationRequest registrationRequest = new RegistrationRequest();
+    TextInputLayout tiUsername, tiEmail, tiPassword;
+    Button btnRegister, btnReturningMember;
+    RegistrationRequest registrationRequest;
     public static String username;
 
     @Override
@@ -34,28 +34,30 @@ public class RegistrationActivity extends AppCompatActivity {
         getSupportActionBar().hide();
         setContentView(R.layout.activity_registration);
 
-        textInputUsername = findViewById(R.id.enterUsername);
-        textInputPassword = findViewById(R.id.enterPassword);
-        textInputEmail = findViewById(R.id.enterEmail);
+        registrationRequest = new RegistrationRequest();
 
-        buttonRegister = findViewById(R.id.btnRegister);
-        buttonReturningMember = findViewById(R.id.btnAlreadyMember);
+        tiUsername = findViewById(R.id.text_input_username);
+        tiPassword = findViewById(R.id.text_input_password);
+        tiEmail = findViewById(R.id.text_input_email);
 
-        buttonRegister.setOnClickListener(new View.OnClickListener() {
+        btnRegister = findViewById(R.id.btnRegister);
+        btnReturningMember = findViewById(R.id.btnAlreadyMember);
+
+        btnRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String username = textInputUsername.getEditText().getText().toString();
-                String password = textInputPassword.getEditText().getText().toString();
-                String email = textInputEmail.getEditText().getText().toString();
+                String username = tiUsername.getEditText().getText().toString();
+                String password = tiPassword.getEditText().getText().toString();
+                String email = tiEmail.getEditText().getText().toString();
 
                 if (TextUtils.isEmpty(username)) {
-                    textInputUsername.setError("Do not leave empty.");
+                    tiUsername.setError("Do not leave empty.");
                 }
                 if (TextUtils.isEmpty(password)) {
-                    textInputPassword.setError("Do not leave empty.");
+                    tiPassword.setError("Do not leave empty.");
                 }
                 if (TextUtils.isEmpty(email)) {
-                    textInputEmail.setError("Do not leave empty.");
+                    tiEmail.setError("Do not leave empty.");
                 }
                 else {
                     registrationRequest.setUsername(username);
@@ -70,7 +72,7 @@ public class RegistrationActivity extends AppCompatActivity {
             }
         });
 
-        buttonReturningMember.setOnClickListener(new View.OnClickListener() {
+        btnReturningMember.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(RegistrationActivity.this, LoginActivity.class);

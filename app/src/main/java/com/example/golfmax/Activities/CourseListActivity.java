@@ -43,7 +43,7 @@ public class CourseListActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_course_list_leaderboards);
+        setContentView(R.layout.activity_course_list);
         actionBar = getSupportActionBar();
         colorDrawable = new ColorDrawable(Color.parseColor("#000f00"));
         actionBar.setBackgroundDrawable(colorDrawable);
@@ -67,7 +67,7 @@ public class CourseListActivity extends AppCompatActivity {
                         return true;
 
                     case R.id.navMyScores:
-                        Intent intentMyScores = new Intent(CourseListActivity.this, ViewScoresActivity.class);
+                        Intent intentMyScores = new Intent(CourseListActivity.this, MyScoresActivity.class);
                         startActivity(intentMyScores);
                         return true;
 
@@ -85,9 +85,8 @@ public class CourseListActivity extends AppCompatActivity {
             }
         });
 
-
         courseList = new ArrayList<>();
-        courseNameRv = (RecyclerView) findViewById(R.id.recyclerViewLeaderboard);
+        courseNameRv = (RecyclerView) findViewById(R.id.recycler_view_course_list);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         courseNameRv.setLayoutManager(layoutManager);
 

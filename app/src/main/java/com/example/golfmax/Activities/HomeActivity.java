@@ -16,7 +16,7 @@ import com.example.golfmax.R;
 
 public class HomeActivity extends AppCompatActivity {
 
-    CardView cardViewMyScores, cardViewPlayRound, cardViewLeaderboard, cardViewProfile;
+    CardView cvMyScores, cvPlayRound, cvLeaderboard, cvUserProfile;
     LoginResponse loginResponse;
 
     @Override
@@ -27,10 +27,10 @@ public class HomeActivity extends AppCompatActivity {
         getSupportActionBar().hide();
         setContentView(R.layout.activity_home);
 
-        cardViewMyScores = findViewById(R.id.cardViewMyScores);
-        cardViewPlayRound = findViewById(R.id.cardViewPlayRound);
-        cardViewLeaderboard = findViewById(R.id.cardViewLeaderboard);
-        cardViewProfile = findViewById(R.id.cardViewProfile);
+        cvMyScores = findViewById(R.id.card_view_my_scores);
+        cvPlayRound = findViewById(R.id.card_view_play_round);
+        cvLeaderboard = findViewById(R.id.card_view_leaderboards);
+        cvUserProfile = findViewById(R.id.card_view_user_profile);
 
         Intent intent = getIntent();
         if (intent.getExtras() != null) {
@@ -39,15 +39,15 @@ public class HomeActivity extends AppCompatActivity {
             Log.i("LoginActivity", "====> " + loginResponse.getId());
         }
 
-        cardViewMyScores.setOnClickListener(new View.OnClickListener() {
+        cvMyScores.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(HomeActivity.this, ViewScoresActivity.class);
+                Intent intent = new Intent(HomeActivity.this, MyScoresActivity.class);
                 startActivity(intent);
             }
         });
 
-        cardViewLeaderboard.setOnClickListener(new View.OnClickListener() {
+        cvLeaderboard.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(HomeActivity.this, CourseListActivity.class);
@@ -55,7 +55,7 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
-        cardViewProfile.setOnClickListener(new View.OnClickListener() {
+        cvUserProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(HomeActivity.this, UserProfileActivity.class);
@@ -63,7 +63,7 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
-        cardViewPlayRound.setOnClickListener(new View.OnClickListener() {
+        cvPlayRound.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(HomeActivity.this, PlayRoundActivity.class);

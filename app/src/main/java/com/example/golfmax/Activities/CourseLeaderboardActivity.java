@@ -43,7 +43,7 @@ public class CourseLeaderboardActivity extends AppCompatActivity {
     CourseLeaderboardRV courseLeaderboardRV;
     RecyclerView recyclerView;
     List<Score> scoreList;
-    TextView textViewCourseName;
+    TextView tvCourseName;
     DBHelper db;
     Course course;
     long courseId;
@@ -75,7 +75,7 @@ public class CourseLeaderboardActivity extends AppCompatActivity {
                         return true;
 
                     case R.id.navMyScores:
-                        Intent intentMyScores = new Intent(CourseLeaderboardActivity.this, ViewScoresActivity.class);
+                        Intent intentMyScores = new Intent(CourseLeaderboardActivity.this, MyScoresActivity.class);
                         startActivity(intentMyScores);
                         return true;
 
@@ -98,11 +98,11 @@ public class CourseLeaderboardActivity extends AppCompatActivity {
             }
         });
 
-        textViewCourseName = findViewById(R.id.textViewCourseName);
-        textViewCourseName.setText(CourseListRV.courseNameForTextView);
+        tvCourseName = findViewById(R.id.text_view_course_name);
+        tvCourseName.setText(CourseListRV.courseNameForTextView);
 
         scoreList = new ArrayList<>();
-        recyclerView = (RecyclerView) findViewById(R.id.recyclerViewCourseLeaderboard);
+        recyclerView = (RecyclerView) findViewById(R.id.recycler_view_course_leaderboard);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
         db = new DBHelper(this);

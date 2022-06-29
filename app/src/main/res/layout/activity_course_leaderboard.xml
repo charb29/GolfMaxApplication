@@ -21,24 +21,24 @@
             android:padding="20dp">
 
             <ImageView
-                android:id="@+id/imageViewLeaderboard"
+                android:id="@+id/image_view_leaderboard_icon"
                 android:layout_width="125dp"
                 android:layout_height="125dp"
                 android:layout_centerVertical="true"
                 android:src="@drawable/leaderboard_icon_white"/>
 
             <TextView
-                android:id="@+id/textViewCourseName"
+                android:id="@+id/text_view_course_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="10dp"
-                android:layout_toRightOf="@+id/imageViewLeaderboard"
+                android:layout_toRightOf="@+id/image_view_leaderboard_icon"
                 android:fontFamily="sans-serif-black"
                 android:includeFontPadding="false"
                 android:text="Course Name"
                 android:textColor="@color/white"
-                android:textSize="30sp"/>
+                android:textSize="30sp" />
 
         </RelativeLayout>
 
@@ -100,7 +100,7 @@
                     tools:context=".Activities.CourseListActivity">
 
                     <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/recyclerViewCourseLeaderboard"
+                        android:id="@+id/recycler_view_course_leaderboard"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_marginStart="10dp"

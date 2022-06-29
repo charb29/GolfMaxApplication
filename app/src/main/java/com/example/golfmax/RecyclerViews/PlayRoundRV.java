@@ -43,7 +43,7 @@ public class PlayRoundRV extends RecyclerView.Adapter<PlayRoundRV.MyViewHolder> 
     @Override
     public void onBindViewHolder(@NonNull PlayRoundRV.MyViewHolder holder, int position) {
         db = new DBHelper(context.getApplicationContext());
-        holder.textViewCourseName.setText(courseList.get(position).getCourseName());
+        holder.tvCourseName.setText(courseList.get(position).getCourseName());
         db.saveCourse(courseList.get(position).getCourseName(), courseList.get(position).getId());
         courseName = courseList.get(position).getCourseName();
     }
@@ -54,20 +54,20 @@ public class PlayRoundRV extends RecyclerView.Adapter<PlayRoundRV.MyViewHolder> 
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView textViewCourseName;
+        TextView tvCourseName;
 
         public MyViewHolder(View itemView) {
             super(itemView);
-            textViewCourseName = (TextView) itemView.findViewById(R.id.textViewCourseName);
+            tvCourseName = (TextView) itemView.findViewById(R.id.text_view_course_name);
 
-            textViewCourseName.setOnClickListener(new View.OnClickListener() {
+            tvCourseName.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     Course course = new Course();
                     Intent intent = new Intent(context, Front9Activity.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    Log.i("COURSE NAME ====> ", textViewCourseName.getText().toString());
-                    course.setCourseName(textViewCourseName.getText().toString());
+                    Log.i("COURSE NAME ====> ", tvCourseName.getText().toString());
+                    course.setCourseName(tvCourseName.getText().toString());
                     courseNameForTextView = course.getCourseName();
                     context.startActivity(intent);
                 }
