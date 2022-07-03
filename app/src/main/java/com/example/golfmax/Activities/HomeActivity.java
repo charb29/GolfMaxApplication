@@ -100,6 +100,7 @@ public class HomeActivity extends AppCompatActivity {
             public void onResponse(Call<PlayerStatistics> call, Response<PlayerStatistics> response) {
                 statistics = response.body();
                 tvAverageScore.setText(String.valueOf(statistics.getAverageScore()));
+                tvHandicapIndex.setText(String.valueOf(statistics.getHandicapIndex()));
                 Log.i("INFO ====> ", response.toString());
             }
 
