@@ -1,11 +1,885 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
     tools:context=".Activities.Front9Activity">
 
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TableRow
+            android:id="@+id/table_row_hole"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="125dp"
+                android:layout_height="match_parent"
+                android:background="#013220"
+                android:padding="18dip"
+                android:text="Hole"
+                android:textColor="@color/white"
+                android:fontFamily="sans-serif-black"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#013220"
+                android:padding="18dip"
+                android:text="1"
+                android:textColor="@color/white"
+                android:fontFamily="sans-serif-black"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#013220"
+                android:padding="18dip"
+                android:text="2"
+                android:textColor="@color/white"
+                android:fontFamily="sans-serif-black"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#013220"
+                android:padding="18dip"
+                android:text="3"
+                android:textColor="@color/white"
+                android:fontFamily="sans-serif-black"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#013220"
+                android:padding="18dip"
+                android:text="4"
+                android:textColor="@color/white"
+                android:fontFamily="sans-serif-black"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#013220"
+                android:padding="18dip"
+                android:text="5"
+                android:textColor="@color/white"
+                android:fontFamily="sans-serif-black"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#013220"
+                android:padding="18dip"
+                android:text="6"
+                android:textColor="@color/white"
+                android:fontFamily="sans-serif-black"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#013220"
+                android:padding="18dip"
+                android:text="7"
+                android:textColor="@color/white"
+                android:fontFamily="sans-serif-black"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#013220"
+                android:padding="18dip"
+                android:text="8"
+                android:textColor="@color/white"
+                android:fontFamily="sans-serif-black"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#013220"
+                android:padding="18dip"
+                android:text="9"
+                android:textColor="@color/white"
+                android:fontFamily="sans-serif-black"/>
+
+        </TableRow>
+
+            <TableRow
+                android:id="@+id/table_row_par"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="125dp"
+                    android:layout_height="match_parent"
+                    android:background="#2f5c47"
+                    android:padding="18dip"
+                    android:text="Par"
+                    android:textColor="@color/white"
+                    android:fontFamily="sans-serif-black"/>
+
+                <TextView
+                    android:id="@+id/text_view_par1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#2f5c47"
+                    android:padding="18dip"
+                    android:text="0"
+                    android:textColor="@color/white"
+                    android:fontFamily="sans-serif-black"/>
+
+                <TextView
+                    android:id="@+id/text_view_par2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#2f5c47"
+                    android:padding="18dip"
+                    android:text="0"
+                    android:textColor="@color/white"
+                    android:fontFamily="sans-serif-black"/>
+
+                <TextView
+                    android:id="@+id/text_view_par3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#2f5c47"
+                    android:padding="18dip"
+                    android:text="0"
+                    android:textColor="@color/white"
+                    android:fontFamily="sans-serif-black"/>
+
+                <TextView
+                    android:id="@+id/text_view_par4"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#2f5c47"
+                    android:padding="18dip"
+                    android:text="0"
+                    android:textColor="@color/white"
+                    android:fontFamily="sans-serif-black"/>
+
+                <TextView
+                    android:id="@+id/text_view_par5"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#2f5c47"
+                    android:padding="18dip"
+                    android:text="0"
+                    android:textColor="@color/white"
+                    android:fontFamily="sans-serif-black"/>
+
+                <TextView
+                    android:id="@+id/text_view_par6"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#2f5c47"
+                    android:padding="18dip"
+                    android:text="0"
+                    android:textColor="@color/white"
+                    android:fontFamily="sans-serif-black"/>
+
+                <TextView
+                    android:id="@+id/text_view_par7"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#2f5c47"
+                    android:padding="18dip"
+                    android:text="0"
+                    android:textColor="@color/white"
+                    android:fontFamily="sans-serif-black"/>
+
+                <TextView
+                    android:id="@+id/text_view_par8"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#2f5c47"
+                    android:padding="18dip"
+                    android:text="0"
+                    android:textColor="@color/white"
+                    android:fontFamily="sans-serif-black"/>
+
+                <TextView
+                    android:id="@+id/text_view_par9"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="#2f5c47"
+                    android:padding="18dip"
+                    android:text="0"
+                    android:textColor="@color/white"
+                    android:fontFamily="sans-serif-black"/>
+
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/table_row_user"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/text_view_username"
+                    android:layout_height="match_parent"
+                    android:layout_width="match_parent"
+                    android:text="Username"
+                    android:padding="18dip"
+                    android:textColor="@color/black"
+                    android:fontFamily="sans-serif-black"
+                    android:textSize="15dp"/>
+
+                <EditText
+                    android:id="@+id/edit_text_hole1"
+                    android:layout_height="match_parent"
+                    android:layout_width="match_parent"
+                    android:hint="0"
+                    android:padding="18dip"
+                    android:fontFamily="sans-serif-black"
+                    android:background="@color/white"
+                    android:textColor="@color/black"
+                    android:textSize="15dp"/>
+
+                <EditText
+                    android:id="@+id/edit_text_hole2"
+                    android:layout_height="match_parent"
+                    android:layout_width="match_parent"
+                    android:hint="0"
+                    android:padding="18dip"
+                    android:fontFamily="sans-serif-black"
+                    android:background="@color/white"
+                    android:textColor="@color/black"
+                    android:textSize="15dp"/>
+
+                <EditText
+                    android:id="@+id/edit_text_hole3"
+                    android:layout_height="match_parent"
+                    android:layout_width="match_parent"
+                    android:hint="0"
+                    android:padding="18dip"
+                    android:fontFamily="sans-serif-black"
+                    android:background="@color/white"
+                    android:textColor="@color/black"
+                    android:textSize="15dp"/>
+
+                <EditText
+                    android:id="@+id/edit_text_hole4"
+                    android:layout_height="match_parent"
+                    android:layout_width="match_parent"
+                    android:hint="0"
+                    android:padding="18dip"
+                    android:fontFamily="sans-serif-black"
+                    android:background="@color/white"
+                    android:textColor="@color/black"
+                    android:textSize="15dp"/>
+
+                <EditText
+                    android:id="@+id/edit_text_hole5"
+                    android:layout_height="match_parent"
+                    android:layout_width="match_parent"
+                    android:hint="0"
+                    android:padding="18dip"
+                    android:fontFamily="sans-serif-black"
+                    android:background="@color/white"
+                    android:textColor="@color/black"
+                    android:textSize="15dp"/>
+
+                <EditText
+                    android:id="@+id/edit_text_hole6"
+                    android:layout_height="match_parent"
+                    android:layout_width="match_parent"
+                    android:hint="0"
+                    android:padding="18dip"
+                    android:fontFamily="sans-serif-black"
+                    android:background="@color/white"
+                    android:textColor="@color/black"
+                    android:textSize="15dp"/>
+
+                <EditText
+                    android:id="@+id/edit_text_hole7"
+                    android:layout_height="match_parent"
+                    android:layout_width="match_parent"
+                    android:hint="0"
+                    android:padding="18dip"
+                    android:fontFamily="sans-serif-black"
+                    android:background="@color/white"
+                    android:textColor="@color/black"
+                    android:textSize="15dp"/>
+
+                <EditText
+                    android:id="@+id/edit_text_hole8"
+                    android:layout_height="match_parent"
+                    android:layout_width="match_parent"
+                    android:hint="0"
+                    android:padding="18dip"
+                    android:fontFamily="sans-serif-black"
+                    android:background="@color/white"
+                    android:textColor="@color/black"
+                    android:textSize="15dp"/>
+
+                <EditText
+                    android:id="@+id/edit_text_hole9"
+                    android:layout_height="match_parent"
+                    android:layout_width="match_parent"
+                    android:hint="0"
+                    android:padding="18dip"
+                    android:fontFamily="sans-serif-black"
+                    android:background="@color/white"
+                    android:textColor="@color/black"
+                    android:textSize="15dp"/>
+
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/table_row_guest1"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="#D3D3D3">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/text_input_edit_text_guest1"
+                    android:layout_width="125dp"
+                    android:background="#D3D3D3"
+                    android:padding="18dip"
+                    android:hint="Guest 1"
+                    android:fontFamily="sans-serif-black"
+                    android:textColor="@color/black"
+                    android:textSize="15dp"/>
+
+                <EditText
+                    android:id="@+id/edit_text_hole1_guest1"
+                    android:layout_height="match_parent"
+                    android:layout_width="match_parent"
+                    android:hint="0"
+                    android:padding="18dip"
+                    android:fontFamily="sans-serif-black"
+                    android:background="#D3D3D3"
+                    android:textColor="@color/black"
+                    android:textSize="15dp"/>
+
+                <EditText
+                    android:id="@+id/edit_text_hole2_guest1"
+                    android:layout_height="match_parent"
+                    android:layout_width="match_parent"
+                    android:hint="0"
+                    android:padding="18dip"
+                    android:fontFamily="sans-serif-black"
+                    android:background="#D3D3D3"
+                    android:textColor="@color/black"
+                    android:textSize="15dp"/>
+
+                <EditText
+                    android:id="@+id/edit_text_hole3_guest1"
+                    android:layout_height="match_parent"
+                    android:layout_width="match_parent"
+                    android:hint="0"
+                    android:padding="18dip"
+                    android:fontFamily="sans-serif-black"
+                    android:background="#D3D3D3"
+                    android:textColor="@color/black"
+                    android:textSize="15dp"/>
+
+                <EditText
+                    android:id="@+id/edit_text_hole4_guest1"
+                    android:layout_height="match_parent"
+                    android:layout_width="match_parent"
+                    android:hint="0"
+                    android:padding="18dip"
+                    android:fontFamily="sans-serif-black"
+                    android:background="#D3D3D3"
+                    android:textColor="@color/black"
+                    android:textSize="15dp"/>
+
+                <EditText
+                    android:id="@+id/edit_text_hole5_guest1"
+                    android:layout_height="match_parent"
+                    android:layout_width="match_parent"
+                    android:hint="0"
+                    android:padding="18dip"
+                    android:fontFamily="sans-serif-black"
+                    android:background="#D3D3D3"
+                    android:textColor="@color/black"
+                    android:textSize="15dp"/>
+
+                <EditText
+                    android:id="@+id/edit_text_hole6_guest1"
+                    android:layout_height="match_parent"
+                    android:layout_width="match_parent"
+                    android:hint="0"
+                    android:padding="18dip"
+                    android:fontFamily="sans-serif-black"
+                    android:background="#D3D3D3"
+                    android:textColor="@color/black"
+                    android:textSize="15dp"/>
+
+                <EditText
+                    android:id="@+id/edit_text_hole7_guest1"
+                    android:layout_height="match_parent"
+                    android:layout_width="match_parent"
+                    android:hint="0"
+                    android:padding="18dip"
+                    android:fontFamily="sans-serif-black"
+                    android:background="#D3D3D3"
+                    android:textColor="@color/black"
+                    android:textSize="15dp"/>
+
+                <EditText
+                    android:id="@+id/edit_text_hole8_guest1"
+                    android:layout_height="match_parent"
+                    android:layout_width="match_parent"
+                    android:hint="0"
+                    android:padding="18dip"
+                    android:fontFamily="sans-serif-black"
+                    android:background="#D3D3D3"
+                    android:textColor="@color/black"
+                    android:textSize="15dp"/>
+
+                <EditText
+                    android:id="@+id/edit_text_hole9_guest1"
+                    android:layout_height="match_parent"
+                    android:layout_width="match_parent"
+                    android:hint="0"
+                    android:padding="18dip"
+                    android:fontFamily="sans-serif-black"
+                    android:background="#D3D3D3"
+                    android:textColor="@color/black"
+                    android:textSize="15dp"/>
+
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/table_row_guest2"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/text_input_edit_text_guest2"
+                    android:layout_width="125dp"
+                    android:background="@color/white"
+                    android:padding="18dip"
+                    android:hint="Guest 2"
+                    android:fontFamily="sans-serif-black"
+                    android:textColor="@color/black"
+                    android:textSize="15dp"/>
+
+                <EditText
+                    android:id="@+id/edit_text_hole1_guest2"
+                    android:layout_height="match_parent"
+                    android:layout_width="match_parent"
+                    android:hint="0"
+                    android:padding="18dip"
+                    android:fontFamily="sans-serif-black"
+                    android:background="@color/white"
+                    android:textColor="@color/black"
+                    android:textSize="15dp"/>
+
+                <EditText
+                    android:id="@+id/edit_text_hole2_guest2"
+                    android:layout_height="match_parent"
+                    android:layout_width="match_parent"
+                    android:hint="0"
+                    android:padding="18dip"
+                    android:fontFamily="sans-serif-black"
+                    android:background="@color/white"
+                    android:textColor="@color/black"
+                    android:textSize="15dp"/>
+
+                <EditText
+                    android:id="@+id/edit_text_hole3_guest2"
+                    android:layout_height="match_parent"
+                    android:layout_width="match_parent"
+                    android:hint="0"
+                    android:padding="18dip"
+                    android:fontFamily="sans-serif-black"
+                    android:background="@color/white"
+                    android:textColor="@color/black"
+                    android:textSize="15dp"/>
+
+                <EditText
+                    android:id="@+id/edit_text_hole4_guest2"
+                    android:layout_height="match_parent"
+                    android:layout_width="match_parent"
+                    android:hint="0"
+                    android:padding="18dip"
+                    android:fontFamily="sans-serif-black"
+                    android:background="@color/white"
+                    android:textColor="@color/black"
+                    android:textSize="15dp"/>
+
+                <EditText
+                    android:id="@+id/edit_text_hole5_guest2"
+                    android:layout_height="match_parent"
+                    android:layout_width="match_parent"
+                    android:hint="0"
+                    android:padding="18dip"
+                    android:fontFamily="sans-serif-black"
+                    android:background="@color/white"
+                    android:textColor="@color/black"
+                    android:textSize="15dp"/>
+
+                <EditText
+                    android:id="@+id/edit_text_hole6_guest2"
+                    android:layout_height="match_parent"
+                    android:layout_width="match_parent"
+                    android:hint="0"
+                    android:padding="18dip"
+                    android:fontFamily="sans-serif-black"
+                    android:background="@color/white"
+                    android:textColor="@color/black"
+                    android:textSize="15dp"/>
+
+                <EditText
+                    android:id="@+id/edit_text_hole7_guest2"
+                    android:layout_height="match_parent"
+                    android:layout_width="match_parent"
+                    android:hint="0"
+                    android:padding="18dip"
+                    android:fontFamily="sans-serif-black"
+                    android:background="@color/white"
+                    android:textColor="@color/black"
+                    android:textSize="15dp"/>
+
+                <EditText
+                    android:id="@+id/edit_text_hole8_guest2"
+                    android:layout_height="match_parent"
+                    android:layout_width="match_parent"
+                    android:hint="0"
+                    android:padding="18dip"
+                    android:fontFamily="sans-serif-black"
+                    android:background="@color/white"
+                    android:textColor="@color/black"
+                    android:textSize="15dp"/>
+
+                <EditText
+                    android:id="@+id/edit_text_hole9_guest2"
+                    android:layout_height="match_parent"
+                    android:layout_width="match_parent"
+                    android:hint="0"
+                    android:padding="18dip"
+                    android:fontFamily="sans-serif-black"
+                    android:background="@color/white"
+                    android:textColor="@color/black"
+                    android:textSize="15dp"/>
+
+            </TableRow>
+
+            <TableRow
+                android:id="@+id/table_row_guest3"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="#D3D3D3">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/text_input_edit_text_guest3"
+                    android:layout_width="125dp"
+                    android:background="#D3D3D3"
+                    android:padding="18dip"
+                    android:hint="Guest 3"
+                    android:fontFamily="sans-serif-black"
+                    android:textColor="@color/black"
+                    android:textSize="15dp"/>
+
+                <EditText
+                    android:id="@+id/edit_text_hole1_guest3"
+                    android:layout_height="match_parent"
+                    android:layout_width="match_parent"
+                    android:hint="0"
+                    android:padding="18dip"
+                    android:fontFamily="sans-serif-black"
+                    android:background="#D3D3D3"
+                    android:textColor="@color/black"
+                    android:textSize="15dp"/>
+
+                <EditText
+                    android:id="@+id/edit_text_hole2_guest3"
+                    android:layout_height="match_parent"
+                    android:layout_width="match_parent"
+                    android:hint="0"
+                    android:padding="18dip"
+                    android:fontFamily="sans-serif-black"
+                    android:background="#D3D3D3"
+                    android:textColor="@color/black"
+                    android:textSize="15dp"/>
+
+                <EditText
+                    android:id="@+id/edit_text_hole3_guest3"
+                    android:layout_height="match_parent"
+                    android:layout_width="match_parent"
+                    android:hint="0"
+                    android:padding="18dip"
+                    android:fontFamily="sans-serif-black"
+                    android:background="#D3D3D3"
+                    android:textColor="@color/black"
+                    android:textSize="15dp"/>
+
+                <EditText
+                    android:id="@+id/edit_text_hole4_guest3"
+                    android:layout_height="match_parent"
+                    android:layout_width="match_parent"
+                    android:hint="0"
+                    android:padding="18dip"
+                    android:fontFamily="sans-serif-black"
+                    android:background="#D3D3D3"
+                    android:textColor="@color/black"
+                    android:textSize="15dp"/>
+
+                <EditText
+                    android:id="@+id/edit_text_hole5_guest3"
+                    android:layout_height="match_parent"
+                    android:layout_width="match_parent"
+                    android:hint="0"
+                    android:padding="18dip"
+                    android:fontFamily="sans-serif-black"
+                    android:background="#D3D3D3"
+                    android:textColor="@color/black"
+                    android:textSize="15dp"/>
+
+                <EditText
+                    android:id="@+id/edit_text_hole6_guest3"
+                    android:layout_height="match_parent"
+                    android:layout_width="match_parent"
+                    android:hint="0"
+                    android:padding="18dip"
+                    android:fontFamily="sans-serif-black"
+                    android:background="#D3D3D3"
+                    android:textColor="@color/black"
+                    android:textSize="15dp"/>
+
+                <EditText
+                    android:id="@+id/edit_text_hole7_guest3"
+                    android:layout_height="match_parent"
+                    android:layout_width="match_parent"
+                    android:hint="0"
+                    android:padding="18dip"
+                    android:fontFamily="sans-serif-black"
+                    android:background="#D3D3D3"
+                    android:textColor="@color/black"
+                    android:textSize="15dp"/>
+
+                <EditText
+                    android:id="@+id/edit_text_hole8_guest3"
+                    android:layout_height="match_parent"
+                    android:layout_width="match_parent"
+                    android:hint="0"
+                    android:padding="18dip"
+                    android:fontFamily="sans-serif-black"
+                    android:background="#D3D3D3"
+                    android:textColor="@color/black"
+                    android:textSize="15dp"/>
+
+                <EditText
+                    android:id="@+id/edit_text_hole9_guest3"
+                    android:layout_height="match_parent"
+                    android:layout_width="match_parent"
+                    android:hint="0"
+                    android:padding="18dip"
+                    android:fontFamily="sans-serif-black"
+                    android:background="#D3D3D3"
+                    android:textColor="@color/black"
+                    android:textSize="15dp"/>
+
+            </TableRow>
+
+        </TableLayout>
+
+    </HorizontalScrollView>
+
+    <GridLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="-375dp"
+        android:layout_marginBottom="60dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:columnCount="2"
+        android:rowCount="2">
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="0dp"
+            android:layout_height="125dp"
+            android:layout_weight="5"
+            app:cardBackgroundColor="#000f00"
+            android:layout_gravity="fill"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:layout_row="0"
+            android:layout_column="0"
+            android:layout_margin="10dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="5dp">
+
+                <TextView
+                    android:id="@+id/text_view_current_score_user"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:fontFamily="sans-serif-black"
+                    android:gravity="center"
+                    android:text="00"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+
+                <TextView
+                    android:id="@+id/text_view_current_score_username"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/text_view_current_score_user"
+                    android:layout_centerInParent="true"
+                    android:fontFamily="sans-serif-black"
+                    android:text="Username"
+                    android:textColor="@color/white"
+                    android:textSize="20dp" />
+
+            </RelativeLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="0dp"
+            android:layout_height="125dp"
+            android:layout_weight="5"
+            app:cardBackgroundColor="#000f00"
+            android:layout_gravity="fill"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:layout_row="1"
+            android:layout_column="1"
+            android:layout_margin="10dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="5dp">
+
+                <TextView
+                    android:id="@+id/text_view_current_score_guest3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:fontFamily="sans-serif-black"
+                    android:gravity="center"
+                    android:text="00"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+
+                <TextView
+                    android:id="@+id/text_view_current_score_guest3_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/text_view_current_score_guest3"
+                    android:layout_centerInParent="true"
+                    android:fontFamily="sans-serif-black"
+                    android:text="Guest 3"
+                    android:textColor="@color/white"
+                    android:textSize="20dp" />
+
+            </RelativeLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="0dp"
+            android:layout_height="125dp"
+            android:layout_weight="5"
+            app:cardBackgroundColor="#000f00"
+            android:layout_row="1"
+            android:layout_rowWeight="1"
+            android:layout_column="0"
+            android:layout_columnWeight="1"
+            android:layout_gravity="fill"
+            android:layout_margin="10dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="5dp">
+
+                <TextView
+                    android:id="@+id/text_view_current_score_guest2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:fontFamily="sans-serif-black"
+                    android:gravity="center"
+                    android:text="00"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+
+                <TextView
+                    android:id="@+id/text_view_current_score_guest2_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/text_view_current_score_guest2"
+                    android:layout_centerInParent="true"
+                    android:fontFamily="sans-serif-black"
+                    android:text="Guest 3"
+                    android:textColor="@color/white"
+                    android:textSize="20dp" />
+
+            </RelativeLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="0dp"
+            android:layout_height="125dp"
+            android:layout_weight="5"
+            app:cardBackgroundColor="#000f00"
+            android:layout_gravity="fill"
+            android:layout_columnWeight="1"
+            android:layout_rowWeight="1"
+            android:layout_row="0"
+            android:layout_column="1"
+            android:layout_margin="10dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="5dp">
+
+                <TextView
+                    android:id="@+id/text_view_current_score_guest1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:fontFamily="sans-serif-black"
+                    android:gravity="center"
+                    android:text="00"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+
+                <TextView
+                    android:id="@+id/text_view_current_score_guest1_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/text_view_current_score_guest1"
+                    android:layout_centerInParent="true"
+                    android:fontFamily="sans-serif-black"
+                    android:text="Guest 3"
+                    android:textColor="@color/white"
+                    android:textSize="20dp" />
+
+            </RelativeLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+
+    </GridLayout>
 
 </LinearLayout>
