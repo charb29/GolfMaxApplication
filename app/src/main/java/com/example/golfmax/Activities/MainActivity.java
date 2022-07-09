@@ -32,8 +32,8 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().hide();
         setContentView(R.layout.activity_main);
 
-        animLogo = AnimationUtils.loadAnimation(this,R.anim.top_logo_animation);
-        animSlogan = AnimationUtils.loadAnimation(this,R.anim.bottom_slogan_animation);
+        animLogo = AnimationUtils.loadAnimation(this, R.anim.top_logo_animation);
+        animSlogan = AnimationUtils.loadAnimation(this, R.anim.bottom_slogan_animation);
         ivLogo = findViewById(R.id.image_view_logo_icon);
         tvSlogan = findViewById(R.id.text_view_slogan);
         ivLogo.setAnimation(animLogo);
