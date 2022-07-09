@@ -32,6 +32,9 @@ public interface UserService {
     @GET("/scores/user/{id}")
     Call<List<Score>> getScores(@Path("id") long id);
 
+    @GET("/courses/{id}")
+    Call<Course> getCourseById(@Path("id") long id);
+
     @GET("/courses")
     Call<List<Course>> getCourseNames();
 
