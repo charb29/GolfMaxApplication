@@ -4,8 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
+import android.view.View;
 import android.view.WindowManager;
 import android.widget.EditText;
+import android.widget.TableRow;
 import android.widget.TextView;
 
 import com.example.golfmax.Backend.ApiClient;
@@ -15,6 +18,7 @@ import com.example.golfmax.R;
 import com.example.golfmax.RecyclerViews.PlayRoundRV;
 import com.google.android.material.textfield.TextInputEditText;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -33,7 +37,7 @@ public class Front9Activity extends AppCompatActivity {
     DBHelper db;
     Course course;
     long courseId;
-    List<Course> courseList;
+    int userSumOfHoles;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,30 +77,30 @@ public class Front9Activity extends AppCompatActivity {
         etGuest1Hole3 = findViewById(R.id.edit_text_hole3_guest1);
         etGuest1Hole4 = findViewById(R.id.edit_text_hole4_guest1);
         etGuest1Hole5 = findViewById(R.id.edit_text_hole5_guest1);
-        etGuest1Hole6 = findViewById(R.id.edit_text_hole5_guest1);
-        etGuest1Hole7 = findViewById(R.id.edit_text_hole6_guest1);
-        etGuest1Hole8 = findViewById(R.id.edit_text_hole7_guest1);
-        etGuest1Hole9 = findViewById(R.id.edit_text_hole8_guest1);
+        etGuest1Hole6 = findViewById(R.id.edit_text_hole6_guest1);
+        etGuest1Hole7 = findViewById(R.id.edit_text_hole7_guest1);
+        etGuest1Hole8 = findViewById(R.id.edit_text_hole8_guest1);
+        etGuest1Hole9 = findViewById(R.id.edit_text_hole9_guest1);
 
         etGuest2Hole1 = findViewById(R.id.edit_text_hole1_guest2);
         etGuest2Hole2 = findViewById(R.id.edit_text_hole2_guest2);
         etGuest2Hole3 = findViewById(R.id.edit_text_hole3_guest2);
         etGuest2Hole4 = findViewById(R.id.edit_text_hole4_guest2);
         etGuest2Hole5 = findViewById(R.id.edit_text_hole5_guest2);
-        etGuest2Hole6 = findViewById(R.id.edit_text_hole5_guest2);
-        etGuest2Hole7 = findViewById(R.id.edit_text_hole6_guest2);
-        etGuest2Hole8 = findViewById(R.id.edit_text_hole7_guest2);
-        etGuest2Hole9 = findViewById(R.id.edit_text_hole8_guest2);
+        etGuest2Hole6 = findViewById(R.id.edit_text_hole6_guest2);
+        etGuest2Hole7 = findViewById(R.id.edit_text_hole7_guest2);
+        etGuest2Hole8 = findViewById(R.id.edit_text_hole8_guest2);
+        etGuest2Hole9 = findViewById(R.id.edit_text_hole9_guest2);
 
         etGuest3Hole1 = findViewById(R.id.edit_text_hole1_guest3);
         etGuest3Hole2 = findViewById(R.id.edit_text_hole2_guest3);
         etGuest3Hole3 = findViewById(R.id.edit_text_hole3_guest3);
         etGuest3Hole4 = findViewById(R.id.edit_text_hole4_guest3);
         etGuest3Hole5 = findViewById(R.id.edit_text_hole5_guest3);
-        etGuest3Hole6 = findViewById(R.id.edit_text_hole5_guest3);
-        etGuest3Hole7 = findViewById(R.id.edit_text_hole6_guest3);
-        etGuest3Hole8 = findViewById(R.id.edit_text_hole7_guest3);
-        etGuest3Hole9 = findViewById(R.id.edit_text_hole8_guest3);
+        etGuest3Hole6 = findViewById(R.id.edit_text_hole6_guest3);
+        etGuest3Hole7 = findViewById(R.id.edit_text_hole7_guest3);
+        etGuest3Hole8 = findViewById(R.id.edit_text_hole8_guest3);
+        etGuest3Hole9 = findViewById(R.id.edit_text_hole9_guest3);
 
         tvCurrentScoreUser = findViewById(R.id.text_view_current_score_user);
         tvCurrentScoreGuest1 = findViewById(R.id.text_view_current_score_guest1);
@@ -109,6 +113,58 @@ public class Front9Activity extends AppCompatActivity {
         tvCurrentScoreGuest3_name = findViewById(R.id.text_view_current_score_guest3_name);
 
         tvUsername.setText(LoginActivity.username);
+        tvCurrentScoreUser_name.setText(LoginActivity.username);
+
+        List<EditText> userScoresPerHole = new ArrayList<>();
+        userScoresPerHole.add(etUserHole1);
+        userScoresPerHole.add(etUserHole2);
+        userScoresPerHole.add(etUserHole3);
+        userScoresPerHole.add(etUserHole4);
+        userScoresPerHole.add(etUserHole5);
+        userScoresPerHole.add(etUserHole6);
+        userScoresPerHole.add(etUserHole7);
+        userScoresPerHole.add(etUserHole8);
+        userScoresPerHole.add(etUserHole9);
+
+        tiEtGuest1.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
+                tvCurrentScoreGuest1_name.setText(tiEtGuest1.getText().toString());
+                return true;
+            }
+        });
+
+        tiEtGuest2.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
+                tvCurrentScoreGuest2_name.setText(tiEtGuest2.getText().toString());
+                return true;
+            }
+        });
+
+        tiEtGuest3.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
+                tvCurrentScoreGuest3_name.setText(tiEtGuest3.getText().toString());
+                return true;
+            }
+        });
+
+        for (int j = 0; j < userScoresPerHole.size(); j++) {
+            userScoresPerHole.get(j).setOnEditorActionListener(new TextView.OnEditorActionListener() {
+                @Override
+                public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
+
+                    String userScore = userScoresPerHole.get(i).getText().toString();
+                    userSumOfHoles += Integer.parseInt(userScore);
+                    tvCurrentScoreUser.setText(String.valueOf(userSumOfHoles));
+                    i++;
+
+                    return true;
+                }
+            });
+        }
+
         db = new DBHelper(this);
         course = new Course();
         course.setId(db.getCourseId(PlayRoundRV.courseNameForTextView));
