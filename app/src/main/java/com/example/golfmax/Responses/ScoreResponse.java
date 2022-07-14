@@ -1,49 +1,56 @@
 package com.example.golfmax.Responses;
 
+import com.example.golfmax.Models.Course;
+import com.example.golfmax.Models.User;
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 public class ScoreResponse {
 
-    private String courseName;
-    private long userId;
-    private int score;
-    private double courseRating, slopeRating;
+    @SerializedName("course")
+    @Expose
+    private Course course;
 
-    public String getCourseName() {
-        return courseName;
+    @SerializedName("user")
+    @Expose
+    private User user;
+
+    @SerializedName("userScore")
+    private String userScore;
+
+
+    public ScoreResponse(Course course, String userScore, User user) {
+        this.userScore = userScore;
+        this.course = course;
+        this.user = user;
     }
 
-    public void setCourseName(String courseName) {
-        this.courseName = courseName;
+    public Course getCourse() {
+        return course;
     }
 
-    public long getUserId() {
-        return userId;
+    public void setCourse(Course course) {
+        this.course = course;
     }
 
-    public void setUserId(long userId) {
-        this.userId = userId;
+    public String getUserScore() {
+        return userScore;
     }
 
-    public int getScore() {
-        return score;
+    public User getUser() {
+        return user;
     }
 
-    public void setScore(int score) {
-        this.score = score;
+    public void setUser(User user) {
+        this.user = user;
     }
 
-    public double getCourseRating() {
-        return courseRating;
-    }
-
-    public void setCourseRating(double courseRating) {
-        this.courseRating = courseRating;
-    }
-
-    public double getSlopeRating() {
-        return slopeRating;
-    }
-
-    public void setSlopeRating(double slopeRating) {
-        this.slopeRating = slopeRating;
+    @Override
+    public String toString() {
+        return "Scores(" +
+                "courseName='" + course + '\'' +
+                "userScore='" + userScore + '\'' +
+                "username='" + user + '\'' +
+                ')';
     }
 }

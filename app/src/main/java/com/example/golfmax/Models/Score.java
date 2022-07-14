@@ -13,14 +13,9 @@ public class Score {
     @Expose
     private User user;
 
-    @SerializedName("courseName")
-    private String courseName;
-
     @SerializedName("userScore")
     private String userScore;
 
-    @SerializedName("username")
-    private String username;
 
     public Score(Course course, String userScore, User user) {
         this.userScore = userScore;
@@ -36,20 +31,8 @@ public class Score {
         this.course = course;
     }
 
-    public String getCourseName() {
-        return courseName;
-    }
-
-    public void setCourseName(String courseName) {
-        this.courseName = courseName;
-    }
-
     public String getUserScore() {
         return userScore;
-    }
-
-    public void setUserScore(String userScore) {
-        this.userScore = userScore;
     }
 
     public User getUser() {

@@ -24,6 +24,9 @@ import com.example.golfmax.Models.Score;
 import com.example.golfmax.R;
 import com.example.golfmax.RecyclerViews.CourseLeaderboardRV;
 import com.example.golfmax.RecyclerViews.CourseListRV;
+import com.example.golfmax.Requests.CourseRequest;
+import com.example.golfmax.Requests.ScoreRequest;
+import com.example.golfmax.Responses.ScoreResponse;
 import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
@@ -42,11 +45,10 @@ public class CourseLeaderboardActivity extends AppCompatActivity {
     ColorDrawable colorDrawable;
     CourseLeaderboardRV courseLeaderboardRV;
     RecyclerView recyclerView;
-    List<Score> scoreList;
+    List<ScoreResponse> scoreList;
     TextView tvCourseName;
     DBHelper db;
     Course course;
-    long courseId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,6 +67,55 @@ public class CourseLeaderboardActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         navigationView = (NavigationView) findViewById(R.id.navigationView);
 
+        tvCourseName = findViewById(R.id.text_view_course_name);
+        tvCourseName.setText(CourseListRV.courseNameForTextView);
+        long courseId = getCourseIdByCourseName(CourseListRV.courseNameForTextView);
+
+        setNavigationView(navigationView);
+        populateCourseLeaderBoardRVWithCourseId(courseId);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem menuItem) {
+        if (actionBarDrawerToggle.onOptionsItemSelected(menuItem)) {
+            return true;
+        }
+        return super.onOptionsItemSelected(menuItem);
+    }
+
+    private long getCourseIdByCourseName(String courseName) {
+        db = new DBHelper(this);
+        course = new Course();
+        course.setId(db.getCourseId(courseName));
+        long courseId = course.getId();
+
+        return courseId;
+    }
+
+    private void populateCourseLeaderBoardRVWithCourseId(long courseId) {
+        scoreList = new ArrayList<>();
+        recyclerView = (RecyclerView) findViewById(R.id.recycler_view_course_leaderboard);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(layoutManager);
+
+        Call<List<ScoreResponse>> scoreResponseCall = ApiClient.getUserService().getScoresByCourseId(courseId);
+        scoreResponseCall.enqueue(new Callback<List<ScoreResponse>>() {
+            @Override
+            public void onResponse(Call<List<ScoreResponse>> call, Response<List<ScoreResponse>> response) {
+                scoreList = response.body();
+                Log.i("TAG ====> ", scoreList.toString());
+                courseLeaderboardRV = new CourseLeaderboardRV(getApplicationContext(), scoreList);
+                recyclerView.setAdapter(courseLeaderboardRV);
+            }
+
+            @Override
+            public void onFailure(Call<List<ScoreResponse>> call, Throwable t) {
+                Log.e("FAILED ====> ", t.toString());
+            }
+        });
+    }
+
+    private void setNavigationView(@NonNull NavigationView navigationView) {
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
@@ -97,40 +148,5 @@ public class CourseLeaderboardActivity extends AppCompatActivity {
                 return false;
             }
         });
-
-        tvCourseName = findViewById(R.id.text_view_course_name);
-        tvCourseName.setText(CourseListRV.courseNameForTextView);
-
-        scoreList = new ArrayList<>();
-        recyclerView = (RecyclerView) findViewById(R.id.recycler_view_course_leaderboard);
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(layoutManager);
-        db = new DBHelper(this);
-        course = new Course();
-        course.setId(db.getCourseId(CourseListRV.courseNameForTextView));
-        courseId = course.getId();
-
-        ApiClient.getUserService().getScoresByCourseId(courseId).enqueue(new Callback<List<Score>>() {
-            @Override
-            public void onResponse(Call<List<Score>> call, Response<List<Score>> response) {
-                scoreList = response.body();
-                Log.i("TAG ====> ", scoreList.toString());
-                courseLeaderboardRV = new CourseLeaderboardRV(getApplicationContext(), scoreList);
-                recyclerView.setAdapter(courseLeaderboardRV);
-            }
-
-            @Override
-            public void onFailure(Call<List<Score>> call, Throwable t) {
-                Log.e("FAILED ====> ", t.toString());
-            }
-        });
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem menuItem) {
-        if (actionBarDrawerToggle.onOptionsItemSelected(menuItem)) {
-            return true;
-        }
-        return super.onOptionsItemSelected(menuItem);
     }
 }

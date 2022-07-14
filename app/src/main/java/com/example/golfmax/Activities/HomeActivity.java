@@ -18,6 +18,7 @@ import com.example.golfmax.Models.PlayerStatistics;
 import com.example.golfmax.Models.User;
 import com.example.golfmax.Responses.LoginResponse;
 import com.example.golfmax.R;
+import com.example.golfmax.Responses.PlayerStatisticsResponse;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -31,7 +32,6 @@ public class HomeActivity extends AppCompatActivity {
     PlayerStatistics statistics;
     DBHelper db;
     User user;
-    long userId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,47 +55,26 @@ public class HomeActivity extends AppCompatActivity {
 
         tvHandicapIndex = findViewById(R.id.text_view_handicap_index);
         tvAverageScore = findViewById(R.id.text_view_average_score);
+        long userId = getUserIdByUsername(LoginActivity.username);
 
+        getUserStatsByUserId(userId);
+        startNewActivity(cvMyScores, cvLeaderboard, cvUserProfile, cvPlayRound);
+    }
+
+    private long getUserIdByUsername(String username) {
         db = new DBHelper(this);
         user = new User();
+        user.setId(db.getUserId(username));
+        long userId = user.getId();
+
+        return userId;
+    }
+
+    private void getUserStatsByUserId(long userId) {
         statistics = new PlayerStatistics();
 
-        user.setId(db.getUserId(LoginActivity.username));
-        userId = user.getId();
-
-        cvMyScores.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(HomeActivity.this, MyScoresActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        cvLeaderboard.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(HomeActivity.this, CourseListActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        cvUserProfile.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(HomeActivity.this, UserProfileActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        cvPlayRound.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(HomeActivity.this, PlayRoundActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        ApiClient.getUserService().getStatsByUserId(userId).enqueue(new Callback<PlayerStatistics>() {
+        Call<PlayerStatistics> playerStatisticsCall = ApiClient.getUserService().getStatsByUserId(userId);
+        playerStatisticsCall.enqueue(new Callback<PlayerStatistics>() {
             @Override
             public void onResponse(Call<PlayerStatistics> call, Response<PlayerStatistics> response) {
                 statistics = response.body();
@@ -107,6 +86,40 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<PlayerStatistics> call, Throwable t) {
                 Log.e("ERROR ====> ", t.toString());
+            }
+        });
+    }
+
+    private void startNewActivity(CardView myScores, CardView leaderBoard, CardView userProfile, CardView playRound) {
+        myScores.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomeActivity.this, MyScoresActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        leaderBoard.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomeActivity.this, CourseListActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        userProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(HomeActivity.this, UserProfileActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        playRound.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(HomeActivity.this, PlayRoundActivity.class);
+                startActivity(intent);
             }
         });
     }

@@ -14,15 +14,16 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.golfmax.Activities.LoginActivity;
 import com.example.golfmax.Models.Score;
 import com.example.golfmax.R;
+import com.example.golfmax.Responses.ScoreResponse;
 
 import java.util.List;
 
 public class CourseLeaderboardRV extends RecyclerView.Adapter<CourseLeaderboardRV.MyViewHolder> {
 
     private Context context;
-    private List<Score> scoreList;
+    private List<ScoreResponse> scoreList;
 
-    public CourseLeaderboardRV(Context context, List<Score> scoreList) {
+    public CourseLeaderboardRV(Context context, List<ScoreResponse> scoreList) {
         this.context = context;
         this.scoreList = scoreList;
     }

@@ -57,6 +57,19 @@ public class CourseListActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         navigationView = (NavigationView) findViewById(R.id.navigationView);
 
+        setNavigationView(navigationView);
+        populateCourseListRv();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem menuItem) {
+        if (actionBarDrawerToggle.onOptionsItemSelected(menuItem)) {
+            return true;
+        }
+        return super.onOptionsItemSelected(menuItem);
+    }
+
+    private void setNavigationView(@NonNull NavigationView navigationView) {
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
@@ -84,7 +97,9 @@ public class CourseListActivity extends AppCompatActivity {
                 return false;
             }
         });
+    }
 
+    private void populateCourseListRv() {
         courseList = new ArrayList<>();
         courseNameRv = (RecyclerView) findViewById(R.id.recycler_view_course_list);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
@@ -104,13 +119,5 @@ public class CourseListActivity extends AppCompatActivity {
                 Log.e("FAILED ====> ", t.toString());
             }
         });
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem menuItem) {
-        if (actionBarDrawerToggle.onOptionsItemSelected(menuItem)) {
-            return true;
-        }
-        return super.onOptionsItemSelected(menuItem);
     }
 }

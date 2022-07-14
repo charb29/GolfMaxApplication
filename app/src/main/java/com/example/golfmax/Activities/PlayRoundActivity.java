@@ -57,6 +57,19 @@ public class PlayRoundActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         navigationView = (NavigationView) findViewById(R.id.navigation_view);
 
+        setNavigationView(navigationView);
+        populateCourseNameRV();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem menuItem) {
+        if (actionBarDrawerToggle.onOptionsItemSelected(menuItem)) {
+            return true;
+        }
+        return super.onOptionsItemSelected(menuItem);
+    }
+
+    private void setNavigationView(@NonNull NavigationView navigationView) {
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
@@ -84,13 +97,16 @@ public class PlayRoundActivity extends AppCompatActivity {
                 return false;
             }
         });
+    }
 
+    private void populateCourseNameRV() {
         courseList = new ArrayList<>();
         courseNameRV = (RecyclerView) findViewById(R.id.recycler_view_course_list);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         courseNameRV.setLayoutManager(layoutManager);
 
-        ApiClient.getUserService().getCourseNames().enqueue(new Callback<List<Course>>() {
+        Call<List<Course>> courseCall = ApiClient.getUserService().getCourseNames();
+        courseCall.enqueue(new Callback<List<Course>>() {
             @Override
             public void onResponse(Call<List<Course>> call, Response<List<Course>> response) {
                 courseList = response.body();
@@ -104,13 +120,5 @@ public class PlayRoundActivity extends AppCompatActivity {
                 Log.e("FAILED ====> ", t.toString());
             }
         });
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem menuItem) {
-        if (actionBarDrawerToggle.onOptionsItemSelected(menuItem)) {
-            return true;
-        }
-        return super.onOptionsItemSelected(menuItem);
     }
 }

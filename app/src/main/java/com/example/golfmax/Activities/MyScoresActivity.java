@@ -42,7 +42,6 @@ public class MyScoresActivity extends AppCompatActivity {
     User user;
     ActionBar actionBar;
     ColorDrawable colorDrawable;
-    long userId;
     NavigationView navigationView;
 
     @Override
@@ -61,7 +60,30 @@ public class MyScoresActivity extends AppCompatActivity {
         actionBarDrawerToggle.syncState();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         navigationView = (NavigationView) findViewById(R.id.navigation_view);
+        long userId = getUserIdByUsername(LoginActivity.username);
 
+        setNavigationView(navigationView);
+        getScoresByUserId(userId);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem menuItem) {
+        if (actionBarDrawerToggle.onOptionsItemSelected(menuItem)) {
+            return true;
+        }
+        return super.onOptionsItemSelected(menuItem);
+    }
+
+    private long getUserIdByUsername(String username) {
+        db = new DBHelper(this);
+        user = new User();
+        user.setId(db.getUserId(LoginActivity.username));
+        long userId = user.getId();
+
+        return userId;
+    }
+
+    private void setNavigationView(@NonNull NavigationView navigationView) {
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
@@ -89,17 +111,16 @@ public class MyScoresActivity extends AppCompatActivity {
                 return false;
             }
         });
+    }
 
+    private void getScoresByUserId(long userId) {
         scoreList = new ArrayList<>();
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view_my_scores);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
-        db = new DBHelper(this);
-        user = new User();
-        user.setId(db.getUserId(LoginActivity.username));
-        userId = user.getId();
 
-        ApiClient.getUserService().getScores(userId).enqueue(new Callback<List<Score>>() {
+        Call<List<Score>> scoreCall = ApiClient.getUserService().getScoresByUserId(userId);
+        scoreCall.enqueue(new Callback<List<Score>>() {
             @Override
             public void onResponse(Call<List<Score>> call, Response<List<Score>> response) {
                 scoreList = response.body();
@@ -113,13 +134,5 @@ public class MyScoresActivity extends AppCompatActivity {
                 Log.e("FAILED ====> ", t.toString());
             }
         });
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem menuItem) {
-        if (actionBarDrawerToggle.onOptionsItemSelected(menuItem)) {
-            return true;
-        }
-        return super.onOptionsItemSelected(menuItem);
     }
 }

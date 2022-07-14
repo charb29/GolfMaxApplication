@@ -77,7 +77,7 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-    public void loginUser(LoginRequest loginRequest) {
+    private void loginUser(LoginRequest loginRequest) {
         Call<LoginResponse> loginResponseCall = ApiClient.getUserService().loginUser(loginRequest);
         loginResponseCall.enqueue(new Callback<LoginResponse>() {
 

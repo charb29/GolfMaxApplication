@@ -115,17 +115,6 @@ public class Front9Activity extends AppCompatActivity {
         tvUsername.setText(LoginActivity.username);
         tvCurrentScoreUser_name.setText(LoginActivity.username);
 
-        List<EditText> userScoresPerHole = new ArrayList<>();
-        userScoresPerHole.add(etUserHole1);
-        userScoresPerHole.add(etUserHole2);
-        userScoresPerHole.add(etUserHole3);
-        userScoresPerHole.add(etUserHole4);
-        userScoresPerHole.add(etUserHole5);
-        userScoresPerHole.add(etUserHole6);
-        userScoresPerHole.add(etUserHole7);
-        userScoresPerHole.add(etUserHole8);
-        userScoresPerHole.add(etUserHole9);
-
         tiEtGuest1.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
@@ -150,20 +139,6 @@ public class Front9Activity extends AppCompatActivity {
             }
         });
 
-        for (int j = 0; j < userScoresPerHole.size(); j++) {
-            userScoresPerHole.get(j).setOnEditorActionListener(new TextView.OnEditorActionListener() {
-                @Override
-                public boolean onEditorAction(TextView textView, int i, KeyEvent keyEvent) {
-
-                    String userScore = userScoresPerHole.get(i).getText().toString();
-                    userSumOfHoles += Integer.parseInt(userScore);
-                    tvCurrentScoreUser.setText(String.valueOf(userSumOfHoles));
-                    i++;
-
-                    return true;
-                }
-            });
-        }
 
         db = new DBHelper(this);
         course = new Course();
@@ -194,4 +169,6 @@ public class Front9Activity extends AppCompatActivity {
             }
         });
     }
+
+    
 }

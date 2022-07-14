@@ -42,7 +42,6 @@ public class UserProfileActivity extends AppCompatActivity {
     TextView tvUsername, tvRoundsPlayed;
     TextInputEditText tiUsername, tiEmail, tiPassword;
     Button btnUpdateInfo;
-    long userId;
     User user;
     DBHelper db;
     PlayerStatistics statistics;
@@ -63,7 +62,65 @@ public class UserProfileActivity extends AppCompatActivity {
         actionBarDrawerToggle.syncState();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         navigationView = (NavigationView) findViewById(R.id.navigationView);
+        long userId = getUserIdByUsername(LoginActivity.username);
 
+        tvUsername = findViewById(R.id.text_view_username);
+        tvRoundsPlayed = findViewById(R.id.text_view_rounds_played);
+        tiUsername = findViewById(R.id.text_input_username);
+        tiEmail = findViewById(R.id.text_input_email);
+        tiPassword = findViewById(R.id.text_input_password);
+        btnUpdateInfo = findViewById(R.id.button_update_info);
+
+        setNavigationView(navigationView);
+        getUserInfoById(userId);
+        getStatsByUserId(userId);
+
+        btnUpdateInfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                user.setUsername(tiUsername.getText().toString());
+                user.setPassword(tiPassword.getText().toString());
+                user.setEmail(tiEmail.getText().toString());
+
+                user.getUsername();
+                user.getPassword();
+                user.getEmail();
+                updateUserInfo(user);
+            }
+        });
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem menuItem) {
+        if (actionBarDrawerToggle.onOptionsItemSelected(menuItem)) {
+            return true;
+        }
+        return super.onOptionsItemSelected(menuItem);
+    }
+
+    private void updateUserInfo(User user) {
+        Call<UserResponse> userResponseCall = ApiClient.getUserService().updateUserInfo(user.getId(), user);
+        userResponseCall.enqueue(new Callback<UserResponse>() {
+            @Override
+            public void onResponse(Call<UserResponse> call, Response<UserResponse> response) {
+                if (response.isSuccessful()) {
+                    Toast.makeText(UserProfileActivity.this, "User info update successful.", Toast.LENGTH_SHORT).show();
+                    Log.i("USER INFO ====> ", response.toString());
+                }
+                else {
+                    Toast.makeText(UserProfileActivity.this,"Failed.", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<UserResponse> call, Throwable t) {
+                Log.e("FAILURE ====> ", t.toString());
+            }
+        });
+    }
+
+    private void setNavigationView(@NonNull NavigationView navigationView) {
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
@@ -91,23 +148,18 @@ public class UserProfileActivity extends AppCompatActivity {
                 return false;
             }
         });
+    }
 
-        tvUsername = findViewById(R.id.text_view_username);
-        tvRoundsPlayed = findViewById(R.id.text_view_rounds_played);
-
-        tiUsername = findViewById(R.id.text_input_username);
-        tiEmail = findViewById(R.id.text_input_email);
-        tiPassword = findViewById(R.id.text_input_password);
-
-        btnUpdateInfo = findViewById(R.id.button_update_info);
-
+    private long getUserIdByUsername(String username) {
         db = new DBHelper(this);
         user = new User();
-        statistics = new PlayerStatistics();
-
         user.setId(db.getUserId(LoginActivity.username));
-        userId = user.getId();
+        long userId = user.getId();
 
+        return userId;
+    }
+
+    private void getUserInfoById(long userId) {
         ApiClient.getUserService().getUserInfoById(userId).enqueue(new Callback<User>() {
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
@@ -124,7 +176,9 @@ public class UserProfileActivity extends AppCompatActivity {
                 Log.e("ERROR ====> ", t.toString());
             }
         });
+    }
 
+    private void getStatsByUserId(long userId) {
         ApiClient.getUserService().getStatsByUserId(userId).enqueue(new Callback<PlayerStatistics>() {
             @Override
             public void onResponse(Call<PlayerStatistics> call, Response<PlayerStatistics> response) {
@@ -136,50 +190,6 @@ public class UserProfileActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<PlayerStatistics> call, Throwable t) {
                 Log.e("ERROR ====> ", t.toString());
-            }
-        });
-
-        btnUpdateInfo.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                user.setUsername(tiUsername.getText().toString());
-                user.setPassword(tiPassword.getText().toString());
-                user.setEmail(tiEmail.getText().toString());
-
-                user.getUsername();
-                user.getPassword();
-                user.getEmail();
-                updateUserInfo(user);
-            }
-        });
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem menuItem) {
-        if (actionBarDrawerToggle.onOptionsItemSelected(menuItem)) {
-            return true;
-        }
-        return super.onOptionsItemSelected(menuItem);
-    }
-
-    public void updateUserInfo(User user) {
-        Call<UserResponse> userResponseCall = ApiClient.getUserService().updateUserInfo(user.getId(), user);
-        userResponseCall.enqueue(new Callback<UserResponse>() {
-            @Override
-            public void onResponse(Call<UserResponse> call, Response<UserResponse> response) {
-                if (response.isSuccessful()) {
-                    Toast.makeText(UserProfileActivity.this, "User info update successful.", Toast.LENGTH_SHORT).show();
-                    Log.i("USER INFO ====> ", response.toString());
-                }
-                else {
-                    Toast.makeText(UserProfileActivity.this,"Failed.", Toast.LENGTH_SHORT).show();
-                }
-            }
-
-            @Override
-            public void onFailure(Call<UserResponse> call, Throwable t) {
-                Log.e("FAILURE ====> ", t.toString());
             }
         });
     }

@@ -4,12 +4,14 @@ import com.example.golfmax.Models.Course;
 import com.example.golfmax.Models.PlayerStatistics;
 import com.example.golfmax.Models.User;
 import com.example.golfmax.Requests.LoginRequest;
+import com.example.golfmax.Requests.ScoreRequest;
 import com.example.golfmax.Requests.UserRequest;
 import com.example.golfmax.Responses.LoginResponse;
 import com.example.golfmax.Requests.RegistrationRequest;
 import com.example.golfmax.Responses.PlayerStatisticsResponse;
 import com.example.golfmax.Responses.RegistrationResponse;
 import com.example.golfmax.Models.Score;
+import com.example.golfmax.Responses.ScoreResponse;
 import com.example.golfmax.Responses.UserResponse;
 
 import java.util.List;
@@ -30,7 +32,7 @@ public interface UserService {
     Call<RegistrationResponse> registerUser(@Body RegistrationRequest registrationRequest);
 
     @GET("/scores/user/{id}")
-    Call<List<Score>> getScores(@Path("id") long id);
+    Call<List<Score>> getScoresByUserId(@Path("id") long id);
 
     @GET("/courses/{id}")
     Call<Course> getCourseById(@Path("id") long id);
@@ -39,7 +41,7 @@ public interface UserService {
     Call<List<Course>> getCourseNames();
 
     @GET("/scores/course/{id}")
-    Call<List<Score>> getScoresByCourseId(@Path("id") long id);
+    Call<List<ScoreResponse>> getScoresByCourseId(@Path("id") long id);
 
     @GET("users/{id}")
     Call<User> getUserInfoById(@Path("id") long id);
