@@ -12,6 +12,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Toast;
 
+
 import com.example.golfmaxfinal.R;
 import com.example.golfmaxfinal.backend.ApiClient;
 import com.example.golfmaxfinal.contracts.RegistrationContract;
@@ -20,12 +21,15 @@ import com.example.golfmaxfinal.models.User;
 import com.example.golfmaxfinal.presenters.RegistrationPresenter;
 import com.example.golfmaxfinal.requests.RegistrationRequest;
 import com.example.golfmaxfinal.responses.RegistrationResponse;
+import com.google.android.material.textfield.TextInputLayout;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class RegistrationActivity extends Activity implements RegistrationContract.View {
+
+    TextInputLayout tilUsername, tilEmail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +42,9 @@ public class RegistrationActivity extends Activity implements RegistrationContra
         User user = new User("", "", "");
         binding.setUser(user);
         binding.setPresenter(presenter);
+
+        tilUsername = (TextInputLayout) findViewById(R.id.text_input_layout_username);
+        tilEmail = (TextInputLayout) findViewById(R.id.text_input_layout_email);
     }
 
     @Override
@@ -65,6 +72,8 @@ public class RegistrationActivity extends Activity implements RegistrationContra
                     finish();
                 }
                 else {
+                    tilUsername.setError("Existing username.");
+                    tilEmail.setError("Existing email.");
                     Toast.makeText(RegistrationActivity.this, "Registration failed.", Toast.LENGTH_SHORT).show();
                 }
             }

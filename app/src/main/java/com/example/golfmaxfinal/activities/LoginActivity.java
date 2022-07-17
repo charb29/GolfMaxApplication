@@ -6,6 +6,7 @@ import androidx.databinding.DataBindingUtil;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
@@ -21,12 +22,15 @@ import com.example.golfmaxfinal.databinding.ActivityLoginBinding;
 import com.example.golfmaxfinal.presenters.LoginPresenter;
 import com.example.golfmaxfinal.requests.LoginRequest;
 import com.example.golfmaxfinal.responses.LoginResponse;
+import com.google.android.material.textfield.TextInputLayout;
 
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 public class LoginActivity extends Activity implements LoginContract.View {
+
+    TextInputLayout tilUsername, tilPassword;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +43,9 @@ public class LoginActivity extends Activity implements LoginContract.View {
         User user = new User("", "", null);
         binding.setUser(user);
         binding.setPresenter(presenter);
+
+        tilUsername = (TextInputLayout) findViewById(R.id.text_input_layout_username);
+        tilPassword = (TextInputLayout) findViewById(R.id.text_input_layout_password);
     }
 
     @Override
@@ -68,6 +75,8 @@ public class LoginActivity extends Activity implements LoginContract.View {
                     finish();
                 }
                 else {
+                    tilUsername.setError("Enter a valid username.");
+                    tilPassword.setError("Enter a valid password.");
                     Toast.makeText(LoginActivity.this, "Login failed. Invalid username or password.", Toast.LENGTH_SHORT).show();
                 }
             }
