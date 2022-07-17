@@ -65,7 +65,7 @@ public class DBHelper extends SQLiteOpenHelper {
             cursor.close();
         }
         db.close();
-
+        Log.i("DB USER ID ====> ", String.valueOf(id));
         return id;
     }
 

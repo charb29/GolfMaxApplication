@@ -31,6 +31,7 @@ import retrofit2.Response;
 public class LoginActivity extends Activity implements LoginContract.View {
 
     TextInputLayout tilUsername, tilPassword;
+    public static String username;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +54,7 @@ public class LoginActivity extends Activity implements LoginContract.View {
         LoginRequest loginRequest = new LoginRequest();
         loginRequest.setUsername(user.getUsername());
         loginRequest.setPassword(user.getPassword());
+        username = user.getUsername();
 
         ApiCallLogin(loginRequest);
     }
@@ -69,6 +71,8 @@ public class LoginActivity extends Activity implements LoginContract.View {
                     DBHelper db = new DBHelper(getApplicationContext());
 
                     Log.i("USER INFO FROM LOGIN > ", loginResponse.toString());
+                    User user = new User();
+                    user.setId(user.getId());
 
                     db.saveUser(loginResponse.getUsername(), loginResponse.getUserId());
                     startActivity(intent);
