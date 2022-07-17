@@ -50,9 +50,10 @@ public class DBHelper extends SQLiteOpenHelper {
         contentValues.put(userId, id);
         contentValues.put(user, username);
 
-        Log.i("DB SAVED USER > ", username + id);
+        Log.i("DB SAVED USER > ", "username: " + username + " " + "id: " + id);
 
         long result = db.insert(userTable, null, contentValues);
+
         return result;
     }
 
@@ -64,12 +65,12 @@ public class DBHelper extends SQLiteOpenHelper {
         long id = -1;
 
         if (cursor.moveToFirst()) {
-            id = cursor.getLong(0);
-            cursor.close();
+            do {
+                id = cursor.getLong(0);
+            } while (cursor.moveToNext());
         }
-        db.close();
-
         Log.i("DB USER ID ====> ", String.valueOf(id));
+        cursor.close();
 
         return id;
     }
@@ -86,6 +87,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
     public long getCourseId(String courseName) {
         Log.i("DB COURSE NAME ====> ", courseName);
+
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery("SELECT id FROM courses WHERE courseName = ?", new String[] {courseName});
         long id = -1;
