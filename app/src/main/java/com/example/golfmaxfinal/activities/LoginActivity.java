@@ -79,7 +79,6 @@ public class LoginActivity extends Activity implements LoginContract.View {
                 else {
                     tilUsername.setError("Enter a valid username.");
                     tilPassword.setError("Enter a valid password.");
-                    Toast.makeText(LoginActivity.this, "Login failed. Invalid username or password.", Toast.LENGTH_SHORT).show();
                 }
             }
 
