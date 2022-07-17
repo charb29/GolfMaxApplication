@@ -127,13 +127,18 @@
         <entry key="..\:/Users/laxlo/GolfMaxApplication/app/src/main/res/menu/popup_menu.xml" value="0.3859375" />
         <entry key="app/src/main/res/layout/activity_course_leaderboard.xml" value="0.19610507246376813" />
         <entry key="app/src/main/res/layout/activity_front9.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/activity_home.xml" value="0.125" />
+        <entry key="app/src/main/res/layout/activity_home.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_leaderboards.xml" value="0.19610507246376813" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.1398148148148148" />
         <entry key="app/src/main/res/layout/activity_registration.xml" value="0.3098958333333333" />
         <entry key="app/src/main/res/layout/activity_view_scores.xml" value="0.15070921985815602" />
         <entry key="app/src/main/res/layout/course_leaderboard_rv_item.xml" value="0.19610507246376813" />
         <entry key="app/src/main/res/layout/leaderboards_rv_item.xml" value="0.1" />
+        <entry key="app/src/main/res/menu/nav_menu_course_leaderboard.xml" value="0.3098958333333333" />
+        <entry key="app/src/main/res/menu/nav_menu_course_list.xml" value="0.4228515625" />
+        <entry key="app/src/main/res/menu/nav_menu_new_round.xml" value="0.30885416666666665" />
+        <entry key="app/src/main/res/menu/nav_menu_personal_scores.xml" value="0.3098958333333333" />
+        <entry key="app/src/main/res/menu/nav_menu_user_profile.xml" value="0.3098958333333333" />
         <entry key="app/src/main/res/menu/navigation_menu_course_leaderboard.xml" value="0.3098958333333333" />
         <entry key="app/src/main/res/menu/navigation_menu_leaderboard.xml" value="0.3098958333333333" />
       </map>
