@@ -39,7 +39,7 @@ public class RegistrationActivity extends Activity implements RegistrationContra
 
         ActivityRegistrationBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_registration);
         RegistrationPresenter presenter = new RegistrationPresenter(this, getApplicationContext());
-        User user = new User("", "", "");
+        User user = new User();
         binding.setUser(user);
         binding.setPresenter(presenter);
 

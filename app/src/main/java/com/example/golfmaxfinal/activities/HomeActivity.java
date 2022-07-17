@@ -30,7 +30,7 @@ public class HomeActivity extends Activity implements PlayerStatisticsContract.V
 
         ActivityHomeBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_home);
         PlayerStatisticsPresenter presenter = new PlayerStatisticsPresenter(this, getApplicationContext());
-
+        PlayerStatistics playerStatistics = new PlayerStatistics();
     }
 
     @Override

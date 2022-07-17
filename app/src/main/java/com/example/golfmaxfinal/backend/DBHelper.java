@@ -50,12 +50,15 @@ public class DBHelper extends SQLiteOpenHelper {
         contentValues.put(userId, id);
         contentValues.put(user, username);
 
+        Log.i("DB SAVED USER > ", username + id);
+
         long result = db.insert(userTable, null, contentValues);
         return result;
     }
 
     public long getUserId(String username) {
         Log.i("DB USERNAME ====> ", username);
+
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery("SELECT id FROM userScores WHERE username = ?", new String[] {username});
         long id = -1;
@@ -65,7 +68,9 @@ public class DBHelper extends SQLiteOpenHelper {
             cursor.close();
         }
         db.close();
+
         Log.i("DB USER ID ====> ", String.valueOf(id));
+
         return id;
     }
 

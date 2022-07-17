@@ -41,7 +41,7 @@ public class LoginActivity extends Activity implements LoginContract.View {
 
         ActivityLoginBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_login);
         LoginPresenter presenter = new LoginPresenter(this, getApplicationContext());
-        User user = new User("", "", null);
+        User user = new User();
         binding.setUser(user);
         binding.setPresenter(presenter);
 
@@ -54,7 +54,6 @@ public class LoginActivity extends Activity implements LoginContract.View {
         LoginRequest loginRequest = new LoginRequest();
         loginRequest.setUsername(user.getUsername());
         loginRequest.setPassword(user.getPassword());
-        username = user.getUsername();
 
         ApiCallLogin(loginRequest);
     }
@@ -71,10 +70,9 @@ public class LoginActivity extends Activity implements LoginContract.View {
                     DBHelper db = new DBHelper(getApplicationContext());
 
                     Log.i("USER INFO FROM LOGIN > ", loginResponse.toString());
-                    User user = new User();
-                    user.setId(user.getId());
 
-                    db.saveUser(loginResponse.getUsername(), loginResponse.getUserId());
+                    username = loginResponse.getUsername();
+                    db.saveUser(loginResponse.getUsername(), loginResponse.getId());
                     startActivity(intent);
                     finish();
                 }

@@ -7,7 +7,7 @@ public class LoginResponse implements Serializable {
     private String username;
     private String password;
     private String email;
-    private long userId;
+    private long id;
 
     public String getUsername() {
         return username;
@@ -33,12 +33,12 @@ public class LoginResponse implements Serializable {
         this.email = email;
     }
 
-    public long getUserId() {
-        return userId;
+    public long getId() {
+        return id;
     }
 
-    public void setUserId(long userId) {
-        this.userId = userId;
+    public void setId(long userId) {
+        this.id = userId;
     }
 
     @Override
@@ -47,7 +47,7 @@ public class LoginResponse implements Serializable {
                 " username = '" + username + '\'' +
                 " password = '" + password + '\'' +
                 " email = '" + email + '\'' +
-                " user id = '" + userId + '\'' +
+                " user id = '" + id + '\'' +
                 ')';
     }
 }

@@ -7,17 +7,18 @@ import com.example.golfmaxfinal.BR;
 
 public class User extends BaseObservable {
 
+    private long id;
     private String username;
     private String password;
     private String email;
-    private long id;
 
     public User() {}
 
-    public User(String username, String password, String email) {
+    public User(long id, String username, String password, String email) {
         this.username = username;
         this.password = password;
         this.email = email;
+        this.id = id;
     }
 
     @Bindable
