@@ -20,8 +20,8 @@ public class ApiClient {
                 .build();
     }
 
-    public static ApiInterface getApiInterface() {
+    public static UserService getApiInterface() {
 
-        return getRetroFit().create(ApiInterface.class);
+        return getRetroFit().create(UserService.class);
     }
 }
