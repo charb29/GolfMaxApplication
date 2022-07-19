@@ -1,5 +1,6 @@
 package com.example.golfmaxfinal.models;
 
+import androidx.annotation.NonNull;
 import androidx.databinding.BaseObservable;
 import androidx.databinding.Bindable;
 
@@ -43,6 +44,7 @@ public class PlayerStatistics extends BaseObservable {
         notifyPropertyChanged(BR.averageScore);
     }
 
+    @NonNull
     @Override
     public String toString() {
         return "Player Stats (" +

@@ -1,5 +1,6 @@
 package com.example.golfmaxfinal.models;
 
+import androidx.annotation.NonNull;
 import androidx.databinding.BaseObservable;
 import androidx.databinding.Bindable;
 
@@ -59,6 +60,7 @@ public class User extends BaseObservable {
         this.id = id;
     }
 
+    @NonNull
     @Override
     public String toString() {
         return "User Info (" +

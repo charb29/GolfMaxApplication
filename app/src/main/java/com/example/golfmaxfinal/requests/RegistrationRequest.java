@@ -1,5 +1,7 @@
 package com.example.golfmaxfinal.requests;
 
+import androidx.annotation.NonNull;
+
 public class RegistrationRequest {
 
     private String username;
@@ -30,6 +32,7 @@ public class RegistrationRequest {
         this.password = password;
     }
 
+    @NonNull
     @Override
     public String toString() {
         return "Registration Request (" +

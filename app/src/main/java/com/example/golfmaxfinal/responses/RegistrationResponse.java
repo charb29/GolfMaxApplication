@@ -1,5 +1,7 @@
 package com.example.golfmaxfinal.responses;
 
+import androidx.annotation.NonNull;
+
 import java.io.Serializable;
 
 public class RegistrationResponse implements Serializable {
@@ -7,7 +9,6 @@ public class RegistrationResponse implements Serializable {
     private String username;
     private String email;
     private String password;
-    private long userId;
 
     public String getUsername() {
         return username;
@@ -33,21 +34,13 @@ public class RegistrationResponse implements Serializable {
         this.password = password;
     }
 
-    public long getUserId() {
-        return userId;
-    }
-
-    public void setUserId(long userId) {
-        this.userId = userId;
-    }
-
+    @NonNull
     @Override
     public String toString() {
         return "Login Response (" +
                 " username = '" + username + '\'' +
                 " password = '" + password + '\'' +
                 " email = '" + email + '\'' +
-                " user id = '" + userId + '\'' +
                 ')';
     }
 }
