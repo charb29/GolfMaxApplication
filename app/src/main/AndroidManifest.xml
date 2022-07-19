@@ -18,6 +18,18 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".activities.UserProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.CourseLeaderboardActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.NewRoundActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.PersonalScoresActivity"
+            android:exported="false" />
+        <activity
             android:name=".activities.RegistrationActivity"
             android:exported="false" />
         <activity
