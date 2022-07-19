@@ -1,4 +1,16 @@
 package com.example.golfmaxfinal.activities;
 
-public class PersonalScoresActivity {
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Bundle;
+
+import com.example.golfmaxfinal.R;
+
+public class PersonalScoresActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_personal_scores);
+    }
 }
