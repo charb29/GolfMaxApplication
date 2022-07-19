@@ -44,7 +44,7 @@ public class DBHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public long saveUser(String username, long id) {
+    public void saveUser(String username, long id) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(userId, id);
@@ -52,9 +52,7 @@ public class DBHelper extends SQLiteOpenHelper {
 
         Log.i("DB SAVED USER > ", "username: " + username + " " + "id: " + id);
 
-        long result = db.insert(userTable, null, contentValues);
-
-        return result;
+        db.insert(userTable, null, contentValues);
     }
 
     public long getUserId(String username) {
@@ -75,14 +73,13 @@ public class DBHelper extends SQLiteOpenHelper {
         return id;
     }
 
-    public long saveCourse(String courseName, long id) {
+    public void saveCourse(String courseName, long id) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
         contentValues.put(courseId, id);
         contentValues.put(course, courseName);
 
-        long result = db.insert(courseTable, null, contentValues);
-        return result;
+        db.insert(courseTable, null, contentValues);
     }
 
     public long getCourseId(String courseName) {
