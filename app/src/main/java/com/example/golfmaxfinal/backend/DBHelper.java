@@ -50,7 +50,7 @@ public class DBHelper extends SQLiteOpenHelper {
         contentValues.put(userId, id);
         contentValues.put(user, username);
 
-        Log.i("DB SAVED USER > ", "username: " + username + " " + "id: " + id);
+        Log.i("DB SAVED USER ====> ", "username: " + username + " " + "id: " + id);
 
         db.insert(userTable, null, contentValues);
     }
