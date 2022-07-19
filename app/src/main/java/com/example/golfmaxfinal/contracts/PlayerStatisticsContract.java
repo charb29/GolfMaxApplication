@@ -4,11 +4,10 @@ import com.example.golfmaxfinal.models.PlayerStatistics;
 
 public interface PlayerStatisticsContract {
 
-    public interface Presenter {
-        void onShowData(PlayerStatistics playerStatistics);
+    interface Presenter {
     }
 
-    public interface View {
+    interface View {
         void showData(PlayerStatistics playerStatistics);
     }
 }

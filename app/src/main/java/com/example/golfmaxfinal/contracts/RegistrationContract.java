@@ -4,11 +4,11 @@ import com.example.golfmaxfinal.models.User;
 
 public interface RegistrationContract {
 
-    public interface Presenter {
+    interface Presenter {
         void onShowData(User user);
     }
 
-    public interface View {
+    interface View {
         void registerUser(User user);
     }
 }
