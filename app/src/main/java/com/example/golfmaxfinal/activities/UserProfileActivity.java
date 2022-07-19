@@ -9,7 +9,6 @@ import android.view.MenuItem;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
@@ -19,7 +18,7 @@ import androidx.databinding.DataBindingUtil;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.example.golfmaxfinal.R;
-import com.example.golfmaxfinal.backend.ApiClient;
+import com.example.golfmaxfinal.backend.ApiCallMethods;
 import com.example.golfmaxfinal.backend.DBHelper;
 import com.example.golfmaxfinal.contracts.PlayerStatisticsContract;
 import com.example.golfmaxfinal.databinding.ActivityUserProfileBinding;
@@ -28,10 +27,6 @@ import com.example.golfmaxfinal.models.User;
 import com.google.android.material.navigation.NavigationView;
 
 import java.util.Objects;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class UserProfileActivity extends AppCompatActivity implements PlayerStatisticsContract.View {
 
@@ -56,8 +51,8 @@ public class UserProfileActivity extends AppCompatActivity implements PlayerStat
         colorDrawable = new ColorDrawable(Color.parseColor("#000f00"));
         actionBar.setBackgroundDrawable(colorDrawable);
         actionBar.setTitle("User Profile");
-        drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        navView = (NavigationView) findViewById(R.id.navigation_view_user_profile);
+        drawerLayout = findViewById(R.id.drawer_layout);
+        navView = findViewById(R.id.navigation_view_user_profile);
         drawerToggle = new ActionBarDrawerToggle(this, drawerLayout,
                 R.string.navOpen, R.string.navClose);
 
@@ -66,14 +61,15 @@ public class UserProfileActivity extends AppCompatActivity implements PlayerStat
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         setNavigationViewIntents(navView);
 
+        ApiCallMethods apiCalls = new ApiCallMethods();
+
         long userId = getUserIdByUsername(LoginActivity.username);
+        Log.i("USER ID ====> ", String.valueOf(userId));
 
-        Log.i("USER ID > ", String.valueOf(userId));
+        binding.setUser(apiCalls.getUserInfoByUserId(userId));
+        binding.setStats(apiCalls.getRoundsPlayedByUserId(userId));
 
-        binding.setUser(getUserInfoById(userId));
-        binding.setStats(getStatsByUserId(userId));
-
-        Button btnUpdateUserInfo = (Button) findViewById(R.id.button_update_info);
+        Button btnUpdateUserInfo = findViewById(R.id.button_update_info);
 
         btnUpdateUserInfo.setOnClickListener(v -> {
             User user = new User();
@@ -83,7 +79,7 @@ public class UserProfileActivity extends AppCompatActivity implements PlayerStat
             user.setPassword(binding.getUser().getPassword());
             user.setId(getUserIdByUsername(binding.getUser().getUsername()));
 
-            updateUserInfo(user);
+            apiCalls.updateUserInfo(user, UserProfileActivity.this);
         });
     }
 
@@ -102,83 +98,6 @@ public class UserProfileActivity extends AppCompatActivity implements PlayerStat
         DBHelper db = new DBHelper(this);
 
         return db.getUserId(username);
-    }
-
-    @NonNull
-    private User getUserInfoById(long id) {
-        User user = new User();
-        ApiClient.getApiInterface().getUserInfoById(id).enqueue(new Callback<User>() {
-            @Override
-            public void onResponse(@NonNull Call<User> call,
-                                   @NonNull Response<User> response) {
-                assert response.body() != null;
-                user.setUsername(response.body().getUsername());
-                user.setEmail(response.body().getEmail());
-                user.setPassword(response.body().getPassword());
-                user.setId(response.body().getId());
-
-
-                Log.i("USER INFO API CALL > ", user.toString());
-            }
-
-            @Override
-            public void onFailure(@NonNull Call<User> call,
-                                  @NonNull Throwable t) {
-                Log.e("ERROR > ", t.toString());
-            }
-        });
-        return user;
-    }
-
-    @NonNull
-    private PlayerStatistics getStatsByUserId(long id) {
-        PlayerStatistics playerStatistics = new PlayerStatistics();
-        ApiClient.getApiInterface().getStatsByUserId(id)
-                .enqueue(new Callback<PlayerStatistics>() {
-            @Override
-            public void onResponse(@NonNull Call<PlayerStatistics> call,
-                                   @NonNull Response<PlayerStatistics> response) {
-                assert response.body() != null;
-                playerStatistics.setRoundsPlayed(response.body().getRoundsPlayed());
-
-                Log.i("ROUNDS PLAYED > ", String.valueOf(playerStatistics.getRoundsPlayed()));
-            }
-
-            @Override
-            public void onFailure(@NonNull Call<PlayerStatistics> call,
-                                  @NonNull Throwable t) {
-                Log.e("ERROR > ", t.toString());
-            }
-        });
-        return playerStatistics;
-    }
-
-    private void updateUserInfo(User user) {
-        ApiClient.getApiInterface().updateUserInfo(user.getId(), user)
-                .enqueue(new Callback<User>() {
-                    @Override
-                    public void onResponse(@NonNull Call<User> call,
-                                           @NonNull Response<User> response) {
-                        if (response.isSuccessful()) {
-                            Toast.makeText(UserProfileActivity.this,
-                                    "User info updated successfully.",
-                                    Toast.LENGTH_SHORT).show();
-
-                            Log.i("UPDATED USER INFO > ", user.toString());
-                        }
-                        else {
-                            Toast.makeText(UserProfileActivity.this,
-                                    "Failed.",
-                                    Toast.LENGTH_SHORT).show();
-                        }
-                    }
-
-                    @Override
-                    public void onFailure(@NonNull Call<User> call,
-                                          @NonNull Throwable t) {
-                        Log.e("ERROR > ", t.toString());
-                    }
-                });
     }
 
     private void setNavigationViewIntents(@NonNull NavigationView navigationView) {

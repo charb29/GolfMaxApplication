@@ -3,24 +3,18 @@ package com.example.golfmaxfinal.activities;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
-import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 
 import com.example.golfmaxfinal.R;
-import com.example.golfmaxfinal.backend.ApiClient;
+import com.example.golfmaxfinal.backend.ApiCallMethods;
 import com.example.golfmaxfinal.backend.DBHelper;
 import com.example.golfmaxfinal.contracts.PlayerStatisticsContract;
 import com.example.golfmaxfinal.databinding.ActivityHomeBinding;
 import com.example.golfmaxfinal.models.PlayerStatistics;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class HomeActivity extends Activity implements PlayerStatisticsContract.View {
 
@@ -32,12 +26,13 @@ public class HomeActivity extends Activity implements PlayerStatisticsContract.V
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
+        ApiCallMethods apiCall = new ApiCallMethods();
         ActivityHomeBinding binding = DataBindingUtil.
                 setContentView(this, R.layout.activity_home);
 
         long userId = getUserIdByUsername(LoginActivity.username);
 
-        binding.setStats(getPlayerStatsByUserId(userId));
+        binding.setStats(apiCall.displayStatsSummary(userId));
     }
 
     @Override
@@ -47,35 +42,6 @@ public class HomeActivity extends Activity implements PlayerStatisticsContract.V
         DBHelper db = new DBHelper(this);
 
         return db.getUserId(username);
-    }
-
-    @NonNull
-    private PlayerStatistics getPlayerStatsByUserId(long userId) {
-        Call<PlayerStatistics> playerStatisticsCall = ApiClient.getApiInterface()
-                .getStatsByUserId(userId);
-
-        PlayerStatistics playerStatistics = new PlayerStatistics();
-
-        playerStatisticsCall.enqueue(new Callback<PlayerStatistics>() {
-            @Override
-            public void onResponse(@NonNull Call<PlayerStatistics> call,
-                                   @NonNull Response<PlayerStatistics> response) {
-
-                assert response.body() != null;
-                playerStatistics.setAverageScore(response.body().getAverageScore());
-                playerStatistics.setHandicapIndex(response.body().getHandicapIndex());
-
-                Log.i("PLAYER STATS API CALL >", playerStatistics.toString());
-            }
-
-            @Override
-            public void onFailure(@NonNull Call<PlayerStatistics> call,
-                                  @NonNull Throwable t) {
-                Log.e("ERROR > ", t.toString());
-            }
-        });
-
-        return playerStatistics;
     }
 
     public void goToPersonalScoresActivity(View view) {

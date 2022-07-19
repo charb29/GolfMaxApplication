@@ -1,31 +1,23 @@
 package com.example.golfmaxfinal.activities;
 
-import androidx.annotation.NonNull;
-import androidx.databinding.DataBindingUtil;
-
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.databinding.DataBindingUtil;
 
 import com.example.golfmaxfinal.R;
-import com.example.golfmaxfinal.backend.ApiClient;
+import com.example.golfmaxfinal.backend.ApiCallMethods;
 import com.example.golfmaxfinal.contracts.RegistrationContract;
 import com.example.golfmaxfinal.databinding.ActivityRegistrationBinding;
 import com.example.golfmaxfinal.models.User;
 import com.example.golfmaxfinal.presenters.RegistrationPresenter;
 import com.example.golfmaxfinal.requests.RegistrationRequest;
-import com.example.golfmaxfinal.responses.RegistrationResponse;
 import com.google.android.material.textfield.TextInputLayout;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class RegistrationActivity extends Activity implements RegistrationContract.View {
 
@@ -47,8 +39,8 @@ public class RegistrationActivity extends Activity implements RegistrationContra
         binding.setUser(user);
         binding.setPresenter(presenter);
 
-        tilUsername = (TextInputLayout) findViewById(R.id.text_input_layout_username);
-        tilEmail = (TextInputLayout) findViewById(R.id.text_input_layout_email);
+        tilUsername = findViewById(R.id.text_input_layout_username);
+        tilEmail = findViewById(R.id.text_input_layout_email);
     }
 
     @Override
@@ -58,41 +50,9 @@ public class RegistrationActivity extends Activity implements RegistrationContra
         registrationRequest.setPassword(user.getPassword());
         registrationRequest.setEmail(user.getEmail());
 
-        Log.i("REGISTRATION REQUEST > ", registrationRequest.toString());
-
-        ApiCallRegisterUser(registrationRequest);
-    }
-
-    private void ApiCallRegisterUser(RegistrationRequest registrationRequest) {
-        Call<RegistrationResponse> registrationResponseCall = ApiClient.getApiInterface()
-                .registerUser(registrationRequest);
-
-        registrationResponseCall.enqueue(new Callback<RegistrationResponse>() {
-            @Override
-            public void onResponse(@NonNull Call<RegistrationResponse> call,
-                                   @NonNull Response<RegistrationResponse> response) {
-                if (response.isSuccessful()) {
-                    Toast.makeText(RegistrationActivity.this, "Registration successful.",
-                            Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
-                    startActivity(intent);
-                    finish();
-                }
-                else {
-                    tilUsername.setError("Existing username.");
-                    tilEmail.setError("Existing email.");
-                    Toast.makeText(RegistrationActivity.this, "Registration failed.",
-                            Toast.LENGTH_SHORT).show();
-                }
-            }
-
-            @Override
-            public void onFailure(@NonNull Call<RegistrationResponse> call,
-                                  @NonNull Throwable t) {
-                Toast.makeText(RegistrationActivity.this, t.getLocalizedMessage(),
-                        Toast.LENGTH_SHORT).show();
-            }
-        });
+        ApiCallMethods apiCalls = new ApiCallMethods();
+        apiCalls.registerUser(registrationRequest, tilUsername,
+                tilEmail, RegistrationActivity.this);
     }
 
     public void goToLoginActivity(View view) {
