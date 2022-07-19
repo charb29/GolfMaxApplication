@@ -1,18 +1,14 @@
 package com.example.golfmaxfinal.presenters;
 
-import android.content.Context;
-
 import com.example.golfmaxfinal.contracts.LoginContract;
 import com.example.golfmaxfinal.models.User;
 
 public class LoginPresenter implements LoginContract.Presenter {
 
-    private LoginContract.View view;
-    private Context context;
+    private final LoginContract.View view;
 
-    public LoginPresenter(LoginContract.View view, Context context) {
+    public LoginPresenter(LoginContract.View view) {
         this.view = view;
-        this.context = context;
     }
 
     @Override

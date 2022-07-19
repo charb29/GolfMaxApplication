@@ -14,9 +14,4 @@ public class PlayerStatisticsPresenter implements PlayerStatisticsContract.Prese
         this.view = view;
         this.context = context;
     }
-
-    @Override
-    public void onShowData(PlayerStatistics playerStatistics) {
-        view.showData(playerStatistics);
-    }
 }

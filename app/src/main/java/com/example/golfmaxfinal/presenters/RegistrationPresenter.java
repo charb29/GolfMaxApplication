@@ -7,12 +7,10 @@ import com.example.golfmaxfinal.models.User;
 
 public class RegistrationPresenter implements RegistrationContract.Presenter {
 
-    private RegistrationContract.View view;
-    private Context context;
+    private final RegistrationContract.View view;
 
-    public RegistrationPresenter(RegistrationContract.View view, Context context) {
+    public RegistrationPresenter(RegistrationContract.View view) {
         this.view = view;
-        this.context = context;
     }
 
     @Override
