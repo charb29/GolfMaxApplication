@@ -35,10 +35,14 @@ public class RegistrationActivity extends Activity implements RegistrationContra
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-        ActivityRegistrationBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_registration);
-        RegistrationPresenter presenter = new RegistrationPresenter(this, getApplicationContext());
+        ActivityRegistrationBinding binding = DataBindingUtil.setContentView(this,
+                R.layout.activity_registration);
+
+        RegistrationPresenter presenter = new RegistrationPresenter(this);
+
         User user = new User();
         binding.setUser(user);
         binding.setPresenter(presenter);
@@ -60,13 +64,16 @@ public class RegistrationActivity extends Activity implements RegistrationContra
     }
 
     private void ApiCallRegisterUser(RegistrationRequest registrationRequest) {
-        Call<RegistrationResponse> registrationResponseCall = ApiClient.getApiInterface().registerUser(registrationRequest);
+        Call<RegistrationResponse> registrationResponseCall = ApiClient.getApiInterface()
+                .registerUser(registrationRequest);
 
         registrationResponseCall.enqueue(new Callback<RegistrationResponse>() {
             @Override
-            public void onResponse(Call<RegistrationResponse> call, Response<RegistrationResponse> response) {
+            public void onResponse(@NonNull Call<RegistrationResponse> call,
+                                   @NonNull Response<RegistrationResponse> response) {
                 if (response.isSuccessful()) {
-                    Toast.makeText(RegistrationActivity.this, "Registration successful.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RegistrationActivity.this, "Registration successful.",
+                            Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(getApplicationContext(), LoginActivity.class);
                     startActivity(intent);
                     finish();
@@ -74,13 +81,16 @@ public class RegistrationActivity extends Activity implements RegistrationContra
                 else {
                     tilUsername.setError("Existing username.");
                     tilEmail.setError("Existing email.");
-                    Toast.makeText(RegistrationActivity.this, "Registration failed.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(RegistrationActivity.this, "Registration failed.",
+                            Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
-            public void onFailure(Call<RegistrationResponse> call, Throwable t) {
-                Toast.makeText(RegistrationActivity.this, t.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+            public void onFailure(@NonNull Call<RegistrationResponse> call,
+                                  @NonNull Throwable t) {
+                Toast.makeText(RegistrationActivity.this, t.getLocalizedMessage(),
+                        Toast.LENGTH_SHORT).show();
             }
         });
     }
