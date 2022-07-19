@@ -13,18 +13,15 @@ public class ApiClient {
 
         OkHttpClient okHttpClient = new OkHttpClient.Builder().addInterceptor(httpLoggingInterceptor).build();
 
-        Retrofit retrofit = new Retrofit.Builder()
+        return new Retrofit.Builder()
                 .addConverterFactory(GsonConverterFactory.create())
                 .baseUrl("http://10.0.2.2:8080/")
                 .client(okHttpClient)
                 .build();
-
-        return retrofit;
     }
 
     public static ApiInterface getApiInterface() {
-        ApiInterface apiInterface = getRetroFit().create(ApiInterface.class);
 
-        return apiInterface;
+        return getRetroFit().create(ApiInterface.class);
     }
 }
