@@ -5,7 +5,7 @@ import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class ApiClient {
+public class GolfMaxHttpClient {
 
     public static Retrofit getRetroFit() {
         HttpLoggingInterceptor httpLoggingInterceptor = new HttpLoggingInterceptor();
@@ -20,8 +20,8 @@ public class ApiClient {
                 .build();
     }
 
-    public static UserService getApiInterface() {
+    public static GolfMaxService getApiInterface() {
 
-        return getRetroFit().create(UserService.class);
+        return getRetroFit().create(GolfMaxService.class);
     }
 }
