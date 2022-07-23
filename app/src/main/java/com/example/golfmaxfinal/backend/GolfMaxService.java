@@ -1,12 +1,16 @@
 package com.example.golfmaxfinal.backend;
 
 
+import com.example.golfmaxfinal.models.Course;
 import com.example.golfmaxfinal.models.PlayerStatistics;
+import com.example.golfmaxfinal.models.Score;
 import com.example.golfmaxfinal.models.User;
 import com.example.golfmaxfinal.requests.LoginRequest;
 import com.example.golfmaxfinal.requests.RegistrationRequest;
 import com.example.golfmaxfinal.responses.LoginResponse;
 import com.example.golfmaxfinal.responses.RegistrationResponse;
+
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -15,7 +19,7 @@ import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Path;
 
-public interface UserService {
+public interface GolfMaxService {
 
     @POST("users/login")
     Call<LoginResponse> loginUser(@Body LoginRequest loginRequest);
@@ -31,4 +35,10 @@ public interface UserService {
 
     @PUT("users/{id}/update")
     Call<User> updateUserInfo(@Path("id") long id, @Body User user);
+
+    @GET("/courses")
+    Call<List<Course>> getCourseNames();
+
+    @GET("/scores/course/{id}")
+    Call<List<Score>> getScoresByCourseId(@Path("id") long courseId);
 }
