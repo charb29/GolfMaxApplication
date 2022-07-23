@@ -18,8 +18,9 @@ import androidx.databinding.DataBindingUtil;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.example.golfmaxfinal.R;
-import com.example.golfmaxfinal.backend.ApiCallMethods;
-import com.example.golfmaxfinal.backend.DBHelper;
+import com.example.golfmaxfinal.backend.GolfMaxLocalDatabase;
+import com.example.golfmaxfinal.backend.PlayerStatisticsRepository;
+import com.example.golfmaxfinal.backend.UserRepository;
 import com.example.golfmaxfinal.contracts.PlayerStatisticsContract;
 import com.example.golfmaxfinal.databinding.ActivityUserProfileBinding;
 import com.example.golfmaxfinal.models.PlayerStatistics;
@@ -61,13 +62,14 @@ public class UserProfileActivity extends AppCompatActivity implements PlayerStat
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         setNavigationViewIntents(navView);
 
-        ApiCallMethods apiCalls = new ApiCallMethods();
+        PlayerStatisticsRepository playerStatisticsRepository = new PlayerStatisticsRepository();
+        UserRepository userRepository = new UserRepository();
 
         long userId = getUserIdByUsername(LoginActivity.username);
         Log.i("USER ID ====> ", String.valueOf(userId));
 
-        binding.setUser(apiCalls.getUserInfoByUserId(userId));
-        binding.setStats(apiCalls.getRoundsPlayedByUserId(userId));
+        binding.setUser(userRepository.getUserInfoById(userId));
+        binding.setStats(playerStatisticsRepository.displayRoundsPlayed(userId));
 
         Button btnUpdateUserInfo = findViewById(R.id.button_update_info);
 
@@ -79,7 +81,7 @@ public class UserProfileActivity extends AppCompatActivity implements PlayerStat
             user.setPassword(binding.getUser().getPassword());
             user.setId(getUserIdByUsername(binding.getUser().getUsername()));
 
-            apiCalls.updateUserInfo(user, UserProfileActivity.this);
+            userRepository.updateUserInfo(user, UserProfileActivity.this);
         });
     }
 
@@ -95,7 +97,7 @@ public class UserProfileActivity extends AppCompatActivity implements PlayerStat
     public void showData(PlayerStatistics playerStatistics) {}
 
     public long getUserIdByUsername(String username) {
-        DBHelper db = new DBHelper(this);
+        GolfMaxLocalDatabase db = new GolfMaxLocalDatabase(this);
 
         return db.getUserId(username);
     }
@@ -110,9 +112,9 @@ public class UserProfileActivity extends AppCompatActivity implements PlayerStat
                 return true;
             }
             if (item.getItemId() == R.id.navLeaderboard) {
-                Intent intentLeaderboardActivity = new Intent(UserProfileActivity.this,
-                        CourseLeaderboardActivity.class);
-                startActivity(intentLeaderboardActivity);
+                Intent intentCourseListActivity = new Intent(UserProfileActivity.this,
+                        CourseListActivity.class);
+                startActivity(intentCourseListActivity);
                 return true;
             }
             if (item.getItemId() == R.id.navMyScores) {
@@ -126,8 +128,7 @@ public class UserProfileActivity extends AppCompatActivity implements PlayerStat
                         NewRoundActivity.class);
                 startActivity(intentNewRoundActivity);
                 return true;
-            }
-            else {
+            } else {
                 return false;
             }
         });

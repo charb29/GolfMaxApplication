@@ -4,7 +4,7 @@ import androidx.annotation.NonNull;
 
 import java.io.Serializable;
 
-public class LoginResponse implements Serializable {
+public class LoginResponse {
 
     private String username;
     private String password;

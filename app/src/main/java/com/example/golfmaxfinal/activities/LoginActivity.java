@@ -12,7 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 
 import com.example.golfmaxfinal.R;
-import com.example.golfmaxfinal.backend.ApiCallMethods;
+import com.example.golfmaxfinal.backend.UserRepository;
 import com.example.golfmaxfinal.contracts.LoginContract;
 import com.example.golfmaxfinal.databinding.ActivityLoginBinding;
 import com.example.golfmaxfinal.models.User;
@@ -54,9 +54,9 @@ public class LoginActivity extends Activity implements LoginContract.View {
         username = user.getUsername();
         Log.i("STATIC USERNAME ====> ", username);
 
-        ApiCallMethods apiCall = new ApiCallMethods();
+        UserRepository userRepository = new UserRepository();
 
-        apiCall.loginUser(loginRequest, tilUsername,
+        userRepository.loginUser(loginRequest, tilUsername,
                 tilPassword, LoginActivity.this);
     }
 

@@ -5,12 +5,16 @@ import androidx.databinding.BaseObservable;
 import androidx.databinding.Bindable;
 
 import com.example.golfmaxfinal.BR;
+import com.google.gson.annotations.SerializedName;
 
 public class User extends BaseObservable {
 
     private long id;
+    @SerializedName("username")
     private String username;
+    @SerializedName("password")
     private String password;
+    @SerializedName("email")
     private String email;
 
     public User() {}
@@ -60,14 +64,22 @@ public class User extends BaseObservable {
         this.id = id;
     }
 
-    @NonNull
-    @Override
-    public String toString() {
-        return "User Info (" +
-                " username = '" + username + '\'' +
-                " password = '" + password + '\'' +
-                " email = '" + email + '\'' +
-                " id = '" + id + '\'' +
+    public String toStringUsername() {
+        return "User (" +
+                " Username = '" + username + '\'' +
                 ')';
     }
+
+    public String toStringPassword() {
+        return "User (" +
+                " Password = '" + password + '\'' +
+                ')';
+    }
+
+    public String toStringEmail() {
+        return "User (" +
+                " Email = '" + email + '\'' +
+                ')';
+    }
+
 }

@@ -5,11 +5,15 @@ import androidx.databinding.BaseObservable;
 import androidx.databinding.Bindable;
 
 import com.example.golfmaxfinal.BR;
+import com.google.gson.annotations.SerializedName;
 
 public class PlayerStatistics extends BaseObservable {
 
+    @SerializedName("roundsPlayed")
     private int roundsPlayed;
+    @SerializedName("handicapIndex")
     private double handicapIndex;
+    @SerializedName("averageScore")
     private double averageScore;
 
     public PlayerStatistics() {}
@@ -45,12 +49,23 @@ public class PlayerStatistics extends BaseObservable {
     }
 
     @NonNull
-    @Override
-    public String toString() {
-        return "Player Stats (" +
-                " roundsPlayed = '" + roundsPlayed + '\'' +
-                " handicapIndex = '" + handicapIndex + '\'' +
-                " averageScore = '" + averageScore + '\'' +
+    public String toStringRoundsPlayed() {
+        return "Player Statistics (" +
+                " Rounds Played = '" + roundsPlayed + '\'' +
+                ')';
+    }
+
+    @NonNull
+    public String toStringHandicapIndex() {
+        return "Player Statistics (" +
+                " Handicap Index = '" + handicapIndex + '\'' +
+                ')';
+    }
+
+    @NonNull
+    public String toStringAverageScore() {
+        return "Player Statistics (" +
+                " Average Score = '" + averageScore + '\'' +
                 ')';
     }
 }

@@ -4,7 +4,7 @@ import androidx.annotation.NonNull;
 
 import java.io.Serializable;
 
-public class RegistrationResponse implements Serializable {
+public class RegistrationResponse {
 
     private String username;
     private String email;

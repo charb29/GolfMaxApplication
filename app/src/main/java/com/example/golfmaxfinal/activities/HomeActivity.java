@@ -10,8 +10,8 @@ import android.view.WindowManager;
 import androidx.databinding.DataBindingUtil;
 
 import com.example.golfmaxfinal.R;
-import com.example.golfmaxfinal.backend.ApiCallMethods;
-import com.example.golfmaxfinal.backend.DBHelper;
+import com.example.golfmaxfinal.backend.GolfMaxLocalDatabase;
+import com.example.golfmaxfinal.backend.PlayerStatisticsRepository;
 import com.example.golfmaxfinal.contracts.PlayerStatisticsContract;
 import com.example.golfmaxfinal.databinding.ActivityHomeBinding;
 import com.example.golfmaxfinal.models.PlayerStatistics;
@@ -26,20 +26,21 @@ public class HomeActivity extends Activity implements PlayerStatisticsContract.V
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-        ApiCallMethods apiCall = new ApiCallMethods();
-        ActivityHomeBinding binding = DataBindingUtil.
-                setContentView(this, R.layout.activity_home);
+        PlayerStatisticsRepository playerStatisticsRepository = new PlayerStatisticsRepository();
+
+        ActivityHomeBinding binding = DataBindingUtil
+                .setContentView(this, R.layout.activity_home);
 
         long userId = getUserIdByUsername(LoginActivity.username);
 
-        binding.setStats(apiCall.displayStatsSummary(userId));
+        binding.setStats(playerStatisticsRepository.displayStatsSummary(userId));
     }
 
     @Override
     public void showData(PlayerStatistics playerStatistics) {}
 
     public long getUserIdByUsername(String username) {
-        DBHelper db = new DBHelper(this);
+        GolfMaxLocalDatabase db = new GolfMaxLocalDatabase(this);
 
         return db.getUserId(username);
     }
@@ -55,7 +56,7 @@ public class HomeActivity extends Activity implements PlayerStatisticsContract.V
     }
 
     public void goToCourseLeaderboardsActivity(View view) {
-        Intent intent = new Intent(HomeActivity.this, CourseLeaderboardActivity.class);
+        Intent intent = new Intent(HomeActivity.this, CourseListActivity.class);
         startActivity(intent);
     }
 

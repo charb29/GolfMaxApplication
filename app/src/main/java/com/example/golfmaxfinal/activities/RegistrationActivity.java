@@ -11,7 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 
 import com.example.golfmaxfinal.R;
-import com.example.golfmaxfinal.backend.ApiCallMethods;
+import com.example.golfmaxfinal.backend.UserRepository;
 import com.example.golfmaxfinal.contracts.RegistrationContract;
 import com.example.golfmaxfinal.databinding.ActivityRegistrationBinding;
 import com.example.golfmaxfinal.models.User;
@@ -50,8 +50,8 @@ public class RegistrationActivity extends Activity implements RegistrationContra
         registrationRequest.setPassword(user.getPassword());
         registrationRequest.setEmail(user.getEmail());
 
-        ApiCallMethods apiCalls = new ApiCallMethods();
-        apiCalls.registerUser(registrationRequest, tilUsername,
+        UserRepository userRepository = new UserRepository();
+        userRepository.registerUser(registrationRequest, tilUsername,
                 tilEmail, RegistrationActivity.this);
     }
 
