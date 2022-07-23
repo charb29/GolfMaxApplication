@@ -7,7 +7,9 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-public class DBHelper extends SQLiteOpenHelper {
+import androidx.annotation.NonNull;
+
+public class GolfMaxLocalDatabase extends SQLiteOpenHelper {
 
     private static final String dbName = "scores.db";
     private static final int version = 1;
@@ -27,7 +29,7 @@ public class DBHelper extends SQLiteOpenHelper {
             + course + " TEXT)";
     private static final String dropCourseTable = "DROP TABLE IF EXISTS " + courseTable;
 
-    public DBHelper(Context context) {
+    public GolfMaxLocalDatabase(Context context) {
         super(context, dbName, null, version);
     }
 
@@ -56,7 +58,6 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
     public long getUserId(String username) {
-        Log.i("DB USERNAME ====> ", username);
 
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery("SELECT id FROM userScores WHERE username = ?", new String[] {username});
@@ -80,9 +81,13 @@ public class DBHelper extends SQLiteOpenHelper {
         contentValues.put(course, courseName);
 
         db.insert(courseTable, null, contentValues);
+
+        Log.i("DB SAVE COURSE ====> ",
+                "course name: " + courseName
+                        + " || " + "course Id: " + id);
     }
 
-    public long getCourseId(String courseName) {
+    public long getCourseId(@NonNull String courseName) {
         Log.i("DB COURSE NAME ====> ", courseName);
 
         SQLiteDatabase db = this.getReadableDatabase();
@@ -90,8 +95,9 @@ public class DBHelper extends SQLiteOpenHelper {
         long id = -1;
 
         if (cursor.moveToFirst()) {
-            id = cursor.getLong(0);
-            cursor.close();
+            do {
+                id = cursor.getLong(0);
+            } while (cursor.moveToNext());
         }
         db.close();
 
