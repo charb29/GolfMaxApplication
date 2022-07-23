@@ -8,17 +8,17 @@
 
     <item
         android:id="@+id/navMyScores"
-        android:icon="@drawable/my_scores_icon_dark"
+        android:icon="@drawable/ic_personal_scores_dark"
         android:title="My Scores"/>
 
     <item
         android:id="@+id/navPlayRound"
-        android:icon="@drawable/play_round_icon_dark"
+        android:icon="@drawable/ic_play_round_dark"
         android:title="Play a Round"/>
 
     <item
         android:id="@+id/navUserProfile"
-        android:icon="@drawable/user_icon_dark"
+        android:icon="@drawable/ic_user_dark"
         android:title="User Profile"/>
 
 </menu>

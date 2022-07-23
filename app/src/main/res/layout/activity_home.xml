@@ -162,7 +162,7 @@
                     <ImageView
                         android:layout_width="75dp"
                         android:layout_height="75dp"
-                        android:src="@drawable/my_scores_icon_white"
+                        android:src="@drawable/ic_personal_scores_white"
                         android:contentDescription="@string/myscoresicon" />
 
                     <TextView
@@ -207,7 +207,7 @@
                     <ImageView
                         android:layout_width="75dp"
                         android:layout_height="75dp"
-                        android:src="@drawable/user_icon_white"
+                        android:src="@drawable/ic_user_white"
                         android:contentDescription="@string/usericon" />
 
                     <TextView
@@ -252,7 +252,7 @@
                     <ImageView
                         android:layout_width="75dp"
                         android:layout_height="75dp"
-                        android:src="@drawable/leaderboard_icon_white"
+                        android:src="@drawable/ic_leaderboard_white"
                         android:contentDescription="@string/leaderboardicon" />
 
                     <TextView
@@ -297,7 +297,7 @@
                     <ImageView
                         android:layout_width="75dp"
                         android:layout_height="75dp"
-                        android:src="@drawable/play_round_icon_white"
+                        android:src="@drawable/ic_play_round_white"
                         android:contentDescription="@string/playroundicon" />
 
                     <TextView
