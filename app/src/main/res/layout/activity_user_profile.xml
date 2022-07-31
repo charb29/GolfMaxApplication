@@ -7,10 +7,10 @@
     <data>
         <variable
             name="user"
-            type="com.example.golfmaxfinal.models.User" />
+            type="com.example.golfmax.models.User" />
         <variable
             name="stats"
-            type="com.example.golfmaxfinal.models.PlayerStatistics" />
+            type="com.example.golfmax.models.PlayerStatistics" />
     </data>
 
     <androidx.drawerlayout.widget.DrawerLayout

@@ -7,10 +7,10 @@
     <data>
         <variable
             name="user"
-            type="com.example.golfmaxfinal.models.User" />
+            type="com.example.golfmax.models.User" />
         <variable
             name="presenter"
-            type="com.example.golfmaxfinal.presenters.RegistrationPresenter" />
+            type="com.example.golfmax.presenters.RegistrationPresenter" />
     </data>
 
     <LinearLayout

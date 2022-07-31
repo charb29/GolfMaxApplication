@@ -6,46 +6,46 @@
     <data>
         <variable
             name="user"
-            type="com.example.golfmaxfinal.models.User" />
+            type="com.example.golfmax.models.User" />
         <variable
             name="guest1"
-            type="com.example.golfmaxfinal.models.User" />
+            type="com.example.golfmax.models.User" />
         <variable
             name="guest2"
-            type="com.example.golfmaxfinal.models.User" />
+            type="com.example.golfmax.models.User" />
         <variable
             name="guest3"
-            type="com.example.golfmaxfinal.models.User" />
+            type="com.example.golfmax.models.User" />
         <variable
             name="userScore"
-            type="com.example.golfmaxfinal.models.Score" />
+            type="com.example.golfmax.models.Score" />
         <variable
             name="guest1Score"
-            type="com.example.golfmaxfinal.models.Score" />
+            type="com.example.golfmax.models.Score" />
         <variable
             name="guest2Score"
-            type="com.example.golfmaxfinal.models.Score" />
+            type="com.example.golfmax.models.Score" />
         <variable
             name="guest3Score"
-            type="com.example.golfmaxfinal.models.Score" />
+            type="com.example.golfmax.models.Score" />
         <variable
             name="course"
-            type="com.example.golfmaxfinal.models.Course" />
+            type="com.example.golfmax.models.Course" />
         <variable
             name="userPresenter"
-            type="com.example.golfmaxfinal.presenters.UserPresenter" />
+            type="com.example.golfmax.presenters.UserPresenter" />
         <variable
             name="guest1Presenter"
-            type="com.example.golfmaxfinal.presenters.UserPresenter" />
+            type="com.example.golfmax.presenters.UserPresenter" />
         <variable
             name="guest2Presenter"
-            type="com.example.golfmaxfinal.presenters.UserPresenter" />
+            type="com.example.golfmax.presenters.UserPresenter" />
         <variable
             name="guest3Presenter"
-            type="com.example.golfmaxfinal.presenters.UserPresenter" />
+            type="com.example.golfmax.presenters.UserPresenter" />
         <variable
             name="scorePresenter"
-            type="com.example.golfmaxfinal.presenters.ScorePresenter" />
+            type="com.example.golfmax.presenters.ScorePresenter" />
     </data>
 
     <LinearLayout

@@ -6,7 +6,7 @@
     <data>
         <variable
             name="score"
-            type="com.example.golfmaxfinal.models.Score" />
+            type="com.example.golfmax.models.Score" />
     </data>
 
     <androidx.drawerlayout.widget.DrawerLayout
