@@ -15,13 +15,13 @@ import com.example.golfmax.contracts.RegistrationContract;
 import com.example.golfmax.models.User;
 import com.example.golfmax.presenters.RegistrationPresenter;
 import com.example.golfmax.requests.RegistrationRequest;
-import com.example.golfmaxfinal.R;
-import com.example.golfmaxfinal.databinding.ActivityRegistrationBinding;
+import com.example.golfmax.R;
+import com.example.golfmax.databinding.ActivityRegistrationBinding;
 import com.google.android.material.textfield.TextInputLayout;
 
 public class RegistrationActivity extends Activity implements RegistrationContract.View {
 
-    TextInputLayout textInputLayoutUsername, textInputLayoutEmail;
+    private TextInputLayout textInputLayoutUsername, textInputLayoutEmail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,15 +32,14 @@ public class RegistrationActivity extends Activity implements RegistrationContra
 
         ActivityRegistrationBinding binding = DataBindingUtil.setContentView(this,
                 R.layout.activity_registration);
-
-        RegistrationPresenter presenter = new RegistrationPresenter(this);
-
-        User user = new User();
-        binding.setUser(user);
-        binding.setPresenter(presenter);
-
         textInputLayoutUsername = findViewById(R.id.text_input_layout_username);
         textInputLayoutEmail = findViewById(R.id.text_input_layout_email);
+
+        RegistrationPresenter presenter = new RegistrationPresenter(this);
+        User user = new User();
+
+        binding.setUser(user);
+        binding.setPresenter(presenter);
     }
 
     @Override

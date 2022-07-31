@@ -19,15 +19,15 @@ import com.example.golfmax.models.Score;
 import com.example.golfmax.models.User;
 import com.example.golfmax.presenters.ScorePresenter;
 import com.example.golfmax.recyclerViews.NewRoundRV;
-import com.example.golfmaxfinal.R;
-import com.example.golfmaxfinal.databinding.ActivityScoreCardFront9Binding;
+import com.example.golfmax.R;
+import com.example.golfmax.databinding.ActivityScoreCardFront9Binding;
 
 import java.util.List;
 
 
 public class ScoreCardFront9Activity extends Activity implements ScoreContract.View {
 
-    ActivityScoreCardFront9Binding binding;
+    private ActivityScoreCardFront9Binding binding;
     TextView textViewSumOfUserScores, textViewSumOfGuest1Scores,
             textViewSumOfGuest2Scores, textViewSumOfGuest3Scores;
 
@@ -87,7 +87,7 @@ public class ScoreCardFront9Activity extends Activity implements ScoreContract.V
         binding.setCourse(course);
     }
 
-    public long getCourseIdByCourseName(String courseName) {
+    private long getCourseIdByCourseName(String courseName) {
         GolfMaxLocalDatabase db = new GolfMaxLocalDatabase(this);
         return db.getCourseId(courseName);
     }

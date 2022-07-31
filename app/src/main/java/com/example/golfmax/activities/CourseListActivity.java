@@ -17,22 +17,18 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.example.golfmax.backend.CourseRepository;
 import com.example.golfmax.models.Course;
-import com.example.golfmaxfinal.R;
-import com.example.golfmaxfinal.databinding.ActivityCourseListBinding;
+import com.example.golfmax.R;
+import com.example.golfmax.databinding.ActivityCourseListBinding;
 import com.google.android.material.navigation.NavigationView;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 public class CourseListActivity extends AppCompatActivity {
 
-    ActivityCourseListBinding binding;
-    List<Course> courseNamesList;
-    DrawerLayout drawerLayout;
-    ActionBar actionBar;
-    NavigationView navView;
-    ActionBarDrawerToggle drawerToggle;
-    ColorDrawable colorDrawable;
+    private ActionBar actionBar;
+    private ActionBarDrawerToggle drawerToggle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,27 +38,42 @@ public class CourseListActivity extends AppCompatActivity {
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-        binding = DataBindingUtil
+        ActivityCourseListBinding binding = DataBindingUtil
                 .setContentView(this,  R.layout.activity_course_list);
 
-        actionBar = getSupportActionBar();
-        colorDrawable = new ColorDrawable(Color.parseColor("#000f00"));
-        actionBar.setBackgroundDrawable(colorDrawable);
-        actionBar.setTitle("Course List");
-        drawerLayout = findViewById(R.id.drawerLayout);
-        navView = findViewById(R.id.navigation_view_course_list);
-        drawerToggle = new ActionBarDrawerToggle(this, drawerLayout,
-                R.string.navOpen, R.string.navClose);
+        DrawerLayout drawerLayout = findViewById(R.id.drawerLayout);
+        NavigationView navView = findViewById(R.id.navigation_view_course_list);
 
-        drawerLayout.addDrawerListener(drawerToggle);
-        drawerToggle.syncState();
-        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+        setDrawerToggleActions(drawerLayout);
+        setActionBarTitle("Course List");
+        setActionBarColor("#000f00");
         setNavigationViewIntents(navView);
 
         CourseRepository courseRepository = new CourseRepository();
+        List<Course> courseNamesList = new ArrayList<>();
+
         courseRepository.setCourseNamesList(courseNamesList);
         courseRepository.setCourseListBinding(binding);
         courseRepository.getCourseNamesForLeaderboard(getApplicationContext());
+    }
+
+    private void setDrawerToggleActions(DrawerLayout drawerLayout) {
+        drawerToggle = new ActionBarDrawerToggle(
+                this, drawerLayout,
+                R.string.navOpen, R.string.navClose );
+        drawerLayout.addDrawerListener(drawerToggle);
+        drawerToggle.syncState();
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+    }
+
+    private void setActionBarTitle(String title) {
+        actionBar = getSupportActionBar();
+        Objects.requireNonNull(actionBar).setTitle(title);
+    }
+
+    private void setActionBarColor(String color) {
+        ColorDrawable colorDrawable = new ColorDrawable(Color.parseColor(color));
+        actionBar.setBackgroundDrawable(colorDrawable);
     }
 
     @Override

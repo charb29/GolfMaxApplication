@@ -16,13 +16,13 @@ import com.example.golfmax.contracts.LoginContract;
 import com.example.golfmax.models.User;
 import com.example.golfmax.presenters.LoginPresenter;
 import com.example.golfmax.requests.LoginRequest;
-import com.example.golfmaxfinal.R;
-import com.example.golfmaxfinal.databinding.ActivityLoginBinding;
+import com.example.golfmax.R;
+import com.example.golfmax.databinding.ActivityLoginBinding;
 import com.google.android.material.textfield.TextInputLayout;
 
 public class LoginActivity extends Activity implements LoginContract.View {
 
-    TextInputLayout textInputLayoutUsername, textInputLayoutPassword;
+    private TextInputLayout textInputLayoutUsername, textInputLayoutPassword;
     public static String staticLoginActivityUsername;
 
     @Override
@@ -32,8 +32,8 @@ public class LoginActivity extends Activity implements LoginContract.View {
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-        ActivityLoginBinding binding = DataBindingUtil.setContentView(this,
-                R.layout.activity_login);
+        ActivityLoginBinding binding = DataBindingUtil
+                .setContentView(this, R.layout.activity_login);
 
         LoginPresenter presenter = new LoginPresenter(this);
         User user = new User();

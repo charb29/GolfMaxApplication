@@ -21,51 +21,42 @@ import com.example.golfmax.backend.ScoreRepository;
 import com.example.golfmax.models.Course;
 import com.example.golfmax.models.Score;
 import com.example.golfmax.recyclerViews.CourseListRV;
-import com.example.golfmaxfinal.R;
-import com.example.golfmaxfinal.databinding.ActivityCourseLeaderboardBinding;
+
+import com.example.golfmax.R;
+import com.example.golfmax.databinding.ActivityCourseLeaderboardBinding;
 import com.google.android.material.navigation.NavigationView;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 public class CourseLeaderboardActivity extends AppCompatActivity {
 
-    DrawerLayout drawerLayout;
-    ActionBar actionBar;
-    NavigationView navView;
-    ActionBarDrawerToggle drawerToggle;
-    ColorDrawable colorDrawable;
-    List<Score> scoreList;
-    ActivityCourseLeaderboardBinding binding;
+    private ActionBar actionBar;
+    private ActionBarDrawerToggle drawerToggle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-        binding = DataBindingUtil
+        ActivityCourseLeaderboardBinding binding = DataBindingUtil
                 .setContentView(this, R.layout.activity_course_leaderboard);
 
-        actionBar = getSupportActionBar();
-        colorDrawable = new ColorDrawable(Color.parseColor("#000f00"));
-        actionBar.setBackgroundDrawable(colorDrawable);
-        actionBar.setTitle("Leaderboard");
-        drawerLayout = findViewById(R.id.drawerLayout);
-        navView = findViewById(R.id.navigation_view_course_leaderboard);
-        drawerToggle = new ActionBarDrawerToggle(this, drawerLayout,
-                R.string.navOpen, R.string.navClose);
+        DrawerLayout drawerLayout = findViewById(R.id.drawerLayout);
+        NavigationView navView = findViewById(R.id.navigation_view_course_leaderboard);
 
-        drawerLayout.addDrawerListener(drawerToggle);
-        drawerToggle.syncState();
-        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+        setDrawerToggleActions(drawerLayout);
+        setActionBarTitle("Leaderboard");
+        setActionBarColor("#000f00");
         setNavigationViewIntents(navView);
 
         ScoreRepository scoreRepository = new ScoreRepository();
         Score score = new Score();
         Course course = new Course();
+        List<Score> scoreList = new ArrayList<>();
 
         scoreRepository.setScoreList(scoreList);
         scoreRepository.setCourseLeaderboardBinding(binding);
@@ -77,7 +68,26 @@ public class CourseLeaderboardActivity extends AppCompatActivity {
         binding.setScore(score);
     }
 
-    public long getCourseId(String courseName) {
+    private void setDrawerToggleActions(DrawerLayout drawerLayout) {
+        drawerToggle = new ActionBarDrawerToggle(
+                this, drawerLayout,
+                R.string.navOpen, R.string.navClose );
+        drawerLayout.addDrawerListener(drawerToggle);
+        drawerToggle.syncState();
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+    }
+
+    private void setActionBarTitle(String title) {
+        actionBar = getSupportActionBar();
+        actionBar.setTitle(title);
+    }
+
+    private void setActionBarColor(String color) {
+        ColorDrawable colorDrawable = new ColorDrawable(Color.parseColor(color));
+        actionBar.setBackgroundDrawable(colorDrawable);
+    }
+
+    private long getCourseId(String courseName) {
         GolfMaxLocalDatabase db = new GolfMaxLocalDatabase(this);
         long courseId = db.getCourseId(courseName);
 

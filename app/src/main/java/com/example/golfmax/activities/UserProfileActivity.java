@@ -23,47 +23,40 @@ import com.example.golfmax.backend.UserRepository;
 import com.example.golfmax.contracts.PlayerStatisticsContract;
 import com.example.golfmax.models.PlayerStatistics;
 import com.example.golfmax.models.User;
-import com.example.golfmaxfinal.R;
-import com.example.golfmaxfinal.databinding.ActivityUserProfileBinding;
+import com.example.golfmax.R;
+import com.example.golfmax.databinding.ActivityUserProfileBinding;
 import com.google.android.material.navigation.NavigationView;
 
 import java.util.Objects;
 
 public class UserProfileActivity extends AppCompatActivity implements PlayerStatisticsContract.View {
 
-    DrawerLayout drawerLayout;
-    ActionBar actionBar;
-    NavigationView navView;
-    ActionBarDrawerToggle drawerToggle;
-    ColorDrawable colorDrawable;
+    private ActionBar actionBar;
+    private ActionBarDrawerToggle drawerToggle;
+    private ActivityUserProfileBinding binding;
+    private UserRepository userRepository;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-        ActivityUserProfileBinding binding = DataBindingUtil
+        binding = DataBindingUtil
                 .setContentView(this, R.layout.activity_user_profile);
 
-        actionBar = getSupportActionBar();
-        colorDrawable = new ColorDrawable(Color.parseColor("#000f00"));
-        actionBar.setBackgroundDrawable(colorDrawable);
-        actionBar.setTitle("User Profile");
-        drawerLayout = findViewById(R.id.drawer_layout);
-        navView = findViewById(R.id.navigation_view_user_profile);
-        drawerToggle = new ActionBarDrawerToggle(this, drawerLayout,
-                R.string.navOpen, R.string.navClose);
+        DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
+        NavigationView navView = findViewById(R.id.navigation_view_user_profile);
+        Button btnUpdateUserInfo = findViewById(R.id.button_update_info);
 
-        drawerLayout.addDrawerListener(drawerToggle);
-        drawerToggle.syncState();
-        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+        setDrawerToggleActions(drawerLayout);
+        setActionBarTitle("User Profile");
+        setActionBarColor("#000f00");
         setNavigationViewIntents(navView);
 
         PlayerStatisticsRepository playerStatisticsRepository = new PlayerStatisticsRepository();
-        UserRepository userRepository = new UserRepository();
+        userRepository = new UserRepository();
 
         long userId = getUserIdByUsername(LoginActivity.staticLoginActivityUsername);
         Log.i("USER ID ====> ", String.valueOf(userId));
@@ -71,9 +64,11 @@ public class UserProfileActivity extends AppCompatActivity implements PlayerStat
         binding.setUser(userRepository.getUserInfoById(userId));
         binding.setStats(playerStatisticsRepository.displayRoundsPlayed(userId));
 
-        Button btnUpdateUserInfo = findViewById(R.id.button_update_info);
+        updateUserInfoOnButtonClick(btnUpdateUserInfo);
+    }
 
-        btnUpdateUserInfo.setOnClickListener(v -> {
+    private void updateUserInfoOnButtonClick(@NonNull Button button) {
+        button.setOnClickListener(v -> {
             User user = new User();
 
             user.setUsername(binding.getUser().getUsername());
@@ -83,6 +78,24 @@ public class UserProfileActivity extends AppCompatActivity implements PlayerStat
 
             userRepository.updateUserInfo(user, UserProfileActivity.this);
         });
+    }
+    private void setDrawerToggleActions(DrawerLayout drawerLayout) {
+        drawerToggle = new ActionBarDrawerToggle(
+                this, drawerLayout,
+                R.string.navOpen, R.string.navClose );
+        drawerLayout.addDrawerListener(drawerToggle);
+        drawerToggle.syncState();
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
+    }
+
+    private void setActionBarTitle(String title) {
+        actionBar = getSupportActionBar();
+        actionBar.setTitle(title);
+    }
+
+    private void setActionBarColor(String color) {
+        ColorDrawable colorDrawable = new ColorDrawable(Color.parseColor(color));
+        actionBar.setBackgroundDrawable(colorDrawable);
     }
 
     @Override
@@ -96,7 +109,7 @@ public class UserProfileActivity extends AppCompatActivity implements PlayerStat
     @Override
     public void showData(PlayerStatistics playerStatistics) {}
 
-    public long getUserIdByUsername(String username) {
+    private long getUserIdByUsername(String username) {
         GolfMaxLocalDatabase db = new GolfMaxLocalDatabase(this);
 
         return db.getUserId(username);

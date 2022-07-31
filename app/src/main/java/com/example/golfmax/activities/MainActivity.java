@@ -15,23 +15,26 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.golfmaxfinal.R;
+import com.example.golfmax.R;
 
 import java.util.Objects;
 
 public class MainActivity extends AppCompatActivity {
 
     private static final int SPLASH_SCREEN = 4000;
-    Animation animLogo, animSlogan;
-    ImageView imageViewLogo;
-    TextView textViewSlogan;
+    private Animation animLogo, animSlogan;
+    private ImageView imageViewLogo;
+    private TextView textViewSlogan;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        Objects.requireNonNull(getSupportActionBar()).hide();
+        this.getWindow()
+                .setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
+        hideActionBar();
         setContentView(R.layout.activity_loading_screen);
 
         animLogo = AnimationUtils.loadAnimation(this, R.anim.loading_screen_logo_anim);
@@ -52,5 +55,9 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent, activityOptions.toBundle());
 
         }, SPLASH_SCREEN);
+    }
+
+    private void hideActionBar() {
+        Objects.requireNonNull(getSupportActionBar()).hide();
     }
 }
