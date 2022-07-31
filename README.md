@@ -1,5 +1,5 @@
-# Golf Handicap Calculator
-This program creates a user profile and then gets the users scores, course rating, and slope rating. It then displays their Handicap Index, and the Average Score Differential if the user wants to see it. (Defintions starting on line 8).
+# Golf Max
+Android application developped with Java. Includes a live score card feature for when you are golfing with friends, or on your own! You have the ability to add new courses, or play featured courses, see your own scores in a leaderboard, and see other user's scores depending on which course you choose. 
 
 ## Motivation 🚀
 I have decided to create this program with the goal of being able to have an app on my phone that simply calculates my Handicap Index when I am on the golf course. It is also a good program to start developping an app with, due to the exciting challenges that it comes with.
@@ -8,12 +8,15 @@ I have decided to create this program with the goal of being able to have an app
 - The abililty to login and create a new profile
 - Adding a round to your profile
 - Having your handicap index and average score displayed in the HomeActivity
+- A User profile that has the ability to change your password, email, and username. 
+- Leaderboards for personal scores.
+- Leaderboards or the top scores of all the user's for selected course. 
+- The Ability to add a course. 
+- A live scorecard feature. 
 
-## Futre Features
-- Live scorecard
-- Leaderboard option for local courses
-- Local courses to select from
-- The ability for a user to add a course that is not already in the application and having it saved for all the other users
+## Future Features
+- OAuth 2.0
+- OpenID Connect
 - Deploying it on the Google Play Store
 
 ## Golf Definitions 🏌️‍♂️
