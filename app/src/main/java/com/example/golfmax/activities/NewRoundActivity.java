@@ -15,10 +15,10 @@ import android.view.MenuItem;
 import android.view.Window;
 import android.view.WindowManager;
 
-import com.example.golfmax.R;
 import com.example.golfmax.backend.CourseRepository;
-import com.example.golfmax.databinding.ActivityNewRoundBinding;
 import com.example.golfmax.models.Course;
+import com.example.golfmaxfinal.R;
+import com.example.golfmaxfinal.databinding.ActivityNewRoundBinding;
 import com.google.android.material.navigation.NavigationView;
 
 import java.util.List;

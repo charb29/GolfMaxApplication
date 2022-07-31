@@ -15,11 +15,11 @@ import android.view.MenuItem;
 import android.view.Window;
 import android.view.WindowManager;
 
-import com.example.golfmax.R;
 import com.example.golfmax.backend.GolfMaxLocalDatabase;
 import com.example.golfmax.backend.ScoreRepository;
-import com.example.golfmax.databinding.ActivityPersonalScoresBinding;
 import com.example.golfmax.models.Score;
+import com.example.golfmaxfinal.R;
+import com.example.golfmaxfinal.databinding.ActivityPersonalScoresBinding;
 import com.google.android.material.navigation.NavigationView;
 
 import java.util.List;

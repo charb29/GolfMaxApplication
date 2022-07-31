@@ -9,12 +9,12 @@ import android.view.WindowManager;
 
 import androidx.databinding.DataBindingUtil;
 
-import com.example.golfmax.R;
 import com.example.golfmax.backend.GolfMaxLocalDatabase;
 import com.example.golfmax.backend.PlayerStatisticsRepository;
 import com.example.golfmax.contracts.PlayerStatisticsContract;
-import com.example.golfmax.databinding.ActivityHomeBinding;
 import com.example.golfmax.models.PlayerStatistics;
+import com.example.golfmaxfinal.R;
+import com.example.golfmaxfinal.databinding.ActivityHomeBinding;
 
 public class HomeActivity extends Activity implements PlayerStatisticsContract.View {
 

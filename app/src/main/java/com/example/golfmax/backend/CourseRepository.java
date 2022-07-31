@@ -6,12 +6,12 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import com.example.golfmax.databinding.ActivityCourseListBinding;
-import com.example.golfmax.databinding.ActivityNewRoundBinding;
-import com.example.golfmax.databinding.ActivityScoreCardFront9Binding;
 import com.example.golfmax.models.Course;
 import com.example.golfmax.recyclerViews.CourseListRV;
 import com.example.golfmax.recyclerViews.NewRoundRV;
+import com.example.golfmaxfinal.databinding.ActivityCourseListBinding;
+import com.example.golfmaxfinal.databinding.ActivityNewRoundBinding;
+import com.example.golfmaxfinal.databinding.ActivityScoreCardFront9Binding;
 
 import java.util.List;
 

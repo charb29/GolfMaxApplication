@@ -17,14 +17,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.drawerlayout.widget.DrawerLayout;
 
-import com.example.golfmax.R;
 import com.example.golfmax.backend.GolfMaxLocalDatabase;
 import com.example.golfmax.backend.PlayerStatisticsRepository;
 import com.example.golfmax.backend.UserRepository;
 import com.example.golfmax.contracts.PlayerStatisticsContract;
-import com.example.golfmax.databinding.ActivityUserProfileBinding;
 import com.example.golfmax.models.PlayerStatistics;
 import com.example.golfmax.models.User;
+import com.example.golfmaxfinal.R;
+import com.example.golfmaxfinal.databinding.ActivityUserProfileBinding;
 import com.google.android.material.navigation.NavigationView;
 
 import java.util.Objects;

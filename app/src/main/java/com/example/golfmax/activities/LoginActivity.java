@@ -11,13 +11,13 @@ import android.view.WindowManager;
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 
-import com.example.golfmax.R;
 import com.example.golfmax.backend.UserRepository;
 import com.example.golfmax.contracts.LoginContract;
-import com.example.golfmax.databinding.ActivityLoginBinding;
 import com.example.golfmax.models.User;
 import com.example.golfmax.presenters.LoginPresenter;
 import com.example.golfmax.requests.LoginRequest;
+import com.example.golfmaxfinal.R;
+import com.example.golfmaxfinal.databinding.ActivityLoginBinding;
 import com.google.android.material.textfield.TextInputLayout;
 
 public class LoginActivity extends Activity implements LoginContract.View {

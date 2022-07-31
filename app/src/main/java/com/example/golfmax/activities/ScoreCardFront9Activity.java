@@ -11,16 +11,16 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 
-import com.example.golfmax.R;
 import com.example.golfmax.backend.CourseRepository;
 import com.example.golfmax.backend.GolfMaxLocalDatabase;
 import com.example.golfmax.contracts.ScoreContract;
-import com.example.golfmax.databinding.ActivityScoreCardFront9Binding;
 import com.example.golfmax.models.Course;
 import com.example.golfmax.models.Score;
 import com.example.golfmax.models.User;
 import com.example.golfmax.presenters.ScorePresenter;
 import com.example.golfmax.recyclerViews.NewRoundRV;
+import com.example.golfmaxfinal.R;
+import com.example.golfmaxfinal.databinding.ActivityScoreCardFront9Binding;
 
 import java.util.List;
 

@@ -10,13 +10,13 @@ import android.view.WindowManager;
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 
-import com.example.golfmax.R;
 import com.example.golfmax.backend.UserRepository;
 import com.example.golfmax.contracts.RegistrationContract;
-import com.example.golfmax.databinding.ActivityRegistrationBinding;
 import com.example.golfmax.models.User;
 import com.example.golfmax.presenters.RegistrationPresenter;
 import com.example.golfmax.requests.RegistrationRequest;
+import com.example.golfmaxfinal.R;
+import com.example.golfmaxfinal.databinding.ActivityRegistrationBinding;
 import com.google.android.material.textfield.TextInputLayout;
 
 public class RegistrationActivity extends Activity implements RegistrationContract.View {

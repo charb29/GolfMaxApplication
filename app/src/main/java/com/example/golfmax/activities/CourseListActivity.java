@@ -15,10 +15,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.drawerlayout.widget.DrawerLayout;
 
-import com.example.golfmax.R;
 import com.example.golfmax.backend.CourseRepository;
-import com.example.golfmax.databinding.ActivityCourseListBinding;
 import com.example.golfmax.models.Course;
+import com.example.golfmaxfinal.R;
+import com.example.golfmaxfinal.databinding.ActivityCourseListBinding;
 import com.google.android.material.navigation.NavigationView;
 
 import java.util.List;
