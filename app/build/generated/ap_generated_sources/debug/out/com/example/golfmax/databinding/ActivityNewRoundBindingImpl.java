@@ -1,6 +1,6 @@
 package com.example.golfmax.databinding;
 import com.example.golfmax.R;
-
+import com.example.golfmax.BR;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import android.view.View;
