@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">GolfMaxFINAL</string>
+    <string name="navOpen">Open</string>
+    <string name="navClose">Close</string>
+    <string name="icon">ICON</string>
+    <string name="handicap_index">Handicap Index</string>
+    <string name="average_score">Average Score</string>
+    <string name="myscoresicon">myScoresIcon</string>
+    <string name="my_scores">My Scores</string>
+    <string name="usericon">userIcon</string>
+    <string name="profile">Profile</string>
+    <string name="leaderboardicon">leaderboardIcon</string>
+    <string name="leaderboards">Leaderboards</string>
+    <string name="playroundicon">playRoundIcon</string>
+    <string name="play_a_round">Play a Round</string>
+</resources>

@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".activities.UserProfileActivity">
+
+    <data>
+        <variable
+            name="user"
+            type="com.example.golfmaxfinal.models.User" />
+        <variable
+            name="stats"
+            type="com.example.golfmaxfinal.models.PlayerStatistics" />
+    </data>
+
+    <androidx.drawerlayout.widget.DrawerLayout
+        android:id="@+id/drawer_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:ignore="HardcodedText">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:background="#2f5c47"
+                android:padding="20dp">
+
+                <ImageView
+                    android:id="@+id/image_view_user_icon"
+                    android:layout_width="125dp"
+                    android:layout_height="125dp"
+                    android:layout_centerVertical="true"
+                    android:contentDescription="ICON"
+                    android:src="@drawable/ic_user_white" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="10dp"
+                    android:layout_toEndOf="@+id/image_view_user_icon"
+                    android:fontFamily="sans-serif-black"
+                    android:includeFontPadding="false"
+                    android:textColor="@color/white"
+                    android:textSize="40sp"
+                    android:text="@={user.username}"/>
+
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="225dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:padding="20dp"
+                android:layout_marginTop="-75dp">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="0dp"
+                    android:layout_height="125dp"
+                    android:layout_weight="5"
+                    app:cardBackgroundColor="#000f00"
+                    app:cardElevation="15dp"
+                    android:layout_margin="10dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:padding="5dp">
+
+                        <TextView
+                            android:id="@+id/text_view_rounds_played"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:fontFamily="sans-serif-light"
+                            android:gravity="center"
+                            android:text="@{String.valueOf(stats.roundsPlayed)}"
+                            android:textColor="@color/white"
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
+
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/text_view_rounds_played"
+                            android:layout_centerInParent="true"
+                            android:fontFamily="sans-serif"
+                            android:text="Rounds Played"
+                            android:textColor="@color/white"
+                            android:textSize="20sp" />
+
+                    </RelativeLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="20dp"
+                android:orientation="vertical">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="username"
+                    android:layout_marginBottom="10dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:drawableStart="@drawable/ic_user_dark_small"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="10dp"
+                        android:text="@={user.username}"
+                        android:inputType="text"
+                        android:imeOptions="actionNext"
+                        android:fontFamily="sans-serif-light"
+                        android:textStyle="bold"/>
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="E-mail"
+                    android:layout_marginBottom="10dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:drawableStart="@drawable/ic_email_dark"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="10dp"
+                        android:inputType="text"
+                        android:imeOptions="actionNext"
+                        android:text="@={user.email}"
+                        android:fontFamily="sans-serif-light"
+                        android:textStyle="bold"/>
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Password"
+                    android:layout_marginBottom="10dp">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:drawableStart="@drawable/ic_password_dark"
+                        android:layout_height="wrap_content"
+                        android:drawablePadding="10dp"
+                        android:text="@={user.password}"
+                        android:imeOptions="actionNext"
+                        android:inputType="textPassword"
+                        android:fontFamily="sans-serif-light"
+                        android:textStyle="bold"/>
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <Button
+                    android:id="@+id/button_update_info"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="update info"
+                    android:fontFamily="sans-serif-black"
+                    android:textColor="@color/white"
+                    android:backgroundTint="#000f00"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <com.google.android.material.navigation.NavigationView
+            android:id="@+id/navigation_view_user_profile"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            app:menu="@menu/nav_menu_user_profile"/>
+
+    </androidx.drawerlayout.widget.DrawerLayout>
+
+</layout>

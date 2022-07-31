@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navHome"
+        android:icon="@drawable/home_icon_dark"
+        android:title="Home"/>
+
+    <item
+        android:id="@+id/navMyScores"
+        android:icon="@drawable/ic_personal_scores_dark"
+        android:title="My Scores"/>
+
+    <item
+        android:id="@+id/navLeaderboard"
+        android:icon="@drawable/ic_leaderboard_dark"
+        android:title="Leaderboards"/>
+
+    <item
+        android:id="@+id/navUserProfile"
+        android:icon="@drawable/ic_user_dark"
+        android:title="User Profile"/>
+
+</menu>
