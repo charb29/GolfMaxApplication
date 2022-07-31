@@ -42,7 +42,7 @@
             android:name="com.example.golfmax.activities.HomeActivity"
             android:exported="false" />
         <activity
-            android:name="com.example.golfmax.activities.LoginActivity"
+            android:name=".activities.LoginActivity"
             android:exported="false" />
         <activity
             android:name="com.example.golfmax.activities.MainActivity"
