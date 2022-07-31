@@ -7,7 +7,7 @@
     <data>
         <variable
             name="user"
-            type="com.example.golfmax.models.User" />
+            type="com.example.golfmax.models.User"/>
         <variable
             name="presenter"
             type="com.example.golfmax.presenters.LoginPresenter" />
