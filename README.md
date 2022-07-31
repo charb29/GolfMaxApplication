@@ -1,4 +1,4 @@
-# Golf Handicap Calculator
+# Golf Max
 This program creates a user profile and then gets the users scores, course rating, and slope rating. It then displays their Handicap Index, and the Average Score Differential if the user wants to see it. (Defintions starting on line 8).
 
 ## Motivation 🚀
