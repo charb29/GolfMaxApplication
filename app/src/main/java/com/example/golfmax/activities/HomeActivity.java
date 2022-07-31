@@ -31,7 +31,7 @@ public class HomeActivity extends Activity implements PlayerStatisticsContract.V
         ActivityHomeBinding binding = DataBindingUtil
                 .setContentView(this, R.layout.activity_home);
 
-        long userId = getUserIdByUsername(LoginActivity.staticUsername);
+        long userId = getUserIdByUsername(LoginActivity.staticLoginActivityUsername);
 
         binding.setStats(playerStatisticsRepository.displayStatsSummary(userId));
     }

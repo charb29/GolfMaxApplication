@@ -22,8 +22,8 @@ import com.google.android.material.textfield.TextInputLayout;
 
 public class LoginActivity extends Activity implements LoginContract.View {
 
-    TextInputLayout tilUsername, tilPassword;
-    public static String staticUsername;
+    TextInputLayout textInputLayoutUsername, textInputLayoutPassword;
+    public static String staticLoginActivityUsername;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,8 +41,8 @@ public class LoginActivity extends Activity implements LoginContract.View {
         binding.setUser(user);
         binding.setPresenter(presenter);
 
-        tilUsername = findViewById(R.id.text_input_layout_username);
-        tilPassword = findViewById(R.id.text_input_layout_password);
+        textInputLayoutUsername = findViewById(R.id.text_input_layout_username);
+        textInputLayoutPassword = findViewById(R.id.text_input_layout_password);
     }
 
     @Override
@@ -51,13 +51,13 @@ public class LoginActivity extends Activity implements LoginContract.View {
         loginRequest.setUsername(user.getUsername());
         loginRequest.setPassword(user.getPassword());
 
-        staticUsername = user.getUsername();
-        Log.i("STATIC USERNAME ====> ", staticUsername);
+        staticLoginActivityUsername = user.getUsername();
+        Log.i("STATIC USERNAME ====> ", staticLoginActivityUsername);
 
         UserRepository userRepository = new UserRepository();
 
-        userRepository.loginUser(loginRequest, tilUsername,
-                tilPassword, LoginActivity.this);
+        userRepository.loginUser(loginRequest, textInputLayoutUsername,
+                textInputLayoutPassword, LoginActivity.this);
     }
 
     public void goToRegistrationActivity(View view) {

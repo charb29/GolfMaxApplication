@@ -65,7 +65,7 @@ public class UserProfileActivity extends AppCompatActivity implements PlayerStat
         PlayerStatisticsRepository playerStatisticsRepository = new PlayerStatisticsRepository();
         UserRepository userRepository = new UserRepository();
 
-        long userId = getUserIdByUsername(LoginActivity.staticUsername);
+        long userId = getUserIdByUsername(LoginActivity.staticLoginActivityUsername);
         Log.i("USER ID ====> ", String.valueOf(userId));
 
         binding.setUser(userRepository.getUserInfoById(userId));

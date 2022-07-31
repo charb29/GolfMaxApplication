@@ -21,7 +21,7 @@ import com.google.android.material.textfield.TextInputLayout;
 
 public class RegistrationActivity extends Activity implements RegistrationContract.View {
 
-    TextInputLayout tilUsername, tilEmail;
+    TextInputLayout textInputLayoutUsername, textInputLayoutEmail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,8 +39,8 @@ public class RegistrationActivity extends Activity implements RegistrationContra
         binding.setUser(user);
         binding.setPresenter(presenter);
 
-        tilUsername = findViewById(R.id.text_input_layout_username);
-        tilEmail = findViewById(R.id.text_input_layout_email);
+        textInputLayoutUsername = findViewById(R.id.text_input_layout_username);
+        textInputLayoutEmail = findViewById(R.id.text_input_layout_email);
     }
 
     @Override
@@ -51,8 +51,8 @@ public class RegistrationActivity extends Activity implements RegistrationContra
         registrationRequest.setEmail(user.getEmail());
 
         UserRepository userRepository = new UserRepository();
-        userRepository.registerUser(registrationRequest, tilUsername,
-                tilEmail, RegistrationActivity.this);
+        userRepository.registerUser(registrationRequest, textInputLayoutUsername,
+                textInputLayoutEmail, RegistrationActivity.this);
     }
 
     public void goToLoginActivity(View view) {

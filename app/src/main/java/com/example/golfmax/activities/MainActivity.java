@@ -23,8 +23,8 @@ public class MainActivity extends AppCompatActivity {
 
     private static final int SPLASH_SCREEN = 4000;
     Animation animLogo, animSlogan;
-    ImageView ivLogo;
-    TextView tvSlogan;
+    ImageView imageViewLogo;
+    TextView textViewSlogan;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,17 +36,17 @@ public class MainActivity extends AppCompatActivity {
 
         animLogo = AnimationUtils.loadAnimation(this, R.anim.loading_screen_logo_anim);
         animSlogan = AnimationUtils.loadAnimation(this, R.anim.loading_screen_slogan_anim);
-        ivLogo = findViewById(R.id.image_view_logo_icon);
-        tvSlogan = findViewById(R.id.text_view_slogan);
+        imageViewLogo = findViewById(R.id.image_view_logo_icon);
+        textViewSlogan = findViewById(R.id.text_view_slogan);
 
-        ivLogo.setAnimation(animLogo);
-        tvSlogan.setAnimation(animSlogan);
+        imageViewLogo.setAnimation(animLogo);
+        textViewSlogan.setAnimation(animSlogan);
 
         new Handler().postDelayed(() -> {
             Intent intent = new Intent(MainActivity.this, LoginActivity.class);
             Pair[] pairs = new Pair[2];
-            pairs[0] = new Pair<View, String>(ivLogo, "logo_image");
-            pairs[1] = new Pair<View, String>(tvSlogan, "logo_text");
+            pairs[0] = new Pair<View, String>(imageViewLogo, "logo_image");
+            pairs[1] = new Pair<View, String>(textViewSlogan, "logo_text");
 
             ActivityOptions activityOptions = ActivityOptions.makeSceneTransitionAnimation(MainActivity.this, pairs);
             startActivity(intent, activityOptions.toBundle());

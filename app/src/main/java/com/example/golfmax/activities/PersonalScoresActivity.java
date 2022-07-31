@@ -64,7 +64,7 @@ public class PersonalScoresActivity extends AppCompatActivity {
 
         scoreRepository.setScoreList(scoreList);
         scoreRepository.setPersonalScoresBinding(binding);
-        long userId = getUserId(LoginActivity.staticUsername);
+        long userId = getUserId(LoginActivity.staticLoginActivityUsername);
 
         scoreRepository.getScoresByUserId(PersonalScoresActivity.this, userId);
     }

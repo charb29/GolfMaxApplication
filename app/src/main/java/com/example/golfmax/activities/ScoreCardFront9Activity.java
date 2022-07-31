@@ -28,7 +28,8 @@ import java.util.List;
 public class ScoreCardFront9Activity extends Activity implements ScoreContract.View {
 
     ActivityScoreCardFront9Binding binding;
-    TextView tvSumOfUserScores, tvSumOfGuest1Scores, tvSumOfGuest2Scores, tvSumOfGuest3Scores;
+    TextView textViewSumOfUserScores, textViewSumOfGuest1Scores,
+            textViewSumOfGuest2Scores, textViewSumOfGuest3Scores;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,10 +41,10 @@ public class ScoreCardFront9Activity extends Activity implements ScoreContract.V
         binding = DataBindingUtil
                 .setContentView(this, R.layout.activity_score_card_front9);
 
-        tvSumOfUserScores = findViewById(R.id.text_view_current_score_user);
-        tvSumOfGuest1Scores = findViewById(R.id.text_view_current_score_guest1);
-        tvSumOfGuest2Scores = findViewById(R.id.text_view_current_score_guest2);
-        tvSumOfGuest3Scores = findViewById(R.id.text_view_current_score_guest3);
+        textViewSumOfUserScores = findViewById(R.id.text_view_current_score_user);
+        textViewSumOfGuest1Scores = findViewById(R.id.text_view_current_score_guest1);
+        textViewSumOfGuest2Scores = findViewById(R.id.text_view_current_score_guest2);
+        textViewSumOfGuest3Scores = findViewById(R.id.text_view_current_score_guest3);
 
         CourseRepository courseRepository = new CourseRepository();
         courseRepository.setScoreCardFront9Binding(binding);
@@ -66,7 +67,7 @@ public class ScoreCardFront9Activity extends Activity implements ScoreContract.V
 
         long courseId = getCourseIdByCourseName(NewRoundRV.staticCourseName);
         courseRepository.getCourseInfoById(courseId);
-        user.setUsername(LoginActivity.staticUsername);
+        user.setUsername(LoginActivity.staticLoginActivityUsername);
 
         binding.setUser(user);
         binding.setGuest1(guest1);
@@ -108,7 +109,7 @@ public class ScoreCardFront9Activity extends Activity implements ScoreContract.V
             }
         }
 
-        tvSumOfUserScores.setText(String.valueOf(scoreSummary));
+        textViewSumOfUserScores.setText(String.valueOf(scoreSummary));
     }
 
     @Override
@@ -128,7 +129,7 @@ public class ScoreCardFront9Activity extends Activity implements ScoreContract.V
             }
         }
 
-        tvSumOfGuest1Scores.setText(String.valueOf(scoreSummary));
+        textViewSumOfGuest1Scores.setText(String.valueOf(scoreSummary));
     }
 
     @Override
@@ -148,7 +149,7 @@ public class ScoreCardFront9Activity extends Activity implements ScoreContract.V
             }
         }
 
-        tvSumOfGuest2Scores.setText(String.valueOf(scoreSummary));
+        textViewSumOfGuest2Scores.setText(String.valueOf(scoreSummary));
     }
 
     @Override
@@ -168,6 +169,6 @@ public class ScoreCardFront9Activity extends Activity implements ScoreContract.V
             }
         }
 
-        tvSumOfGuest3Scores.setText(String.valueOf(scoreSummary));
+        textViewSumOfGuest3Scores.setText(String.valueOf(scoreSummary));
     }
 }
