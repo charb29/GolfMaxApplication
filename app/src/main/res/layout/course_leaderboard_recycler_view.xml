@@ -43,7 +43,7 @@
             android:fontFamily="sans-serif-black"
             android:gravity="center"
             android:paddingStart="8dp"
-            android:text="@={score.userScore}"
+            android:text="@={`` + score.userScore}"
             android:textColor="@color/black"
             android:textSize="20sp"
             tools:ignore="RtlSymmetry" />
