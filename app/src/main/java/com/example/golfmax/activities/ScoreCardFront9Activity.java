@@ -3,9 +3,19 @@ package com.example.golfmax.activities;
 
 import android.app.Activity;
 
+import android.app.AlertDialog;
+import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.view.KeyEvent;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.view.inputmethod.EditorInfo;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -13,6 +23,7 @@ import androidx.databinding.DataBindingUtil;
 
 import com.example.golfmax.backend.CourseRepository;
 import com.example.golfmax.backend.GolfMaxLocalDatabase;
+import com.example.golfmax.backend.ScoreRepository;
 import com.example.golfmax.contracts.ScoreContract;
 import com.example.golfmax.models.Course;
 import com.example.golfmax.models.Score;
@@ -28,8 +39,12 @@ import java.util.List;
 public class ScoreCardFront9Activity extends Activity implements ScoreContract.View {
 
     private ActivityScoreCardFront9Binding binding;
-    TextView textViewSumOfUserScores, textViewSumOfGuest1Scores,
+    private  TextView textViewSumOfUserScores, textViewSumOfGuest1Scores,
             textViewSumOfGuest2Scores, textViewSumOfGuest3Scores;
+    public static String staticUserFront9Score;
+    public static String staticGuest1Front9Score;
+    public static String staticGuest2Front9Score;
+    public static String staticGuest3Front9Score;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,6 +102,68 @@ public class ScoreCardFront9Activity extends Activity implements ScoreContract.V
         binding.setCourse(course);
     }
 
+    @NonNull
+    private AlertDialog getCustomAlertDialog() {
+        View view = LayoutInflater.from(
+                ScoreCardFront9Activity.this)
+                .inflate(R.layout.custom_front9_popup_dialog, null);
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(ScoreCardFront9Activity.this);
+
+        builder.setView(view);
+        final AlertDialog alertDialog = builder.create();
+
+        removeAlertDialogBackgroundColor(alertDialog);
+        configureAlertDialogCancelButton(view);
+        configureAlertDialogContinueButton(view);
+
+        alertDialog.show();
+
+        return alertDialog;
+    }
+
+    public void configureAlertDialogContinueButton(@NonNull View view) {
+        Button buttonContinue = view.findViewById(R.id.button_keep_playing);
+
+        buttonContinue.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ScoreCardFront9Activity.this,
+                        ScoreCardBack9Activity.class);
+
+                startActivity(intent);
+            }
+        });
+    }
+
+    private void configureAlertDialogCancelButton(@NonNull View view) {
+        ScoreRepository scoreRepository = new ScoreRepository();
+        Button buttonCancel = view.findViewById(R.id.button_end_round);
+
+        buttonCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int userScore = (Integer.parseInt(binding
+                        .textViewCurrentScoreUser
+                                .getText()
+                                .toString())) * 2;
+
+                Score score = new Score();
+
+                score.setUserScore(String.valueOf(userScore));
+                score.setCourse(binding.getCourse());
+                score.setCourseRating(Integer.parseInt(score.getCourse().getCourseRating()));
+                score.setSlopeRating(Integer.parseInt(score.getCourse().getSlopeRating()));
+
+                scoreRepository.saveScore(ScoreCardFront9Activity.this, score);
+            }
+        });
+    }
+
+    private void removeAlertDialogBackgroundColor(@NonNull AlertDialog dialog) {
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+    }
+
     private long getCourseIdByCourseName(String courseName) {
         GolfMaxLocalDatabase db = new GolfMaxLocalDatabase(this);
         return db.getCourseId(courseName);
@@ -110,6 +187,9 @@ public class ScoreCardFront9Activity extends Activity implements ScoreContract.V
         }
 
         textViewSumOfUserScores.setText(String.valueOf(scoreSummary));
+
+        userScore.setFront9Score(textViewSumOfUserScores.getText().toString());
+        staticUserFront9Score = userScore.getFront9Score();
     }
 
     @Override
@@ -130,6 +210,8 @@ public class ScoreCardFront9Activity extends Activity implements ScoreContract.V
         }
 
         textViewSumOfGuest1Scores.setText(String.valueOf(scoreSummary));
+        guest1Score.setFront9Score(textViewSumOfGuest1Scores.getText().toString());
+        staticGuest1Front9Score = guest1Score.getFront9Score();
     }
 
     @Override
@@ -150,6 +232,8 @@ public class ScoreCardFront9Activity extends Activity implements ScoreContract.V
         }
 
         textViewSumOfGuest2Scores.setText(String.valueOf(scoreSummary));
+        guest2Score.setFront9Score(textViewSumOfGuest2Scores.getText().toString());
+        staticGuest2Front9Score = guest2Score.getFront9Score();
     }
 
     @Override
@@ -170,5 +254,7 @@ public class ScoreCardFront9Activity extends Activity implements ScoreContract.V
         }
 
         textViewSumOfGuest3Scores.setText(String.valueOf(scoreSummary));
+        guest3Score.setFront9Score(textViewSumOfGuest3Scores.getText().toString());
+        staticGuest3Front9Score = guest3Score.getFront9Score();
     }
 }
