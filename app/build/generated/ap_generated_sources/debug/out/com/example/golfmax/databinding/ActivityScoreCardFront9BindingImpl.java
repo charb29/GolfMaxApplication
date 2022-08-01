@@ -14,35 +14,92 @@ public class ActivityScoreCardFront9BindingImpl extends ActivityScoreCardFront9B
     static {
         sIncludes = null;
         sViewsWithIds = new android.util.SparseIntArray();
-        sViewsWithIds.put(R.id.table_row_hole, 58);
-        sViewsWithIds.put(R.id.table_row_par, 59);
-        sViewsWithIds.put(R.id.table_row_user, 60);
-        sViewsWithIds.put(R.id.table_row_guest1, 61);
-        sViewsWithIds.put(R.id.table_row_guest2, 62);
-        sViewsWithIds.put(R.id.table_row_guest3, 63);
-        sViewsWithIds.put(R.id.text_view_current_score_user, 64);
-        sViewsWithIds.put(R.id.text_view_current_score_guest3, 65);
-        sViewsWithIds.put(R.id.text_view_current_score_guest2, 66);
-        sViewsWithIds.put(R.id.text_view_current_score_guest1, 67);
+        sViewsWithIds.put(R.id.button_done, 54);
+        sViewsWithIds.put(R.id.table_row_hole, 55);
+        sViewsWithIds.put(R.id.table_row_par, 56);
+        sViewsWithIds.put(R.id.table_row_user, 57);
+        sViewsWithIds.put(R.id.table_row_guest1, 58);
+        sViewsWithIds.put(R.id.table_row_guest2, 59);
+        sViewsWithIds.put(R.id.table_row_guest3, 60);
+        sViewsWithIds.put(R.id.text_view_current_score_user, 61);
+        sViewsWithIds.put(R.id.text_view_current_score_guest3, 62);
+        sViewsWithIds.put(R.id.text_view_current_score_guest2, 63);
+        sViewsWithIds.put(R.id.text_view_current_score_guest1, 64);
     }
     // views
     @NonNull
     private final android.widget.LinearLayout mboundView0;
-    @NonNull
-    private final android.widget.RelativeLayout mboundView50;
-    @NonNull
-    private final android.widget.RelativeLayout mboundView52;
-    @NonNull
-    private final android.widget.RelativeLayout mboundView54;
-    @NonNull
-    private final android.widget.RelativeLayout mboundView56;
     // variables
+    @Nullable
+    private final android.view.View.OnClickListener mCallback27;
+    @Nullable
+    private final android.view.View.OnClickListener mCallback15;
+    @Nullable
+    private final android.view.View.OnClickListener mCallback16;
+    @Nullable
+    private final android.view.View.OnClickListener mCallback28;
+    @Nullable
+    private final android.view.View.OnClickListener mCallback9;
+    @Nullable
+    private final android.view.View.OnClickListener mCallback25;
+    @Nullable
+    private final android.view.View.OnClickListener mCallback37;
+    @Nullable
+    private final android.view.View.OnClickListener mCallback13;
+    @Nullable
+    private final android.view.View.OnClickListener mCallback8;
+    @Nullable
+    private final android.view.View.OnClickListener mCallback38;
+    @Nullable
+    private final android.view.View.OnClickListener mCallback14;
+    @Nullable
+    private final android.view.View.OnClickListener mCallback26;
+    @Nullable
+    private final android.view.View.OnClickListener mCallback7;
+    @Nullable
+    private final android.view.View.OnClickListener mCallback23;
+    @Nullable
+    private final android.view.View.OnClickListener mCallback35;
+    @Nullable
+    private final android.view.View.OnClickListener mCallback11;
+    @Nullable
+    private final android.view.View.OnClickListener mCallback36;
+    @Nullable
+    private final android.view.View.OnClickListener mCallback12;
+    @Nullable
+    private final android.view.View.OnClickListener mCallback24;
+    @Nullable
+    private final android.view.View.OnClickListener mCallback21;
+    @Nullable
+    private final android.view.View.OnClickListener mCallback33;
+    @Nullable
+    private final android.view.View.OnClickListener mCallback20;
+    @Nullable
+    private final android.view.View.OnClickListener mCallback34;
+    @Nullable
+    private final android.view.View.OnClickListener mCallback10;
+    @Nullable
+    private final android.view.View.OnClickListener mCallback22;
+    @Nullable
+    private final android.view.View.OnClickListener mCallback30;
+    @Nullable
+    private final android.view.View.OnClickListener mCallback32;
+    @Nullable
+    private final android.view.View.OnClickListener mCallback31;
+    @Nullable
+    private final android.view.View.OnClickListener mCallback19;
     @Nullable
     private final android.view.View.OnClickListener mCallback6;
     @Nullable
     private final android.view.View.OnClickListener mCallback5;
     @Nullable
+    private final android.view.View.OnClickListener mCallback17;
+    @Nullable
+    private final android.view.View.OnClickListener mCallback29;
+    @Nullable
     private final android.view.View.OnClickListener mCallback4;
+    @Nullable
+    private final android.view.View.OnClickListener mCallback18;
     @Nullable
     private final android.view.View.OnClickListener mCallback3;
     // values
@@ -1194,10 +1251,11 @@ public class ActivityScoreCardFront9BindingImpl extends ActivityScoreCardFront9B
     };
 
     public ActivityScoreCardFront9BindingImpl(@Nullable androidx.databinding.DataBindingComponent bindingComponent, @NonNull View root) {
-        this(bindingComponent, root, mapBindings(bindingComponent, root, 68, sIncludes, sViewsWithIds));
+        this(bindingComponent, root, mapBindings(bindingComponent, root, 65, sIncludes, sViewsWithIds));
     }
     private ActivityScoreCardFront9BindingImpl(androidx.databinding.DataBindingComponent bindingComponent, View root, Object[] bindings) {
         super(bindingComponent, root, 9
+            , (android.widget.Button) bindings[54]
             , (android.widget.EditText) bindings[11]
             , (android.widget.EditText) bindings[21]
             , (android.widget.EditText) bindings[31]
@@ -1234,23 +1292,23 @@ public class ActivityScoreCardFront9BindingImpl extends ActivityScoreCardFront9B
             , (android.widget.EditText) bindings[29]
             , (android.widget.EditText) bindings[39]
             , (android.widget.EditText) bindings[49]
-            , (android.widget.TableRow) bindings[61]
-            , (android.widget.TableRow) bindings[62]
-            , (android.widget.TableRow) bindings[63]
             , (android.widget.TableRow) bindings[58]
             , (android.widget.TableRow) bindings[59]
             , (android.widget.TableRow) bindings[60]
+            , (android.widget.TableRow) bindings[55]
+            , (android.widget.TableRow) bindings[56]
+            , (android.widget.TableRow) bindings[57]
             , (com.google.android.material.textfield.TextInputEditText) bindings[20]
             , (com.google.android.material.textfield.TextInputEditText) bindings[30]
             , (com.google.android.material.textfield.TextInputEditText) bindings[40]
-            , (android.widget.TextView) bindings[67]
-            , (android.widget.TextView) bindings[57]
-            , (android.widget.TextView) bindings[66]
-            , (android.widget.TextView) bindings[55]
-            , (android.widget.TextView) bindings[65]
-            , (android.widget.TextView) bindings[53]
             , (android.widget.TextView) bindings[64]
+            , (android.widget.TextView) bindings[53]
+            , (android.widget.TextView) bindings[63]
+            , (android.widget.TextView) bindings[52]
+            , (android.widget.TextView) bindings[62]
             , (android.widget.TextView) bindings[51]
+            , (android.widget.TextView) bindings[61]
+            , (android.widget.TextView) bindings[50]
             , (android.widget.TextView) bindings[1]
             , (android.widget.TextView) bindings[2]
             , (android.widget.TextView) bindings[3]
@@ -1300,14 +1358,6 @@ public class ActivityScoreCardFront9BindingImpl extends ActivityScoreCardFront9B
         this.editTextHole9Guest3.setTag(null);
         this.mboundView0 = (android.widget.LinearLayout) bindings[0];
         this.mboundView0.setTag(null);
-        this.mboundView50 = (android.widget.RelativeLayout) bindings[50];
-        this.mboundView50.setTag(null);
-        this.mboundView52 = (android.widget.RelativeLayout) bindings[52];
-        this.mboundView52.setTag(null);
-        this.mboundView54 = (android.widget.RelativeLayout) bindings[54];
-        this.mboundView54.setTag(null);
-        this.mboundView56 = (android.widget.RelativeLayout) bindings[56];
-        this.mboundView56.setTag(null);
         this.textInputEditTextGuest1.setTag(null);
         this.textInputEditTextGuest2.setTag(null);
         this.textInputEditTextGuest3.setTag(null);
@@ -1327,9 +1377,41 @@ public class ActivityScoreCardFront9BindingImpl extends ActivityScoreCardFront9B
         this.textViewUsername.setTag(null);
         setRootTag(root);
         // listeners
+        mCallback27 = new com.example.golfmax.generated.callback.OnClickListener(this, 25);
+        mCallback15 = new com.example.golfmax.generated.callback.OnClickListener(this, 13);
+        mCallback16 = new com.example.golfmax.generated.callback.OnClickListener(this, 14);
+        mCallback28 = new com.example.golfmax.generated.callback.OnClickListener(this, 26);
+        mCallback9 = new com.example.golfmax.generated.callback.OnClickListener(this, 7);
+        mCallback25 = new com.example.golfmax.generated.callback.OnClickListener(this, 23);
+        mCallback37 = new com.example.golfmax.generated.callback.OnClickListener(this, 35);
+        mCallback13 = new com.example.golfmax.generated.callback.OnClickListener(this, 11);
+        mCallback8 = new com.example.golfmax.generated.callback.OnClickListener(this, 6);
+        mCallback38 = new com.example.golfmax.generated.callback.OnClickListener(this, 36);
+        mCallback14 = new com.example.golfmax.generated.callback.OnClickListener(this, 12);
+        mCallback26 = new com.example.golfmax.generated.callback.OnClickListener(this, 24);
+        mCallback7 = new com.example.golfmax.generated.callback.OnClickListener(this, 5);
+        mCallback23 = new com.example.golfmax.generated.callback.OnClickListener(this, 21);
+        mCallback35 = new com.example.golfmax.generated.callback.OnClickListener(this, 33);
+        mCallback11 = new com.example.golfmax.generated.callback.OnClickListener(this, 9);
+        mCallback36 = new com.example.golfmax.generated.callback.OnClickListener(this, 34);
+        mCallback12 = new com.example.golfmax.generated.callback.OnClickListener(this, 10);
+        mCallback24 = new com.example.golfmax.generated.callback.OnClickListener(this, 22);
+        mCallback21 = new com.example.golfmax.generated.callback.OnClickListener(this, 19);
+        mCallback33 = new com.example.golfmax.generated.callback.OnClickListener(this, 31);
+        mCallback20 = new com.example.golfmax.generated.callback.OnClickListener(this, 18);
+        mCallback34 = new com.example.golfmax.generated.callback.OnClickListener(this, 32);
+        mCallback10 = new com.example.golfmax.generated.callback.OnClickListener(this, 8);
+        mCallback22 = new com.example.golfmax.generated.callback.OnClickListener(this, 20);
+        mCallback30 = new com.example.golfmax.generated.callback.OnClickListener(this, 28);
+        mCallback32 = new com.example.golfmax.generated.callback.OnClickListener(this, 30);
+        mCallback31 = new com.example.golfmax.generated.callback.OnClickListener(this, 29);
+        mCallback19 = new com.example.golfmax.generated.callback.OnClickListener(this, 17);
         mCallback6 = new com.example.golfmax.generated.callback.OnClickListener(this, 4);
         mCallback5 = new com.example.golfmax.generated.callback.OnClickListener(this, 3);
+        mCallback17 = new com.example.golfmax.generated.callback.OnClickListener(this, 15);
+        mCallback29 = new com.example.golfmax.generated.callback.OnClickListener(this, 27);
         mCallback4 = new com.example.golfmax.generated.callback.OnClickListener(this, 2);
+        mCallback18 = new com.example.golfmax.generated.callback.OnClickListener(this, 16);
         mCallback3 = new com.example.golfmax.generated.callback.OnClickListener(this, 1);
         invalidateAll();
     }
@@ -2393,54 +2475,81 @@ public class ActivityScoreCardFront9BindingImpl extends ActivityScoreCardFront9B
                 }
         }
         // batch finished
-        if ((dirtyFlags & 0x8000000100000004L) != 0) {
-            // api target 1
-
-            androidx.databinding.adapters.TextViewBindingAdapter.setText(this.editTextHole1, userScoreHole1);
-        }
         if ((dirtyFlags & 0x8000000000000000L) != 0) {
             // api target 1
 
+            this.editTextHole1.setOnClickListener(mCallback3);
             androidx.databinding.adapters.TextViewBindingAdapter.setTextWatcher(this.editTextHole1, (androidx.databinding.adapters.TextViewBindingAdapter.BeforeTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.OnTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.AfterTextChanged)null, editTextHole1androidTextAttrChanged);
+            this.editTextHole1Guest1.setOnClickListener(mCallback12);
             androidx.databinding.adapters.TextViewBindingAdapter.setTextWatcher(this.editTextHole1Guest1, (androidx.databinding.adapters.TextViewBindingAdapter.BeforeTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.OnTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.AfterTextChanged)null, editTextHole1Guest1androidTextAttrChanged);
+            this.editTextHole1Guest2.setOnClickListener(mCallback21);
             androidx.databinding.adapters.TextViewBindingAdapter.setTextWatcher(this.editTextHole1Guest2, (androidx.databinding.adapters.TextViewBindingAdapter.BeforeTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.OnTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.AfterTextChanged)null, editTextHole1Guest2androidTextAttrChanged);
+            this.editTextHole1Guest3.setOnClickListener(mCallback30);
             androidx.databinding.adapters.TextViewBindingAdapter.setTextWatcher(this.editTextHole1Guest3, (androidx.databinding.adapters.TextViewBindingAdapter.BeforeTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.OnTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.AfterTextChanged)null, editTextHole1Guest3androidTextAttrChanged);
+            this.editTextHole2.setOnClickListener(mCallback4);
             androidx.databinding.adapters.TextViewBindingAdapter.setTextWatcher(this.editTextHole2, (androidx.databinding.adapters.TextViewBindingAdapter.BeforeTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.OnTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.AfterTextChanged)null, editTextHole2androidTextAttrChanged);
+            this.editTextHole2Guest1.setOnClickListener(mCallback13);
             androidx.databinding.adapters.TextViewBindingAdapter.setTextWatcher(this.editTextHole2Guest1, (androidx.databinding.adapters.TextViewBindingAdapter.BeforeTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.OnTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.AfterTextChanged)null, editTextHole2Guest1androidTextAttrChanged);
+            this.editTextHole2Guest2.setOnClickListener(mCallback22);
             androidx.databinding.adapters.TextViewBindingAdapter.setTextWatcher(this.editTextHole2Guest2, (androidx.databinding.adapters.TextViewBindingAdapter.BeforeTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.OnTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.AfterTextChanged)null, editTextHole2Guest2androidTextAttrChanged);
+            this.editTextHole2Guest3.setOnClickListener(mCallback31);
             androidx.databinding.adapters.TextViewBindingAdapter.setTextWatcher(this.editTextHole2Guest3, (androidx.databinding.adapters.TextViewBindingAdapter.BeforeTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.OnTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.AfterTextChanged)null, editTextHole2Guest3androidTextAttrChanged);
+            this.editTextHole3.setOnClickListener(mCallback5);
             androidx.databinding.adapters.TextViewBindingAdapter.setTextWatcher(this.editTextHole3, (androidx.databinding.adapters.TextViewBindingAdapter.BeforeTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.OnTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.AfterTextChanged)null, editTextHole3androidTextAttrChanged);
+            this.editTextHole3Guest1.setOnClickListener(mCallback14);
             androidx.databinding.adapters.TextViewBindingAdapter.setTextWatcher(this.editTextHole3Guest1, (androidx.databinding.adapters.TextViewBindingAdapter.BeforeTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.OnTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.AfterTextChanged)null, editTextHole3Guest1androidTextAttrChanged);
+            this.editTextHole3Guest2.setOnClickListener(mCallback23);
             androidx.databinding.adapters.TextViewBindingAdapter.setTextWatcher(this.editTextHole3Guest2, (androidx.databinding.adapters.TextViewBindingAdapter.BeforeTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.OnTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.AfterTextChanged)null, editTextHole3Guest2androidTextAttrChanged);
+            this.editTextHole3Guest3.setOnClickListener(mCallback32);
             androidx.databinding.adapters.TextViewBindingAdapter.setTextWatcher(this.editTextHole3Guest3, (androidx.databinding.adapters.TextViewBindingAdapter.BeforeTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.OnTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.AfterTextChanged)null, editTextHole3Guest3androidTextAttrChanged);
+            this.editTextHole4.setOnClickListener(mCallback6);
             androidx.databinding.adapters.TextViewBindingAdapter.setTextWatcher(this.editTextHole4, (androidx.databinding.adapters.TextViewBindingAdapter.BeforeTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.OnTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.AfterTextChanged)null, editTextHole4androidTextAttrChanged);
+            this.editTextHole4Guest1.setOnClickListener(mCallback15);
             androidx.databinding.adapters.TextViewBindingAdapter.setTextWatcher(this.editTextHole4Guest1, (androidx.databinding.adapters.TextViewBindingAdapter.BeforeTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.OnTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.AfterTextChanged)null, editTextHole4Guest1androidTextAttrChanged);
+            this.editTextHole4Guest2.setOnClickListener(mCallback24);
             androidx.databinding.adapters.TextViewBindingAdapter.setTextWatcher(this.editTextHole4Guest2, (androidx.databinding.adapters.TextViewBindingAdapter.BeforeTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.OnTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.AfterTextChanged)null, editTextHole4Guest2androidTextAttrChanged);
+            this.editTextHole4Guest3.setOnClickListener(mCallback33);
             androidx.databinding.adapters.TextViewBindingAdapter.setTextWatcher(this.editTextHole4Guest3, (androidx.databinding.adapters.TextViewBindingAdapter.BeforeTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.OnTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.AfterTextChanged)null, editTextHole4Guest3androidTextAttrChanged);
+            this.editTextHole5.setOnClickListener(mCallback7);
             androidx.databinding.adapters.TextViewBindingAdapter.setTextWatcher(this.editTextHole5, (androidx.databinding.adapters.TextViewBindingAdapter.BeforeTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.OnTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.AfterTextChanged)null, editTextHole5androidTextAttrChanged);
+            this.editTextHole5Guest1.setOnClickListener(mCallback16);
             androidx.databinding.adapters.TextViewBindingAdapter.setTextWatcher(this.editTextHole5Guest1, (androidx.databinding.adapters.TextViewBindingAdapter.BeforeTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.OnTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.AfterTextChanged)null, editTextHole5Guest1androidTextAttrChanged);
+            this.editTextHole5Guest2.setOnClickListener(mCallback25);
             androidx.databinding.adapters.TextViewBindingAdapter.setTextWatcher(this.editTextHole5Guest2, (androidx.databinding.adapters.TextViewBindingAdapter.BeforeTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.OnTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.AfterTextChanged)null, editTextHole5Guest2androidTextAttrChanged);
+            this.editTextHole5Guest3.setOnClickListener(mCallback34);
             androidx.databinding.adapters.TextViewBindingAdapter.setTextWatcher(this.editTextHole5Guest3, (androidx.databinding.adapters.TextViewBindingAdapter.BeforeTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.OnTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.AfterTextChanged)null, editTextHole5Guest3androidTextAttrChanged);
+            this.editTextHole6.setOnClickListener(mCallback8);
             androidx.databinding.adapters.TextViewBindingAdapter.setTextWatcher(this.editTextHole6, (androidx.databinding.adapters.TextViewBindingAdapter.BeforeTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.OnTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.AfterTextChanged)null, editTextHole6androidTextAttrChanged);
+            this.editTextHole6Guest1.setOnClickListener(mCallback17);
             androidx.databinding.adapters.TextViewBindingAdapter.setTextWatcher(this.editTextHole6Guest1, (androidx.databinding.adapters.TextViewBindingAdapter.BeforeTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.OnTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.AfterTextChanged)null, editTextHole6Guest1androidTextAttrChanged);
+            this.editTextHole6Guest2.setOnClickListener(mCallback26);
             androidx.databinding.adapters.TextViewBindingAdapter.setTextWatcher(this.editTextHole6Guest2, (androidx.databinding.adapters.TextViewBindingAdapter.BeforeTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.OnTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.AfterTextChanged)null, editTextHole6Guest2androidTextAttrChanged);
+            this.editTextHole6Guest3.setOnClickListener(mCallback35);
             androidx.databinding.adapters.TextViewBindingAdapter.setTextWatcher(this.editTextHole6Guest3, (androidx.databinding.adapters.TextViewBindingAdapter.BeforeTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.OnTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.AfterTextChanged)null, editTextHole6Guest3androidTextAttrChanged);
+            this.editTextHole7.setOnClickListener(mCallback9);
             androidx.databinding.adapters.TextViewBindingAdapter.setTextWatcher(this.editTextHole7, (androidx.databinding.adapters.TextViewBindingAdapter.BeforeTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.OnTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.AfterTextChanged)null, editTextHole7androidTextAttrChanged);
+            this.editTextHole7Guest1.setOnClickListener(mCallback18);
             androidx.databinding.adapters.TextViewBindingAdapter.setTextWatcher(this.editTextHole7Guest1, (androidx.databinding.adapters.TextViewBindingAdapter.BeforeTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.OnTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.AfterTextChanged)null, editTextHole7Guest1androidTextAttrChanged);
+            this.editTextHole7Guest2.setOnClickListener(mCallback27);
             androidx.databinding.adapters.TextViewBindingAdapter.setTextWatcher(this.editTextHole7Guest2, (androidx.databinding.adapters.TextViewBindingAdapter.BeforeTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.OnTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.AfterTextChanged)null, editTextHole7Guest2androidTextAttrChanged);
+            this.editTextHole7Guest3.setOnClickListener(mCallback36);
             androidx.databinding.adapters.TextViewBindingAdapter.setTextWatcher(this.editTextHole7Guest3, (androidx.databinding.adapters.TextViewBindingAdapter.BeforeTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.OnTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.AfterTextChanged)null, editTextHole7Guest3androidTextAttrChanged);
+            this.editTextHole8.setOnClickListener(mCallback10);
             androidx.databinding.adapters.TextViewBindingAdapter.setTextWatcher(this.editTextHole8, (androidx.databinding.adapters.TextViewBindingAdapter.BeforeTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.OnTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.AfterTextChanged)null, editTextHole8androidTextAttrChanged);
+            this.editTextHole8Guest1.setOnClickListener(mCallback19);
             androidx.databinding.adapters.TextViewBindingAdapter.setTextWatcher(this.editTextHole8Guest1, (androidx.databinding.adapters.TextViewBindingAdapter.BeforeTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.OnTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.AfterTextChanged)null, editTextHole8Guest1androidTextAttrChanged);
+            this.editTextHole8Guest2.setOnClickListener(mCallback28);
             androidx.databinding.adapters.TextViewBindingAdapter.setTextWatcher(this.editTextHole8Guest2, (androidx.databinding.adapters.TextViewBindingAdapter.BeforeTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.OnTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.AfterTextChanged)null, editTextHole8Guest2androidTextAttrChanged);
+            this.editTextHole8Guest3.setOnClickListener(mCallback37);
             androidx.databinding.adapters.TextViewBindingAdapter.setTextWatcher(this.editTextHole8Guest3, (androidx.databinding.adapters.TextViewBindingAdapter.BeforeTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.OnTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.AfterTextChanged)null, editTextHole8Guest3androidTextAttrChanged);
+            this.editTextHole9.setOnClickListener(mCallback11);
             androidx.databinding.adapters.TextViewBindingAdapter.setTextWatcher(this.editTextHole9, (androidx.databinding.adapters.TextViewBindingAdapter.BeforeTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.OnTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.AfterTextChanged)null, editTextHole9androidTextAttrChanged);
+            this.editTextHole9Guest1.setOnClickListener(mCallback20);
             androidx.databinding.adapters.TextViewBindingAdapter.setTextWatcher(this.editTextHole9Guest1, (androidx.databinding.adapters.TextViewBindingAdapter.BeforeTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.OnTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.AfterTextChanged)null, editTextHole9Guest1androidTextAttrChanged);
+            this.editTextHole9Guest2.setOnClickListener(mCallback29);
             androidx.databinding.adapters.TextViewBindingAdapter.setTextWatcher(this.editTextHole9Guest2, (androidx.databinding.adapters.TextViewBindingAdapter.BeforeTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.OnTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.AfterTextChanged)null, editTextHole9Guest2androidTextAttrChanged);
+            this.editTextHole9Guest3.setOnClickListener(mCallback38);
             androidx.databinding.adapters.TextViewBindingAdapter.setTextWatcher(this.editTextHole9Guest3, (androidx.databinding.adapters.TextViewBindingAdapter.BeforeTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.OnTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.AfterTextChanged)null, editTextHole9Guest3androidTextAttrChanged);
-            this.mboundView50.setOnClickListener(mCallback3);
-            this.mboundView52.setOnClickListener(mCallback4);
-            this.mboundView54.setOnClickListener(mCallback5);
-            this.mboundView56.setOnClickListener(mCallback6);
             androidx.databinding.adapters.TextViewBindingAdapter.setTextWatcher(this.textInputEditTextGuest1, (androidx.databinding.adapters.TextViewBindingAdapter.BeforeTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.OnTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.AfterTextChanged)null, textInputEditTextGuest1androidTextAttrChanged);
             androidx.databinding.adapters.TextViewBindingAdapter.setTextWatcher(this.textInputEditTextGuest2, (androidx.databinding.adapters.TextViewBindingAdapter.BeforeTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.OnTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.AfterTextChanged)null, textInputEditTextGuest2androidTextAttrChanged);
             androidx.databinding.adapters.TextViewBindingAdapter.setTextWatcher(this.textInputEditTextGuest3, (androidx.databinding.adapters.TextViewBindingAdapter.BeforeTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.OnTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.AfterTextChanged)null, textInputEditTextGuest3androidTextAttrChanged);
@@ -2449,6 +2558,11 @@ public class ActivityScoreCardFront9BindingImpl extends ActivityScoreCardFront9B
             androidx.databinding.adapters.TextViewBindingAdapter.setTextWatcher(this.textViewCurrentScoreGuest3Name, (androidx.databinding.adapters.TextViewBindingAdapter.BeforeTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.OnTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.AfterTextChanged)null, textViewCurrentScoreGuest3NameandroidTextAttrChanged);
             androidx.databinding.adapters.TextViewBindingAdapter.setTextWatcher(this.textViewCurrentScoreUsername, (androidx.databinding.adapters.TextViewBindingAdapter.BeforeTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.OnTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.AfterTextChanged)null, textViewCurrentScoreUsernameandroidTextAttrChanged);
             androidx.databinding.adapters.TextViewBindingAdapter.setTextWatcher(this.textViewUsername, (androidx.databinding.adapters.TextViewBindingAdapter.BeforeTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.OnTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.AfterTextChanged)null, textViewUsernameandroidTextAttrChanged);
+        }
+        if ((dirtyFlags & 0x8000000100000004L) != 0) {
+            // api target 1
+
+            androidx.databinding.adapters.TextViewBindingAdapter.setText(this.editTextHole1, userScoreHole1);
         }
         if ((dirtyFlags & 0x8000000000004001L) != 0) {
             // api target 1
@@ -2699,7 +2813,27 @@ public class ActivityScoreCardFront9BindingImpl extends ActivityScoreCardFront9B
     // callback impls
     public final void _internalCallbackOnClick(int sourceId , android.view.View callbackArg_0) {
         switch(sourceId) {
-            case 4: {
+            case 25: {
+                // localize variables for thread safety
+                // scorePresenter != null
+                boolean scorePresenterJavaLangObjectNull = false;
+                // guest2Score
+                com.example.golfmax.models.Score guest2Score = mGuest2Score;
+                // scorePresenter
+                com.example.golfmax.presenters.ScorePresenter scorePresenter = mScorePresenter;
+
+
+
+                scorePresenterJavaLangObjectNull = (scorePresenter) != (null);
+                if (scorePresenterJavaLangObjectNull) {
+
+
+
+                    scorePresenter.onShowGuest2Score(guest2Score);
+                }
+                break;
+            }
+            case 13: {
                 // localize variables for thread safety
                 // guest1Score
                 com.example.golfmax.models.Score guest1Score = mGuest1Score;
@@ -2719,7 +2853,607 @@ public class ActivityScoreCardFront9BindingImpl extends ActivityScoreCardFront9B
                 }
                 break;
             }
+            case 14: {
+                // localize variables for thread safety
+                // guest1Score
+                com.example.golfmax.models.Score guest1Score = mGuest1Score;
+                // scorePresenter != null
+                boolean scorePresenterJavaLangObjectNull = false;
+                // scorePresenter
+                com.example.golfmax.presenters.ScorePresenter scorePresenter = mScorePresenter;
+
+
+
+                scorePresenterJavaLangObjectNull = (scorePresenter) != (null);
+                if (scorePresenterJavaLangObjectNull) {
+
+
+
+                    scorePresenter.onShowGuest1Score(guest1Score);
+                }
+                break;
+            }
+            case 26: {
+                // localize variables for thread safety
+                // scorePresenter != null
+                boolean scorePresenterJavaLangObjectNull = false;
+                // guest2Score
+                com.example.golfmax.models.Score guest2Score = mGuest2Score;
+                // scorePresenter
+                com.example.golfmax.presenters.ScorePresenter scorePresenter = mScorePresenter;
+
+
+
+                scorePresenterJavaLangObjectNull = (scorePresenter) != (null);
+                if (scorePresenterJavaLangObjectNull) {
+
+
+
+                    scorePresenter.onShowGuest2Score(guest2Score);
+                }
+                break;
+            }
+            case 7: {
+                // localize variables for thread safety
+                // scorePresenter != null
+                boolean scorePresenterJavaLangObjectNull = false;
+                // scorePresenter
+                com.example.golfmax.presenters.ScorePresenter scorePresenter = mScorePresenter;
+                // userScore
+                com.example.golfmax.models.Score userScore = mUserScore;
+
+
+
+                scorePresenterJavaLangObjectNull = (scorePresenter) != (null);
+                if (scorePresenterJavaLangObjectNull) {
+
+
+
+                    scorePresenter.onShowUserScore(userScore);
+                }
+                break;
+            }
+            case 23: {
+                // localize variables for thread safety
+                // scorePresenter != null
+                boolean scorePresenterJavaLangObjectNull = false;
+                // guest2Score
+                com.example.golfmax.models.Score guest2Score = mGuest2Score;
+                // scorePresenter
+                com.example.golfmax.presenters.ScorePresenter scorePresenter = mScorePresenter;
+
+
+
+                scorePresenterJavaLangObjectNull = (scorePresenter) != (null);
+                if (scorePresenterJavaLangObjectNull) {
+
+
+
+                    scorePresenter.onShowGuest2Score(guest2Score);
+                }
+                break;
+            }
+            case 35: {
+                // localize variables for thread safety
+                // scorePresenter != null
+                boolean scorePresenterJavaLangObjectNull = false;
+                // guest3Score
+                com.example.golfmax.models.Score guest3Score = mGuest3Score;
+                // scorePresenter
+                com.example.golfmax.presenters.ScorePresenter scorePresenter = mScorePresenter;
+
+
+
+                scorePresenterJavaLangObjectNull = (scorePresenter) != (null);
+                if (scorePresenterJavaLangObjectNull) {
+
+
+
+                    scorePresenter.onShowGuest3Score(guest3Score);
+                }
+                break;
+            }
+            case 11: {
+                // localize variables for thread safety
+                // guest1Score
+                com.example.golfmax.models.Score guest1Score = mGuest1Score;
+                // scorePresenter != null
+                boolean scorePresenterJavaLangObjectNull = false;
+                // scorePresenter
+                com.example.golfmax.presenters.ScorePresenter scorePresenter = mScorePresenter;
+
+
+
+                scorePresenterJavaLangObjectNull = (scorePresenter) != (null);
+                if (scorePresenterJavaLangObjectNull) {
+
+
+
+                    scorePresenter.onShowGuest1Score(guest1Score);
+                }
+                break;
+            }
+            case 6: {
+                // localize variables for thread safety
+                // scorePresenter != null
+                boolean scorePresenterJavaLangObjectNull = false;
+                // scorePresenter
+                com.example.golfmax.presenters.ScorePresenter scorePresenter = mScorePresenter;
+                // userScore
+                com.example.golfmax.models.Score userScore = mUserScore;
+
+
+
+                scorePresenterJavaLangObjectNull = (scorePresenter) != (null);
+                if (scorePresenterJavaLangObjectNull) {
+
+
+
+                    scorePresenter.onShowUserScore(userScore);
+                }
+                break;
+            }
+            case 36: {
+                // localize variables for thread safety
+                // scorePresenter != null
+                boolean scorePresenterJavaLangObjectNull = false;
+                // guest3Score
+                com.example.golfmax.models.Score guest3Score = mGuest3Score;
+                // scorePresenter
+                com.example.golfmax.presenters.ScorePresenter scorePresenter = mScorePresenter;
+
+
+
+                scorePresenterJavaLangObjectNull = (scorePresenter) != (null);
+                if (scorePresenterJavaLangObjectNull) {
+
+
+
+                    scorePresenter.onShowGuest3Score(guest3Score);
+                }
+                break;
+            }
+            case 12: {
+                // localize variables for thread safety
+                // guest1Score
+                com.example.golfmax.models.Score guest1Score = mGuest1Score;
+                // scorePresenter != null
+                boolean scorePresenterJavaLangObjectNull = false;
+                // scorePresenter
+                com.example.golfmax.presenters.ScorePresenter scorePresenter = mScorePresenter;
+
+
+
+                scorePresenterJavaLangObjectNull = (scorePresenter) != (null);
+                if (scorePresenterJavaLangObjectNull) {
+
+
+
+                    scorePresenter.onShowGuest1Score(guest1Score);
+                }
+                break;
+            }
+            case 24: {
+                // localize variables for thread safety
+                // scorePresenter != null
+                boolean scorePresenterJavaLangObjectNull = false;
+                // guest2Score
+                com.example.golfmax.models.Score guest2Score = mGuest2Score;
+                // scorePresenter
+                com.example.golfmax.presenters.ScorePresenter scorePresenter = mScorePresenter;
+
+
+
+                scorePresenterJavaLangObjectNull = (scorePresenter) != (null);
+                if (scorePresenterJavaLangObjectNull) {
+
+
+
+                    scorePresenter.onShowGuest2Score(guest2Score);
+                }
+                break;
+            }
+            case 5: {
+                // localize variables for thread safety
+                // scorePresenter != null
+                boolean scorePresenterJavaLangObjectNull = false;
+                // scorePresenter
+                com.example.golfmax.presenters.ScorePresenter scorePresenter = mScorePresenter;
+                // userScore
+                com.example.golfmax.models.Score userScore = mUserScore;
+
+
+
+                scorePresenterJavaLangObjectNull = (scorePresenter) != (null);
+                if (scorePresenterJavaLangObjectNull) {
+
+
+
+                    scorePresenter.onShowUserScore(userScore);
+                }
+                break;
+            }
+            case 21: {
+                // localize variables for thread safety
+                // scorePresenter != null
+                boolean scorePresenterJavaLangObjectNull = false;
+                // guest2Score
+                com.example.golfmax.models.Score guest2Score = mGuest2Score;
+                // scorePresenter
+                com.example.golfmax.presenters.ScorePresenter scorePresenter = mScorePresenter;
+
+
+
+                scorePresenterJavaLangObjectNull = (scorePresenter) != (null);
+                if (scorePresenterJavaLangObjectNull) {
+
+
+
+                    scorePresenter.onShowGuest2Score(guest2Score);
+                }
+                break;
+            }
+            case 33: {
+                // localize variables for thread safety
+                // scorePresenter != null
+                boolean scorePresenterJavaLangObjectNull = false;
+                // guest3Score
+                com.example.golfmax.models.Score guest3Score = mGuest3Score;
+                // scorePresenter
+                com.example.golfmax.presenters.ScorePresenter scorePresenter = mScorePresenter;
+
+
+
+                scorePresenterJavaLangObjectNull = (scorePresenter) != (null);
+                if (scorePresenterJavaLangObjectNull) {
+
+
+
+                    scorePresenter.onShowGuest3Score(guest3Score);
+                }
+                break;
+            }
+            case 9: {
+                // localize variables for thread safety
+                // scorePresenter != null
+                boolean scorePresenterJavaLangObjectNull = false;
+                // scorePresenter
+                com.example.golfmax.presenters.ScorePresenter scorePresenter = mScorePresenter;
+                // userScore
+                com.example.golfmax.models.Score userScore = mUserScore;
+
+
+
+                scorePresenterJavaLangObjectNull = (scorePresenter) != (null);
+                if (scorePresenterJavaLangObjectNull) {
+
+
+
+                    scorePresenter.onShowUserScore(userScore);
+                }
+                break;
+            }
+            case 34: {
+                // localize variables for thread safety
+                // scorePresenter != null
+                boolean scorePresenterJavaLangObjectNull = false;
+                // guest3Score
+                com.example.golfmax.models.Score guest3Score = mGuest3Score;
+                // scorePresenter
+                com.example.golfmax.presenters.ScorePresenter scorePresenter = mScorePresenter;
+
+
+
+                scorePresenterJavaLangObjectNull = (scorePresenter) != (null);
+                if (scorePresenterJavaLangObjectNull) {
+
+
+
+                    scorePresenter.onShowGuest3Score(guest3Score);
+                }
+                break;
+            }
+            case 10: {
+                // localize variables for thread safety
+                // guest1Score
+                com.example.golfmax.models.Score guest1Score = mGuest1Score;
+                // scorePresenter != null
+                boolean scorePresenterJavaLangObjectNull = false;
+                // scorePresenter
+                com.example.golfmax.presenters.ScorePresenter scorePresenter = mScorePresenter;
+
+
+
+                scorePresenterJavaLangObjectNull = (scorePresenter) != (null);
+                if (scorePresenterJavaLangObjectNull) {
+
+
+
+                    scorePresenter.onShowGuest1Score(guest1Score);
+                }
+                break;
+            }
+            case 22: {
+                // localize variables for thread safety
+                // scorePresenter != null
+                boolean scorePresenterJavaLangObjectNull = false;
+                // guest2Score
+                com.example.golfmax.models.Score guest2Score = mGuest2Score;
+                // scorePresenter
+                com.example.golfmax.presenters.ScorePresenter scorePresenter = mScorePresenter;
+
+
+
+                scorePresenterJavaLangObjectNull = (scorePresenter) != (null);
+                if (scorePresenterJavaLangObjectNull) {
+
+
+
+                    scorePresenter.onShowGuest2Score(guest2Score);
+                }
+                break;
+            }
+            case 19: {
+                // localize variables for thread safety
+                // scorePresenter != null
+                boolean scorePresenterJavaLangObjectNull = false;
+                // guest2Score
+                com.example.golfmax.models.Score guest2Score = mGuest2Score;
+                // scorePresenter
+                com.example.golfmax.presenters.ScorePresenter scorePresenter = mScorePresenter;
+
+
+
+                scorePresenterJavaLangObjectNull = (scorePresenter) != (null);
+                if (scorePresenterJavaLangObjectNull) {
+
+
+
+                    scorePresenter.onShowGuest2Score(guest2Score);
+                }
+                break;
+            }
+            case 31: {
+                // localize variables for thread safety
+                // scorePresenter != null
+                boolean scorePresenterJavaLangObjectNull = false;
+                // guest3Score
+                com.example.golfmax.models.Score guest3Score = mGuest3Score;
+                // scorePresenter
+                com.example.golfmax.presenters.ScorePresenter scorePresenter = mScorePresenter;
+
+
+
+                scorePresenterJavaLangObjectNull = (scorePresenter) != (null);
+                if (scorePresenterJavaLangObjectNull) {
+
+
+
+                    scorePresenter.onShowGuest3Score(guest3Score);
+                }
+                break;
+            }
+            case 18: {
+                // localize variables for thread safety
+                // guest1Score
+                com.example.golfmax.models.Score guest1Score = mGuest1Score;
+                // scorePresenter != null
+                boolean scorePresenterJavaLangObjectNull = false;
+                // scorePresenter
+                com.example.golfmax.presenters.ScorePresenter scorePresenter = mScorePresenter;
+
+
+
+                scorePresenterJavaLangObjectNull = (scorePresenter) != (null);
+                if (scorePresenterJavaLangObjectNull) {
+
+
+
+                    scorePresenter.onShowGuest1Score(guest1Score);
+                }
+                break;
+            }
+            case 32: {
+                // localize variables for thread safety
+                // scorePresenter != null
+                boolean scorePresenterJavaLangObjectNull = false;
+                // guest3Score
+                com.example.golfmax.models.Score guest3Score = mGuest3Score;
+                // scorePresenter
+                com.example.golfmax.presenters.ScorePresenter scorePresenter = mScorePresenter;
+
+
+
+                scorePresenterJavaLangObjectNull = (scorePresenter) != (null);
+                if (scorePresenterJavaLangObjectNull) {
+
+
+
+                    scorePresenter.onShowGuest3Score(guest3Score);
+                }
+                break;
+            }
+            case 8: {
+                // localize variables for thread safety
+                // scorePresenter != null
+                boolean scorePresenterJavaLangObjectNull = false;
+                // scorePresenter
+                com.example.golfmax.presenters.ScorePresenter scorePresenter = mScorePresenter;
+                // userScore
+                com.example.golfmax.models.Score userScore = mUserScore;
+
+
+
+                scorePresenterJavaLangObjectNull = (scorePresenter) != (null);
+                if (scorePresenterJavaLangObjectNull) {
+
+
+
+                    scorePresenter.onShowUserScore(userScore);
+                }
+                break;
+            }
+            case 20: {
+                // localize variables for thread safety
+                // scorePresenter != null
+                boolean scorePresenterJavaLangObjectNull = false;
+                // guest2Score
+                com.example.golfmax.models.Score guest2Score = mGuest2Score;
+                // scorePresenter
+                com.example.golfmax.presenters.ScorePresenter scorePresenter = mScorePresenter;
+
+
+
+                scorePresenterJavaLangObjectNull = (scorePresenter) != (null);
+                if (scorePresenterJavaLangObjectNull) {
+
+
+
+                    scorePresenter.onShowGuest2Score(guest2Score);
+                }
+                break;
+            }
+            case 28: {
+                // localize variables for thread safety
+                // scorePresenter != null
+                boolean scorePresenterJavaLangObjectNull = false;
+                // guest3Score
+                com.example.golfmax.models.Score guest3Score = mGuest3Score;
+                // scorePresenter
+                com.example.golfmax.presenters.ScorePresenter scorePresenter = mScorePresenter;
+
+
+
+                scorePresenterJavaLangObjectNull = (scorePresenter) != (null);
+                if (scorePresenterJavaLangObjectNull) {
+
+
+
+                    scorePresenter.onShowGuest3Score(guest3Score);
+                }
+                break;
+            }
+            case 30: {
+                // localize variables for thread safety
+                // scorePresenter != null
+                boolean scorePresenterJavaLangObjectNull = false;
+                // guest3Score
+                com.example.golfmax.models.Score guest3Score = mGuest3Score;
+                // scorePresenter
+                com.example.golfmax.presenters.ScorePresenter scorePresenter = mScorePresenter;
+
+
+
+                scorePresenterJavaLangObjectNull = (scorePresenter) != (null);
+                if (scorePresenterJavaLangObjectNull) {
+
+
+
+                    scorePresenter.onShowGuest3Score(guest3Score);
+                }
+                break;
+            }
+            case 29: {
+                // localize variables for thread safety
+                // scorePresenter != null
+                boolean scorePresenterJavaLangObjectNull = false;
+                // guest3Score
+                com.example.golfmax.models.Score guest3Score = mGuest3Score;
+                // scorePresenter
+                com.example.golfmax.presenters.ScorePresenter scorePresenter = mScorePresenter;
+
+
+
+                scorePresenterJavaLangObjectNull = (scorePresenter) != (null);
+                if (scorePresenterJavaLangObjectNull) {
+
+
+
+                    scorePresenter.onShowGuest3Score(guest3Score);
+                }
+                break;
+            }
+            case 17: {
+                // localize variables for thread safety
+                // guest1Score
+                com.example.golfmax.models.Score guest1Score = mGuest1Score;
+                // scorePresenter != null
+                boolean scorePresenterJavaLangObjectNull = false;
+                // scorePresenter
+                com.example.golfmax.presenters.ScorePresenter scorePresenter = mScorePresenter;
+
+
+
+                scorePresenterJavaLangObjectNull = (scorePresenter) != (null);
+                if (scorePresenterJavaLangObjectNull) {
+
+
+
+                    scorePresenter.onShowGuest1Score(guest1Score);
+                }
+                break;
+            }
+            case 4: {
+                // localize variables for thread safety
+                // scorePresenter != null
+                boolean scorePresenterJavaLangObjectNull = false;
+                // scorePresenter
+                com.example.golfmax.presenters.ScorePresenter scorePresenter = mScorePresenter;
+                // userScore
+                com.example.golfmax.models.Score userScore = mUserScore;
+
+
+
+                scorePresenterJavaLangObjectNull = (scorePresenter) != (null);
+                if (scorePresenterJavaLangObjectNull) {
+
+
+
+                    scorePresenter.onShowUserScore(userScore);
+                }
+                break;
+            }
             case 3: {
+                // localize variables for thread safety
+                // scorePresenter != null
+                boolean scorePresenterJavaLangObjectNull = false;
+                // scorePresenter
+                com.example.golfmax.presenters.ScorePresenter scorePresenter = mScorePresenter;
+                // userScore
+                com.example.golfmax.models.Score userScore = mUserScore;
+
+
+
+                scorePresenterJavaLangObjectNull = (scorePresenter) != (null);
+                if (scorePresenterJavaLangObjectNull) {
+
+
+
+                    scorePresenter.onShowUserScore(userScore);
+                }
+                break;
+            }
+            case 15: {
+                // localize variables for thread safety
+                // guest1Score
+                com.example.golfmax.models.Score guest1Score = mGuest1Score;
+                // scorePresenter != null
+                boolean scorePresenterJavaLangObjectNull = false;
+                // scorePresenter
+                com.example.golfmax.presenters.ScorePresenter scorePresenter = mScorePresenter;
+
+
+
+                scorePresenterJavaLangObjectNull = (scorePresenter) != (null);
+                if (scorePresenterJavaLangObjectNull) {
+
+
+
+                    scorePresenter.onShowGuest1Score(guest1Score);
+                }
+                break;
+            }
+            case 27: {
                 // localize variables for thread safety
                 // scorePresenter != null
                 boolean scorePresenterJavaLangObjectNull = false;
@@ -2743,8 +3477,28 @@ public class ActivityScoreCardFront9BindingImpl extends ActivityScoreCardFront9B
                 // localize variables for thread safety
                 // scorePresenter != null
                 boolean scorePresenterJavaLangObjectNull = false;
-                // guest3Score
-                com.example.golfmax.models.Score guest3Score = mGuest3Score;
+                // scorePresenter
+                com.example.golfmax.presenters.ScorePresenter scorePresenter = mScorePresenter;
+                // userScore
+                com.example.golfmax.models.Score userScore = mUserScore;
+
+
+
+                scorePresenterJavaLangObjectNull = (scorePresenter) != (null);
+                if (scorePresenterJavaLangObjectNull) {
+
+
+
+                    scorePresenter.onShowUserScore(userScore);
+                }
+                break;
+            }
+            case 16: {
+                // localize variables for thread safety
+                // guest1Score
+                com.example.golfmax.models.Score guest1Score = mGuest1Score;
+                // scorePresenter != null
+                boolean scorePresenterJavaLangObjectNull = false;
                 // scorePresenter
                 com.example.golfmax.presenters.ScorePresenter scorePresenter = mScorePresenter;
 
@@ -2755,7 +3509,7 @@ public class ActivityScoreCardFront9BindingImpl extends ActivityScoreCardFront9B
 
 
 
-                    scorePresenter.onShowGuest3Score(guest3Score);
+                    scorePresenter.onShowGuest1Score(guest1Score);
                 }
                 break;
             }
