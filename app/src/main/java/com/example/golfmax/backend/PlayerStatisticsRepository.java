@@ -5,6 +5,7 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 
 import com.example.golfmax.models.PlayerStatistics;
+import com.example.golfmax.models.User;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -68,5 +69,27 @@ public class PlayerStatisticsRepository {
             }
         });
         return PlayerStatistics;
+    }
+
+    public void updatePlayerStats(@NonNull long userId) {
+        Call<PlayerStatistics> playerStatisticsCall = GolfMaxHttpClient
+                .getApiInterface()
+                .updateUserStats(userId);
+
+        playerStatisticsCall.enqueue(new Callback<PlayerStatistics>() {
+            @Override
+            public void onResponse(@NonNull Call<PlayerStatistics> call,
+                                   @NonNull Response<PlayerStatistics> response) {
+                if (response.isSuccessful()) {
+                    Log.i("UPDATE STATS ===> ", response.toString());
+                }
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<PlayerStatistics> call,
+                                  @NonNull Throwable t) {
+                Log.e("ERROR ====> ", t.toString());
+            }
+        });
     }
 }
