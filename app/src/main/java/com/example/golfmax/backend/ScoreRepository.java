@@ -1,11 +1,14 @@
 package com.example.golfmax.backend;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.example.golfmax.activities.HomeActivity;
 import com.example.golfmax.models.Score;
 import com.example.golfmax.recyclerViews.CourseLeaderBoardRV;
 import com.example.golfmax.recyclerViews.PersonalScoresRV;
@@ -98,6 +101,41 @@ public class ScoreRepository {
 
             @Override
             public void onFailure(@NonNull Call<List<Score>> call,
+                                  @NonNull Throwable t) {
+                Log.e("ERROR ====> ", t.toString());
+            }
+        });
+    }
+
+    public void saveScore(Context context, Score score) {
+
+        Call<Score> scoreCall = GolfMaxHttpClient
+                .getApiInterface()
+                .saveScore(score);
+
+        scoreCall.enqueue(new Callback<Score>() {
+            @Override
+            public void onResponse(@NonNull Call<Score> call,
+                                   @NonNull Response<Score> response) {
+
+                if (response.isSuccessful()) {
+                    Toast.makeText(context.getApplicationContext(),
+                            "Score has been saved.",
+                            Toast.LENGTH_SHORT).show();
+
+                    Intent intent = new Intent(context.getApplicationContext(), HomeActivity.class);
+                    context.startActivity(intent);
+
+                    Log.i("SAVE SCORE ====> ", response.toString());
+                } else {
+                    Toast.makeText(context.getApplicationContext(),
+                            "Failed.",
+                            Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<Score> call,
                                   @NonNull Throwable t) {
                 Log.e("ERROR ====> ", t.toString());
             }
