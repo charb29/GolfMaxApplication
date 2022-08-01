@@ -53,598 +53,469 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <HorizontalScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="#000f00">
 
-        <TableLayout
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="18dip"
+                android:text="@={course.courseName}"
+                android:fontFamily="sans-serif-black"
+                android:hint="Course Name"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"/>
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1"/>
+
+            <Button
+                android:id="@+id/button_done"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:backgroundTint="#000f00"
+                android:fontFamily="sans-serif-black"
+                android:text="Done"
+                android:textColor="@color/white"
+                android:textAllCaps="false"
+                android:gravity="center"/>
+
+        </LinearLayout>
+
+        <HorizontalScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <TableRow
-                android:id="@+id/table_row_hole"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content">
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-                <TextView
-                    android:layout_width="125dp"
-                    android:layout_height="match_parent"
-                    android:background="#013220"
-                    android:padding="18dip"
-                    android:text="Hole"
-                    android:textColor="@color/white"
-                    android:fontFamily="sans-serif-black"/>
+                <TableRow
+                    android:id="@+id/table_row_hole"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content">
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="#013220"
-                    android:padding="18dip"
-                    android:gravity="center"
-                    android:text="1"
-                    android:textColor="@color/white"
-                    android:fontFamily="sans-serif-black"/>
+                    <TextView
+                        android:layout_width="125dp"
+                        android:layout_height="match_parent"
+                        android:background="#013220"
+                        android:padding="18dip"
+                        android:text="Hole"
+                        android:textColor="@color/white"
+                        android:fontFamily="sans-serif-black"/>
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="#013220"
-                    android:padding="18dip"
-                    android:text="2"
-                    android:gravity="center"
-                    android:textColor="@color/white"
-                    android:fontFamily="sans-serif-black"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#013220"
+                        android:padding="18dip"
+                        android:gravity="center"
+                        android:text="1"
+                        android:textColor="@color/white"
+                        android:fontFamily="sans-serif-black"/>
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="#013220"
-                    android:padding="18dip"
-                    android:text="3"
-                    android:gravity="center"
-                    android:textColor="@color/white"
-                    android:fontFamily="sans-serif-black"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#013220"
+                        android:padding="18dip"
+                        android:text="2"
+                        android:gravity="center"
+                        android:textColor="@color/white"
+                        android:fontFamily="sans-serif-black"/>
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="#013220"
-                    android:padding="18dip"
-                    android:text="4"
-                    android:gravity="center"
-                    android:textColor="@color/white"
-                    android:fontFamily="sans-serif-black"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#013220"
+                        android:padding="18dip"
+                        android:text="3"
+                        android:gravity="center"
+                        android:textColor="@color/white"
+                        android:fontFamily="sans-serif-black"/>
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="#013220"
-                    android:padding="18dip"
-                    android:text="5"
-                    android:gravity="center"
-                    android:textColor="@color/white"
-                    android:fontFamily="sans-serif-black"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#013220"
+                        android:padding="18dip"
+                        android:text="4"
+                        android:gravity="center"
+                        android:textColor="@color/white"
+                        android:fontFamily="sans-serif-black"/>
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="#013220"
-                    android:padding="18dip"
-                    android:text="6"
-                    android:gravity="center"
-                    android:textColor="@color/white"
-                    android:fontFamily="sans-serif-black"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#013220"
+                        android:padding="18dip"
+                        android:text="5"
+                        android:gravity="center"
+                        android:textColor="@color/white"
+                        android:fontFamily="sans-serif-black"/>
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="#013220"
-                    android:padding="18dip"
-                    android:text="7"
-                    android:gravity="center"
-                    android:textColor="@color/white"
-                    android:fontFamily="sans-serif-black"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#013220"
+                        android:padding="18dip"
+                        android:text="6"
+                        android:gravity="center"
+                        android:textColor="@color/white"
+                        android:fontFamily="sans-serif-black"/>
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="#013220"
-                    android:padding="18dip"
-                    android:text="8"
-                    android:gravity="center"
-                    android:textColor="@color/white"
-                    android:fontFamily="sans-serif-black"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#013220"
+                        android:padding="18dip"
+                        android:text="7"
+                        android:gravity="center"
+                        android:textColor="@color/white"
+                        android:fontFamily="sans-serif-black"/>
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="#013220"
-                    android:padding="18dip"
-                    android:text="9"
-                    android:gravity="center"
-                    android:textColor="@color/white"
-                    android:fontFamily="sans-serif-black"/>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#013220"
+                        android:padding="18dip"
+                        android:text="8"
+                        android:gravity="center"
+                        android:textColor="@color/white"
+                        android:fontFamily="sans-serif-black"/>
 
-            </TableRow>
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#013220"
+                        android:padding="18dip"
+                        android:text="9"
+                        android:gravity="center"
+                        android:textColor="@color/white"
+                        android:fontFamily="sans-serif-black"/>
 
-            <TableRow
-                android:id="@+id/table_row_par"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content">
+                </TableRow>
 
-                <TextView
-                    android:layout_width="125dp"
-                    android:layout_height="match_parent"
-                    android:background="#2f5c47"
-                    android:padding="18dip"
-                    android:text="Par"
-                    android:textColor="@color/white"
-                    android:fontFamily="sans-serif-black"/>
+                <TableRow
+                    android:id="@+id/table_row_par"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#013220">
 
-                <TextView
-                    android:id="@+id/text_view_par1"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="#2f5c47"
-                    android:padding="18dip"
-                    android:text="@{String.valueOf(course.hole1)}"
-                    android:hint="0"
-                    android:gravity="center"
-                    android:textColor="@color/white"
-                    android:fontFamily="sans-serif-black"/>
+                    <TextView
+                        android:layout_width="125dp"
+                        android:layout_height="match_parent"
+                        android:background="#013220"
+                        android:padding="18dip"
+                        android:text="Par"
+                        android:textColor="@color/white"
+                        android:fontFamily="sans-serif-black"/>
 
-                <TextView
-                    android:id="@+id/text_view_par2"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="#2f5c47"
-                    android:padding="18dip"
-                    android:gravity="center"
-                    android:text="@{String.valueOf(course.hole2)}"
-                    android:hint="0"
-                    android:textColor="@color/white"
-                    android:fontFamily="sans-serif-black"/>
+                    <TextView
+                        android:id="@+id/text_view_par1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#013220"
+                        android:padding="18dip"
+                        android:text="@{String.valueOf(course.hole1)}"
+                        android:hint="0"
+                        android:gravity="center"
+                        android:textColor="@color/white"
+                        android:fontFamily="sans-serif-black"/>
 
-                <TextView
-                    android:id="@+id/text_view_par3"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="#2f5c47"
-                    android:padding="18dip"
-                    android:text="@{String.valueOf(course.hole3)}"
-                    android:hint="0"
-                    android:gravity="center"
-                    android:textColor="@color/white"
-                    android:fontFamily="sans-serif-black"/>
+                    <TextView
+                        android:id="@+id/text_view_par2"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#013220"
+                        android:padding="18dip"
+                        android:gravity="center"
+                        android:text="@{String.valueOf(course.hole2)}"
+                        android:hint="0"
+                        android:textColor="@color/white"
+                        android:fontFamily="sans-serif-black"/>
 
-                <TextView
-                    android:id="@+id/text_view_par4"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="#2f5c47"
-                    android:padding="18dip"
-                    android:gravity="center"
-                    android:text="@{String.valueOf(course.hole4)}"
-                    android:hint="0"
-                    android:textColor="@color/white"
-                    android:fontFamily="sans-serif-black"/>
+                    <TextView
+                        android:id="@+id/text_view_par3"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#013220"
+                        android:padding="18dip"
+                        android:text="@{String.valueOf(course.hole3)}"
+                        android:hint="0"
+                        android:gravity="center"
+                        android:textColor="@color/white"
+                        android:fontFamily="sans-serif-black"/>
 
-                <TextView
-                    android:id="@+id/text_view_par5"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="#2f5c47"
-                    android:padding="18dip"
-                    android:gravity="center"
-                    android:text="@{String.valueOf(course.hole5)}"
-                    android:hint="0"
-                    android:textColor="@color/white"
-                    android:fontFamily="sans-serif-black"/>
+                    <TextView
+                        android:id="@+id/text_view_par4"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#013220"
+                        android:padding="18dip"
+                        android:gravity="center"
+                        android:text="@{String.valueOf(course.hole4)}"
+                        android:hint="0"
+                        android:textColor="@color/white"
+                        android:fontFamily="sans-serif-black"/>
 
-                <TextView
-                    android:id="@+id/text_view_par6"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="#2f5c47"
-                    android:padding="18dip"
-                    android:text="@{String.valueOf(course.hole6)}"
-                    android:hint="0"
-                    android:gravity="center"
-                    android:textColor="@color/white"
-                    android:fontFamily="sans-serif-black"/>
+                    <TextView
+                        android:id="@+id/text_view_par5"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#013220"
+                        android:padding="18dip"
+                        android:gravity="center"
+                        android:text="@{String.valueOf(course.hole5)}"
+                        android:hint="0"
+                        android:textColor="@color/white"
+                        android:fontFamily="sans-serif-black"/>
 
-                <TextView
-                    android:id="@+id/text_view_par7"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="#2f5c47"
-                    android:padding="18dip"
-                    android:gravity="center"
-                    android:text="@{String.valueOf(course.hole7)}"
-                    android:hint="0"
-                    android:textColor="@color/white"
-                    android:fontFamily="sans-serif-black"/>
+                    <TextView
+                        android:id="@+id/text_view_par6"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#013220"
+                        android:padding="18dip"
+                        android:text="@{String.valueOf(course.hole6)}"
+                        android:hint="0"
+                        android:gravity="center"
+                        android:textColor="@color/white"
+                        android:fontFamily="sans-serif-black"/>
 
-                <TextView
-                    android:id="@+id/text_view_par8"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="#2f5c47"
-                    android:padding="18dip"
-                    android:gravity="center"
-                    android:text="@{String.valueOf(course.hole8)}"
-                    android:hint="0"
-                    android:textColor="@color/white"
-                    android:fontFamily="sans-serif-black"/>
+                    <TextView
+                        android:id="@+id/text_view_par7"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#013220"
+                        android:padding="18dip"
+                        android:gravity="center"
+                        android:text="@{String.valueOf(course.hole7)}"
+                        android:hint="0"
+                        android:textColor="@color/white"
+                        android:fontFamily="sans-serif-black"/>
 
-                <TextView
-                    android:id="@+id/text_view_par9"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="#2f5c47"
-                    android:padding="18dip"
-                    android:text="@{String.valueOf(course.hole9)}"
-                    android:hint="0"
-                    android:gravity="center"
-                    android:textColor="@color/white"
-                    android:fontFamily="sans-serif-black"/>
+                    <TextView
+                        android:id="@+id/text_view_par8"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#013220"
+                        android:padding="18dip"
+                        android:gravity="center"
+                        android:text="@{String.valueOf(course.hole8)}"
+                        android:hint="0"
+                        android:textColor="@color/white"
+                        android:fontFamily="sans-serif-black"/>
 
-            </TableRow>
+                    <TextView
+                        android:id="@+id/text_view_par9"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#013220"
+                        android:padding="18dip"
+                        android:text="@{String.valueOf(course.hole9)}"
+                        android:hint="0"
+                        android:gravity="center"
+                        android:textColor="@color/white"
+                        android:fontFamily="sans-serif-black"/>
 
-            <TableRow
-                android:id="@+id/table_row_user"
-                android:layout_width="fill_parent"
-                android:imeOptions="actionNext"
-                android:layout_height="wrap_content">
+                </TableRow>
 
-                <TextView
-                    android:id="@+id/text_view_username"
-                    android:layout_height="match_parent"
-                    android:layout_width="match_parent"
-                    android:text="@={user.username}"
-                    android:hint="Username"
-                    android:padding="18dip"
-                    android:textColor="@color/black"
-                    android:fontFamily="sans-serif-black"
-                    android:textSize="15dp"/>
-
-                <EditText
-                    android:id="@+id/edit_text_hole1"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@color/white"
-                    android:fontFamily="sans-serif-black"
-                    android:hint="00"
-                    android:onClick="@{() -> scorePresenter.onShowUserScore(userScore)}"
+                <TableRow
+                    android:id="@+id/table_row_user"
+                    android:layout_width="fill_parent"
                     android:imeOptions="actionNext"
-                    android:inputType="number"
-                    android:padding="18dip"
-                    android:singleLine="true"
-                    android:text="@={userScore.hole1}"
-                    android:textColor="@color/black"
-                    android:textSize="15dp" />
+                    android:layout_height="wrap_content">
 
-                <EditText
-                    android:id="@+id/edit_text_hole2"
-                    android:layout_height="match_parent"
-                    android:layout_width="match_parent"
-                    android:hint="00"
-                    android:text="@={userScore.hole2}"
-                    android:onClick="@{() -> scorePresenter.onShowUserScore(userScore)}"
-                    android:inputType="number"
-                    android:singleLine="true"
-                    android:imeOptions="actionNext"
-                    android:padding="18dip"
-                    android:fontFamily="sans-serif-black"
-                    android:background="@color/white"
-                    android:textColor="@color/black"
-                    android:textSize="15dp"/>
+                    <TextView
+                        android:id="@+id/text_view_username"
+                        android:layout_height="match_parent"
+                        android:layout_width="match_parent"
+                        android:text="@={user.username}"
+                        android:hint="Username"
+                        android:padding="18dip"
+                        android:textColor="@color/black"
+                        android:fontFamily="sans-serif-black"
+                        android:textSize="15dp"/>
 
-                <EditText
-                    android:id="@+id/edit_text_hole3"
-                    android:layout_height="match_parent"
-                    android:layout_width="match_parent"
-                    android:hint="00"
-                    android:onClick="@{() -> scorePresenter.onShowUserScore(userScore)}"
-                    android:text="@={userScore.hole3}"
-                    android:inputType="number"
-                    android:singleLine="true"
-                    android:imeOptions="actionNext"
-                    android:padding="18dip"
-                    android:fontFamily="sans-serif-black"
-                    android:background="@color/white"
-                    android:textColor="@color/black"
-                    android:textSize="15dp"/>
+                    <EditText
+                        android:id="@+id/edit_text_hole1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/white"
+                        android:fontFamily="sans-serif-black"
+                        android:hint="00"
+                        android:onClick="@{() -> scorePresenter.onShowUserScore(userScore)}"
+                        android:imeOptions="actionNext"
+                        android:inputType="number"
+                        android:padding="18dip"
+                        android:singleLine="true"
+                        android:text="@={userScore.hole1}"
+                        android:textColor="@color/black"
+                        android:textSize="15dp" />
 
-                <EditText
-                    android:id="@+id/edit_text_hole4"
-                    android:layout_height="match_parent"
-                    android:layout_width="match_parent"
-                    android:hint="00"
-                    android:text="@={userScore.hole4}"
-                    android:onClick="@{() -> scorePresenter.onShowUserScore(userScore)}"
-                    android:singleLine="true"
-                    android:imeOptions="actionNext"
-                    android:padding="18dip"
-                    android:inputType="number"
-                    android:fontFamily="sans-serif-black"
-                    android:background="@color/white"
-                    android:textColor="@color/black"
-                    android:textSize="15dp"/>
+                    <EditText
+                        android:id="@+id/edit_text_hole2"
+                        android:layout_height="match_parent"
+                        android:layout_width="match_parent"
+                        android:hint="00"
+                        android:text="@={userScore.hole2}"
+                        android:onClick="@{() -> scorePresenter.onShowUserScore(userScore)}"
+                        android:inputType="number"
+                        android:singleLine="true"
+                        android:imeOptions="actionNext"
+                        android:padding="18dip"
+                        android:fontFamily="sans-serif-black"
+                        android:background="@color/white"
+                        android:textColor="@color/black"
+                        android:textSize="15dp"/>
 
-                <EditText
-                    android:id="@+id/edit_text_hole5"
-                    android:layout_height="match_parent"
-                    android:layout_width="match_parent"
-                    android:hint="00"
-                    android:text="@={userScore.hole5}"
-                    android:onClick="@{() -> scorePresenter.onShowUserScore(userScore)}"
-                    android:singleLine="true"
-                    android:imeOptions="actionNext"
-                    android:padding="18dip"
-                    android:inputType="number"
-                    android:fontFamily="sans-serif-black"
-                    android:background="@color/white"
-                    android:textColor="@color/black"
-                    android:textSize="15dp"/>
+                    <EditText
+                        android:id="@+id/edit_text_hole3"
+                        android:layout_height="match_parent"
+                        android:layout_width="match_parent"
+                        android:hint="00"
+                        android:onClick="@{() -> scorePresenter.onShowUserScore(userScore)}"
+                        android:text="@={userScore.hole3}"
+                        android:inputType="number"
+                        android:singleLine="true"
+                        android:imeOptions="actionNext"
+                        android:padding="18dip"
+                        android:fontFamily="sans-serif-black"
+                        android:background="@color/white"
+                        android:textColor="@color/black"
+                        android:textSize="15dp"/>
 
-                <EditText
-                    android:id="@+id/edit_text_hole6"
-                    android:layout_height="match_parent"
-                    android:layout_width="match_parent"
-                    android:hint="00"
-                    android:text="@={userScore.hole6}"
-                    android:onClick="@{() -> scorePresenter.onShowUserScore(userScore)}"
-                    android:singleLine="true"
-                    android:inputType="number"
-                    android:imeOptions="actionNext"
-                    android:padding="18dip"
-                    android:fontFamily="sans-serif-black"
-                    android:background="@color/white"
-                    android:textColor="@color/black"
-                    android:textSize="15dp"/>
+                    <EditText
+                        android:id="@+id/edit_text_hole4"
+                        android:layout_height="match_parent"
+                        android:layout_width="match_parent"
+                        android:hint="00"
+                        android:text="@={userScore.hole4}"
+                        android:onClick="@{() -> scorePresenter.onShowUserScore(userScore)}"
+                        android:singleLine="true"
+                        android:imeOptions="actionNext"
+                        android:padding="18dip"
+                        android:inputType="number"
+                        android:fontFamily="sans-serif-black"
+                        android:background="@color/white"
+                        android:textColor="@color/black"
+                        android:textSize="15dp"/>
 
-                <EditText
-                    android:id="@+id/edit_text_hole7"
-                    android:layout_height="match_parent"
-                    android:layout_width="match_parent"
-                    android:hint="00"
-                    android:text="@={userScore.hole7}"
-                    android:onClick="@{() -> scorePresenter.onShowUserScore(userScore)}"
-                    android:inputType="number"
-                    android:singleLine="true"
-                    android:imeOptions="actionNext"
-                    android:padding="18dip"
-                    android:fontFamily="sans-serif-black"
-                    android:background="@color/white"
-                    android:textColor="@color/black"
-                    android:textSize="15dp"/>
+                    <EditText
+                        android:id="@+id/edit_text_hole5"
+                        android:layout_height="match_parent"
+                        android:layout_width="match_parent"
+                        android:hint="00"
+                        android:text="@={userScore.hole5}"
+                        android:onClick="@{() -> scorePresenter.onShowUserScore(userScore)}"
+                        android:singleLine="true"
+                        android:imeOptions="actionNext"
+                        android:padding="18dip"
+                        android:inputType="number"
+                        android:fontFamily="sans-serif-black"
+                        android:background="@color/white"
+                        android:textColor="@color/black"
+                        android:textSize="15dp"/>
 
-                <EditText
-                    android:id="@+id/edit_text_hole8"
-                    android:layout_height="match_parent"
-                    android:layout_width="match_parent"
-                    android:hint="00"
-                    android:text="@={userScore.hole8}"
-                    android:onClick="@{() -> scorePresenter.onShowUserScore(userScore)}"
-                    android:inputType="number"
-                    android:singleLine="true"
-                    android:imeOptions="actionNext"
-                    android:padding="18dip"
-                    android:fontFamily="sans-serif-black"
-                    android:background="@color/white"
-                    android:textColor="@color/black"
-                    android:textSize="15dp"/>
+                    <EditText
+                        android:id="@+id/edit_text_hole6"
+                        android:layout_height="match_parent"
+                        android:layout_width="match_parent"
+                        android:hint="00"
+                        android:text="@={userScore.hole6}"
+                        android:onClick="@{() -> scorePresenter.onShowUserScore(userScore)}"
+                        android:singleLine="true"
+                        android:inputType="number"
+                        android:imeOptions="actionNext"
+                        android:padding="18dip"
+                        android:fontFamily="sans-serif-black"
+                        android:background="@color/white"
+                        android:textColor="@color/black"
+                        android:textSize="15dp"/>
 
-                <EditText
-                    android:id="@+id/edit_text_hole9"
-                    android:layout_height="match_parent"
-                    android:layout_width="match_parent"
-                    android:hint="00"
-                    android:text="@={userScore.hole9}"
-                    android:onClick="@{() -> scorePresenter.onShowUserScore(userScore)}"
-                    android:inputType="number"
-                    android:singleLine="true"
-                    android:imeOptions="actionNext"
-                    android:padding="18dip"
-                    android:fontFamily="sans-serif-black"
-                    android:background="@color/white"
-                    android:textColor="@color/black"
-                    android:textSize="15dp"/>
+                    <EditText
+                        android:id="@+id/edit_text_hole7"
+                        android:layout_height="match_parent"
+                        android:layout_width="match_parent"
+                        android:hint="00"
+                        android:text="@={userScore.hole7}"
+                        android:onClick="@{() -> scorePresenter.onShowUserScore(userScore)}"
+                        android:inputType="number"
+                        android:singleLine="true"
+                        android:imeOptions="actionNext"
+                        android:padding="18dip"
+                        android:fontFamily="sans-serif-black"
+                        android:background="@color/white"
+                        android:textColor="@color/black"
+                        android:textSize="15dp"/>
 
-            </TableRow>
+                    <EditText
+                        android:id="@+id/edit_text_hole8"
+                        android:layout_height="match_parent"
+                        android:layout_width="match_parent"
+                        android:hint="00"
+                        android:text="@={userScore.hole8}"
+                        android:onClick="@{() -> scorePresenter.onShowUserScore(userScore)}"
+                        android:inputType="number"
+                        android:singleLine="true"
+                        android:imeOptions="actionNext"
+                        android:padding="18dip"
+                        android:fontFamily="sans-serif-black"
+                        android:background="@color/white"
+                        android:textColor="@color/black"
+                        android:textSize="15dp"/>
 
-            <TableRow
-                android:id="@+id/table_row_guest1"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:background="#D3D3D3">
+                    <EditText
+                        android:id="@+id/edit_text_hole9"
+                        android:layout_height="match_parent"
+                        android:layout_width="match_parent"
+                        android:hint="00"
+                        android:text="@={userScore.hole9}"
+                        android:onClick="@{() -> scorePresenter.onShowUserScore(userScore)}"
+                        android:inputType="number"
+                        android:singleLine="true"
+                        android:imeOptions="actionNext"
+                        android:padding="18dip"
+                        android:fontFamily="sans-serif-black"
+                        android:background="@color/white"
+                        android:textColor="@color/black"
+                        android:textSize="15dp"/>
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/text_input_edit_text_guest1"
-                    android:layout_width="125dp"
-                    android:background="#D3D3D3"
-                    android:padding="18dip"
-                    android:singleLine="true"
-                    android:imeOptions="actionNext"
-                    android:hint="Guest 1"
-                    android:text="@={guest1.username}"
-                    android:fontFamily="sans-serif-black"
-                    android:textColor="@color/black"
-                    android:textSize="15dp"/>
+                </TableRow>
 
-                <EditText
-                    android:id="@+id/edit_text_hole1_guest1"
-                    android:layout_height="match_parent"
-                    android:layout_width="match_parent"
-                    android:hint="00"
-                    android:text="@={guest1Score.hole1}"
-                    android:onClick="@{() -> scorePresenter.onShowGuest1Score(guest1Score)}"
-                    android:inputType="number"
-                    android:singleLine="true"
-                    android:imeOptions="actionNext"
-                    android:padding="18dip"
-                    android:fontFamily="sans-serif-black"
-                    android:background="#D3D3D3"
-                    android:textColor="@color/black"
-                    android:textSize="15dp"/>
-
-                <EditText
-                    android:id="@+id/edit_text_hole2_guest1"
-                    android:layout_height="match_parent"
-                    android:layout_width="match_parent"
-                    android:hint="00"
-                    android:text="@={guest1Score.hole2}"
-                    android:onClick="@{() -> scorePresenter.onShowGuest1Score(guest1Score)}"
-                    android:inputType="number"
-                    android:singleLine="true"
-                    android:imeOptions="actionNext"
-                    android:padding="18dip"
-                    android:fontFamily="sans-serif-black"
-                    android:background="#D3D3D3"
-                    android:textColor="@color/black"
-                    android:textSize="15dp"/>
-
-                <EditText
-                    android:id="@+id/edit_text_hole3_guest1"
-                    android:layout_height="match_parent"
-                    android:layout_width="match_parent"
-                    android:hint="00"
-                    android:text="@={guest1Score.hole3}"
-                    android:onClick="@{() -> scorePresenter.onShowGuest1Score(guest1Score)}"
-                    android:inputType="number"
-                    android:singleLine="true"
-                    android:imeOptions="actionNext"
-                    android:padding="18dip"
-                    android:fontFamily="sans-serif-black"
-                    android:background="#D3D3D3"
-                    android:textColor="@color/black"
-                    android:textSize="15dp"/>
-
-                <EditText
-                    android:id="@+id/edit_text_hole4_guest1"
-                    android:layout_height="match_parent"
-                    android:layout_width="match_parent"
-                    android:hint="00"
-                    android:text="@={guest1Score.hole4}"
-                    android:onClick="@{() -> scorePresenter.onShowGuest1Score(guest1Score)}"
-                    android:imeOptions="actionNext"
-                    android:padding="18dip"
-                    android:inputType="number"
-                    android:fontFamily="sans-serif-black"
-                    android:background="#D3D3D3"
-                    android:singleLine="true"
-                    android:textColor="@color/black"
-                    android:textSize="15dp"/>
-
-                <EditText
-                    android:id="@+id/edit_text_hole5_guest1"
-                    android:layout_height="match_parent"
-                    android:layout_width="match_parent"
-                    android:hint="00"
-                    android:text="@={guest1Score.hole5}"
-                    android:onClick="@{() -> scorePresenter.onShowGuest1Score(guest1Score)}"
-                    android:imeOptions="actionNext"
-                    android:padding="18dip"
-                    android:inputType="number"
-                    android:fontFamily="sans-serif-black"
-                    android:background="#D3D3D3"
-                    android:textColor="@color/black"
-                    android:singleLine="true"
-                    android:textSize="15dp"/>
-
-                <EditText
-                    android:id="@+id/edit_text_hole6_guest1"
-                    android:layout_height="match_parent"
-                    android:layout_width="match_parent"
-                    android:hint="00"
-                    android:text="@={guest1Score.hole6}"
-                    android:onClick="@{() -> scorePresenter.onShowGuest1Score(guest1Score)}"
-                    android:inputType="number"
-                    android:imeOptions="actionNext"
-                    android:padding="18dip"
-                    android:singleLine="true"
-                    android:fontFamily="sans-serif-black"
-                    android:background="#D3D3D3"
-                    android:textColor="@color/black"
-                    android:textSize="15dp"/>
-
-                <EditText
-                    android:id="@+id/edit_text_hole7_guest1"
-                    android:layout_height="match_parent"
-                    android:layout_width="match_parent"
-                    android:hint="00"
-                    android:text="@={guest1Score.hole7}"
-                    android:onClick="@{() -> scorePresenter.onShowGuest1Score(guest1Score)}"
-                    android:inputType="number"
-                    android:padding="18dip"
-                    android:singleLine="true"
-                    android:imeOptions="actionNext"
-                    android:fontFamily="sans-serif-black"
-                    android:background="#D3D3D3"
-                    android:textColor="@color/black"
-                    android:textSize="15dp"/>
-
-                <EditText
-                    android:id="@+id/edit_text_hole8_guest1"
-                    android:layout_height="match_parent"
-                    android:layout_width="match_parent"
-                    android:hint="00"
-                    android:text="@={guest1Score.hole8}"
-                    android:onClick="@{() -> scorePresenter.onShowGuest1Score(guest1Score)}"
-                    android:inputType="number"
-                    android:imeOptions="actionNext"
-                    android:padding="18dip"
-                    android:fontFamily="sans-serif-black"
-                    android:background="#D3D3D3"
-                    android:singleLine="true"
-                    android:textColor="@color/black"
-                    android:textSize="15dp"/>
-
-                <EditText
-                    android:id="@+id/edit_text_hole9_guest1"
-                    android:layout_height="match_parent"
-                    android:layout_width="match_parent"
-                    android:hint="00"
-                    android:text="@={guest1Score.hole9}"
-                    android:onClick="@{() -> scorePresenter.onShowGuest1Score(guest1Score)}"
-                    android:imeOptions="actionNext"
-                    android:singleLine="true"
-                    android:inputType="number"
-                    android:padding="18dip"
-                    android:fontFamily="sans-serif-black"
-                    android:background="#D3D3D3"
-                    android:textColor="@color/black"
-                    android:textSize="15dp"/>
-
-            </TableRow>
-
-            <TableRow
-                    android:id="@+id/table_row_guest2"
+                <TableRow
+                    android:id="@+id/table_row_guest1"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:background="#D3D3D3">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/text_input_edit_text_guest2"
+                        android:id="@+id/text_input_edit_text_guest1"
                         android:layout_width="125dp"
                         android:background="#D3D3D3"
                         android:padding="18dip"
                         android:singleLine="true"
                         android:imeOptions="actionNext"
-                        android:hint="Guest 2"
-                        android:text="@={guest2.username}"
+                        android:hint="Guest 1"
+                        android:text="@={guest1.username}"
                         android:fontFamily="sans-serif-black"
                         android:textColor="@color/black"
                         android:textSize="15dp"/>
 
                     <EditText
-                        android:id="@+id/edit_text_hole1_guest2"
+                        android:id="@+id/edit_text_hole1_guest1"
                         android:layout_height="match_parent"
                         android:layout_width="match_parent"
                         android:hint="00"
-                        android:text="@={guest2Score.hole1}"
-                        android:onClick="@{() -> scorePresenter.onShowGuest2Score(guest2Score)}"
+                        android:text="@={guest1Score.hole1}"
+                        android:onClick="@{() -> scorePresenter.onShowGuest1Score(guest1Score)}"
                         android:inputType="number"
                         android:singleLine="true"
                         android:imeOptions="actionNext"
@@ -655,12 +526,12 @@
                         android:textSize="15dp"/>
 
                     <EditText
-                        android:id="@+id/edit_text_hole2_guest2"
+                        android:id="@+id/edit_text_hole2_guest1"
                         android:layout_height="match_parent"
                         android:layout_width="match_parent"
                         android:hint="00"
-                        android:text="@={guest2Score.hole2}"
-                        android:onClick="@{() -> scorePresenter.onShowGuest2Score(guest2Score)}"
+                        android:text="@={guest1Score.hole2}"
+                        android:onClick="@{() -> scorePresenter.onShowGuest1Score(guest1Score)}"
                         android:inputType="number"
                         android:singleLine="true"
                         android:imeOptions="actionNext"
@@ -671,12 +542,12 @@
                         android:textSize="15dp"/>
 
                     <EditText
-                        android:id="@+id/edit_text_hole3_guest2"
+                        android:id="@+id/edit_text_hole3_guest1"
                         android:layout_height="match_parent"
                         android:layout_width="match_parent"
                         android:hint="00"
-                        android:text="@={guest2Score.hole3}"
-                        android:onClick="@{() -> scorePresenter.onShowGuest2Score(guest2Score)}"
+                        android:text="@={guest1Score.hole3}"
+                        android:onClick="@{() -> scorePresenter.onShowGuest1Score(guest1Score)}"
                         android:inputType="number"
                         android:singleLine="true"
                         android:imeOptions="actionNext"
@@ -687,12 +558,12 @@
                         android:textSize="15dp"/>
 
                     <EditText
-                        android:id="@+id/edit_text_hole4_guest2"
+                        android:id="@+id/edit_text_hole4_guest1"
                         android:layout_height="match_parent"
                         android:layout_width="match_parent"
                         android:hint="00"
-                        android:text="@={guest2Score.hole4}"
-                        android:onClick="@{() -> scorePresenter.onShowGuest2Score(guest2Score)}"
+                        android:text="@={guest1Score.hole4}"
+                        android:onClick="@{() -> scorePresenter.onShowGuest1Score(guest1Score)}"
                         android:imeOptions="actionNext"
                         android:padding="18dip"
                         android:inputType="number"
@@ -703,12 +574,12 @@
                         android:textSize="15dp"/>
 
                     <EditText
-                        android:id="@+id/edit_text_hole5_guest2"
+                        android:id="@+id/edit_text_hole5_guest1"
                         android:layout_height="match_parent"
                         android:layout_width="match_parent"
                         android:hint="00"
-                        android:text="@={guest2Score.hole5}"
-                        android:onClick="@{() -> scorePresenter.onShowGuest2Score(guest2Score)}"
+                        android:text="@={guest1Score.hole5}"
+                        android:onClick="@{() -> scorePresenter.onShowGuest1Score(guest1Score)}"
                         android:imeOptions="actionNext"
                         android:padding="18dip"
                         android:inputType="number"
@@ -719,12 +590,12 @@
                         android:textSize="15dp"/>
 
                     <EditText
-                        android:id="@+id/edit_text_hole6_guest2"
+                        android:id="@+id/edit_text_hole6_guest1"
                         android:layout_height="match_parent"
                         android:layout_width="match_parent"
                         android:hint="00"
-                        android:text="@={guest2Score.hole6}"
-                        android:onClick="@{() -> scorePresenter.onShowGuest2Score(guest2Score)}"
+                        android:text="@={guest1Score.hole6}"
+                        android:onClick="@{() -> scorePresenter.onShowGuest1Score(guest1Score)}"
                         android:inputType="number"
                         android:imeOptions="actionNext"
                         android:padding="18dip"
@@ -735,12 +606,12 @@
                         android:textSize="15dp"/>
 
                     <EditText
-                        android:id="@+id/edit_text_hole7_guest2"
+                        android:id="@+id/edit_text_hole7_guest1"
                         android:layout_height="match_parent"
                         android:layout_width="match_parent"
                         android:hint="00"
-                        android:text="@={guest2Score.hole7}"
-                        android:onClick="@{() -> scorePresenter.onShowGuest2Score(guest2Score)}"
+                        android:text="@={guest1Score.hole7}"
+                        android:onClick="@{() -> scorePresenter.onShowGuest1Score(guest1Score)}"
                         android:inputType="number"
                         android:padding="18dip"
                         android:singleLine="true"
@@ -751,12 +622,12 @@
                         android:textSize="15dp"/>
 
                     <EditText
-                        android:id="@+id/edit_text_hole8_guest2"
+                        android:id="@+id/edit_text_hole8_guest1"
                         android:layout_height="match_parent"
                         android:layout_width="match_parent"
                         android:hint="00"
-                        android:text="@={guest2Score.hole8}"
-                        android:onClick="@{() -> scorePresenter.onShowGuest2Score(guest2Score)}"
+                        android:text="@={guest1Score.hole8}"
+                        android:onClick="@{() -> scorePresenter.onShowGuest1Score(guest1Score)}"
                         android:inputType="number"
                         android:imeOptions="actionNext"
                         android:padding="18dip"
@@ -767,12 +638,12 @@
                         android:textSize="15dp"/>
 
                     <EditText
-                        android:id="@+id/edit_text_hole9_guest2"
+                        android:id="@+id/edit_text_hole9_guest1"
                         android:layout_height="match_parent"
                         android:layout_width="match_parent"
                         android:hint="00"
-                        android:text="@={guest2Score.hole9}"
-                        android:onClick="@{() -> scorePresenter.onShowGuest2Score(guest2Score)}"
+                        android:text="@={guest1Score.hole9}"
+                        android:onClick="@{() -> scorePresenter.onShowGuest1Score(guest1Score)}"
                         android:imeOptions="actionNext"
                         android:singleLine="true"
                         android:inputType="number"
@@ -784,189 +655,355 @@
 
                 </TableRow>
 
-            <TableRow
-                android:id="@+id/table_row_guest3"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:background="#D3D3D3">
+                <TableRow
+                        android:id="@+id/table_row_guest2"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#D3D3D3">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/text_input_edit_text_guest3"
-                    android:layout_width="125dp"
-                    android:background="#D3D3D3"
-                    android:padding="18dip"
-                    android:singleLine="true"
-                    android:imeOptions="actionNext"
-                    android:hint="Guest 3"
-                    android:text="@={guest3.username}"
-                    android:fontFamily="sans-serif-black"
-                    android:textColor="@color/black"
-                    android:textSize="15dp"/>
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/text_input_edit_text_guest2"
+                            android:layout_width="125dp"
+                            android:background="#D3D3D3"
+                            android:padding="18dip"
+                            android:singleLine="true"
+                            android:imeOptions="actionNext"
+                            android:hint="Guest 2"
+                            android:text="@={guest2.username}"
+                            android:fontFamily="sans-serif-black"
+                            android:textColor="@color/black"
+                            android:textSize="15dp"/>
 
-                <EditText
-                    android:id="@+id/edit_text_hole1_guest3"
-                    android:layout_height="match_parent"
-                    android:layout_width="match_parent"
-                    android:hint="00"
-                    android:text="@={guest3Score.hole1}"
-                    android:onClick="@{() -> scorePresenter.onShowGuest3Score(guest3Score)}"
-                    android:inputType="number"
-                    android:singleLine="true"
-                    android:imeOptions="actionNext"
-                    android:padding="18dip"
-                    android:fontFamily="sans-serif-black"
-                    android:background="#D3D3D3"
-                    android:textColor="@color/black"
-                    android:textSize="15dp"/>
+                        <EditText
+                            android:id="@+id/edit_text_hole1_guest2"
+                            android:layout_height="match_parent"
+                            android:layout_width="match_parent"
+                            android:hint="00"
+                            android:text="@={guest2Score.hole1}"
+                            android:onClick="@{() -> scorePresenter.onShowGuest2Score(guest2Score)}"
+                            android:inputType="number"
+                            android:singleLine="true"
+                            android:imeOptions="actionNext"
+                            android:padding="18dip"
+                            android:fontFamily="sans-serif-black"
+                            android:background="#D3D3D3"
+                            android:textColor="@color/black"
+                            android:textSize="15dp"/>
 
-                <EditText
-                    android:id="@+id/edit_text_hole2_guest3"
-                    android:layout_height="match_parent"
-                    android:layout_width="match_parent"
-                    android:hint="00"
-                    android:text="@={guest3Score.hole2}"
-                    android:onClick="@{() -> scorePresenter.onShowGuest3Score(guest3Score)}"
-                    android:inputType="number"
-                    android:singleLine="true"
-                    android:imeOptions="actionNext"
-                    android:padding="18dip"
-                    android:fontFamily="sans-serif-black"
-                    android:background="#D3D3D3"
-                    android:textColor="@color/black"
-                    android:textSize="15dp"/>
+                        <EditText
+                            android:id="@+id/edit_text_hole2_guest2"
+                            android:layout_height="match_parent"
+                            android:layout_width="match_parent"
+                            android:hint="00"
+                            android:text="@={guest2Score.hole2}"
+                            android:onClick="@{() -> scorePresenter.onShowGuest2Score(guest2Score)}"
+                            android:inputType="number"
+                            android:singleLine="true"
+                            android:imeOptions="actionNext"
+                            android:padding="18dip"
+                            android:fontFamily="sans-serif-black"
+                            android:background="#D3D3D3"
+                            android:textColor="@color/black"
+                            android:textSize="15dp"/>
 
-                <EditText
-                    android:id="@+id/edit_text_hole3_guest3"
-                    android:layout_height="match_parent"
-                    android:layout_width="match_parent"
-                    android:hint="00"
-                    android:text="@={guest3Score.hole3}"
-                    android:onClick="@{() -> scorePresenter.onShowGuest3Score(guest3Score)}"
-                    android:inputType="number"
-                    android:singleLine="true"
-                    android:imeOptions="actionNext"
-                    android:padding="18dip"
-                    android:fontFamily="sans-serif-black"
-                    android:background="#D3D3D3"
-                    android:textColor="@color/black"
-                    android:textSize="15dp"/>
+                        <EditText
+                            android:id="@+id/edit_text_hole3_guest2"
+                            android:layout_height="match_parent"
+                            android:layout_width="match_parent"
+                            android:hint="00"
+                            android:text="@={guest2Score.hole3}"
+                            android:onClick="@{() -> scorePresenter.onShowGuest2Score(guest2Score)}"
+                            android:inputType="number"
+                            android:singleLine="true"
+                            android:imeOptions="actionNext"
+                            android:padding="18dip"
+                            android:fontFamily="sans-serif-black"
+                            android:background="#D3D3D3"
+                            android:textColor="@color/black"
+                            android:textSize="15dp"/>
 
-                <EditText
-                    android:id="@+id/edit_text_hole4_guest3"
-                    android:layout_height="match_parent"
-                    android:layout_width="match_parent"
-                    android:hint="00"
-                    android:text="@={guest3Score.hole4}"
-                    android:onClick="@{() -> scorePresenter.onShowGuest3Score(guest3Score)}"
-                    android:imeOptions="actionNext"
-                    android:padding="18dip"
-                    android:inputType="number"
-                    android:fontFamily="sans-serif-black"
-                    android:background="#D3D3D3"
-                    android:singleLine="true"
-                    android:textColor="@color/black"
-                    android:textSize="15dp"/>
+                        <EditText
+                            android:id="@+id/edit_text_hole4_guest2"
+                            android:layout_height="match_parent"
+                            android:layout_width="match_parent"
+                            android:hint="00"
+                            android:text="@={guest2Score.hole4}"
+                            android:onClick="@{() -> scorePresenter.onShowGuest2Score(guest2Score)}"
+                            android:imeOptions="actionNext"
+                            android:padding="18dip"
+                            android:inputType="number"
+                            android:fontFamily="sans-serif-black"
+                            android:background="#D3D3D3"
+                            android:singleLine="true"
+                            android:textColor="@color/black"
+                            android:textSize="15dp"/>
 
-                <EditText
-                    android:id="@+id/edit_text_hole5_guest3"
-                    android:layout_height="match_parent"
-                    android:layout_width="match_parent"
-                    android:hint="00"
-                    android:text="@={guest3Score.hole5}"
-                    android:onClick="@{() -> scorePresenter.onShowGuest3Score(guest3Score)}"
-                    android:imeOptions="actionNext"
-                    android:padding="18dip"
-                    android:inputType="number"
-                    android:fontFamily="sans-serif-black"
-                    android:background="#D3D3D3"
-                    android:textColor="@color/black"
-                    android:singleLine="true"
-                    android:textSize="15dp"/>
+                        <EditText
+                            android:id="@+id/edit_text_hole5_guest2"
+                            android:layout_height="match_parent"
+                            android:layout_width="match_parent"
+                            android:hint="00"
+                            android:text="@={guest2Score.hole5}"
+                            android:onClick="@{() -> scorePresenter.onShowGuest2Score(guest2Score)}"
+                            android:imeOptions="actionNext"
+                            android:padding="18dip"
+                            android:inputType="number"
+                            android:fontFamily="sans-serif-black"
+                            android:background="#D3D3D3"
+                            android:textColor="@color/black"
+                            android:singleLine="true"
+                            android:textSize="15dp"/>
 
-                <EditText
-                    android:id="@+id/edit_text_hole6_guest3"
-                    android:layout_height="match_parent"
-                    android:layout_width="match_parent"
-                    android:hint="00"
-                    android:text="@={guest3Score.hole6}"
-                    android:onClick="@{() -> scorePresenter.onShowGuest3Score(guest3Score)}"
-                    android:inputType="number"
-                    android:imeOptions="actionNext"
-                    android:padding="18dip"
-                    android:singleLine="true"
-                    android:fontFamily="sans-serif-black"
-                    android:background="#D3D3D3"
-                    android:textColor="@color/black"
-                    android:textSize="15dp"/>
+                        <EditText
+                            android:id="@+id/edit_text_hole6_guest2"
+                            android:layout_height="match_parent"
+                            android:layout_width="match_parent"
+                            android:hint="00"
+                            android:text="@={guest2Score.hole6}"
+                            android:onClick="@{() -> scorePresenter.onShowGuest2Score(guest2Score)}"
+                            android:inputType="number"
+                            android:imeOptions="actionNext"
+                            android:padding="18dip"
+                            android:singleLine="true"
+                            android:fontFamily="sans-serif-black"
+                            android:background="#D3D3D3"
+                            android:textColor="@color/black"
+                            android:textSize="15dp"/>
 
-                <EditText
-                    android:id="@+id/edit_text_hole7_guest3"
-                    android:layout_height="match_parent"
-                    android:layout_width="match_parent"
-                    android:hint="00"
-                    android:text="@={guest3Score.hole7}"
-                    android:onClick="@{() -> scorePresenter.onShowGuest3Score(guest3Score)}"
-                    android:inputType="number"
-                    android:padding="18dip"
-                    android:singleLine="true"
-                    android:imeOptions="actionNext"
-                    android:fontFamily="sans-serif-black"
-                    android:background="#D3D3D3"
-                    android:textColor="@color/black"
-                    android:textSize="15dp"/>
+                        <EditText
+                            android:id="@+id/edit_text_hole7_guest2"
+                            android:layout_height="match_parent"
+                            android:layout_width="match_parent"
+                            android:hint="00"
+                            android:text="@={guest2Score.hole7}"
+                            android:onClick="@{() -> scorePresenter.onShowGuest2Score(guest2Score)}"
+                            android:inputType="number"
+                            android:padding="18dip"
+                            android:singleLine="true"
+                            android:imeOptions="actionNext"
+                            android:fontFamily="sans-serif-black"
+                            android:background="#D3D3D3"
+                            android:textColor="@color/black"
+                            android:textSize="15dp"/>
 
-                <EditText
-                    android:id="@+id/edit_text_hole8_guest3"
-                    android:layout_height="match_parent"
-                    android:layout_width="match_parent"
-                    android:hint="00"
-                    android:text="@={guest3Score.hole8}"
-                    android:onClick="@{() -> scorePresenter.onShowGuest3Score(guest3Score)}"
-                    android:inputType="number"
-                    android:imeOptions="actionNext"
-                    android:padding="18dip"
-                    android:fontFamily="sans-serif-black"
-                    android:background="#D3D3D3"
-                    android:singleLine="true"
-                    android:textColor="@color/black"
-                    android:textSize="15dp"/>
+                        <EditText
+                            android:id="@+id/edit_text_hole8_guest2"
+                            android:layout_height="match_parent"
+                            android:layout_width="match_parent"
+                            android:hint="00"
+                            android:text="@={guest2Score.hole8}"
+                            android:onClick="@{() -> scorePresenter.onShowGuest2Score(guest2Score)}"
+                            android:inputType="number"
+                            android:imeOptions="actionNext"
+                            android:padding="18dip"
+                            android:fontFamily="sans-serif-black"
+                            android:background="#D3D3D3"
+                            android:singleLine="true"
+                            android:textColor="@color/black"
+                            android:textSize="15dp"/>
 
-                <EditText
-                    android:id="@+id/edit_text_hole9_guest3"
-                    android:layout_height="match_parent"
-                    android:layout_width="match_parent"
-                    android:hint="00"
-                    android:text="@={guest3Score.hole9}"
-                    android:onClick="@{() -> scorePresenter.onShowGuest3Score(guest3Score)}"
-                    android:imeOptions="actionNext"
-                    android:singleLine="true"
-                    android:inputType="number"
-                    android:padding="18dip"
-                    android:fontFamily="sans-serif-black"
-                    android:background="#D3D3D3"
-                    android:textColor="@color/black"
-                    android:textSize="15dp"/>
+                        <EditText
+                            android:id="@+id/edit_text_hole9_guest2"
+                            android:layout_height="match_parent"
+                            android:layout_width="match_parent"
+                            android:hint="00"
+                            android:text="@={guest2Score.hole9}"
+                            android:onClick="@{() -> scorePresenter.onShowGuest2Score(guest2Score)}"
+                            android:imeOptions="actionNext"
+                            android:singleLine="true"
+                            android:inputType="number"
+                            android:padding="18dip"
+                            android:fontFamily="sans-serif-black"
+                            android:background="#D3D3D3"
+                            android:textColor="@color/black"
+                            android:textSize="15dp"/>
 
-            </TableRow>
+                    </TableRow>
 
-        </TableLayout>
+                <TableRow
+                    android:id="@+id/table_row_guest3"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#D3D3D3">
 
-    </HorizontalScrollView>
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/text_input_edit_text_guest3"
+                        android:layout_width="125dp"
+                        android:background="#D3D3D3"
+                        android:padding="18dip"
+                        android:singleLine="true"
+                        android:imeOptions="actionNext"
+                        android:hint="Guest 3"
+                        android:text="@={guest3.username}"
+                        android:fontFamily="sans-serif-black"
+                        android:textColor="@color/black"
+                        android:textSize="15dp"/>
+
+                    <EditText
+                        android:id="@+id/edit_text_hole1_guest3"
+                        android:layout_height="match_parent"
+                        android:layout_width="match_parent"
+                        android:hint="00"
+                        android:text="@={guest3Score.hole1}"
+                        android:onClick="@{() -> scorePresenter.onShowGuest3Score(guest3Score)}"
+                        android:inputType="number"
+                        android:singleLine="true"
+                        android:imeOptions="actionNext"
+                        android:padding="18dip"
+                        android:fontFamily="sans-serif-black"
+                        android:background="#D3D3D3"
+                        android:textColor="@color/black"
+                        android:textSize="15dp"/>
+
+                    <EditText
+                        android:id="@+id/edit_text_hole2_guest3"
+                        android:layout_height="match_parent"
+                        android:layout_width="match_parent"
+                        android:hint="00"
+                        android:text="@={guest3Score.hole2}"
+                        android:onClick="@{() -> scorePresenter.onShowGuest3Score(guest3Score)}"
+                        android:inputType="number"
+                        android:singleLine="true"
+                        android:imeOptions="actionNext"
+                        android:padding="18dip"
+                        android:fontFamily="sans-serif-black"
+                        android:background="#D3D3D3"
+                        android:textColor="@color/black"
+                        android:textSize="15dp"/>
+
+                    <EditText
+                        android:id="@+id/edit_text_hole3_guest3"
+                        android:layout_height="match_parent"
+                        android:layout_width="match_parent"
+                        android:hint="00"
+                        android:text="@={guest3Score.hole3}"
+                        android:onClick="@{() -> scorePresenter.onShowGuest3Score(guest3Score)}"
+                        android:inputType="number"
+                        android:singleLine="true"
+                        android:imeOptions="actionNext"
+                        android:padding="18dip"
+                        android:fontFamily="sans-serif-black"
+                        android:background="#D3D3D3"
+                        android:textColor="@color/black"
+                        android:textSize="15dp"/>
+
+                    <EditText
+                        android:id="@+id/edit_text_hole4_guest3"
+                        android:layout_height="match_parent"
+                        android:layout_width="match_parent"
+                        android:hint="00"
+                        android:text="@={guest3Score.hole4}"
+                        android:onClick="@{() -> scorePresenter.onShowGuest3Score(guest3Score)}"
+                        android:imeOptions="actionNext"
+                        android:padding="18dip"
+                        android:inputType="number"
+                        android:fontFamily="sans-serif-black"
+                        android:background="#D3D3D3"
+                        android:singleLine="true"
+                        android:textColor="@color/black"
+                        android:textSize="15dp"/>
+
+                    <EditText
+                        android:id="@+id/edit_text_hole5_guest3"
+                        android:layout_height="match_parent"
+                        android:layout_width="match_parent"
+                        android:hint="00"
+                        android:text="@={guest3Score.hole5}"
+                        android:onClick="@{() -> scorePresenter.onShowGuest3Score(guest3Score)}"
+                        android:imeOptions="actionNext"
+                        android:padding="18dip"
+                        android:inputType="number"
+                        android:fontFamily="sans-serif-black"
+                        android:background="#D3D3D3"
+                        android:textColor="@color/black"
+                        android:singleLine="true"
+                        android:textSize="15dp"/>
+
+                    <EditText
+                        android:id="@+id/edit_text_hole6_guest3"
+                        android:layout_height="match_parent"
+                        android:layout_width="match_parent"
+                        android:hint="00"
+                        android:text="@={guest3Score.hole6}"
+                        android:onClick="@{() -> scorePresenter.onShowGuest3Score(guest3Score)}"
+                        android:inputType="number"
+                        android:imeOptions="actionNext"
+                        android:padding="18dip"
+                        android:singleLine="true"
+                        android:fontFamily="sans-serif-black"
+                        android:background="#D3D3D3"
+                        android:textColor="@color/black"
+                        android:textSize="15dp"/>
+
+                    <EditText
+                        android:id="@+id/edit_text_hole7_guest3"
+                        android:layout_height="match_parent"
+                        android:layout_width="match_parent"
+                        android:hint="00"
+                        android:text="@={guest3Score.hole7}"
+                        android:onClick="@{() -> scorePresenter.onShowGuest3Score(guest3Score)}"
+                        android:inputType="number"
+                        android:padding="18dip"
+                        android:singleLine="true"
+                        android:imeOptions="actionNext"
+                        android:fontFamily="sans-serif-black"
+                        android:background="#D3D3D3"
+                        android:textColor="@color/black"
+                        android:textSize="15dp"/>
+
+                    <EditText
+                        android:id="@+id/edit_text_hole8_guest3"
+                        android:layout_height="match_parent"
+                        android:layout_width="match_parent"
+                        android:hint="00"
+                        android:text="@={guest3Score.hole8}"
+                        android:onClick="@{() -> scorePresenter.onShowGuest3Score(guest3Score)}"
+                        android:inputType="number"
+                        android:imeOptions="actionNext"
+                        android:padding="18dip"
+                        android:fontFamily="sans-serif-black"
+                        android:background="#D3D3D3"
+                        android:singleLine="true"
+                        android:textColor="@color/black"
+                        android:textSize="15dp"/>
+
+                    <EditText
+                        android:id="@+id/edit_text_hole9_guest3"
+                        android:layout_height="match_parent"
+                        android:layout_width="match_parent"
+                        android:hint="00"
+                        android:text="@={guest3Score.hole9}"
+                        android:onClick="@{() -> scorePresenter.onShowGuest3Score(guest3Score)}"
+                        android:imeOptions="actionNext"
+                        android:singleLine="true"
+                        android:inputType="number"
+                        android:padding="18dip"
+                        android:fontFamily="sans-serif-black"
+                        android:background="#D3D3D3"
+                        android:textColor="@color/black"
+                        android:textSize="15dp"/>
+
+                </TableRow>
+
+            </TableLayout>
+
+        </HorizontalScrollView>
 
         <GridLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="-375dp"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:layout_marginTop="-325dp"
             android:layout_marginBottom="20dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:columnCount="2"
-            android:rowCount="2">
+            android:rowCount="2"
+            android:layout_gravity="center">
 
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:layout_weight="5"
+                android:layout_weight="2"
                 app:cardBackgroundColor="#000f00"
                 android:layout_gravity="fill"
                 android:layout_columnWeight="1"
@@ -1002,7 +1039,7 @@
                         android:fontFamily="sans-serif-black"
                         android:text="@={user.username}"
                         android:textColor="@color/white"
-                        android:textSize="20dp" />
+                        android:textSize="15sp" />
 
                 </RelativeLayout>
 
@@ -1047,7 +1084,7 @@
                         android:fontFamily="sans-serif-black"
                         android:text="@={guest3.username}"
                         android:textColor="@color/white"
-                        android:textSize="20dp" />
+                        android:textSize="15sp" />
 
                 </RelativeLayout>
 
@@ -1092,7 +1129,7 @@
                         android:fontFamily="sans-serif-black"
                         android:text="@={guest2.username}"
                         android:textColor="@color/white"
-                        android:textSize="20dp" />
+                        android:textSize="15sp" />
 
                 </RelativeLayout>
 
@@ -1137,7 +1174,7 @@
                         android:fontFamily="sans-serif-black"
                         android:text="@={guest1.username}"
                         android:textColor="@color/white"
-                        android:textSize="20dp" />
+                        android:textSize="15sp" />
 
                 </RelativeLayout>
 
