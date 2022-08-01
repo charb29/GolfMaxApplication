@@ -2,24 +2,22 @@ package com.example.golfmax.activities;
 
 
 import android.app.Activity;
-
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.databinding.DataBindingUtil;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.example.golfmax.backend.CourseRepository;
 import com.example.golfmax.backend.GolfMaxLocalDatabase;
@@ -34,6 +32,7 @@ import com.example.golfmax.R;
 import com.example.golfmax.databinding.ActivityScoreCardFront9Binding;
 
 import java.util.List;
+import java.util.Objects;
 
 
 public class ScoreCardFront9Activity extends Activity implements ScoreContract.View {
@@ -187,7 +186,6 @@ public class ScoreCardFront9Activity extends Activity implements ScoreContract.V
         }
 
         textViewSumOfUserScores.setText(String.valueOf(scoreSummary));
-
         userScore.setFront9Score(textViewSumOfUserScores.getText().toString());
         staticUserFront9Score = userScore.getFront9Score();
     }
