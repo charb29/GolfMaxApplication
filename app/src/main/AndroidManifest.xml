@@ -18,34 +18,37 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name="com.example.golfmax.activities.ScoreCardFront9Activity"
+            android:name=".activities.ScoreCardBack9Activity"
             android:exported="false" />
         <activity
-            android:name="com.example.golfmax.activities.CourseListActivity"
+            android:name=".activities.ScoreCardFront9Activity"
             android:exported="false" />
         <activity
-            android:name="com.example.golfmax.activities.UserProfileActivity"
+            android:name=".activities.CourseListActivity"
             android:exported="false" />
         <activity
-            android:name="com.example.golfmax.activities.CourseLeaderboardActivity"
+            android:name=".activities.UserProfileActivity"
             android:exported="false" />
         <activity
-            android:name="com.example.golfmax.activities.NewRoundActivity"
+            android:name=".activities.CourseLeaderboardActivity"
             android:exported="false" />
         <activity
-            android:name="com.example.golfmax.activities.PersonalScoresActivity"
+            android:name=".activities.NewRoundActivity"
             android:exported="false" />
         <activity
-            android:name="com.example.golfmax.activities.RegistrationActivity"
+            android:name=".activities.PersonalScoresActivity"
             android:exported="false" />
         <activity
-            android:name="com.example.golfmax.activities.HomeActivity"
+            android:name=".activities.RegistrationActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.HomeActivity"
             android:exported="false" />
         <activity
             android:name=".activities.LoginActivity"
             android:exported="false" />
         <activity
-            android:name="com.example.golfmax.activities.MainActivity"
+            android:name=".activities.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
