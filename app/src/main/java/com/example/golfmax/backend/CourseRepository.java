@@ -64,7 +64,6 @@ public class CourseRepository {
     }
 
     public void getCourseNamesForLeaderboard(Context context) {
-
         Call<List<Course>> courseCall = GolfMaxHttpClient
                 .getApiInterface()
                 .getCourseNames();
@@ -92,7 +91,6 @@ public class CourseRepository {
     }
 
     public void getCourseNamesForNewRound(Context context) {
-
         Call<List<Course>> courseCall = GolfMaxHttpClient
                 .getApiInterface()
                 .getCourseNames();
@@ -120,7 +118,6 @@ public class CourseRepository {
     }
 
     public void getCourseInfoById(long courseId) {
-
         Call<Course> courseCall = GolfMaxHttpClient
                 .getApiInterface()
                 .getCourseById(courseId);

@@ -24,7 +24,6 @@ public class UserRepository {
 
     public User getUserInfoById(long userId) {
         User user = new User();
-
         Call<User> userResponseCall = GolfMaxHttpClient
                 .getApiInterface()
                 .getUserInfoById(userId);
@@ -88,7 +87,6 @@ public class UserRepository {
 
     public void loginUser(LoginRequest loginRequest, TextInputLayout tilUsername,
                           TextInputLayout tilPassword, Context context) {
-
         Call<LoginResponse> loginResponseCall = GolfMaxHttpClient
                 .getApiInterface()
                 .loginUser(loginRequest);
@@ -129,7 +127,6 @@ public class UserRepository {
 
     public void registerUser(RegistrationRequest registrationRequest, TextInputLayout tilUsername,
                              TextInputLayout tilEmail, Context context) {
-
         Call<RegistrationResponse> registrationResponseCall = GolfMaxHttpClient
                 .getApiInterface()
                 .registerUser(registrationRequest);

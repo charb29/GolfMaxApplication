@@ -52,7 +52,6 @@ public class ScoreRepository {
     }
 
     public void getScoresByCourseId(Context context, long courseId) {
-
         Call<List<Score>> scoreCall = GolfMaxHttpClient
                 .getApiInterface()
                 .getScoresByCourseId(courseId);
@@ -80,7 +79,6 @@ public class ScoreRepository {
     }
 
     public void getScoresByUserId(Context context, long userId) {
-
         Call<List<Score>> scoreCall = GolfMaxHttpClient
                 .getApiInterface()
                 .getScoresByUserId(userId);
@@ -108,7 +106,6 @@ public class ScoreRepository {
     }
 
     public void saveScore(Context context, Score score) {
-
         Call<Score> scoreCall = GolfMaxHttpClient
                 .getApiInterface()
                 .saveScore(score);
@@ -126,7 +123,7 @@ public class ScoreRepository {
                     Intent intent = new Intent(context.getApplicationContext(), HomeActivity.class);
                     context.startActivity(intent);
 
-                    Log.i("SAVE SCORE ====> ", response.toString());
+                    Log.i("SAVE SCORE ====> ", score.getFront9Score());
                 } else {
                     Toast.makeText(context.getApplicationContext(),
                             "Failed.",
