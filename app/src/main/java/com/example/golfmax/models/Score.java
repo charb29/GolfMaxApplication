@@ -32,6 +32,8 @@ public class Score extends BaseObservable {
     private String hole8;
     private String hole9;
     private String front9Score;
+    private int courseRating;
+    private int slopeRating;
 
     public Score() {}
 
@@ -172,6 +174,22 @@ public class Score extends BaseObservable {
     public void setFront9Score(String front9Score) {
         this.front9Score = front9Score;
         notifyPropertyChanged(BR.front9Score);
+    }
+
+    public int getCourseRating() {
+        return courseRating;
+    }
+
+    public void setCourseRating(int courseRating) {
+        this.courseRating = courseRating;
+    }
+
+    public int getSlopeRating() {
+        return slopeRating;
+    }
+
+    public void setSlopeRating(int slopeRating) {
+        this.slopeRating = slopeRating;
     }
 
     public List<String> getListOfEnteredScores() {
