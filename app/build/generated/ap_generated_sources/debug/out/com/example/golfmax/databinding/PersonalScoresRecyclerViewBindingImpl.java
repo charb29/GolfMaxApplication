@@ -107,16 +107,22 @@ public class PersonalScoresRecyclerViewBindingImpl extends PersonalScoresRecycle
     private androidx.databinding.InverseBindingListener mboundView3androidTextAttrChanged = new androidx.databinding.InverseBindingListener() {
         @Override
         public void onChange() {
-            // Inverse of score.userScore
-            //         is score.setUserScore((java.lang.String) callbackArg_0)
+            // Inverse of ("") + (score.userScore)
+            //         is score.setUserScore((int) androidx.databinding.ViewDataBinding.parse(callbackArg_0, score.userScore))
             java.lang.String callbackArg_0 = androidx.databinding.adapters.TextViewBindingAdapter.getTextString(mboundView3);
             // localize variables for thread safety
             // score
             com.example.golfmax.models.Score score = mScore;
+            // (int) androidx.databinding.ViewDataBinding.parse(callbackArg_0, score.userScore)
+            int intAndroidxDatabindingViewDataBindingParseCallbackArg0ScoreUserScore = 0;
             // score != null
             boolean scoreJavaLangObjectNull = false;
             // score.userScore
-            java.lang.String scoreUserScore = null;
+            int scoreUserScore = 0;
+            // ("") + (score.userScore)
+            java.lang.String javaLangStringScoreUserScore = null;
+            // androidx.databinding.ViewDataBinding.parse(callbackArg_0, score.userScore)
+            int androidxDatabindingViewDataBindingParseCallbackArg0ScoreUserScore = 0;
 
 
 
@@ -126,7 +132,14 @@ public class PersonalScoresRecyclerViewBindingImpl extends PersonalScoresRecycle
 
 
 
-                score.setUserScore(((java.lang.String) (callbackArg_0)));
+
+                scoreUserScore = score.getUserScore();
+
+                androidxDatabindingViewDataBindingParseCallbackArg0ScoreUserScore = androidx.databinding.ViewDataBinding.parse(callbackArg_0, scoreUserScore);
+
+                intAndroidxDatabindingViewDataBindingParseCallbackArg0ScoreUserScore = ((int) (androidxDatabindingViewDataBindingParseCallbackArg0ScoreUserScore));
+
+                score.setUserScore(intAndroidxDatabindingViewDataBindingParseCallbackArg0ScoreUserScore);
             }
         }
     };
@@ -235,9 +248,10 @@ public class PersonalScoresRecyclerViewBindingImpl extends PersonalScoresRecycle
         com.example.golfmax.models.Score score = mScore;
         int scoreRank = 0;
         java.lang.String scoreCourseCourseName = null;
+        java.lang.String javaLangStringScoreUserScore = null;
         java.lang.String javaLangStringScoreRank = null;
         com.example.golfmax.models.Course scoreCourse = null;
-        java.lang.String scoreUserScore = null;
+        int scoreUserScore = 0;
 
         if ((dirtyFlags & 0xfL) != 0) {
 
@@ -254,6 +268,8 @@ public class PersonalScoresRecyclerViewBindingImpl extends PersonalScoresRecycle
 
                     // read ("") + (score.rank)
                     javaLangStringScoreRank = ("") + (scoreRank);
+                    // read ("") + (score.userScore)
+                    javaLangStringScoreUserScore = ("") + (scoreUserScore);
             }
 
                 if (score != null) {
@@ -273,7 +289,7 @@ public class PersonalScoresRecyclerViewBindingImpl extends PersonalScoresRecycle
             // api target 1
 
             androidx.databinding.adapters.TextViewBindingAdapter.setText(this.mboundView1, javaLangStringScoreRank);
-            androidx.databinding.adapters.TextViewBindingAdapter.setText(this.mboundView3, scoreUserScore);
+            androidx.databinding.adapters.TextViewBindingAdapter.setText(this.mboundView3, javaLangStringScoreUserScore);
         }
         if ((dirtyFlags & 0x8L) != 0) {
             // api target 1
