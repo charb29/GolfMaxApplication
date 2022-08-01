@@ -58,9 +58,9 @@ public class GolfMaxLocalDatabase extends SQLiteOpenHelper {
     }
 
     public long getUserId(String username) {
-
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery("SELECT id FROM userScores WHERE username = ?", new String[] {username});
+        Cursor cursor = db.rawQuery("SELECT id FROM userScores WHERE username = ?",
+                new String[] {username});
         long id = -1;
 
         if (cursor.moveToFirst()) {
@@ -91,7 +91,8 @@ public class GolfMaxLocalDatabase extends SQLiteOpenHelper {
         Log.i("DB COURSE NAME ====> ", courseName);
 
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery("SELECT id FROM courses WHERE courseName = ?", new String[] {courseName});
+        Cursor cursor = db.rawQuery("SELECT id FROM courses WHERE courseName = ?",
+                new String[] {courseName});
         long id = -1;
 
         if (cursor.moveToFirst()) {

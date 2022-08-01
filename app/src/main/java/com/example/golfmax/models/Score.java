@@ -20,7 +20,7 @@ public class Score extends BaseObservable {
     @Expose
     private User user;
     @SerializedName("userScore")
-    private String userScore;
+    private int userScore;
     private int rank;
     private String hole1;
     private String hole2;
@@ -32,12 +32,12 @@ public class Score extends BaseObservable {
     private String hole8;
     private String hole9;
     private String front9Score;
-    private int courseRating;
-    private int slopeRating;
+    private double courseRating;
+    private double slopeRating;
 
     public Score() {}
 
-    public Score(Course course, User user, String userScore, int rank) {
+    public Score(Course course, User user, int userScore, int rank) {
         this.course = course;
         this.user = user;
         this.userScore = userScore;
@@ -60,11 +60,11 @@ public class Score extends BaseObservable {
         this.user = user;
     }
 
-    public String getUserScore() {
+    public int getUserScore() {
         return userScore;
     }
 
-    public void setUserScore(String userScore) {
+    public void setUserScore(int userScore) {
         this.userScore = userScore;
     }
 
@@ -176,19 +176,19 @@ public class Score extends BaseObservable {
         notifyPropertyChanged(BR.front9Score);
     }
 
-    public int getCourseRating() {
+    public double getCourseRating() {
         return courseRating;
     }
 
-    public void setCourseRating(int courseRating) {
+    public void setCourseRating(double courseRating) {
         this.courseRating = courseRating;
     }
 
-    public int getSlopeRating() {
+    public double getSlopeRating() {
         return slopeRating;
     }
 
-    public void setSlopeRating(int slopeRating) {
+    public void setSlopeRating(double slopeRating) {
         this.slopeRating = slopeRating;
     }
 

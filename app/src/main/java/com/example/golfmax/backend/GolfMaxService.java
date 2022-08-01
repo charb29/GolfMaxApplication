@@ -48,6 +48,9 @@ public interface GolfMaxService {
     @GET("/courses/{id}")
     Call<Course> getCourseById(@Path("id") long id);
 
-    @POST("/scores/")
+    @POST("/scores")
     Call<Score> saveScore(@Body Score score);
+
+    @POST("/stats/{id}")
+    Call<PlayerStatistics> updateUserStats(@Path("id") long userId);
 }
