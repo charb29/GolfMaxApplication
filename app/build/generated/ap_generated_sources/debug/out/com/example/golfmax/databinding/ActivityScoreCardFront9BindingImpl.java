@@ -14,21 +14,23 @@ public class ActivityScoreCardFront9BindingImpl extends ActivityScoreCardFront9B
     static {
         sIncludes = null;
         sViewsWithIds = new android.util.SparseIntArray();
-        sViewsWithIds.put(R.id.button_done, 54);
-        sViewsWithIds.put(R.id.table_row_hole, 55);
-        sViewsWithIds.put(R.id.table_row_par, 56);
-        sViewsWithIds.put(R.id.table_row_user, 57);
-        sViewsWithIds.put(R.id.table_row_guest1, 58);
-        sViewsWithIds.put(R.id.table_row_guest2, 59);
-        sViewsWithIds.put(R.id.table_row_guest3, 60);
-        sViewsWithIds.put(R.id.text_view_current_score_user, 61);
-        sViewsWithIds.put(R.id.text_view_current_score_guest3, 62);
-        sViewsWithIds.put(R.id.text_view_current_score_guest2, 63);
-        sViewsWithIds.put(R.id.text_view_current_score_guest1, 64);
+        sViewsWithIds.put(R.id.button_done, 55);
+        sViewsWithIds.put(R.id.table_row_hole, 56);
+        sViewsWithIds.put(R.id.table_row_par, 57);
+        sViewsWithIds.put(R.id.table_row_user, 58);
+        sViewsWithIds.put(R.id.table_row_guest1, 59);
+        sViewsWithIds.put(R.id.table_row_guest2, 60);
+        sViewsWithIds.put(R.id.table_row_guest3, 61);
+        sViewsWithIds.put(R.id.text_view_current_score_user, 62);
+        sViewsWithIds.put(R.id.text_view_current_score_guest3, 63);
+        sViewsWithIds.put(R.id.text_view_current_score_guest2, 64);
+        sViewsWithIds.put(R.id.text_view_current_score_guest1, 65);
     }
     // views
     @NonNull
     private final android.widget.LinearLayout mboundView0;
+    @NonNull
+    private final android.widget.TextView mboundView1;
     // variables
     @Nullable
     private final android.view.View.OnClickListener mCallback27;
@@ -1041,6 +1043,32 @@ public class ActivityScoreCardFront9BindingImpl extends ActivityScoreCardFront9B
             }
         }
     };
+    private androidx.databinding.InverseBindingListener mboundView1androidTextAttrChanged = new androidx.databinding.InverseBindingListener() {
+        @Override
+        public void onChange() {
+            // Inverse of course.courseName
+            //         is course.setCourseName((java.lang.String) callbackArg_0)
+            java.lang.String callbackArg_0 = androidx.databinding.adapters.TextViewBindingAdapter.getTextString(mboundView1);
+            // localize variables for thread safety
+            // course
+            com.example.golfmax.models.Course course = mCourse;
+            // course.courseName
+            java.lang.String courseCourseName = null;
+            // course != null
+            boolean courseJavaLangObjectNull = false;
+
+
+
+            courseJavaLangObjectNull = (course) != (null);
+            if (courseJavaLangObjectNull) {
+
+
+
+
+                course.setCourseName(((java.lang.String) (callbackArg_0)));
+            }
+        }
+    };
     private androidx.databinding.InverseBindingListener textInputEditTextGuest1androidTextAttrChanged = new androidx.databinding.InverseBindingListener() {
         @Override
         public void onChange() {
@@ -1251,15 +1279,11 @@ public class ActivityScoreCardFront9BindingImpl extends ActivityScoreCardFront9B
     };
 
     public ActivityScoreCardFront9BindingImpl(@Nullable androidx.databinding.DataBindingComponent bindingComponent, @NonNull View root) {
-        this(bindingComponent, root, mapBindings(bindingComponent, root, 65, sIncludes, sViewsWithIds));
+        this(bindingComponent, root, mapBindings(bindingComponent, root, 66, sIncludes, sViewsWithIds));
     }
     private ActivityScoreCardFront9BindingImpl(androidx.databinding.DataBindingComponent bindingComponent, View root, Object[] bindings) {
         super(bindingComponent, root, 9
-            , (android.widget.Button) bindings[54]
-            , (android.widget.EditText) bindings[11]
-            , (android.widget.EditText) bindings[21]
-            , (android.widget.EditText) bindings[31]
-            , (android.widget.EditText) bindings[41]
+            , (android.widget.Button) bindings[55]
             , (android.widget.EditText) bindings[12]
             , (android.widget.EditText) bindings[22]
             , (android.widget.EditText) bindings[32]
@@ -1292,24 +1316,27 @@ public class ActivityScoreCardFront9BindingImpl extends ActivityScoreCardFront9B
             , (android.widget.EditText) bindings[29]
             , (android.widget.EditText) bindings[39]
             , (android.widget.EditText) bindings[49]
-            , (android.widget.TableRow) bindings[58]
+            , (android.widget.EditText) bindings[20]
+            , (android.widget.EditText) bindings[30]
+            , (android.widget.EditText) bindings[40]
+            , (android.widget.EditText) bindings[50]
             , (android.widget.TableRow) bindings[59]
             , (android.widget.TableRow) bindings[60]
-            , (android.widget.TableRow) bindings[55]
+            , (android.widget.TableRow) bindings[61]
             , (android.widget.TableRow) bindings[56]
             , (android.widget.TableRow) bindings[57]
-            , (com.google.android.material.textfield.TextInputEditText) bindings[20]
-            , (com.google.android.material.textfield.TextInputEditText) bindings[30]
-            , (com.google.android.material.textfield.TextInputEditText) bindings[40]
+            , (android.widget.TableRow) bindings[58]
+            , (com.google.android.material.textfield.TextInputEditText) bindings[21]
+            , (com.google.android.material.textfield.TextInputEditText) bindings[31]
+            , (com.google.android.material.textfield.TextInputEditText) bindings[41]
+            , (android.widget.TextView) bindings[65]
+            , (android.widget.TextView) bindings[54]
             , (android.widget.TextView) bindings[64]
             , (android.widget.TextView) bindings[53]
             , (android.widget.TextView) bindings[63]
             , (android.widget.TextView) bindings[52]
             , (android.widget.TextView) bindings[62]
             , (android.widget.TextView) bindings[51]
-            , (android.widget.TextView) bindings[61]
-            , (android.widget.TextView) bindings[50]
-            , (android.widget.TextView) bindings[1]
             , (android.widget.TextView) bindings[2]
             , (android.widget.TextView) bindings[3]
             , (android.widget.TextView) bindings[4]
@@ -1319,6 +1346,7 @@ public class ActivityScoreCardFront9BindingImpl extends ActivityScoreCardFront9B
             , (android.widget.TextView) bindings[8]
             , (android.widget.TextView) bindings[9]
             , (android.widget.TextView) bindings[10]
+            , (android.widget.TextView) bindings[11]
             );
         this.editTextHole1.setTag(null);
         this.editTextHole1Guest1.setTag(null);
@@ -1358,6 +1386,8 @@ public class ActivityScoreCardFront9BindingImpl extends ActivityScoreCardFront9B
         this.editTextHole9Guest3.setTag(null);
         this.mboundView0 = (android.widget.LinearLayout) bindings[0];
         this.mboundView0.setTag(null);
+        this.mboundView1 = (android.widget.TextView) bindings[1];
+        this.mboundView1.setTag(null);
         this.textInputEditTextGuest1.setTag(null);
         this.textInputEditTextGuest2.setTag(null);
         this.textInputEditTextGuest3.setTag(null);
@@ -1419,8 +1449,8 @@ public class ActivityScoreCardFront9BindingImpl extends ActivityScoreCardFront9B
     @Override
     public void invalidateAll() {
         synchronized(this) {
-                mDirtyFlags = 0x8000000000000000L;
-                mDirtyFlags_1 = 0x0L;
+                mDirtyFlags = 0x0L;
+                mDirtyFlags_1 = 0x1L;
         }
         requestRebind();
     }
@@ -1682,57 +1712,63 @@ public class ActivityScoreCardFront9BindingImpl extends ActivityScoreCardFront9B
             }
             return true;
         }
-        else if (fieldId == BR.hole1) {
+        else if (fieldId == BR.courseName) {
             synchronized(this) {
                     mDirtyFlags |= 0x800000L;
             }
             return true;
         }
-        else if (fieldId == BR.hole2) {
+        else if (fieldId == BR.hole1) {
             synchronized(this) {
                     mDirtyFlags |= 0x1000000L;
             }
             return true;
         }
-        else if (fieldId == BR.hole3) {
+        else if (fieldId == BR.hole2) {
             synchronized(this) {
                     mDirtyFlags |= 0x2000000L;
             }
             return true;
         }
-        else if (fieldId == BR.hole4) {
+        else if (fieldId == BR.hole3) {
             synchronized(this) {
                     mDirtyFlags |= 0x4000000L;
             }
             return true;
         }
-        else if (fieldId == BR.hole5) {
+        else if (fieldId == BR.hole4) {
             synchronized(this) {
                     mDirtyFlags |= 0x8000000L;
             }
             return true;
         }
-        else if (fieldId == BR.hole6) {
+        else if (fieldId == BR.hole5) {
             synchronized(this) {
                     mDirtyFlags |= 0x10000000L;
             }
             return true;
         }
-        else if (fieldId == BR.hole7) {
+        else if (fieldId == BR.hole6) {
             synchronized(this) {
                     mDirtyFlags |= 0x20000000L;
             }
             return true;
         }
-        else if (fieldId == BR.hole8) {
+        else if (fieldId == BR.hole7) {
             synchronized(this) {
                     mDirtyFlags |= 0x40000000L;
             }
             return true;
         }
-        else if (fieldId == BR.hole9) {
+        else if (fieldId == BR.hole8) {
             synchronized(this) {
                     mDirtyFlags |= 0x80000000L;
+            }
+            return true;
+        }
+        else if (fieldId == BR.hole9) {
+            synchronized(this) {
+                    mDirtyFlags |= 0x100000000L;
             }
             return true;
         }
@@ -1747,55 +1783,55 @@ public class ActivityScoreCardFront9BindingImpl extends ActivityScoreCardFront9B
         }
         else if (fieldId == BR.hole1) {
             synchronized(this) {
-                    mDirtyFlags |= 0x100000000L;
+                    mDirtyFlags |= 0x200000000L;
             }
             return true;
         }
         else if (fieldId == BR.hole2) {
             synchronized(this) {
-                    mDirtyFlags |= 0x200000000L;
+                    mDirtyFlags |= 0x400000000L;
             }
             return true;
         }
         else if (fieldId == BR.hole3) {
             synchronized(this) {
-                    mDirtyFlags |= 0x400000000L;
+                    mDirtyFlags |= 0x800000000L;
             }
             return true;
         }
         else if (fieldId == BR.hole4) {
             synchronized(this) {
-                    mDirtyFlags |= 0x800000000L;
+                    mDirtyFlags |= 0x1000000000L;
             }
             return true;
         }
         else if (fieldId == BR.hole5) {
             synchronized(this) {
-                    mDirtyFlags |= 0x1000000000L;
+                    mDirtyFlags |= 0x2000000000L;
             }
             return true;
         }
         else if (fieldId == BR.hole6) {
             synchronized(this) {
-                    mDirtyFlags |= 0x2000000000L;
+                    mDirtyFlags |= 0x4000000000L;
             }
             return true;
         }
         else if (fieldId == BR.hole7) {
             synchronized(this) {
-                    mDirtyFlags |= 0x4000000000L;
+                    mDirtyFlags |= 0x8000000000L;
             }
             return true;
         }
         else if (fieldId == BR.hole8) {
             synchronized(this) {
-                    mDirtyFlags |= 0x8000000000L;
+                    mDirtyFlags |= 0x10000000000L;
             }
             return true;
         }
         else if (fieldId == BR.hole9) {
             synchronized(this) {
-                    mDirtyFlags |= 0x10000000000L;
+                    mDirtyFlags |= 0x20000000000L;
             }
             return true;
         }
@@ -1810,7 +1846,7 @@ public class ActivityScoreCardFront9BindingImpl extends ActivityScoreCardFront9B
         }
         else if (fieldId == BR.username) {
             synchronized(this) {
-                    mDirtyFlags |= 0x20000000000L;
+                    mDirtyFlags |= 0x40000000000L;
             }
             return true;
         }
@@ -1825,7 +1861,7 @@ public class ActivityScoreCardFront9BindingImpl extends ActivityScoreCardFront9B
         }
         else if (fieldId == BR.username) {
             synchronized(this) {
-                    mDirtyFlags |= 0x40000000000L;
+                    mDirtyFlags |= 0x80000000000L;
             }
             return true;
         }
@@ -1840,7 +1876,7 @@ public class ActivityScoreCardFront9BindingImpl extends ActivityScoreCardFront9B
         }
         else if (fieldId == BR.username) {
             synchronized(this) {
-                    mDirtyFlags |= 0x80000000000L;
+                    mDirtyFlags |= 0x100000000000L;
             }
             return true;
         }
@@ -1855,55 +1891,55 @@ public class ActivityScoreCardFront9BindingImpl extends ActivityScoreCardFront9B
         }
         else if (fieldId == BR.hole1) {
             synchronized(this) {
-                    mDirtyFlags |= 0x100000000000L;
+                    mDirtyFlags |= 0x200000000000L;
             }
             return true;
         }
         else if (fieldId == BR.hole2) {
             synchronized(this) {
-                    mDirtyFlags |= 0x200000000000L;
+                    mDirtyFlags |= 0x400000000000L;
             }
             return true;
         }
         else if (fieldId == BR.hole3) {
             synchronized(this) {
-                    mDirtyFlags |= 0x400000000000L;
+                    mDirtyFlags |= 0x800000000000L;
             }
             return true;
         }
         else if (fieldId == BR.hole4) {
             synchronized(this) {
-                    mDirtyFlags |= 0x800000000000L;
+                    mDirtyFlags |= 0x1000000000000L;
             }
             return true;
         }
         else if (fieldId == BR.hole5) {
             synchronized(this) {
-                    mDirtyFlags |= 0x1000000000000L;
+                    mDirtyFlags |= 0x2000000000000L;
             }
             return true;
         }
         else if (fieldId == BR.hole6) {
             synchronized(this) {
-                    mDirtyFlags |= 0x2000000000000L;
+                    mDirtyFlags |= 0x4000000000000L;
             }
             return true;
         }
         else if (fieldId == BR.hole7) {
             synchronized(this) {
-                    mDirtyFlags |= 0x4000000000000L;
+                    mDirtyFlags |= 0x8000000000000L;
             }
             return true;
         }
         else if (fieldId == BR.hole8) {
             synchronized(this) {
-                    mDirtyFlags |= 0x8000000000000L;
+                    mDirtyFlags |= 0x10000000000000L;
             }
             return true;
         }
         else if (fieldId == BR.hole9) {
             synchronized(this) {
-                    mDirtyFlags |= 0x10000000000000L;
+                    mDirtyFlags |= 0x20000000000000L;
             }
             return true;
         }
@@ -1918,55 +1954,55 @@ public class ActivityScoreCardFront9BindingImpl extends ActivityScoreCardFront9B
         }
         else if (fieldId == BR.hole1) {
             synchronized(this) {
-                    mDirtyFlags |= 0x20000000000000L;
+                    mDirtyFlags |= 0x40000000000000L;
             }
             return true;
         }
         else if (fieldId == BR.hole2) {
             synchronized(this) {
-                    mDirtyFlags |= 0x40000000000000L;
+                    mDirtyFlags |= 0x80000000000000L;
             }
             return true;
         }
         else if (fieldId == BR.hole3) {
             synchronized(this) {
-                    mDirtyFlags |= 0x80000000000000L;
+                    mDirtyFlags |= 0x100000000000000L;
             }
             return true;
         }
         else if (fieldId == BR.hole4) {
             synchronized(this) {
-                    mDirtyFlags |= 0x100000000000000L;
+                    mDirtyFlags |= 0x200000000000000L;
             }
             return true;
         }
         else if (fieldId == BR.hole5) {
             synchronized(this) {
-                    mDirtyFlags |= 0x200000000000000L;
+                    mDirtyFlags |= 0x400000000000000L;
             }
             return true;
         }
         else if (fieldId == BR.hole6) {
             synchronized(this) {
-                    mDirtyFlags |= 0x400000000000000L;
+                    mDirtyFlags |= 0x800000000000000L;
             }
             return true;
         }
         else if (fieldId == BR.hole7) {
             synchronized(this) {
-                    mDirtyFlags |= 0x800000000000000L;
+                    mDirtyFlags |= 0x1000000000000000L;
             }
             return true;
         }
         else if (fieldId == BR.hole8) {
             synchronized(this) {
-                    mDirtyFlags |= 0x1000000000000000L;
+                    mDirtyFlags |= 0x2000000000000000L;
             }
             return true;
         }
         else if (fieldId == BR.hole9) {
             synchronized(this) {
-                    mDirtyFlags |= 0x2000000000000000L;
+                    mDirtyFlags |= 0x4000000000000000L;
             }
             return true;
         }
@@ -1981,7 +2017,7 @@ public class ActivityScoreCardFront9BindingImpl extends ActivityScoreCardFront9B
         }
         else if (fieldId == BR.username) {
             synchronized(this) {
-                    mDirtyFlags |= 0x4000000000000000L;
+                    mDirtyFlags |= 0x8000000000000000L;
             }
             return true;
         }
@@ -2005,6 +2041,7 @@ public class ActivityScoreCardFront9BindingImpl extends ActivityScoreCardFront9B
         java.lang.String guest2ScoreHole3 = null;
         java.lang.String guest1ScoreHole5 = null;
         com.example.golfmax.presenters.ScorePresenter scorePresenter = mScorePresenter;
+        java.lang.String courseCourseName = null;
         java.lang.String stringValueOfCourseHole1 = null;
         java.lang.String guest3ScoreHole8 = null;
         int courseHole6 = 0;
@@ -2067,66 +2104,66 @@ public class ActivityScoreCardFront9BindingImpl extends ActivityScoreCardFront9B
         java.lang.String guest3ScoreHole9 = null;
         java.lang.String guest3ScoreHole1 = null;
 
-        if ((dirtyFlags & 0x80000000007fc001L) != 0) {
+        if ((dirtyFlags & 0x7fc001L) != 0 || (dirtyFlags_1 & 0x1L) != 0) {
 
 
-            if ((dirtyFlags & 0x8000000000040001L) != 0) {
+            if ((dirtyFlags & 0x40001L) != 0 || (dirtyFlags_1 & 0x1L) != 0) {
 
                     if (guest1Score != null) {
                         // read guest1Score.hole5
                         guest1ScoreHole5 = guest1Score.getHole5();
                     }
             }
-            if ((dirtyFlags & 0x8000000000080001L) != 0) {
+            if ((dirtyFlags & 0x80001L) != 0 || (dirtyFlags_1 & 0x1L) != 0) {
 
                     if (guest1Score != null) {
                         // read guest1Score.hole6
                         guest1ScoreHole6 = guest1Score.getHole6();
                     }
             }
-            if ((dirtyFlags & 0x8000000000100001L) != 0) {
+            if ((dirtyFlags & 0x100001L) != 0 || (dirtyFlags_1 & 0x1L) != 0) {
 
                     if (guest1Score != null) {
                         // read guest1Score.hole7
                         guest1ScoreHole7 = guest1Score.getHole7();
                     }
             }
-            if ((dirtyFlags & 0x8000000000200001L) != 0) {
+            if ((dirtyFlags & 0x200001L) != 0 || (dirtyFlags_1 & 0x1L) != 0) {
 
                     if (guest1Score != null) {
                         // read guest1Score.hole8
                         guest1ScoreHole8 = guest1Score.getHole8();
                     }
             }
-            if ((dirtyFlags & 0x8000000000004001L) != 0) {
+            if ((dirtyFlags & 0x4001L) != 0 || (dirtyFlags_1 & 0x1L) != 0) {
 
                     if (guest1Score != null) {
                         // read guest1Score.hole1
                         guest1ScoreHole1 = guest1Score.getHole1();
                     }
             }
-            if ((dirtyFlags & 0x8000000000400001L) != 0) {
+            if ((dirtyFlags & 0x400001L) != 0 || (dirtyFlags_1 & 0x1L) != 0) {
 
                     if (guest1Score != null) {
                         // read guest1Score.hole9
                         guest1ScoreHole9 = guest1Score.getHole9();
                     }
             }
-            if ((dirtyFlags & 0x8000000000008001L) != 0) {
+            if ((dirtyFlags & 0x8001L) != 0 || (dirtyFlags_1 & 0x1L) != 0) {
 
                     if (guest1Score != null) {
                         // read guest1Score.hole2
                         guest1ScoreHole2 = guest1Score.getHole2();
                     }
             }
-            if ((dirtyFlags & 0x8000000000010001L) != 0) {
+            if ((dirtyFlags & 0x10001L) != 0 || (dirtyFlags_1 & 0x1L) != 0) {
 
                     if (guest1Score != null) {
                         // read guest1Score.hole3
                         guest1ScoreHole3 = guest1Score.getHole3();
                     }
             }
-            if ((dirtyFlags & 0x8000000000020001L) != 0) {
+            if ((dirtyFlags & 0x20001L) != 0 || (dirtyFlags_1 & 0x1L) != 0) {
 
                     if (guest1Score != null) {
                         // read guest1Score.hole4
@@ -2134,10 +2171,10 @@ public class ActivityScoreCardFront9BindingImpl extends ActivityScoreCardFront9B
                     }
             }
         }
-        if ((dirtyFlags & 0x80000000ff800002L) != 0) {
+        if ((dirtyFlags & 0x1ff800002L) != 0 || (dirtyFlags_1 & 0x1L) != 0) {
 
 
-            if ((dirtyFlags & 0x8000000020000002L) != 0) {
+            if ((dirtyFlags & 0x40000002L) != 0 || (dirtyFlags_1 & 0x1L) != 0) {
 
                     if (course != null) {
                         // read course.hole7
@@ -2148,7 +2185,14 @@ public class ActivityScoreCardFront9BindingImpl extends ActivityScoreCardFront9B
                     // read String.valueOf(course.hole7)
                     stringValueOfCourseHole7 = java.lang.String.valueOf(courseHole7);
             }
-            if ((dirtyFlags & 0x8000000010000002L) != 0) {
+            if ((dirtyFlags & 0x800002L) != 0 || (dirtyFlags_1 & 0x1L) != 0) {
+
+                    if (course != null) {
+                        // read course.courseName
+                        courseCourseName = course.getCourseName();
+                    }
+            }
+            if ((dirtyFlags & 0x20000002L) != 0 || (dirtyFlags_1 & 0x1L) != 0) {
 
                     if (course != null) {
                         // read course.hole6
@@ -2159,7 +2203,7 @@ public class ActivityScoreCardFront9BindingImpl extends ActivityScoreCardFront9B
                     // read String.valueOf(course.hole6)
                     stringValueOfCourseHole6 = java.lang.String.valueOf(courseHole6);
             }
-            if ((dirtyFlags & 0x8000000008000002L) != 0) {
+            if ((dirtyFlags & 0x10000002L) != 0 || (dirtyFlags_1 & 0x1L) != 0) {
 
                     if (course != null) {
                         // read course.hole5
@@ -2170,7 +2214,7 @@ public class ActivityScoreCardFront9BindingImpl extends ActivityScoreCardFront9B
                     // read String.valueOf(course.hole5)
                     stringValueOfCourseHole5 = java.lang.String.valueOf(courseHole5);
             }
-            if ((dirtyFlags & 0x8000000004000002L) != 0) {
+            if ((dirtyFlags & 0x8000002L) != 0 || (dirtyFlags_1 & 0x1L) != 0) {
 
                     if (course != null) {
                         // read course.hole4
@@ -2181,7 +2225,7 @@ public class ActivityScoreCardFront9BindingImpl extends ActivityScoreCardFront9B
                     // read String.valueOf(course.hole4)
                     stringValueOfCourseHole4 = java.lang.String.valueOf(courseHole4);
             }
-            if ((dirtyFlags & 0x8000000002000002L) != 0) {
+            if ((dirtyFlags & 0x4000002L) != 0 || (dirtyFlags_1 & 0x1L) != 0) {
 
                     if (course != null) {
                         // read course.hole3
@@ -2192,7 +2236,7 @@ public class ActivityScoreCardFront9BindingImpl extends ActivityScoreCardFront9B
                     // read String.valueOf(course.hole3)
                     stringValueOfCourseHole3 = java.lang.String.valueOf(courseHole3);
             }
-            if ((dirtyFlags & 0x8000000001000002L) != 0) {
+            if ((dirtyFlags & 0x2000002L) != 0 || (dirtyFlags_1 & 0x1L) != 0) {
 
                     if (course != null) {
                         // read course.hole2
@@ -2203,7 +2247,7 @@ public class ActivityScoreCardFront9BindingImpl extends ActivityScoreCardFront9B
                     // read String.valueOf(course.hole2)
                     stringValueOfCourseHole2 = java.lang.String.valueOf(courseHole2);
             }
-            if ((dirtyFlags & 0x8000000080000002L) != 0) {
+            if ((dirtyFlags & 0x100000002L) != 0 || (dirtyFlags_1 & 0x1L) != 0) {
 
                     if (course != null) {
                         // read course.hole9
@@ -2214,7 +2258,7 @@ public class ActivityScoreCardFront9BindingImpl extends ActivityScoreCardFront9B
                     // read String.valueOf(course.hole9)
                     stringValueOfCourseHole9 = java.lang.String.valueOf(courseHole9);
             }
-            if ((dirtyFlags & 0x8000000000800002L) != 0) {
+            if ((dirtyFlags & 0x1000002L) != 0 || (dirtyFlags_1 & 0x1L) != 0) {
 
                     if (course != null) {
                         // read course.hole1
@@ -2225,7 +2269,7 @@ public class ActivityScoreCardFront9BindingImpl extends ActivityScoreCardFront9B
                     // read String.valueOf(course.hole1)
                     stringValueOfCourseHole1 = java.lang.String.valueOf(courseHole1);
             }
-            if ((dirtyFlags & 0x8000000040000002L) != 0) {
+            if ((dirtyFlags & 0x80000002L) != 0 || (dirtyFlags_1 & 0x1L) != 0) {
 
                     if (course != null) {
                         // read course.hole8
@@ -2237,66 +2281,66 @@ public class ActivityScoreCardFront9BindingImpl extends ActivityScoreCardFront9B
                     stringValueOfCourseHole8 = java.lang.String.valueOf(courseHole8);
             }
         }
-        if ((dirtyFlags & 0x800001ff00000004L) != 0) {
+        if ((dirtyFlags & 0x3fe00000004L) != 0 || (dirtyFlags_1 & 0x1L) != 0) {
 
 
-            if ((dirtyFlags & 0x8000008000000004L) != 0) {
+            if ((dirtyFlags & 0x10000000004L) != 0 || (dirtyFlags_1 & 0x1L) != 0) {
 
                     if (userScore != null) {
                         // read userScore.hole8
                         userScoreHole8 = userScore.getHole8();
                     }
             }
-            if ((dirtyFlags & 0x8000004000000004L) != 0) {
+            if ((dirtyFlags & 0x8000000004L) != 0 || (dirtyFlags_1 & 0x1L) != 0) {
 
                     if (userScore != null) {
                         // read userScore.hole7
                         userScoreHole7 = userScore.getHole7();
                     }
             }
-            if ((dirtyFlags & 0x8000000200000004L) != 0) {
+            if ((dirtyFlags & 0x400000004L) != 0 || (dirtyFlags_1 & 0x1L) != 0) {
 
                     if (userScore != null) {
                         // read userScore.hole2
                         userScoreHole2 = userScore.getHole2();
                     }
             }
-            if ((dirtyFlags & 0x8000010000000004L) != 0) {
+            if ((dirtyFlags & 0x20000000004L) != 0 || (dirtyFlags_1 & 0x1L) != 0) {
 
                     if (userScore != null) {
                         // read userScore.hole9
                         userScoreHole9 = userScore.getHole9();
                     }
             }
-            if ((dirtyFlags & 0x8000000100000004L) != 0) {
+            if ((dirtyFlags & 0x200000004L) != 0 || (dirtyFlags_1 & 0x1L) != 0) {
 
                     if (userScore != null) {
                         // read userScore.hole1
                         userScoreHole1 = userScore.getHole1();
                     }
             }
-            if ((dirtyFlags & 0x8000000800000004L) != 0) {
+            if ((dirtyFlags & 0x1000000004L) != 0 || (dirtyFlags_1 & 0x1L) != 0) {
 
                     if (userScore != null) {
                         // read userScore.hole4
                         userScoreHole4 = userScore.getHole4();
                     }
             }
-            if ((dirtyFlags & 0x8000000400000004L) != 0) {
+            if ((dirtyFlags & 0x800000004L) != 0 || (dirtyFlags_1 & 0x1L) != 0) {
 
                     if (userScore != null) {
                         // read userScore.hole3
                         userScoreHole3 = userScore.getHole3();
                     }
             }
-            if ((dirtyFlags & 0x8000002000000004L) != 0) {
+            if ((dirtyFlags & 0x4000000004L) != 0 || (dirtyFlags_1 & 0x1L) != 0) {
 
                     if (userScore != null) {
                         // read userScore.hole6
                         userScoreHole6 = userScore.getHole6();
                     }
             }
-            if ((dirtyFlags & 0x8000001000000004L) != 0) {
+            if ((dirtyFlags & 0x2000000004L) != 0 || (dirtyFlags_1 & 0x1L) != 0) {
 
                     if (userScore != null) {
                         // read userScore.hole5
@@ -2304,7 +2348,7 @@ public class ActivityScoreCardFront9BindingImpl extends ActivityScoreCardFront9B
                     }
             }
         }
-        if ((dirtyFlags & 0x8000020000000008L) != 0) {
+        if ((dirtyFlags & 0x40000000008L) != 0 || (dirtyFlags_1 & 0x1L) != 0) {
 
 
 
@@ -2313,7 +2357,7 @@ public class ActivityScoreCardFront9BindingImpl extends ActivityScoreCardFront9B
                     userUsername = user.getUsername();
                 }
         }
-        if ((dirtyFlags & 0x8000040000000010L) != 0) {
+        if ((dirtyFlags & 0x80000000010L) != 0 || (dirtyFlags_1 & 0x1L) != 0) {
 
 
 
@@ -2322,7 +2366,7 @@ public class ActivityScoreCardFront9BindingImpl extends ActivityScoreCardFront9B
                     guest2Username = guest2.getUsername();
                 }
         }
-        if ((dirtyFlags & 0x8000080000000020L) != 0) {
+        if ((dirtyFlags & 0x100000000020L) != 0 || (dirtyFlags_1 & 0x1L) != 0) {
 
 
 
@@ -2331,66 +2375,66 @@ public class ActivityScoreCardFront9BindingImpl extends ActivityScoreCardFront9B
                     guest3Username = guest3.getUsername();
                 }
         }
-        if ((dirtyFlags & 0x801ff00000000040L) != 0) {
+        if ((dirtyFlags & 0x3fe00000000040L) != 0 || (dirtyFlags_1 & 0x1L) != 0) {
 
 
-            if ((dirtyFlags & 0x8000400000000040L) != 0) {
+            if ((dirtyFlags & 0x800000000040L) != 0 || (dirtyFlags_1 & 0x1L) != 0) {
 
                     if (guest2Score != null) {
                         // read guest2Score.hole3
                         guest2ScoreHole3 = guest2Score.getHole3();
                     }
             }
-            if ((dirtyFlags & 0x8000800000000040L) != 0) {
+            if ((dirtyFlags & 0x1000000000040L) != 0 || (dirtyFlags_1 & 0x1L) != 0) {
 
                     if (guest2Score != null) {
                         // read guest2Score.hole4
                         guest2ScoreHole4 = guest2Score.getHole4();
                     }
             }
-            if ((dirtyFlags & 0x8000100000000040L) != 0) {
+            if ((dirtyFlags & 0x200000000040L) != 0 || (dirtyFlags_1 & 0x1L) != 0) {
 
                     if (guest2Score != null) {
                         // read guest2Score.hole1
                         guest2ScoreHole1 = guest2Score.getHole1();
                     }
             }
-            if ((dirtyFlags & 0x8010000000000040L) != 0) {
+            if ((dirtyFlags & 0x20000000000040L) != 0 || (dirtyFlags_1 & 0x1L) != 0) {
 
                     if (guest2Score != null) {
                         // read guest2Score.hole9
                         guest2ScoreHole9 = guest2Score.getHole9();
                     }
             }
-            if ((dirtyFlags & 0x8000200000000040L) != 0) {
+            if ((dirtyFlags & 0x400000000040L) != 0 || (dirtyFlags_1 & 0x1L) != 0) {
 
                     if (guest2Score != null) {
                         // read guest2Score.hole2
                         guest2ScoreHole2 = guest2Score.getHole2();
                     }
             }
-            if ((dirtyFlags & 0x8004000000000040L) != 0) {
+            if ((dirtyFlags & 0x8000000000040L) != 0 || (dirtyFlags_1 & 0x1L) != 0) {
 
                     if (guest2Score != null) {
                         // read guest2Score.hole7
                         guest2ScoreHole7 = guest2Score.getHole7();
                     }
             }
-            if ((dirtyFlags & 0x8008000000000040L) != 0) {
+            if ((dirtyFlags & 0x10000000000040L) != 0 || (dirtyFlags_1 & 0x1L) != 0) {
 
                     if (guest2Score != null) {
                         // read guest2Score.hole8
                         guest2ScoreHole8 = guest2Score.getHole8();
                     }
             }
-            if ((dirtyFlags & 0x8001000000000040L) != 0) {
+            if ((dirtyFlags & 0x2000000000040L) != 0 || (dirtyFlags_1 & 0x1L) != 0) {
 
                     if (guest2Score != null) {
                         // read guest2Score.hole5
                         guest2ScoreHole5 = guest2Score.getHole5();
                     }
             }
-            if ((dirtyFlags & 0x8002000000000040L) != 0) {
+            if ((dirtyFlags & 0x4000000000040L) != 0 || (dirtyFlags_1 & 0x1L) != 0) {
 
                     if (guest2Score != null) {
                         // read guest2Score.hole6
@@ -2398,66 +2442,66 @@ public class ActivityScoreCardFront9BindingImpl extends ActivityScoreCardFront9B
                     }
             }
         }
-        if ((dirtyFlags & 0xbfe0000000000080L) != 0) {
+        if ((dirtyFlags & 0x7fc0000000000080L) != 0 || (dirtyFlags_1 & 0x1L) != 0) {
 
 
-            if ((dirtyFlags & 0x9000000000000080L) != 0) {
+            if ((dirtyFlags & 0x2000000000000080L) != 0 || (dirtyFlags_1 & 0x1L) != 0) {
 
                     if (guest3Score != null) {
                         // read guest3Score.hole8
                         guest3ScoreHole8 = guest3Score.getHole8();
                     }
             }
-            if ((dirtyFlags & 0x8800000000000080L) != 0) {
+            if ((dirtyFlags & 0x1000000000000080L) != 0 || (dirtyFlags_1 & 0x1L) != 0) {
 
                     if (guest3Score != null) {
                         // read guest3Score.hole7
                         guest3ScoreHole7 = guest3Score.getHole7();
                     }
             }
-            if ((dirtyFlags & 0x8400000000000080L) != 0) {
+            if ((dirtyFlags & 0x800000000000080L) != 0 || (dirtyFlags_1 & 0x1L) != 0) {
 
                     if (guest3Score != null) {
                         // read guest3Score.hole6
                         guest3ScoreHole6 = guest3Score.getHole6();
                     }
             }
-            if ((dirtyFlags & 0x8200000000000080L) != 0) {
+            if ((dirtyFlags & 0x400000000000080L) != 0 || (dirtyFlags_1 & 0x1L) != 0) {
 
                     if (guest3Score != null) {
                         // read guest3Score.hole5
                         guest3ScoreHole5 = guest3Score.getHole5();
                     }
             }
-            if ((dirtyFlags & 0x8100000000000080L) != 0) {
+            if ((dirtyFlags & 0x200000000000080L) != 0 || (dirtyFlags_1 & 0x1L) != 0) {
 
                     if (guest3Score != null) {
                         // read guest3Score.hole4
                         guest3ScoreHole4 = guest3Score.getHole4();
                     }
             }
-            if ((dirtyFlags & 0x8080000000000080L) != 0) {
+            if ((dirtyFlags & 0x100000000000080L) != 0 || (dirtyFlags_1 & 0x1L) != 0) {
 
                     if (guest3Score != null) {
                         // read guest3Score.hole3
                         guest3ScoreHole3 = guest3Score.getHole3();
                     }
             }
-            if ((dirtyFlags & 0x8040000000000080L) != 0) {
+            if ((dirtyFlags & 0x80000000000080L) != 0 || (dirtyFlags_1 & 0x1L) != 0) {
 
                     if (guest3Score != null) {
                         // read guest3Score.hole2
                         guest3ScoreHole2 = guest3Score.getHole2();
                     }
             }
-            if ((dirtyFlags & 0xa000000000000080L) != 0) {
+            if ((dirtyFlags & 0x4000000000000080L) != 0 || (dirtyFlags_1 & 0x1L) != 0) {
 
                     if (guest3Score != null) {
                         // read guest3Score.hole9
                         guest3ScoreHole9 = guest3Score.getHole9();
                     }
             }
-            if ((dirtyFlags & 0x8020000000000080L) != 0) {
+            if ((dirtyFlags & 0x40000000000080L) != 0 || (dirtyFlags_1 & 0x1L) != 0) {
 
                     if (guest3Score != null) {
                         // read guest3Score.hole1
@@ -2465,7 +2509,7 @@ public class ActivityScoreCardFront9BindingImpl extends ActivityScoreCardFront9B
                     }
             }
         }
-        if ((dirtyFlags & 0xc000000000000100L) != 0) {
+        if ((dirtyFlags & 0x8000000000000100L) != 0 || (dirtyFlags_1 & 0x1L) != 0) {
 
 
 
@@ -2475,7 +2519,7 @@ public class ActivityScoreCardFront9BindingImpl extends ActivityScoreCardFront9B
                 }
         }
         // batch finished
-        if ((dirtyFlags & 0x8000000000000000L) != 0) {
+        if ((dirtyFlags_1 & 0x1L) != 0) {
             // api target 1
 
             this.editTextHole1.setOnClickListener(mCallback3);
@@ -2550,6 +2594,7 @@ public class ActivityScoreCardFront9BindingImpl extends ActivityScoreCardFront9B
             androidx.databinding.adapters.TextViewBindingAdapter.setTextWatcher(this.editTextHole9Guest2, (androidx.databinding.adapters.TextViewBindingAdapter.BeforeTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.OnTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.AfterTextChanged)null, editTextHole9Guest2androidTextAttrChanged);
             this.editTextHole9Guest3.setOnClickListener(mCallback38);
             androidx.databinding.adapters.TextViewBindingAdapter.setTextWatcher(this.editTextHole9Guest3, (androidx.databinding.adapters.TextViewBindingAdapter.BeforeTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.OnTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.AfterTextChanged)null, editTextHole9Guest3androidTextAttrChanged);
+            androidx.databinding.adapters.TextViewBindingAdapter.setTextWatcher(this.mboundView1, (androidx.databinding.adapters.TextViewBindingAdapter.BeforeTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.OnTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.AfterTextChanged)null, mboundView1androidTextAttrChanged);
             androidx.databinding.adapters.TextViewBindingAdapter.setTextWatcher(this.textInputEditTextGuest1, (androidx.databinding.adapters.TextViewBindingAdapter.BeforeTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.OnTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.AfterTextChanged)null, textInputEditTextGuest1androidTextAttrChanged);
             androidx.databinding.adapters.TextViewBindingAdapter.setTextWatcher(this.textInputEditTextGuest2, (androidx.databinding.adapters.TextViewBindingAdapter.BeforeTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.OnTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.AfterTextChanged)null, textInputEditTextGuest2androidTextAttrChanged);
             androidx.databinding.adapters.TextViewBindingAdapter.setTextWatcher(this.textInputEditTextGuest3, (androidx.databinding.adapters.TextViewBindingAdapter.BeforeTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.OnTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.AfterTextChanged)null, textInputEditTextGuest3androidTextAttrChanged);
@@ -2559,251 +2604,256 @@ public class ActivityScoreCardFront9BindingImpl extends ActivityScoreCardFront9B
             androidx.databinding.adapters.TextViewBindingAdapter.setTextWatcher(this.textViewCurrentScoreUsername, (androidx.databinding.adapters.TextViewBindingAdapter.BeforeTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.OnTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.AfterTextChanged)null, textViewCurrentScoreUsernameandroidTextAttrChanged);
             androidx.databinding.adapters.TextViewBindingAdapter.setTextWatcher(this.textViewUsername, (androidx.databinding.adapters.TextViewBindingAdapter.BeforeTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.OnTextChanged)null, (androidx.databinding.adapters.TextViewBindingAdapter.AfterTextChanged)null, textViewUsernameandroidTextAttrChanged);
         }
-        if ((dirtyFlags & 0x8000000100000004L) != 0) {
+        if ((dirtyFlags & 0x200000004L) != 0 || (dirtyFlags_1 & 0x1L) != 0) {
             // api target 1
 
             androidx.databinding.adapters.TextViewBindingAdapter.setText(this.editTextHole1, userScoreHole1);
         }
-        if ((dirtyFlags & 0x8000000000004001L) != 0) {
+        if ((dirtyFlags & 0x4001L) != 0 || (dirtyFlags_1 & 0x1L) != 0) {
             // api target 1
 
             androidx.databinding.adapters.TextViewBindingAdapter.setText(this.editTextHole1Guest1, guest1ScoreHole1);
         }
-        if ((dirtyFlags & 0x8000100000000040L) != 0) {
+        if ((dirtyFlags & 0x200000000040L) != 0 || (dirtyFlags_1 & 0x1L) != 0) {
             // api target 1
 
             androidx.databinding.adapters.TextViewBindingAdapter.setText(this.editTextHole1Guest2, guest2ScoreHole1);
         }
-        if ((dirtyFlags & 0x8020000000000080L) != 0) {
+        if ((dirtyFlags & 0x40000000000080L) != 0 || (dirtyFlags_1 & 0x1L) != 0) {
             // api target 1
 
             androidx.databinding.adapters.TextViewBindingAdapter.setText(this.editTextHole1Guest3, guest3ScoreHole1);
         }
-        if ((dirtyFlags & 0x8000000200000004L) != 0) {
+        if ((dirtyFlags & 0x400000004L) != 0 || (dirtyFlags_1 & 0x1L) != 0) {
             // api target 1
 
             androidx.databinding.adapters.TextViewBindingAdapter.setText(this.editTextHole2, userScoreHole2);
         }
-        if ((dirtyFlags & 0x8000000000008001L) != 0) {
+        if ((dirtyFlags & 0x8001L) != 0 || (dirtyFlags_1 & 0x1L) != 0) {
             // api target 1
 
             androidx.databinding.adapters.TextViewBindingAdapter.setText(this.editTextHole2Guest1, guest1ScoreHole2);
         }
-        if ((dirtyFlags & 0x8000200000000040L) != 0) {
+        if ((dirtyFlags & 0x400000000040L) != 0 || (dirtyFlags_1 & 0x1L) != 0) {
             // api target 1
 
             androidx.databinding.adapters.TextViewBindingAdapter.setText(this.editTextHole2Guest2, guest2ScoreHole2);
         }
-        if ((dirtyFlags & 0x8040000000000080L) != 0) {
+        if ((dirtyFlags & 0x80000000000080L) != 0 || (dirtyFlags_1 & 0x1L) != 0) {
             // api target 1
 
             androidx.databinding.adapters.TextViewBindingAdapter.setText(this.editTextHole2Guest3, guest3ScoreHole2);
         }
-        if ((dirtyFlags & 0x8000000400000004L) != 0) {
+        if ((dirtyFlags & 0x800000004L) != 0 || (dirtyFlags_1 & 0x1L) != 0) {
             // api target 1
 
             androidx.databinding.adapters.TextViewBindingAdapter.setText(this.editTextHole3, userScoreHole3);
         }
-        if ((dirtyFlags & 0x8000000000010001L) != 0) {
+        if ((dirtyFlags & 0x10001L) != 0 || (dirtyFlags_1 & 0x1L) != 0) {
             // api target 1
 
             androidx.databinding.adapters.TextViewBindingAdapter.setText(this.editTextHole3Guest1, guest1ScoreHole3);
         }
-        if ((dirtyFlags & 0x8000400000000040L) != 0) {
+        if ((dirtyFlags & 0x800000000040L) != 0 || (dirtyFlags_1 & 0x1L) != 0) {
             // api target 1
 
             androidx.databinding.adapters.TextViewBindingAdapter.setText(this.editTextHole3Guest2, guest2ScoreHole3);
         }
-        if ((dirtyFlags & 0x8080000000000080L) != 0) {
+        if ((dirtyFlags & 0x100000000000080L) != 0 || (dirtyFlags_1 & 0x1L) != 0) {
             // api target 1
 
             androidx.databinding.adapters.TextViewBindingAdapter.setText(this.editTextHole3Guest3, guest3ScoreHole3);
         }
-        if ((dirtyFlags & 0x8000000800000004L) != 0) {
+        if ((dirtyFlags & 0x1000000004L) != 0 || (dirtyFlags_1 & 0x1L) != 0) {
             // api target 1
 
             androidx.databinding.adapters.TextViewBindingAdapter.setText(this.editTextHole4, userScoreHole4);
         }
-        if ((dirtyFlags & 0x8000000000020001L) != 0) {
+        if ((dirtyFlags & 0x20001L) != 0 || (dirtyFlags_1 & 0x1L) != 0) {
             // api target 1
 
             androidx.databinding.adapters.TextViewBindingAdapter.setText(this.editTextHole4Guest1, guest1ScoreHole4);
         }
-        if ((dirtyFlags & 0x8000800000000040L) != 0) {
+        if ((dirtyFlags & 0x1000000000040L) != 0 || (dirtyFlags_1 & 0x1L) != 0) {
             // api target 1
 
             androidx.databinding.adapters.TextViewBindingAdapter.setText(this.editTextHole4Guest2, guest2ScoreHole4);
         }
-        if ((dirtyFlags & 0x8100000000000080L) != 0) {
+        if ((dirtyFlags & 0x200000000000080L) != 0 || (dirtyFlags_1 & 0x1L) != 0) {
             // api target 1
 
             androidx.databinding.adapters.TextViewBindingAdapter.setText(this.editTextHole4Guest3, guest3ScoreHole4);
         }
-        if ((dirtyFlags & 0x8000001000000004L) != 0) {
+        if ((dirtyFlags & 0x2000000004L) != 0 || (dirtyFlags_1 & 0x1L) != 0) {
             // api target 1
 
             androidx.databinding.adapters.TextViewBindingAdapter.setText(this.editTextHole5, userScoreHole5);
         }
-        if ((dirtyFlags & 0x8000000000040001L) != 0) {
+        if ((dirtyFlags & 0x40001L) != 0 || (dirtyFlags_1 & 0x1L) != 0) {
             // api target 1
 
             androidx.databinding.adapters.TextViewBindingAdapter.setText(this.editTextHole5Guest1, guest1ScoreHole5);
         }
-        if ((dirtyFlags & 0x8001000000000040L) != 0) {
+        if ((dirtyFlags & 0x2000000000040L) != 0 || (dirtyFlags_1 & 0x1L) != 0) {
             // api target 1
 
             androidx.databinding.adapters.TextViewBindingAdapter.setText(this.editTextHole5Guest2, guest2ScoreHole5);
         }
-        if ((dirtyFlags & 0x8200000000000080L) != 0) {
+        if ((dirtyFlags & 0x400000000000080L) != 0 || (dirtyFlags_1 & 0x1L) != 0) {
             // api target 1
 
             androidx.databinding.adapters.TextViewBindingAdapter.setText(this.editTextHole5Guest3, guest3ScoreHole5);
         }
-        if ((dirtyFlags & 0x8000002000000004L) != 0) {
+        if ((dirtyFlags & 0x4000000004L) != 0 || (dirtyFlags_1 & 0x1L) != 0) {
             // api target 1
 
             androidx.databinding.adapters.TextViewBindingAdapter.setText(this.editTextHole6, userScoreHole6);
         }
-        if ((dirtyFlags & 0x8000000000080001L) != 0) {
+        if ((dirtyFlags & 0x80001L) != 0 || (dirtyFlags_1 & 0x1L) != 0) {
             // api target 1
 
             androidx.databinding.adapters.TextViewBindingAdapter.setText(this.editTextHole6Guest1, guest1ScoreHole6);
         }
-        if ((dirtyFlags & 0x8002000000000040L) != 0) {
+        if ((dirtyFlags & 0x4000000000040L) != 0 || (dirtyFlags_1 & 0x1L) != 0) {
             // api target 1
 
             androidx.databinding.adapters.TextViewBindingAdapter.setText(this.editTextHole6Guest2, guest2ScoreHole6);
         }
-        if ((dirtyFlags & 0x8400000000000080L) != 0) {
+        if ((dirtyFlags & 0x800000000000080L) != 0 || (dirtyFlags_1 & 0x1L) != 0) {
             // api target 1
 
             androidx.databinding.adapters.TextViewBindingAdapter.setText(this.editTextHole6Guest3, guest3ScoreHole6);
         }
-        if ((dirtyFlags & 0x8000004000000004L) != 0) {
+        if ((dirtyFlags & 0x8000000004L) != 0 || (dirtyFlags_1 & 0x1L) != 0) {
             // api target 1
 
             androidx.databinding.adapters.TextViewBindingAdapter.setText(this.editTextHole7, userScoreHole7);
         }
-        if ((dirtyFlags & 0x8000000000100001L) != 0) {
+        if ((dirtyFlags & 0x100001L) != 0 || (dirtyFlags_1 & 0x1L) != 0) {
             // api target 1
 
             androidx.databinding.adapters.TextViewBindingAdapter.setText(this.editTextHole7Guest1, guest1ScoreHole7);
         }
-        if ((dirtyFlags & 0x8004000000000040L) != 0) {
+        if ((dirtyFlags & 0x8000000000040L) != 0 || (dirtyFlags_1 & 0x1L) != 0) {
             // api target 1
 
             androidx.databinding.adapters.TextViewBindingAdapter.setText(this.editTextHole7Guest2, guest2ScoreHole7);
         }
-        if ((dirtyFlags & 0x8800000000000080L) != 0) {
+        if ((dirtyFlags & 0x1000000000000080L) != 0 || (dirtyFlags_1 & 0x1L) != 0) {
             // api target 1
 
             androidx.databinding.adapters.TextViewBindingAdapter.setText(this.editTextHole7Guest3, guest3ScoreHole7);
         }
-        if ((dirtyFlags & 0x8000008000000004L) != 0) {
+        if ((dirtyFlags & 0x10000000004L) != 0 || (dirtyFlags_1 & 0x1L) != 0) {
             // api target 1
 
             androidx.databinding.adapters.TextViewBindingAdapter.setText(this.editTextHole8, userScoreHole8);
         }
-        if ((dirtyFlags & 0x8000000000200001L) != 0) {
+        if ((dirtyFlags & 0x200001L) != 0 || (dirtyFlags_1 & 0x1L) != 0) {
             // api target 1
 
             androidx.databinding.adapters.TextViewBindingAdapter.setText(this.editTextHole8Guest1, guest1ScoreHole8);
         }
-        if ((dirtyFlags & 0x8008000000000040L) != 0) {
+        if ((dirtyFlags & 0x10000000000040L) != 0 || (dirtyFlags_1 & 0x1L) != 0) {
             // api target 1
 
             androidx.databinding.adapters.TextViewBindingAdapter.setText(this.editTextHole8Guest2, guest2ScoreHole8);
         }
-        if ((dirtyFlags & 0x9000000000000080L) != 0) {
+        if ((dirtyFlags & 0x2000000000000080L) != 0 || (dirtyFlags_1 & 0x1L) != 0) {
             // api target 1
 
             androidx.databinding.adapters.TextViewBindingAdapter.setText(this.editTextHole8Guest3, guest3ScoreHole8);
         }
-        if ((dirtyFlags & 0x8000010000000004L) != 0) {
+        if ((dirtyFlags & 0x20000000004L) != 0 || (dirtyFlags_1 & 0x1L) != 0) {
             // api target 1
 
             androidx.databinding.adapters.TextViewBindingAdapter.setText(this.editTextHole9, userScoreHole9);
         }
-        if ((dirtyFlags & 0x8000000000400001L) != 0) {
+        if ((dirtyFlags & 0x400001L) != 0 || (dirtyFlags_1 & 0x1L) != 0) {
             // api target 1
 
             androidx.databinding.adapters.TextViewBindingAdapter.setText(this.editTextHole9Guest1, guest1ScoreHole9);
         }
-        if ((dirtyFlags & 0x8010000000000040L) != 0) {
+        if ((dirtyFlags & 0x20000000000040L) != 0 || (dirtyFlags_1 & 0x1L) != 0) {
             // api target 1
 
             androidx.databinding.adapters.TextViewBindingAdapter.setText(this.editTextHole9Guest2, guest2ScoreHole9);
         }
-        if ((dirtyFlags & 0xa000000000000080L) != 0) {
+        if ((dirtyFlags & 0x4000000000000080L) != 0 || (dirtyFlags_1 & 0x1L) != 0) {
             // api target 1
 
             androidx.databinding.adapters.TextViewBindingAdapter.setText(this.editTextHole9Guest3, guest3ScoreHole9);
         }
-        if ((dirtyFlags & 0xc000000000000100L) != 0) {
+        if ((dirtyFlags & 0x800002L) != 0 || (dirtyFlags_1 & 0x1L) != 0) {
+            // api target 1
+
+            androidx.databinding.adapters.TextViewBindingAdapter.setText(this.mboundView1, courseCourseName);
+        }
+        if ((dirtyFlags & 0x8000000000000100L) != 0 || (dirtyFlags_1 & 0x1L) != 0) {
             // api target 1
 
             androidx.databinding.adapters.TextViewBindingAdapter.setText(this.textInputEditTextGuest1, guest1Username);
             androidx.databinding.adapters.TextViewBindingAdapter.setText(this.textViewCurrentScoreGuest1Name, guest1Username);
         }
-        if ((dirtyFlags & 0x8000040000000010L) != 0) {
+        if ((dirtyFlags & 0x80000000010L) != 0 || (dirtyFlags_1 & 0x1L) != 0) {
             // api target 1
 
             androidx.databinding.adapters.TextViewBindingAdapter.setText(this.textInputEditTextGuest2, guest2Username);
             androidx.databinding.adapters.TextViewBindingAdapter.setText(this.textViewCurrentScoreGuest2Name, guest2Username);
         }
-        if ((dirtyFlags & 0x8000080000000020L) != 0) {
+        if ((dirtyFlags & 0x100000000020L) != 0 || (dirtyFlags_1 & 0x1L) != 0) {
             // api target 1
 
             androidx.databinding.adapters.TextViewBindingAdapter.setText(this.textInputEditTextGuest3, guest3Username);
             androidx.databinding.adapters.TextViewBindingAdapter.setText(this.textViewCurrentScoreGuest3Name, guest3Username);
         }
-        if ((dirtyFlags & 0x8000020000000008L) != 0) {
+        if ((dirtyFlags & 0x40000000008L) != 0 || (dirtyFlags_1 & 0x1L) != 0) {
             // api target 1
 
             androidx.databinding.adapters.TextViewBindingAdapter.setText(this.textViewCurrentScoreUsername, userUsername);
             androidx.databinding.adapters.TextViewBindingAdapter.setText(this.textViewUsername, userUsername);
         }
-        if ((dirtyFlags & 0x8000000000800002L) != 0) {
+        if ((dirtyFlags & 0x1000002L) != 0 || (dirtyFlags_1 & 0x1L) != 0) {
             // api target 1
 
             androidx.databinding.adapters.TextViewBindingAdapter.setText(this.textViewPar1, stringValueOfCourseHole1);
         }
-        if ((dirtyFlags & 0x8000000001000002L) != 0) {
+        if ((dirtyFlags & 0x2000002L) != 0 || (dirtyFlags_1 & 0x1L) != 0) {
             // api target 1
 
             androidx.databinding.adapters.TextViewBindingAdapter.setText(this.textViewPar2, stringValueOfCourseHole2);
         }
-        if ((dirtyFlags & 0x8000000002000002L) != 0) {
+        if ((dirtyFlags & 0x4000002L) != 0 || (dirtyFlags_1 & 0x1L) != 0) {
             // api target 1
 
             androidx.databinding.adapters.TextViewBindingAdapter.setText(this.textViewPar3, stringValueOfCourseHole3);
         }
-        if ((dirtyFlags & 0x8000000004000002L) != 0) {
+        if ((dirtyFlags & 0x8000002L) != 0 || (dirtyFlags_1 & 0x1L) != 0) {
             // api target 1
 
             androidx.databinding.adapters.TextViewBindingAdapter.setText(this.textViewPar4, stringValueOfCourseHole4);
         }
-        if ((dirtyFlags & 0x8000000008000002L) != 0) {
+        if ((dirtyFlags & 0x10000002L) != 0 || (dirtyFlags_1 & 0x1L) != 0) {
             // api target 1
 
             androidx.databinding.adapters.TextViewBindingAdapter.setText(this.textViewPar5, stringValueOfCourseHole5);
         }
-        if ((dirtyFlags & 0x8000000010000002L) != 0) {
+        if ((dirtyFlags & 0x20000002L) != 0 || (dirtyFlags_1 & 0x1L) != 0) {
             // api target 1
 
             androidx.databinding.adapters.TextViewBindingAdapter.setText(this.textViewPar6, stringValueOfCourseHole6);
         }
-        if ((dirtyFlags & 0x8000000020000002L) != 0) {
+        if ((dirtyFlags & 0x40000002L) != 0 || (dirtyFlags_1 & 0x1L) != 0) {
             // api target 1
 
             androidx.databinding.adapters.TextViewBindingAdapter.setText(this.textViewPar7, stringValueOfCourseHole7);
         }
-        if ((dirtyFlags & 0x8000000040000002L) != 0) {
+        if ((dirtyFlags & 0x80000002L) != 0 || (dirtyFlags_1 & 0x1L) != 0) {
             // api target 1
 
             androidx.databinding.adapters.TextViewBindingAdapter.setText(this.textViewPar8, stringValueOfCourseHole8);
         }
-        if ((dirtyFlags & 0x8000000080000002L) != 0) {
+        if ((dirtyFlags & 0x100000002L) != 0 || (dirtyFlags_1 & 0x1L) != 0) {
             // api target 1
 
             androidx.databinding.adapters.TextViewBindingAdapter.setText(this.textViewPar9, stringValueOfCourseHole9);
@@ -3562,47 +3612,48 @@ public class ActivityScoreCardFront9BindingImpl extends ActivityScoreCardFront9B
         flag 20 (0x15L): guest1Score.hole7
         flag 21 (0x16L): guest1Score.hole8
         flag 22 (0x17L): guest1Score.hole9
-        flag 23 (0x18L): course.hole1
-        flag 24 (0x19L): course.hole2
-        flag 25 (0x1aL): course.hole3
-        flag 26 (0x1bL): course.hole4
-        flag 27 (0x1cL): course.hole5
-        flag 28 (0x1dL): course.hole6
-        flag 29 (0x1eL): course.hole7
-        flag 30 (0x1fL): course.hole8
-        flag 31 (0x20L): course.hole9
-        flag 32 (0x21L): userScore.hole1
-        flag 33 (0x22L): userScore.hole2
-        flag 34 (0x23L): userScore.hole3
-        flag 35 (0x24L): userScore.hole4
-        flag 36 (0x25L): userScore.hole5
-        flag 37 (0x26L): userScore.hole6
-        flag 38 (0x27L): userScore.hole7
-        flag 39 (0x28L): userScore.hole8
-        flag 40 (0x29L): userScore.hole9
-        flag 41 (0x2aL): user.username
-        flag 42 (0x2bL): guest2.username
-        flag 43 (0x2cL): guest3.username
-        flag 44 (0x2dL): guest2Score.hole1
-        flag 45 (0x2eL): guest2Score.hole2
-        flag 46 (0x2fL): guest2Score.hole3
-        flag 47 (0x30L): guest2Score.hole4
-        flag 48 (0x31L): guest2Score.hole5
-        flag 49 (0x32L): guest2Score.hole6
-        flag 50 (0x33L): guest2Score.hole7
-        flag 51 (0x34L): guest2Score.hole8
-        flag 52 (0x35L): guest2Score.hole9
-        flag 53 (0x36L): guest3Score.hole1
-        flag 54 (0x37L): guest3Score.hole2
-        flag 55 (0x38L): guest3Score.hole3
-        flag 56 (0x39L): guest3Score.hole4
-        flag 57 (0x3aL): guest3Score.hole5
-        flag 58 (0x3bL): guest3Score.hole6
-        flag 59 (0x3cL): guest3Score.hole7
-        flag 60 (0x3dL): guest3Score.hole8
-        flag 61 (0x3eL): guest3Score.hole9
-        flag 62 (0x3fL): guest1.username
-        flag 63 (0x40L): null
+        flag 23 (0x18L): course.courseName
+        flag 24 (0x19L): course.hole1
+        flag 25 (0x1aL): course.hole2
+        flag 26 (0x1bL): course.hole3
+        flag 27 (0x1cL): course.hole4
+        flag 28 (0x1dL): course.hole5
+        flag 29 (0x1eL): course.hole6
+        flag 30 (0x1fL): course.hole7
+        flag 31 (0x20L): course.hole8
+        flag 32 (0x21L): course.hole9
+        flag 33 (0x22L): userScore.hole1
+        flag 34 (0x23L): userScore.hole2
+        flag 35 (0x24L): userScore.hole3
+        flag 36 (0x25L): userScore.hole4
+        flag 37 (0x26L): userScore.hole5
+        flag 38 (0x27L): userScore.hole6
+        flag 39 (0x28L): userScore.hole7
+        flag 40 (0x29L): userScore.hole8
+        flag 41 (0x2aL): userScore.hole9
+        flag 42 (0x2bL): user.username
+        flag 43 (0x2cL): guest2.username
+        flag 44 (0x2dL): guest3.username
+        flag 45 (0x2eL): guest2Score.hole1
+        flag 46 (0x2fL): guest2Score.hole2
+        flag 47 (0x30L): guest2Score.hole3
+        flag 48 (0x31L): guest2Score.hole4
+        flag 49 (0x32L): guest2Score.hole5
+        flag 50 (0x33L): guest2Score.hole6
+        flag 51 (0x34L): guest2Score.hole7
+        flag 52 (0x35L): guest2Score.hole8
+        flag 53 (0x36L): guest2Score.hole9
+        flag 54 (0x37L): guest3Score.hole1
+        flag 55 (0x38L): guest3Score.hole2
+        flag 56 (0x39L): guest3Score.hole3
+        flag 57 (0x3aL): guest3Score.hole4
+        flag 58 (0x3bL): guest3Score.hole5
+        flag 59 (0x3cL): guest3Score.hole6
+        flag 60 (0x3dL): guest3Score.hole7
+        flag 61 (0x3eL): guest3Score.hole8
+        flag 62 (0x3fL): guest3Score.hole9
+        flag 63 (0x40L): guest1.username
+        flag 64 (0x41L): null
     flag mapping end*/
     //end
 }
