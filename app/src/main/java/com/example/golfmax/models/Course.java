@@ -272,7 +272,7 @@ public class Course extends BaseObservable {
         notifyPropertyChanged(BR.hole18);
     }
 
-    public List<Integer> getCourseParsList() {
+    public List<Integer> getFront9ParsList() {
         List<Integer> courseParsList = new ArrayList<>();
         courseParsList.add(getHole1());
         courseParsList.add(getHole2());
@@ -285,5 +285,14 @@ public class Course extends BaseObservable {
         courseParsList.add(getHole9());
 
         return courseParsList;
+    }
+
+    public int getSumOfFront9Pars() {
+        int front9ParTotal = 0;
+        for (int i = 0; i < getFront9ParsList().size(); i++) {
+            front9ParTotal += i;
+        }
+
+        return front9ParTotal;
     }
 }
