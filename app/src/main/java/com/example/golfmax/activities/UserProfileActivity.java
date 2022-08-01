@@ -19,6 +19,7 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.example.golfmax.backend.GolfMaxLocalDatabase;
 import com.example.golfmax.backend.PlayerStatisticsRepository;
+import com.example.golfmax.backend.SharedPreferencesManager;
 import com.example.golfmax.backend.UserRepository;
 import com.example.golfmax.contracts.PlayerStatisticsContract;
 import com.example.golfmax.models.PlayerStatistics;
@@ -58,7 +59,10 @@ public class UserProfileActivity extends AppCompatActivity implements PlayerStat
         PlayerStatisticsRepository playerStatisticsRepository = new PlayerStatisticsRepository();
         userRepository = new UserRepository();
 
-        long userId = getUserIdByUsername(LoginActivity.staticLoginActivityUsername);
+        String username = SharedPreferencesManager.getInstance(UserProfileActivity.this)
+                .getUsername();
+        long userId = getUserIdByUsername(username);
+
         Log.i("USER ID ====> ", String.valueOf(userId));
 
         binding.setUser(userRepository.getUserInfoById(userId));

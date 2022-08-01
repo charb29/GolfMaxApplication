@@ -5,40 +5,43 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.Path;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.TextView;
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.databinding.DataBindingUtil;
-import androidx.drawerlayout.widget.DrawerLayout;
 
+import androidx.annotation.NonNull;
+import androidx.databinding.DataBindingUtil;
+
+import com.example.golfmax.R;
 import com.example.golfmax.backend.CourseRepository;
 import com.example.golfmax.backend.GolfMaxLocalDatabase;
+import com.example.golfmax.backend.PlayerStatisticsRepository;
 import com.example.golfmax.backend.ScoreRepository;
+import com.example.golfmax.backend.SharedPreferencesManager;
 import com.example.golfmax.contracts.ScoreContract;
+import com.example.golfmax.databinding.ActivityScoreCardFront9Binding;
 import com.example.golfmax.models.Course;
 import com.example.golfmax.models.Score;
 import com.example.golfmax.models.User;
 import com.example.golfmax.presenters.ScorePresenter;
 import com.example.golfmax.recyclerViews.NewRoundRV;
-import com.example.golfmax.R;
-import com.example.golfmax.databinding.ActivityScoreCardFront9Binding;
+
+import org.jetbrains.annotations.Contract;
 
 import java.util.List;
-import java.util.Objects;
 
 
 public class ScoreCardFront9Activity extends Activity implements ScoreContract.View {
 
     private ActivityScoreCardFront9Binding binding;
-    private  TextView textViewSumOfUserScores, textViewSumOfGuest1Scores,
+    private TextView textViewSumOfUserScores, textViewSumOfGuest1Scores,
             textViewSumOfGuest2Scores, textViewSumOfGuest3Scores;
     public static String staticUserFront9Score;
     public static String staticGuest1Front9Score;
@@ -59,6 +62,7 @@ public class ScoreCardFront9Activity extends Activity implements ScoreContract.V
         textViewSumOfGuest1Scores = findViewById(R.id.text_view_current_score_guest1);
         textViewSumOfGuest2Scores = findViewById(R.id.text_view_current_score_guest2);
         textViewSumOfGuest3Scores = findViewById(R.id.text_view_current_score_guest3);
+        Button buttonDone = findViewById(R.id.button_done);
 
         CourseRepository courseRepository = new CourseRepository();
         courseRepository.setScoreCardFront9Binding(binding);
@@ -81,7 +85,9 @@ public class ScoreCardFront9Activity extends Activity implements ScoreContract.V
 
         long courseId = getCourseIdByCourseName(NewRoundRV.staticCourseName);
         courseRepository.getCourseInfoById(courseId);
-        user.setUsername(LoginActivity.staticLoginActivityUsername);
+        String username = SharedPreferencesManager.getInstance(ScoreCardFront9Activity.this)
+                .getUsername();
+        user.setUsername(username);
 
         binding.setUser(user);
         binding.setGuest1(guest1);
@@ -99,6 +105,8 @@ public class ScoreCardFront9Activity extends Activity implements ScoreContract.V
         binding.setScorePresenter(guest3ScorePresenter);
 
         binding.setCourse(course);
+
+        buttonDone.setOnClickListener(v -> getCustomAlertDialog());
     }
 
     @NonNull
@@ -112,8 +120,8 @@ public class ScoreCardFront9Activity extends Activity implements ScoreContract.V
         builder.setView(view);
         final AlertDialog alertDialog = builder.create();
 
-        removeAlertDialogBackgroundColor(alertDialog);
-        configureAlertDialogCancelButton(view);
+        setAlertDialogBackgroundColor(alertDialog);
+        configureAlertDialogEndRoundButton(view);
         configureAlertDialogContinueButton(view);
 
         alertDialog.show();
@@ -124,43 +132,54 @@ public class ScoreCardFront9Activity extends Activity implements ScoreContract.V
     public void configureAlertDialogContinueButton(@NonNull View view) {
         Button buttonContinue = view.findViewById(R.id.button_keep_playing);
 
-        buttonContinue.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(ScoreCardFront9Activity.this,
-                        ScoreCardBack9Activity.class);
+        buttonContinue.setOnClickListener(v -> {
+            Intent intent = new Intent(ScoreCardFront9Activity.this,
+                    ScoreCardBack9Activity.class);
 
-                startActivity(intent);
-            }
+            startActivity(intent);
         });
     }
 
-    private void configureAlertDialogCancelButton(@NonNull View view) {
+    private void configureAlertDialogEndRoundButton(@NonNull View view) {
+        Button buttonEndRound = view.findViewById(R.id.button_end_round);
         ScoreRepository scoreRepository = new ScoreRepository();
-        Button buttonCancel = view.findViewById(R.id.button_end_round);
+        PlayerStatisticsRepository playerStatisticsRepository = new PlayerStatisticsRepository();
 
-        buttonCancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                int userScore = (Integer.parseInt(binding
-                        .textViewCurrentScoreUser
-                                .getText()
-                                .toString())) * 2;
+        buttonEndRound.setOnClickListener(v -> {
+            Score score = new Score();
+            Course course = new Course();
+            User user = new User();
 
-                Score score = new Score();
+            int userScore = calculateUserScore();
+            double courseRating = Double.parseDouble(binding.getCourse().getCourseRating());
+            double slopeRating = Double.parseDouble(binding.getCourse().getSlopeRating());
+            long userId = getUserIdByUsername(binding.getUser().getUsername());
+            long courseId = getCourseIdByCourseName(binding.getCourse().getCourseName());
 
-                score.setUserScore(String.valueOf(userScore));
-                score.setCourse(binding.getCourse());
-                score.setCourseRating(Integer.parseInt(score.getCourse().getCourseRating()));
-                score.setSlopeRating(Integer.parseInt(score.getCourse().getSlopeRating()));
+            user.setId(userId);
+            course.setCourseId(courseId);
 
-                scoreRepository.saveScore(ScoreCardFront9Activity.this, score);
-            }
+            score.setUser(user);
+            score.setCourse(course);
+            score.setUserScore(userScore);
+            score.setCourseRating(courseRating);
+            score.setSlopeRating(slopeRating);
+
+            Log.i("FRONT 9 SCORE ====> ", String.valueOf(score.getUserScore()));
+            scoreRepository.saveScore(ScoreCardFront9Activity.this, score);
+            playerStatisticsRepository.updatePlayerStats(userId);
         });
     }
 
-    private void removeAlertDialogBackgroundColor(@NonNull AlertDialog dialog) {
-        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+    private int calculateUserScore() {
+        int userScore = (Integer.parseInt(textViewSumOfUserScores.getText().toString())
+                + binding.getCourse().getSumOfFront9Pars())
+                * 2;
+        return userScore;
+    }
+
+    private void setAlertDialogBackgroundColor(@NonNull AlertDialog dialog) {
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.WHITE));
     }
 
     private long getCourseIdByCourseName(String courseName) {
@@ -168,11 +187,16 @@ public class ScoreCardFront9Activity extends Activity implements ScoreContract.V
         return db.getCourseId(courseName);
     }
 
+    private long getUserIdByUsername(String username) {
+        GolfMaxLocalDatabase db = new GolfMaxLocalDatabase(this);
+        return db.getUserId(username);
+    }
+
     @Override
     public void showUserScore(@NonNull Score userScore) {
         int scoreSummary = 0;
         List<String> enteredUserScores = userScore.getListOfEnteredScores();
-        List<Integer> courseParsList = binding.getCourse().getCourseParsList();
+        List<Integer> courseParsList = binding.getCourse().getFront9ParsList();
 
         for (int i = 0; i < enteredUserScores.size(); i++) {
             String individualScore = enteredUserScores.get(i);
@@ -194,7 +218,7 @@ public class ScoreCardFront9Activity extends Activity implements ScoreContract.V
     public void showGuest1Score(@NonNull Score guest1Score) {
         int scoreSummary = 0;
         List<String> enteredUserScores = guest1Score.getListOfEnteredScores();
-        List<Integer> courseParsList = binding.getCourse().getCourseParsList();
+        List<Integer> courseParsList = binding.getCourse().getFront9ParsList();
 
         for (int i = 0; i < enteredUserScores.size(); i++) {
             String individualScore = enteredUserScores.get(i);
@@ -216,7 +240,7 @@ public class ScoreCardFront9Activity extends Activity implements ScoreContract.V
     public void showGuest2Score(@NonNull Score guest2Score) {
         int scoreSummary = 0;
         List<String> enteredUserScores = guest2Score.getListOfEnteredScores();
-        List<Integer> courseParsList = binding.getCourse().getCourseParsList();
+        List<Integer> courseParsList = binding.getCourse().getFront9ParsList();
 
         for (int i = 0; i < enteredUserScores.size(); i++) {
             String individualScore = enteredUserScores.get(i);
@@ -238,7 +262,7 @@ public class ScoreCardFront9Activity extends Activity implements ScoreContract.V
     public void showGuest3Score(@NonNull Score guest3Score) {
         int scoreSummary = 0;
         List<String> enteredUserScores = guest3Score.getListOfEnteredScores();
-        List<Integer> courseParsList = binding.getCourse().getCourseParsList();
+        List<Integer> courseParsList = binding.getCourse().getFront9ParsList();
 
         for (int i = 0; i < enteredUserScores.size(); i++) {
             String individualScore = enteredUserScores.get(i);

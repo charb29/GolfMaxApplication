@@ -2,6 +2,7 @@ package com.example.golfmax.activities;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -11,6 +12,7 @@ import androidx.databinding.DataBindingUtil;
 
 import com.example.golfmax.backend.GolfMaxLocalDatabase;
 import com.example.golfmax.backend.PlayerStatisticsRepository;
+import com.example.golfmax.backend.SharedPreferencesManager;
 import com.example.golfmax.contracts.PlayerStatisticsContract;
 import com.example.golfmax.models.PlayerStatistics;
 import com.example.golfmax.R;
@@ -31,7 +33,8 @@ public class HomeActivity extends Activity implements PlayerStatisticsContract.V
         ActivityHomeBinding binding = DataBindingUtil
                 .setContentView(this, R.layout.activity_home);
 
-        long userId = getUserIdByUsername(LoginActivity.staticLoginActivityUsername);
+        String username = SharedPreferencesManager.getInstance(HomeActivity.this).getUsername();
+        long userId = getUserIdByUsername(username);
 
         binding.setStats(playerStatisticsRepository.displayStatsSummary(userId));
     }

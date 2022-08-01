@@ -17,6 +17,7 @@ import android.view.WindowManager;
 
 import com.example.golfmax.backend.GolfMaxLocalDatabase;
 import com.example.golfmax.backend.ScoreRepository;
+import com.example.golfmax.backend.SharedPreferencesManager;
 import com.example.golfmax.models.Score;
 import com.example.golfmax.R;
 import com.example.golfmax.databinding.ActivityPersonalScoresBinding;
@@ -54,7 +55,10 @@ public class PersonalScoresActivity extends AppCompatActivity {
 
         scoreRepository.setScoreList(scoreList);
         scoreRepository.setPersonalScoresBinding(binding);
-        long userId = getUserId(LoginActivity.staticLoginActivityUsername);
+
+        String username = SharedPreferencesManager.getInstance(PersonalScoresActivity.this)
+                .getUsername();
+        long userId = getUserIdByUsername(username);
 
         scoreRepository.getScoresByUserId(PersonalScoresActivity.this, userId);
     }
@@ -78,7 +82,7 @@ public class PersonalScoresActivity extends AppCompatActivity {
         actionBar.setBackgroundDrawable(colorDrawable);
     }
 
-    public long getUserId(String username) {
+    public long getUserIdByUsername(String username) {
         GolfMaxLocalDatabase db = new GolfMaxLocalDatabase(this);
 
         return db.getUserId(username);

@@ -1,7 +1,9 @@
 package com.example.golfmax.activities;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -11,6 +13,7 @@ import android.view.WindowManager;
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
 
+import com.example.golfmax.backend.SharedPreferencesManager;
 import com.example.golfmax.backend.UserRepository;
 import com.example.golfmax.contracts.LoginContract;
 import com.example.golfmax.models.User;
@@ -23,7 +26,7 @@ import com.google.android.material.textfield.TextInputLayout;
 public class LoginActivity extends Activity implements LoginContract.View {
 
     private TextInputLayout textInputLayoutUsername, textInputLayoutPassword;
-    public static String staticLoginActivityUsername;
+    //public static String staticLoginActivityUsername;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,8 +54,10 @@ public class LoginActivity extends Activity implements LoginContract.View {
         loginRequest.setUsername(user.getUsername());
         loginRequest.setPassword(user.getPassword());
 
-        staticLoginActivityUsername = user.getUsername();
-        Log.i("STATIC USERNAME ====> ", staticLoginActivityUsername);
+        SharedPreferencesManager.getInstance(LoginActivity.this).setUsername(user.getUsername());
+        String username = SharedPreferencesManager.getInstance(LoginActivity.this).getUsername();
+
+        Log.i("SHARED PREF USERNAME > ", username);
 
         UserRepository userRepository = new UserRepository();
 
