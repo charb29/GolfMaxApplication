@@ -49,6 +49,14 @@ public class PlayerStatistics extends BaseObservable {
         notifyPropertyChanged(BR.averageScore);
     }
 
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
     @NonNull
     public String toStringRoundsPlayed() {
         return "Player Statistics (" +
