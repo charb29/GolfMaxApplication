@@ -15,6 +15,7 @@ public class PlayerStatistics extends BaseObservable {
     private double handicapIndex;
     @SerializedName("averageScore")
     private double averageScore;
+    private User user;
 
     public PlayerStatistics() {}
 
