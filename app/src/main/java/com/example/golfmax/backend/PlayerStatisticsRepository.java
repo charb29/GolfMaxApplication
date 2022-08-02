@@ -43,7 +43,6 @@ public class PlayerStatisticsRepository {
         return playerStatistics;
     }
 
-
     public PlayerStatistics displayRoundsPlayed(long userId) {
         Call<PlayerStatistics> call = GolfMaxHttpClient
                 .getApiInterface()
@@ -71,17 +70,21 @@ public class PlayerStatisticsRepository {
         return PlayerStatistics;
     }
 
-    public void updatePlayerStats(@NonNull long userId) {
-        Call<PlayerStatistics> playerStatisticsCall = GolfMaxHttpClient
+    public void updateUserStats(@NonNull PlayerStatistics playerStatistics,
+                                @NonNull long userId) {
+        Call<PlayerStatistics> statsCall = GolfMaxHttpClient
                 .getApiInterface()
-                .updateUserStats(userId);
+                .updateUserStats(userId, playerStatistics);
 
-        playerStatisticsCall.enqueue(new Callback<PlayerStatistics>() {
+        statsCall.enqueue(new Callback<PlayerStatistics>() {
             @Override
             public void onResponse(@NonNull Call<PlayerStatistics> call,
                                    @NonNull Response<PlayerStatistics> response) {
                 if (response.isSuccessful()) {
-                    Log.i("UPDATE STATS ===> ", response.toString());
+                    Log.i("UPDATED AVG SCORE ==> ", playerStatistics.toStringAverageScore());
+                    Log.i("UPDATED RDS PLAYED ==> ", playerStatistics.toStringRoundsPlayed());
+                    Log.i("UPDATED HANDICAP ==> ", playerStatistics.toStringHandicapIndex());
+
                 }
             }
 
