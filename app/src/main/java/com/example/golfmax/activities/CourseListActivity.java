@@ -29,14 +29,16 @@ public class CourseListActivity extends AppCompatActivity {
 
     private ActionBar actionBar;
     private ActionBarDrawerToggle drawerToggle;
+    private final String ACTION_BAR_TITLE = "Course List";
+    private final String ACTION_BAR_COLOR = "#000f00";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        removeWindowFeature();
 
-        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        CourseRepository courseRepository = new CourseRepository();
+        List<Course> courseNamesList = new ArrayList<>();
 
         ActivityCourseListBinding binding = DataBindingUtil
                 .setContentView(this,  R.layout.activity_course_list);
@@ -45,16 +47,19 @@ public class CourseListActivity extends AppCompatActivity {
         NavigationView navView = findViewById(R.id.navigation_view_course_list);
 
         setDrawerToggleActions(drawerLayout);
-        setActionBarTitle("Course List");
-        setActionBarColor("#000f00");
+        setActionBarTitle(ACTION_BAR_TITLE);
+        setActionBarColor(ACTION_BAR_COLOR);
         setNavigationViewIntents(navView);
-
-        CourseRepository courseRepository = new CourseRepository();
-        List<Course> courseNamesList = new ArrayList<>();
 
         courseRepository.setCourseNamesList(courseNamesList);
         courseRepository.setCourseListBinding(binding);
-        courseRepository.getCourseNamesForLeaderboard(getApplicationContext());
+        courseRepository.getCourseNamesForLeaderboard(CourseListActivity.this);
+    }
+
+    private void removeWindowFeature() {
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
     }
 
     private void setDrawerToggleActions(DrawerLayout drawerLayout) {

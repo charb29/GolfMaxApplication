@@ -26,36 +26,43 @@ public class RegistrationActivity extends Activity implements RegistrationContra
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
-        ActivityRegistrationBinding binding = DataBindingUtil.setContentView(this,
-                R.layout.activity_registration);
-        textInputLayoutUsername = findViewById(R.id.text_input_layout_username);
-        textInputLayoutEmail = findViewById(R.id.text_input_layout_email);
+        removeWindowFeature();
 
         RegistrationPresenter presenter = new RegistrationPresenter(this);
         User user = new User();
+
+        ActivityRegistrationBinding binding = DataBindingUtil
+                .setContentView(this, R.layout.activity_registration);
+
+        textInputLayoutUsername = findViewById(R.id.text_input_layout_username);
+        textInputLayoutEmail = findViewById(R.id.text_input_layout_email);
 
         binding.setUser(user);
         binding.setPresenter(presenter);
     }
 
+    private void removeWindowFeature() {
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+    }
+
     @Override
     public void registerUser(@NonNull User user) {
         RegistrationRequest registrationRequest = new RegistrationRequest();
+        UserRepository userRepository = new UserRepository();
+
         registrationRequest.setUsername(user.getUsername());
         registrationRequest.setPassword(user.getPassword());
         registrationRequest.setEmail(user.getEmail());
 
-        UserRepository userRepository = new UserRepository();
         userRepository.registerUser(registrationRequest, textInputLayoutUsername,
                 textInputLayoutEmail, RegistrationActivity.this);
     }
 
     public void goToLoginActivity(View view) {
-        Intent intent = new Intent(RegistrationActivity.this, LoginActivity.class);
-        startActivity(intent);
+        Intent goToLoginActivity = new Intent(RegistrationActivity.this,
+                LoginActivity.class);
+        startActivity(goToLoginActivity);
     }
 }

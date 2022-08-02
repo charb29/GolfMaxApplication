@@ -24,14 +24,11 @@ public class UserRepository {
 
     public User getUserInfoById(long userId) {
         User user = new User();
-        Call<User> userResponseCall = GolfMaxHttpClient
-                .getApiInterface()
-                .getUserInfoById(userId);
+        Call<User> userResponseCall = GolfMaxHttpClient.getApiInterface().getUserInfoById(userId);
 
         userResponseCall.enqueue(new Callback<User>() {
             @Override
-            public void onResponse(@NonNull Call<User> call,
-                                   @NonNull Response<User> response) {
+            public void onResponse(@NonNull Call<User> call, @NonNull Response<User> response) {
                 assert response.body() != null;
 
                 user.setUsername(response.body().getUsername());
@@ -44,24 +41,21 @@ public class UserRepository {
             }
 
             @Override
-            public void onFailure(@NonNull Call<User> call,
-                                  @NonNull Throwable t) {
+            public void onFailure(@NonNull Call<User> call, @NonNull Throwable t) {
                 Log.e("ERROR ====> ", t.toString());
             }
         });
         return user;
     }
 
-    public void updateUserInfo(@NonNull User user,
-                               @NonNull Context context) {
+    public void updateUserInfo(@NonNull User user, @NonNull Context context) {
         Call<User> userResponseCall = GolfMaxHttpClient
                 .getApiInterface()
                 .updateUserInfo(user.getId(), user);
 
         userResponseCall.enqueue(new Callback<User>() {
             @Override
-            public void onResponse(@NonNull Call<User> call,
-                                   @NonNull Response<User> response) {
+            public void onResponse(@NonNull Call<User> call, @NonNull Response<User> response) {
                 if (response.isSuccessful()) {
                     Toast.makeText(context.getApplicationContext(),
                             "User info updated successfully.",
@@ -72,14 +66,12 @@ public class UserRepository {
                     Log.i("UPDATED USER INFO ===> ", user.toStringPassword());
                 } else {
                     Toast.makeText(context.getApplicationContext(),
-                            "Update failed.",
-                            Toast.LENGTH_SHORT).show();
+                            "Update failed.", Toast.LENGTH_SHORT).show();
                 }
             }
 
             @Override
-            public void onFailure(@NonNull Call<User> call,
-                                  @NonNull Throwable t) {
+            public void onFailure(@NonNull Call<User> call, @NonNull Throwable t) {
                 Log.e("ERROR ====> ", t.toString());
             }
         });
@@ -95,7 +87,6 @@ public class UserRepository {
             @Override
             public void onResponse(@NonNull Call<LoginResponse> call,
                                    @NonNull Response<LoginResponse> response) {
-
                 LoginResponse loginResponse = response.body();
 
                 if (response.isSuccessful()) {
@@ -110,8 +101,7 @@ public class UserRepository {
                     context.startActivity(intent);
                 } else {
                     Toast.makeText(context.getApplicationContext(),
-                            "Invalid Credentials.",
-                            Toast.LENGTH_SHORT).show();
+                            "Invalid Credentials.", Toast.LENGTH_SHORT).show();
 
                     tilUsername.setError("Invalid username.");
                     tilPassword.setError("Invalid password.");
@@ -135,21 +125,19 @@ public class UserRepository {
             @Override
             public void onResponse(@NonNull Call<RegistrationResponse> call,
                                    @NonNull Response<RegistrationResponse> response) {
-
                 if (response.isSuccessful()) {
                     Toast.makeText(context.getApplicationContext(),
-                            "Registration successful.",
-                            Toast.LENGTH_SHORT).show();
+                            "Registration successful.", Toast.LENGTH_SHORT).show();
 
-                    Intent intent = new Intent(context.getApplicationContext(), LoginActivity.class);
-                    context.startActivity(intent);
+                    Intent goToLoginActivity = new Intent(context.getApplicationContext(),
+                            LoginActivity.class);
+                    context.startActivity(goToLoginActivity);
                 } else {
                     tilUsername.setError("Existing username.");
                     tilEmail.setError("Existing email.");
 
                     Toast.makeText(context.getApplicationContext(),
-                            "Registration failed.",
-                            Toast.LENGTH_SHORT).show();
+                            "Registration failed.", Toast.LENGTH_SHORT).show();
                 }
             }
 

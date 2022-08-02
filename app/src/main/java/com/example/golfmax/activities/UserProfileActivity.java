@@ -36,30 +36,31 @@ public class UserProfileActivity extends AppCompatActivity implements PlayerStat
     private ActionBarDrawerToggle drawerToggle;
     private ActivityUserProfileBinding binding;
     private UserRepository userRepository;
+    private final String ACTION_BAR_TITLE = "User Profile";
+    private final String ACTION_BAR_COLOR = "#000f00";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        removeWindowFeature();
+
+        PlayerStatisticsRepository playerStatisticsRepository = new PlayerStatisticsRepository();
+        userRepository = new UserRepository();
 
         binding = DataBindingUtil
                 .setContentView(this, R.layout.activity_user_profile);
 
         DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
         NavigationView navView = findViewById(R.id.navigation_view_user_profile);
-        Button btnUpdateUserInfo = findViewById(R.id.button_update_info);
+        Button buttonUpdateUserInfo = findViewById(R.id.button_update_info);
 
         setDrawerToggleActions(drawerLayout);
-        setActionBarTitle("User Profile");
-        setActionBarColor("#000f00");
+        setActionBarTitle(ACTION_BAR_TITLE);
+        setActionBarColor(ACTION_BAR_COLOR);
         setNavigationViewIntents(navView);
 
-        PlayerStatisticsRepository playerStatisticsRepository = new PlayerStatisticsRepository();
-        userRepository = new UserRepository();
-
-        String username = SharedPreferencesManager.getInstance(UserProfileActivity.this)
+        String username = SharedPreferencesManager
+                .getInstance(UserProfileActivity.this)
                 .getUsername();
         long userId = getUserIdByUsername(username);
 
@@ -68,7 +69,13 @@ public class UserProfileActivity extends AppCompatActivity implements PlayerStat
         binding.setUser(userRepository.getUserInfoById(userId));
         binding.setStats(playerStatisticsRepository.displayRoundsPlayed(userId));
 
-        updateUserInfoOnButtonClick(btnUpdateUserInfo);
+        updateUserInfoOnButtonClick(buttonUpdateUserInfo);
+    }
+
+    private void removeWindowFeature() {
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
     }
 
     private void updateUserInfoOnButtonClick(@NonNull Button button) {
@@ -83,6 +90,7 @@ public class UserProfileActivity extends AppCompatActivity implements PlayerStat
             userRepository.updateUserInfo(user, UserProfileActivity.this);
         });
     }
+
     private void setDrawerToggleActions(DrawerLayout drawerLayout) {
         drawerToggle = new ActionBarDrawerToggle(
                 this, drawerLayout,
@@ -94,6 +102,7 @@ public class UserProfileActivity extends AppCompatActivity implements PlayerStat
 
     private void setActionBarTitle(String title) {
         actionBar = getSupportActionBar();
+        assert actionBar != null;
         actionBar.setTitle(title);
     }
 
@@ -115,7 +124,6 @@ public class UserProfileActivity extends AppCompatActivity implements PlayerStat
 
     private long getUserIdByUsername(String username) {
         GolfMaxLocalDatabase db = new GolfMaxLocalDatabase(this);
-
         return db.getUserId(username);
     }
 
@@ -123,27 +131,27 @@ public class UserProfileActivity extends AppCompatActivity implements PlayerStat
         navigationView.setNavigationItemSelectedListener(item -> {
 
             if (item.getItemId() == R.id.navHome) {
-                Intent intentHomeActivity  = new Intent(UserProfileActivity.this,
+                Intent goToHomeActivity  = new Intent(UserProfileActivity.this,
                         HomeActivity.class);
-                startActivity(intentHomeActivity);
+                startActivity(goToHomeActivity);
                 return true;
             }
             if (item.getItemId() == R.id.navLeaderboard) {
-                Intent intentCourseListActivity = new Intent(UserProfileActivity.this,
+                Intent goToCourseListActivity = new Intent(UserProfileActivity.this,
                         CourseListActivity.class);
-                startActivity(intentCourseListActivity);
+                startActivity(goToCourseListActivity);
                 return true;
             }
             if (item.getItemId() == R.id.navMyScores) {
-                Intent intentPersonalScoresActivity = new Intent(UserProfileActivity.this,
+                Intent goToPersonalScoresActivity = new Intent(UserProfileActivity.this,
                         PersonalScoresActivity.class);
-                startActivity(intentPersonalScoresActivity);
+                startActivity(goToPersonalScoresActivity);
                 return true;
             }
             if (item.getItemId() == R.id.navPlayRound) {
-                Intent intentNewRoundActivity = new Intent(UserProfileActivity.this,
+                Intent goToNewRoundActivity = new Intent(UserProfileActivity.this,
                         NewRoundActivity.class);
-                startActivity(intentNewRoundActivity);
+                startActivity(goToNewRoundActivity);
                 return true;
             } else {
                 return false;

@@ -47,23 +47,11 @@ public class ScoreCardFront9Activity extends Activity implements ScoreContract.V
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
-        binding = DataBindingUtil
-                .setContentView(this, R.layout.activity_score_card_front9);
-
-        textViewSumOfUserScores = findViewById(R.id.text_view_current_score_user);
-        textViewSumOfGuest1Scores = findViewById(R.id.text_view_current_score_guest1);
-        textViewSumOfGuest2Scores = findViewById(R.id.text_view_current_score_guest2);
-        textViewSumOfGuest3Scores = findViewById(R.id.text_view_current_score_guest3);
-        Button buttonDone = findViewById(R.id.button_done);
-
-        CourseRepository courseRepository = new CourseRepository();
-        courseRepository.setScoreCardFront9Binding(binding);
+        removeWindowFeature();
 
         Course course = new Course();
+        CourseRepository courseRepository = new CourseRepository();
+
         ScorePresenter userScorePresenter = new ScorePresenter(this, getApplicationContext());
         ScorePresenter guest1ScorePresenter = new ScorePresenter(this, getApplicationContext());
         ScorePresenter guest2ScorePresenter = new ScorePresenter(this, getApplicationContext());
@@ -79,9 +67,22 @@ public class ScoreCardFront9Activity extends Activity implements ScoreContract.V
         Score guest2Score = new Score();
         Score guest3Score = new Score();
 
+        binding = DataBindingUtil
+                .setContentView(this, R.layout.activity_score_card_front9);
+
+        textViewSumOfUserScores = findViewById(R.id.text_view_current_score_user);
+        textViewSumOfGuest1Scores = findViewById(R.id.text_view_current_score_guest1);
+        textViewSumOfGuest2Scores = findViewById(R.id.text_view_current_score_guest2);
+        textViewSumOfGuest3Scores = findViewById(R.id.text_view_current_score_guest3);
+        Button buttonDone = findViewById(R.id.button_done);
+
+        courseRepository.setScoreCardFront9Binding(binding);
+
         long courseId = getCourseIdByCourseName(NewRoundRV.staticCourseName);
         courseRepository.getCourseInfoById(courseId);
-        String username = SharedPreferencesManager.getInstance(ScoreCardFront9Activity.this)
+
+        String username = SharedPreferencesManager
+                .getInstance(ScoreCardFront9Activity.this)
                 .getUsername();
         user.setUsername(username);
 
@@ -105,10 +106,16 @@ public class ScoreCardFront9Activity extends Activity implements ScoreContract.V
         buttonDone.setOnClickListener(v -> getCustomAlertDialog());
     }
 
+    private void removeWindowFeature() {
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+    }
+
     @NonNull
-    private AlertDialog getCustomAlertDialog() {
-        View view = LayoutInflater.from(
-                ScoreCardFront9Activity.this)
+    private void getCustomAlertDialog() {
+        View view = LayoutInflater
+                .from(ScoreCardFront9Activity.this)
                 .inflate(R.layout.custom_front9_popup_dialog, null);
 
         AlertDialog.Builder builder = new AlertDialog.Builder(ScoreCardFront9Activity.this);
@@ -121,8 +128,6 @@ public class ScoreCardFront9Activity extends Activity implements ScoreContract.V
         configureAlertDialogContinueButton(view);
 
         alertDialog.show();
-
-        return alertDialog;
     }
 
     private void configureAlertDialogEndRoundButton(@NonNull View view) {
@@ -155,6 +160,8 @@ public class ScoreCardFront9Activity extends Activity implements ScoreContract.V
 
             statsRepository.updateUserStats(statistics, user.getId());
             scoreRepository.saveScore(ScoreCardFront9Activity.this, score);
+            Intent intent = new Intent(ScoreCardFront9Activity.this, HomeActivity.class);
+            startActivity(intent);
         });
     }
 
@@ -162,18 +169,17 @@ public class ScoreCardFront9Activity extends Activity implements ScoreContract.V
         Button buttonContinue = view.findViewById(R.id.button_keep_playing);
 
         buttonContinue.setOnClickListener(v -> {
-            Intent intent = new Intent(ScoreCardFront9Activity.this,
+            Intent goToScoreCardBack9Activity = new Intent(ScoreCardFront9Activity.this,
                     ScoreCardBack9Activity.class);
 
-            startActivity(intent);
+            startActivity(goToScoreCardBack9Activity);
         });
     }
 
     private int calculateUserScore() {
-        int userScore = (Integer.parseInt(textViewSumOfUserScores.getText().toString())
-                + binding.getCourse().getSumOfFront9Pars())
-                * 2;
-        return userScore;
+        return (Integer
+                .parseInt(textViewSumOfUserScores.getText().toString()) +
+                binding.getCourse().getSumOfFront9Pars()) * 2;
     }
 
     private void setAlertDialogBackgroundColor(@NonNull AlertDialog dialog) {
@@ -192,88 +198,88 @@ public class ScoreCardFront9Activity extends Activity implements ScoreContract.V
 
     @Override
     public void showUserScore(@NonNull Score userScore) {
-        int scoreSummary = 0;
+        int sumOfEnteredUserScoresPerHole = 0;
         List<String> enteredUserScores = userScore.getListOfEnteredScores();
         List<Integer> courseParsList = binding.getCourse().getFront9ParsList();
 
         for (int i = 0; i < enteredUserScores.size(); i++) {
-            String individualScore = enteredUserScores.get(i);
+            String individualEnteredScore = enteredUserScores.get(i);
             int holePar = courseParsList.get(i);
 
-            if (individualScore == null) {
-                scoreSummary += 0;
+            if (individualEnteredScore == null) {
+                sumOfEnteredUserScoresPerHole += 0;
             } else {
-                scoreSummary += Integer.parseInt(individualScore) - holePar;
+                sumOfEnteredUserScoresPerHole += Integer.parseInt(individualEnteredScore) - holePar;
             }
         }
 
-        textViewSumOfUserScores.setText(String.valueOf(scoreSummary));
+        textViewSumOfUserScores.setText(String.valueOf(sumOfEnteredUserScoresPerHole));
         userScore.setFront9Score(textViewSumOfUserScores.getText().toString());
         staticUserFront9Score = userScore.getFront9Score();
     }
 
     @Override
     public void showGuest1Score(@NonNull Score guest1Score) {
-        int scoreSummary = 0;
+        int sumOfEnteredGuest1ScoresPerHole = 0;
         List<String> enteredUserScores = guest1Score.getListOfEnteredScores();
         List<Integer> courseParsList = binding.getCourse().getFront9ParsList();
 
         for (int i = 0; i < enteredUserScores.size(); i++) {
-            String individualScore = enteredUserScores.get(i);
+            String individualEnteredScore = enteredUserScores.get(i);
             int holePar = courseParsList.get(i);
 
-            if (individualScore == null) {
-                scoreSummary += 0;
+            if (individualEnteredScore == null) {
+                sumOfEnteredGuest1ScoresPerHole += 0;
             } else {
-                scoreSummary += Integer.parseInt(individualScore) - holePar;
+                sumOfEnteredGuest1ScoresPerHole += Integer.parseInt(individualEnteredScore) - holePar;
             }
         }
 
-        textViewSumOfGuest1Scores.setText(String.valueOf(scoreSummary));
+        textViewSumOfGuest1Scores.setText(String.valueOf(sumOfEnteredGuest1ScoresPerHole));
         guest1Score.setFront9Score(textViewSumOfGuest1Scores.getText().toString());
         staticGuest1Front9Score = guest1Score.getFront9Score();
     }
 
     @Override
     public void showGuest2Score(@NonNull Score guest2Score) {
-        int scoreSummary = 0;
+        int sumOfEnteredGuest2ScoresPerHole = 0;
         List<String> enteredUserScores = guest2Score.getListOfEnteredScores();
         List<Integer> courseParsList = binding.getCourse().getFront9ParsList();
 
         for (int i = 0; i < enteredUserScores.size(); i++) {
-            String individualScore = enteredUserScores.get(i);
+            String individualEnteredScore = enteredUserScores.get(i);
             int holePar = courseParsList.get(i);
 
-            if (individualScore == null) {
-                scoreSummary += 0;
+            if (individualEnteredScore == null) {
+                sumOfEnteredGuest2ScoresPerHole += 0;
             } else {
-                scoreSummary += Integer.parseInt(individualScore) - holePar;
+                sumOfEnteredGuest2ScoresPerHole += Integer.parseInt(individualEnteredScore) - holePar;
             }
         }
 
-        textViewSumOfGuest2Scores.setText(String.valueOf(scoreSummary));
+        textViewSumOfGuest2Scores.setText(String.valueOf(sumOfEnteredGuest2ScoresPerHole));
         guest2Score.setFront9Score(textViewSumOfGuest2Scores.getText().toString());
         staticGuest2Front9Score = guest2Score.getFront9Score();
     }
 
     @Override
     public void showGuest3Score(@NonNull Score guest3Score) {
-        int scoreSummary = 0;
+        int sumOfEnteredGuest3ScoresPerHole = 0;
         List<String> enteredUserScores = guest3Score.getListOfEnteredScores();
         List<Integer> courseParsList = binding.getCourse().getFront9ParsList();
 
         for (int i = 0; i < enteredUserScores.size(); i++) {
-            String individualScore = enteredUserScores.get(i);
+            String individualEnteredScore = enteredUserScores.get(i);
             int holePar = courseParsList.get(i);
 
-            if (individualScore == null) {
-                scoreSummary += 0;
+            if (individualEnteredScore == null) {
+                sumOfEnteredGuest3ScoresPerHole += 0;
             } else {
-                scoreSummary += Integer.parseInt(individualScore) - holePar;
+                sumOfEnteredGuest3ScoresPerHole += Integer.parseInt(individualEnteredScore) - holePar;
             }
         }
 
-        textViewSumOfGuest3Scores.setText(String.valueOf(scoreSummary));
+        textViewSumOfGuest3Scores.setText(String.valueOf(sumOfEnteredGuest3ScoresPerHole));
         guest3Score.setFront9Score(textViewSumOfGuest3Scores.getText().toString());
         staticGuest3Front9Score = guest3Score.getFront9Score();
     }

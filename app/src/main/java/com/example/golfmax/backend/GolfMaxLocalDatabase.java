@@ -16,31 +16,33 @@ public class GolfMaxLocalDatabase extends SQLiteOpenHelper {
     private static final String userTable = "userScores";
     private static final String userId = "id";
     private static final String user = "username";
-    private static final String createUserTable = "CREATE TABLE " + userTable + " ("
+    private static final String dropUserTable = "DROP TABLE IF EXISTS " + userTable;
+    private static final String createUserTable = "CREATE TABLE "
+            + userTable + " ("
             + userId + " REAL,"
             + user + " TEXT)";
-    private static final String dropUserTable = "DROP TABLE IF EXISTS " + userTable;
 
     private static final String courseTable = "courses";
     private static final String course = "courseName";
     private static final String courseId = "id";
-    private static final String createCourseTable = "CREATE TABLE " + courseTable + " ("
+    private static final String dropCourseTable = "DROP TABLE IF EXISTS " + courseTable;
+    private static final String createCourseTable = "CREATE TABLE "
+            + courseTable + " ("
             + courseId + " REAL,"
             + course + " TEXT)";
-    private static final String dropCourseTable = "DROP TABLE IF EXISTS " + courseTable;
 
     public GolfMaxLocalDatabase(Context context) {
         super(context, dbName, null, version);
     }
 
     @Override
-    public void onCreate(SQLiteDatabase db) {
+    public void onCreate(@NonNull SQLiteDatabase db) {
         db.execSQL(createUserTable);
         db.execSQL(createCourseTable);
     }
 
     @Override
-    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+    public void onUpgrade(@NonNull SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL(dropUserTable);
         db.execSQL(dropCourseTable);
         onCreate(db);
@@ -68,6 +70,7 @@ public class GolfMaxLocalDatabase extends SQLiteOpenHelper {
                 id = cursor.getLong(0);
             } while (cursor.moveToNext());
         }
+
         Log.i("DB USER ID ====> ", String.valueOf(id));
         cursor.close();
 

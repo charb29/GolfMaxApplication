@@ -29,13 +29,16 @@ public class NewRoundActivity extends AppCompatActivity {
 
     private ActionBar actionBar;
     private ActionBarDrawerToggle drawerToggle;
+    private final String ACTION_BAR_TITLE = "New Round";
+    private final String ACTION_BAR_COLOR = "#000f00";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        removeWindowFeature();
+
+        CourseRepository courseRepository = new CourseRepository();
+        List<Course> courseNamesList = new ArrayList<>();
 
         ActivityNewRoundBinding binding = DataBindingUtil
                 .setContentView(this,  R.layout.activity_new_round);
@@ -44,16 +47,19 @@ public class NewRoundActivity extends AppCompatActivity {
         NavigationView navView = findViewById(R.id.navigation_view_play_round);
 
         setDrawerToggleActions(drawerLayout);
-        setActionBarTitle("New Round");
-        setActionBarColor("#000f00");
+        setActionBarTitle(ACTION_BAR_TITLE);
+        setActionBarColor(ACTION_BAR_COLOR);
         setNavigationViewIntents(navView);
-
-        CourseRepository courseRepository = new CourseRepository();
-        List<Course> courseNamesList = new ArrayList<>();
 
         courseRepository.setNewRoundBinding(binding);
         courseRepository.setCourseNamesList(courseNamesList);
         courseRepository.getCourseNamesForNewRound(NewRoundActivity.this);
+    }
+
+    private void removeWindowFeature() {
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
     }
 
     private void setDrawerToggleActions(DrawerLayout drawerLayout) {
@@ -67,6 +73,7 @@ public class NewRoundActivity extends AppCompatActivity {
 
     private void setActionBarTitle(String title) {
         actionBar = getSupportActionBar();
+        assert actionBar != null;
         actionBar.setTitle(title);
     }
 
@@ -84,27 +91,27 @@ public class NewRoundActivity extends AppCompatActivity {
         navigationView.setNavigationItemSelectedListener(item -> {
 
             if (item.getItemId() == R.id.navHome) {
-                Intent intentHomeActivity = new Intent(NewRoundActivity.this,
+                Intent goToHomeActivity = new Intent(NewRoundActivity.this,
                         HomeActivity.class);
-                startActivity(intentHomeActivity);
+                startActivity(goToHomeActivity);
                 return true;
             }
             if (item.getItemId() == R.id.navMyScores) {
-                Intent intentMyScoresActivity = new Intent(NewRoundActivity.this,
+                Intent goToPersonalScoresActivity = new Intent(NewRoundActivity.this,
                         PersonalScoresActivity.class);
-                startActivity(intentMyScoresActivity);
+                startActivity(goToPersonalScoresActivity);
                 return true;
             }
             if (item.getItemId() == R.id.navLeaderboard) {
-                Intent intentLeaderboardActivity = new Intent(NewRoundActivity.this,
+                Intent goToLeaderboardActivity = new Intent(NewRoundActivity.this,
                         CourseListActivity.class);
-                startActivity(intentLeaderboardActivity);
+                startActivity(goToLeaderboardActivity);
                 return true;
             }
             if (item.getItemId() == R.id.navUserProfile) {
-                Intent intentUserProfileActivity = new Intent(NewRoundActivity.this,
+                Intent goToUserProfileActivity = new Intent(NewRoundActivity.this,
                         UserProfileActivity.class);
-                startActivity(intentUserProfileActivity);
+                startActivity(goToUserProfileActivity);
                 return true;
             } else {
                 return false;

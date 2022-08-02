@@ -24,26 +24,29 @@ import com.google.android.material.textfield.TextInputLayout;
 public class LoginActivity extends Activity implements LoginContract.View {
 
     private TextInputLayout textInputLayoutUsername, textInputLayoutPassword;
-    ActivityLoginBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        removeWindowFeature();
 
-        binding = DataBindingUtil
+        ActivityLoginBinding binding = DataBindingUtil
                 .setContentView(this, R.layout.activity_login);
 
         LoginPresenter presenter = new LoginPresenter(this);
         User user = new User();
 
-        binding.setUser(user);
-        binding.setPresenter(presenter);
-
         textInputLayoutUsername = findViewById(R.id.text_input_layout_username);
         textInputLayoutPassword = findViewById(R.id.text_input_layout_password);
+
+        binding.setUser(user);
+        binding.setPresenter(presenter);
+    }
+
+    private void removeWindowFeature() {
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
     }
 
     @Override
@@ -54,7 +57,9 @@ public class LoginActivity extends Activity implements LoginContract.View {
         loginRequest.setUsername(user.getUsername());
         loginRequest.setPassword(user.getPassword());
 
-        SharedPreferencesManager.getInstance(LoginActivity.this).setUsername(user.getUsername());
+        SharedPreferencesManager
+                .getInstance(LoginActivity.this)
+                .setUsername(user.getUsername());
         String username = SharedPreferencesManager.getInstance(LoginActivity.this).getUsername();
 
         Log.i("SHARED PREF USERNAME > ", username);
@@ -64,7 +69,9 @@ public class LoginActivity extends Activity implements LoginContract.View {
     }
 
     public void goToRegistrationActivity(View view) {
-        Intent intent = new Intent(LoginActivity.this, RegistrationActivity.class);
-        startActivity(intent);
+        Intent goToRegistrationActivity = new Intent(
+                LoginActivity.this,
+                RegistrationActivity.class);
+        startActivity(goToRegistrationActivity);
     }
 }

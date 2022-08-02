@@ -20,30 +20,35 @@ import com.example.golfmax.models.User;
 
 public class HomeActivity extends Activity implements PlayerStatisticsContract.View {
 
-    private ActivityHomeBinding binding;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-
-        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        removeWindowFeature();
 
         PlayerStatisticsRepository playerStatisticsRepository = new PlayerStatisticsRepository();
         User user = new User();
         PlayerStatistics stats = new PlayerStatistics();
 
-        binding = DataBindingUtil
+        ActivityHomeBinding binding = DataBindingUtil
                 .setContentView(this, R.layout.activity_home);
 
-        String username = SharedPreferencesManager.getInstance(HomeActivity.this).getUsername();
+        String username = SharedPreferencesManager
+                .getInstance(HomeActivity.this)
+                .getUsername();
         long userId = getUserIdByUsername(username);
+
         user.setId(userId);
+
         stats.setUser(user);
 
         playerStatisticsRepository.updateUserStats(stats, user.getId());
         binding.setStats(playerStatisticsRepository.displayStatsSummary(userId));
+    }
+
+    private void removeWindowFeature() {
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
     }
 
     @Override
@@ -55,22 +60,30 @@ public class HomeActivity extends Activity implements PlayerStatisticsContract.V
     }
 
     public void goToPersonalScoresActivity(View view) {
-        Intent intent = new Intent(HomeActivity.this, PersonalScoresActivity.class);
-        startActivity(intent);
+        Intent goToPersonalScoresActivity = new Intent(
+                HomeActivity.this,
+                PersonalScoresActivity.class);
+        startActivity(goToPersonalScoresActivity);
     }
 
     public void goToNewRoundActivity(View view) {
-        Intent intent = new Intent(HomeActivity.this, NewRoundActivity.class);
-        startActivity(intent);
+        Intent goToNewRoundActivity = new Intent(
+                HomeActivity.this,
+                NewRoundActivity.class);
+        startActivity(goToNewRoundActivity);
     }
 
     public void goToCourseLeaderboardsActivity(View view) {
-        Intent intent = new Intent(HomeActivity.this, CourseListActivity.class);
-        startActivity(intent);
+        Intent goToCourseLeaderboardsActivity = new Intent(
+                HomeActivity.this,
+                CourseListActivity.class);
+        startActivity(goToCourseLeaderboardsActivity);
     }
 
     public void goToUserProfileActivity(View view) {
-        Intent intent = new Intent(HomeActivity.this, UserProfileActivity.class);
-        startActivity(intent);
+        Intent goToUserProfileActivity = new Intent(
+                HomeActivity.this,
+                UserProfileActivity.class);
+        startActivity(goToUserProfileActivity);
     }
 }

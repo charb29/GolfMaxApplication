@@ -29,11 +29,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-        this.getWindow()
-                .setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
+        removeWindowFeature();
         hideActionBar();
         setContentView(R.layout.activity_loading_screen);
 
@@ -46,15 +42,22 @@ public class MainActivity extends AppCompatActivity {
         textViewSlogan.setAnimation(animSlogan);
 
         new Handler().postDelayed(() -> {
-            Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+            Intent goToLoginActivity = new Intent(MainActivity.this, LoginActivity.class);
             Pair[] pairs = new Pair[2];
             pairs[0] = new Pair<View, String>(imageViewLogo, "logo_image");
             pairs[1] = new Pair<View, String>(textViewSlogan, "logo_text");
 
-            ActivityOptions activityOptions = ActivityOptions.makeSceneTransitionAnimation(MainActivity.this, pairs);
-            startActivity(intent, activityOptions.toBundle());
+            ActivityOptions activityOptions = ActivityOptions
+                    .makeSceneTransitionAnimation(MainActivity.this, pairs);
+            startActivity(goToLoginActivity, activityOptions.toBundle());
 
         }, SPLASH_SCREEN);
+    }
+
+    private void removeWindowFeature() {
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
     }
 
     private void hideActionBar() {

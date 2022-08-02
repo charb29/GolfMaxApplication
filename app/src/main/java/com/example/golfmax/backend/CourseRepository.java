@@ -64,63 +64,59 @@ public class CourseRepository {
     }
 
     public void getCourseNamesForLeaderboard(Context context) {
-        Call<List<Course>> courseCall = GolfMaxHttpClient
-                .getApiInterface()
-                .getCourseNames();
+        Call<List<Course>> courseCall = GolfMaxHttpClient.getApiInterface().getCourseNames();
 
         courseCall.enqueue(new Callback<List<Course>>() {
             @Override
             public void onResponse(@NonNull Call<List<Course>> call,
                                    @NonNull Response<List<Course>> response) {
                 setCourseNamesList(response.body());
-                courseListBinding.viewCourseList.setLayoutManager(
-                        new LinearLayoutManager(context.getApplicationContext()));
 
-                courseListBinding.viewCourseList.setAdapter(
-                        new CourseListRV(context.getApplicationContext(), courseNamesList));
+                courseListBinding.viewCourseList
+                        .setLayoutManager(new LinearLayoutManager
+                                (context.getApplicationContext()));
+                courseListBinding.viewCourseList
+                        .setAdapter(new CourseListRV
+                                (context.getApplicationContext(), courseNamesList));
 
                 Log.i("getCourseNames ====> ", courseNamesList.toString());
             }
 
             @Override
-            public void onFailure(@NonNull Call<List<Course>>call,
-                                  @NonNull Throwable t) {
+            public void onFailure(@NonNull Call<List<Course>>call, @NonNull Throwable t) {
                 Log.e("ERROR ====> ", t.toString());
             }
         });
     }
 
     public void getCourseNamesForNewRound(Context context) {
-        Call<List<Course>> courseCall = GolfMaxHttpClient
-                .getApiInterface()
-                .getCourseNames();
+        Call<List<Course>> courseCall = GolfMaxHttpClient.getApiInterface().getCourseNames();
 
         courseCall.enqueue(new Callback<List<Course>>() {
             @Override
             public void onResponse(@NonNull Call<List<Course>> call,
                                    @NonNull Response<List<Course>> response) {
                 setCourseNamesList(response.body());
-                newRoundBinding.viewNewRoundCourseList.setLayoutManager(
-                        new LinearLayoutManager(context.getApplicationContext()));
 
-                newRoundBinding.viewNewRoundCourseList.setAdapter(
-                        new NewRoundRV(context.getApplicationContext(), courseNamesList));
+                newRoundBinding.viewNewRoundCourseList
+                        .setLayoutManager(new LinearLayoutManager
+                                (context.getApplicationContext()));
+                newRoundBinding.viewNewRoundCourseList
+                        .setAdapter(new NewRoundRV
+                                (context.getApplicationContext(), courseNamesList));
 
                 Log.i("getCourseNames ====> ", courseNamesList.toString());
             }
 
             @Override
-            public void onFailure(@NonNull Call<List<Course>>call,
-                                  @NonNull Throwable t) {
+            public void onFailure(@NonNull Call<List<Course>>call, @NonNull Throwable t) {
                 Log.e("ERROR ====> ", t.toString());
             }
         });
     }
 
     public void getCourseInfoById(long courseId) {
-        Call<Course> courseCall = GolfMaxHttpClient
-                .getApiInterface()
-                .getCourseById(courseId);
+        Call<Course> courseCall = GolfMaxHttpClient.getApiInterface().getCourseById(courseId);
 
         courseCall.enqueue(new Callback<Course>() {
             @Override
@@ -128,13 +124,11 @@ public class CourseRepository {
                                    @NonNull Response<Course> response) {
                 setCourse(response.body());
                 scoreCardFront9Binding.setCourse(getCourse());
-
                 Log.i("COURSE INFO ====> ", getCourse().toString());
             }
 
             @Override
-            public void onFailure(@NonNull Call<Course> call,
-                                  @NonNull Throwable t) {
+            public void onFailure(@NonNull Call<Course> call, @NonNull Throwable t) {
                 Log.e("ERROR ====> ", t.toString());
             }
         });

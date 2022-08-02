@@ -14,10 +14,7 @@ import retrofit2.Response;
 public class PlayerStatisticsRepository {
 
     public PlayerStatistics displayStatsSummary(long userId) {
-        Call<PlayerStatistics> call = GolfMaxHttpClient
-                .getApiInterface()
-                .getStatsByUserId(userId);
-
+        Call<PlayerStatistics> call = GolfMaxHttpClient.getApiInterface().getStatsByUserId(userId);
         PlayerStatistics playerStatistics = new PlayerStatistics();
 
         call.enqueue(new Callback<PlayerStatistics>() {
@@ -28,15 +25,12 @@ public class PlayerStatisticsRepository {
                 playerStatistics.setHandicapIndex(response.body().getHandicapIndex());
                 playerStatistics.setAverageScore(response.body().getAverageScore());
 
-                Log.i("HANDICAP INDEX ====> ", playerStatistics
-                        .toStringHandicapIndex());
-                Log.i("AVERAGE SCORE ====> ", playerStatistics
-                        .toStringAverageScore());
+                Log.i("HANDICAP INDEX ====> ", playerStatistics.toStringHandicapIndex());
+                Log.i("AVERAGE SCORE ====> ", playerStatistics.toStringAverageScore());
             }
 
             @Override
-            public void onFailure(@NonNull Call<PlayerStatistics> call,
-                                  @NonNull Throwable t) {
+            public void onFailure(@NonNull Call<PlayerStatistics> call, @NonNull Throwable t) {
                 Log.i("ERROR ====> ", t.toString());
             }
         });
@@ -44,10 +38,7 @@ public class PlayerStatisticsRepository {
     }
 
     public PlayerStatistics displayRoundsPlayed(long userId) {
-        Call<PlayerStatistics> call = GolfMaxHttpClient
-                .getApiInterface()
-                .getStatsByUserId(userId);
-
+        Call<PlayerStatistics> call = GolfMaxHttpClient.getApiInterface().getStatsByUserId(userId);
         PlayerStatistics PlayerStatistics = new PlayerStatistics();
 
         call.enqueue(new Callback<PlayerStatistics>() {
@@ -56,22 +47,19 @@ public class PlayerStatisticsRepository {
                                    @NonNull Response<PlayerStatistics> response) {
                 assert response.body() != null;
                 PlayerStatistics.setRoundsPlayed(response.body().getRoundsPlayed());
-
                 Log.i("ROUNDS PLAYED ====> ", PlayerStatistics
                         .toStringRoundsPlayed());
             }
 
             @Override
-            public void onFailure(@NonNull Call<PlayerStatistics> call,
-                                  @NonNull Throwable t) {
+            public void onFailure(@NonNull Call<PlayerStatistics> call, @NonNull Throwable t) {
                 Log.i("ERROR ====> ", t.toString());
             }
         });
         return PlayerStatistics;
     }
 
-    public void updateUserStats(@NonNull PlayerStatistics playerStatistics,
-                                @NonNull long userId) {
+    public void updateUserStats(@NonNull PlayerStatistics playerStatistics, @NonNull long userId) {
         Call<PlayerStatistics> statsCall = GolfMaxHttpClient
                 .getApiInterface()
                 .updateUserStats(userId, playerStatistics);
@@ -84,13 +72,11 @@ public class PlayerStatisticsRepository {
                     Log.i("UPDATED AVG SCORE ==> ", playerStatistics.toStringAverageScore());
                     Log.i("UPDATED RDS PLAYED ==> ", playerStatistics.toStringRoundsPlayed());
                     Log.i("UPDATED HANDICAP ==> ", playerStatistics.toStringHandicapIndex());
-
                 }
             }
 
             @Override
-            public void onFailure(@NonNull Call<PlayerStatistics> call,
-                                  @NonNull Throwable t) {
+            public void onFailure(@NonNull Call<PlayerStatistics> call, @NonNull Throwable t) {
                 Log.e("ERROR ====> ", t.toString());
             }
         });

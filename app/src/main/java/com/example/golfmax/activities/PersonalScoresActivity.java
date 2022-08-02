@@ -31,13 +31,16 @@ public class PersonalScoresActivity extends AppCompatActivity {
 
     private ActionBar actionBar;
     private ActionBarDrawerToggle drawerToggle;
+    private final String ACTION_BAR_TITLE = "Personal Scores";
+    private final String ACTION_BAR_COLOR = "#000f00";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        removeWindowFeature();
+
+        ScoreRepository scoreRepository = new ScoreRepository();
+        List<Score> scoreList = new ArrayList<>();
 
         ActivityPersonalScoresBinding binding = DataBindingUtil
                 .setContentView(this, R.layout.activity_personal_scores);
@@ -46,21 +49,25 @@ public class PersonalScoresActivity extends AppCompatActivity {
         NavigationView navView = findViewById(R.id.navigation_view_personal_scores);
 
         setDrawerToggleActions(drawerLayout);
-        setActionBarTitle("Personal Scores");
-        setActionBarColor("#000f00");
+        setActionBarTitle(ACTION_BAR_TITLE);
+        setActionBarColor(ACTION_BAR_COLOR);
         setNavigationViewIntents(navView);
-
-        ScoreRepository scoreRepository = new ScoreRepository();
-        List<Score> scoreList = new ArrayList<>();
 
         scoreRepository.setScoreList(scoreList);
         scoreRepository.setPersonalScoresBinding(binding);
 
-        String username = SharedPreferencesManager.getInstance(PersonalScoresActivity.this)
+        String username = SharedPreferencesManager
+                .getInstance(PersonalScoresActivity.this)
                 .getUsername();
         long userId = getUserIdByUsername(username);
 
         scoreRepository.getScoresByUserId(PersonalScoresActivity.this, userId);
+    }
+
+    private void removeWindowFeature() {
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
     }
 
     private void setDrawerToggleActions(DrawerLayout drawerLayout) {
@@ -74,6 +81,7 @@ public class PersonalScoresActivity extends AppCompatActivity {
 
     private void setActionBarTitle(String title) {
         actionBar = getSupportActionBar();
+        assert actionBar != null;
         actionBar.setTitle(title);
     }
 
@@ -84,7 +92,6 @@ public class PersonalScoresActivity extends AppCompatActivity {
 
     public long getUserIdByUsername(String username) {
         GolfMaxLocalDatabase db = new GolfMaxLocalDatabase(this);
-
         return db.getUserId(username);
     }
 
@@ -97,27 +104,27 @@ public class PersonalScoresActivity extends AppCompatActivity {
         navigationView.setNavigationItemSelectedListener(item -> {
 
             if (item.getItemId() == R.id.navHome) {
-                Intent intentHomeActivity = new Intent(PersonalScoresActivity.this,
+                Intent goToHomeActivity = new Intent(PersonalScoresActivity.this,
                         HomeActivity.class);
-                startActivity(intentHomeActivity);
+                startActivity(goToHomeActivity);
                 return true;
             }
             if (item.getItemId() == R.id.navLeaderboard) {
-                Intent intentLeaderBoardActivity = new Intent(PersonalScoresActivity.this,
+                Intent goToLeaderBoardActivity = new Intent(PersonalScoresActivity.this,
                         CourseListActivity.class);
-                startActivity(intentLeaderBoardActivity);
+                startActivity(goToLeaderBoardActivity);
                 return true;
             }
             if (item.getItemId() == R.id.navPlayRound) {
-                Intent intentPlayRoundActivity = new Intent(PersonalScoresActivity.this,
+                Intent goToPlayRoundActivity = new Intent(PersonalScoresActivity.this,
                         NewRoundActivity.class);
-                startActivity(intentPlayRoundActivity);
+                startActivity(goToPlayRoundActivity);
                 return true;
             }
             if (item.getItemId() == R.id.navUserProfile) {
-                Intent intentUserProfileActivity = new Intent(PersonalScoresActivity.this,
+                Intent goToUserProfileActivity = new Intent(PersonalScoresActivity.this,
                         UserProfileActivity.class);
-                startActivity(intentUserProfileActivity);
+                startActivity(goToUserProfileActivity);
                 return true;
             } else {
                 return false;

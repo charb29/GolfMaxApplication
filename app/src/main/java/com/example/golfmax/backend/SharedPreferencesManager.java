@@ -3,6 +3,8 @@ package com.example.golfmax.backend;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import androidx.annotation.NonNull;
+
 public class SharedPreferencesManager {
 
     private static final String MyPREFERENCES = "MyPreferences";
@@ -10,12 +12,10 @@ public class SharedPreferencesManager {
     private SharedPreferences sharedPreferences;
     private static  SharedPreferencesManager instance;
 
-    private SharedPreferencesManager(Context context) {
+    private SharedPreferencesManager(@NonNull Context context) {
         sharedPreferences = context
                 .getApplicationContext()
-                .getSharedPreferences(
-                        MyPREFERENCES,
-                        Context.MODE_PRIVATE);
+                .getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
     }
 
     public static synchronized SharedPreferencesManager getInstance(Context context) {
@@ -32,7 +32,6 @@ public class SharedPreferencesManager {
     }
 
     public String getUsername() {
-        String username = sharedPreferences.getString(USERNAME, null);
-        return username;
+        return sharedPreferences.getString(USERNAME, null);
     }
 }

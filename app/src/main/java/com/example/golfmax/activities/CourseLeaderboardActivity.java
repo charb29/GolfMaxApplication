@@ -34,13 +34,18 @@ public class CourseLeaderboardActivity extends AppCompatActivity {
 
     private ActionBar actionBar;
     private ActionBarDrawerToggle drawerToggle;
+    private final String ACTION_BAR_TITLE = "Leaderboard";
+    private final String ACTION_BAR_COLOR = "#000f00";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        removeWindowFeature();
+
+        ScoreRepository scoreRepository = new ScoreRepository();
+        Score score = new Score();
+        Course course = new Course();
+        List<Score> scoreList = new ArrayList<>();
 
         ActivityCourseLeaderboardBinding binding = DataBindingUtil
                 .setContentView(this, R.layout.activity_course_leaderboard);
@@ -49,23 +54,28 @@ public class CourseLeaderboardActivity extends AppCompatActivity {
         NavigationView navView = findViewById(R.id.navigation_view_course_leaderboard);
 
         setDrawerToggleActions(drawerLayout);
-        setActionBarTitle("Leaderboard");
-        setActionBarColor("#000f00");
+        setActionBarTitle(ACTION_BAR_TITLE);
+        setActionBarColor(ACTION_BAR_COLOR);
         setNavigationViewIntents(navView);
-
-        ScoreRepository scoreRepository = new ScoreRepository();
-        Score score = new Score();
-        Course course = new Course();
-        List<Score> scoreList = new ArrayList<>();
 
         scoreRepository.setScoreList(scoreList);
         scoreRepository.setCourseLeaderboardBinding(binding);
-        long courseId = getCourseId(CourseListRV.staticCourseName);
+
+        long courseId = getCourseIdByCourseName(CourseListRV.staticCourseName);
+
         course.setCourseName(CourseListRV.staticCourseName);
 
         scoreRepository.getScoresByCourseId(CourseLeaderboardActivity.this, courseId);
+
         score.setCourse(course);
+
         binding.setScore(score);
+    }
+
+    private void removeWindowFeature() {
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
     }
 
     private void setDrawerToggleActions(DrawerLayout drawerLayout) {
@@ -79,6 +89,7 @@ public class CourseLeaderboardActivity extends AppCompatActivity {
 
     private void setActionBarTitle(String title) {
         actionBar = getSupportActionBar();
+        assert actionBar != null;
         actionBar.setTitle(title);
     }
 
@@ -87,14 +98,13 @@ public class CourseLeaderboardActivity extends AppCompatActivity {
         actionBar.setBackgroundDrawable(colorDrawable);
     }
 
-    private long getCourseId(String courseName) {
+    private long getCourseIdByCourseName(String courseName) {
         GolfMaxLocalDatabase db = new GolfMaxLocalDatabase(this);
-        long courseId = db.getCourseId(courseName);
 
         Log.i("COURSE NAME ====> ", courseName);
-        Log.i("COURSE ID ====> ", String.valueOf(courseId));
+        Log.i("COURSE ID ====> ", String.valueOf(db.getCourseId(courseName)));
 
-        return courseId;
+        return db.getCourseId(courseName);
     }
 
     @Override
@@ -106,33 +116,33 @@ public class CourseLeaderboardActivity extends AppCompatActivity {
         navigationView.setNavigationItemSelectedListener(item -> {
 
             if (item.getItemId() == R.id.navHome) {
-                Intent intentHomeActivity = new Intent(CourseLeaderboardActivity.this,
+                Intent goToHomeActivity = new Intent(CourseLeaderboardActivity.this,
                         HomeActivity.class);
-                startActivity(intentHomeActivity);
+                startActivity(goToHomeActivity);
                 return true;
             }
             if (item.getItemId() == R.id.navMyScores) {
-                Intent intentMyScoresActivity = new Intent(CourseLeaderboardActivity.this,
+                Intent goToMyScoresActivity = new Intent(CourseLeaderboardActivity.this,
                         PersonalScoresActivity.class);
-                startActivity(intentMyScoresActivity);
+                startActivity(goToMyScoresActivity);
                 return true;
             }
             if (item.getItemId() == R.id.navLeaderboard) {
-                Intent intentLeaderBoardActivity = new Intent(CourseLeaderboardActivity.this,
+                Intent goToLeaderboardActivity = new Intent(CourseLeaderboardActivity.this,
                         CourseListActivity.class);
-                startActivity(intentLeaderBoardActivity);
+                startActivity(goToLeaderboardActivity);
                 return true;
             }
             if (item.getItemId() == R.id.navPlayRound) {
-                Intent intentPlayRoundActivity = new Intent(CourseLeaderboardActivity.this,
+                Intent goToPlayRoundActivity = new Intent(CourseLeaderboardActivity.this,
                         NewRoundActivity.class);
-                startActivity(intentPlayRoundActivity);
+                startActivity(goToPlayRoundActivity);
                 return true;
             }
             if (item.getItemId() == R.id.navUserProfile) {
-                Intent intentUserProfileActivity = new Intent(CourseLeaderboardActivity.this,
+                Intent goToUserProfileActivity = new Intent(CourseLeaderboardActivity.this,
                         UserProfileActivity.class);
-                startActivity(intentUserProfileActivity);
+                startActivity(goToUserProfileActivity);
                 return true;
             } else {
                 return false;
