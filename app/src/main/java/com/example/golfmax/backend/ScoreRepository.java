@@ -123,7 +123,6 @@ public class ScoreRepository {
                     Intent intent = new Intent(context.getApplicationContext(), HomeActivity.class);
                     context.startActivity(intent);
 
-                    Log.i("SAVE SCORE ====> ", score.getFront9Score());
                 } else {
                     Toast.makeText(context.getApplicationContext(),
                             "Failed.",

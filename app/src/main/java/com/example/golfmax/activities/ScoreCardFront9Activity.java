@@ -1,11 +1,9 @@
 package com.example.golfmax.activities;
 
-
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.graphics.Color;
-import android.graphics.Path;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.util.Log;
@@ -28,15 +26,13 @@ import com.example.golfmax.backend.SharedPreferencesManager;
 import com.example.golfmax.contracts.ScoreContract;
 import com.example.golfmax.databinding.ActivityScoreCardFront9Binding;
 import com.example.golfmax.models.Course;
+import com.example.golfmax.models.PlayerStatistics;
 import com.example.golfmax.models.Score;
 import com.example.golfmax.models.User;
 import com.example.golfmax.presenters.ScorePresenter;
 import com.example.golfmax.recyclerViews.NewRoundRV;
 
-import org.jetbrains.annotations.Contract;
-
 import java.util.List;
-
 
 public class ScoreCardFront9Activity extends Activity implements ScoreContract.View {
 
@@ -129,23 +125,12 @@ public class ScoreCardFront9Activity extends Activity implements ScoreContract.V
         return alertDialog;
     }
 
-    public void configureAlertDialogContinueButton(@NonNull View view) {
-        Button buttonContinue = view.findViewById(R.id.button_keep_playing);
-
-        buttonContinue.setOnClickListener(v -> {
-            Intent intent = new Intent(ScoreCardFront9Activity.this,
-                    ScoreCardBack9Activity.class);
-
-            startActivity(intent);
-        });
-    }
-
     private void configureAlertDialogEndRoundButton(@NonNull View view) {
         Button buttonEndRound = view.findViewById(R.id.button_end_round);
-        ScoreRepository scoreRepository = new ScoreRepository();
-        PlayerStatisticsRepository playerStatisticsRepository = new PlayerStatisticsRepository();
-
         buttonEndRound.setOnClickListener(v -> {
+            ScoreRepository scoreRepository = new ScoreRepository();
+            PlayerStatisticsRepository statsRepository = new PlayerStatisticsRepository();
+            PlayerStatistics statistics = new PlayerStatistics();
             Score score = new Score();
             Course course = new Course();
             User user = new User();
@@ -158,6 +143,7 @@ public class ScoreCardFront9Activity extends Activity implements ScoreContract.V
 
             user.setId(userId);
             course.setCourseId(courseId);
+            statistics.setUser(user);
 
             score.setUser(user);
             score.setCourse(course);
@@ -166,8 +152,20 @@ public class ScoreCardFront9Activity extends Activity implements ScoreContract.V
             score.setSlopeRating(slopeRating);
 
             Log.i("FRONT 9 SCORE ====> ", String.valueOf(score.getUserScore()));
+
+            statsRepository.updateUserStats(statistics, user.getId());
             scoreRepository.saveScore(ScoreCardFront9Activity.this, score);
-            playerStatisticsRepository.updatePlayerStats(userId);
+        });
+    }
+
+    public void configureAlertDialogContinueButton(@NonNull View view) {
+        Button buttonContinue = view.findViewById(R.id.button_keep_playing);
+
+        buttonContinue.setOnClickListener(v -> {
+            Intent intent = new Intent(ScoreCardFront9Activity.this,
+                    ScoreCardBack9Activity.class);
+
+            startActivity(intent);
         });
     }
 
