@@ -2,7 +2,6 @@ package com.example.golfmax.activities;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -10,15 +9,18 @@ import android.view.WindowManager;
 
 import androidx.databinding.DataBindingUtil;
 
+import com.example.golfmax.R;
 import com.example.golfmax.backend.GolfMaxLocalDatabase;
 import com.example.golfmax.backend.PlayerStatisticsRepository;
 import com.example.golfmax.backend.SharedPreferencesManager;
 import com.example.golfmax.contracts.PlayerStatisticsContract;
-import com.example.golfmax.models.PlayerStatistics;
-import com.example.golfmax.R;
 import com.example.golfmax.databinding.ActivityHomeBinding;
+import com.example.golfmax.models.PlayerStatistics;
+import com.example.golfmax.models.User;
 
 public class HomeActivity extends Activity implements PlayerStatisticsContract.View {
+
+    private ActivityHomeBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,13 +31,18 @@ public class HomeActivity extends Activity implements PlayerStatisticsContract.V
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         PlayerStatisticsRepository playerStatisticsRepository = new PlayerStatisticsRepository();
+        User user = new User();
+        PlayerStatistics stats = new PlayerStatistics();
 
-        ActivityHomeBinding binding = DataBindingUtil
+        binding = DataBindingUtil
                 .setContentView(this, R.layout.activity_home);
 
         String username = SharedPreferencesManager.getInstance(HomeActivity.this).getUsername();
         long userId = getUserIdByUsername(username);
+        user.setId(userId);
+        stats.setUser(user);
 
+        playerStatisticsRepository.updateUserStats(stats, user.getId());
         binding.setStats(playerStatisticsRepository.displayStatsSummary(userId));
     }
 
