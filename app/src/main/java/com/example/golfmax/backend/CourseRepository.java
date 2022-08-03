@@ -162,4 +162,20 @@ public class CourseRepository {
             }
         });
     }
+
+    public void saveNewCourse(Course course) {
+        Call<Course> courseCall = GolfMaxHttpClient.getApiInterface().addNewCourse(course);
+
+        courseCall.enqueue(new Callback<Course>() {
+            @Override
+            public void onResponse(@NonNull Call<Course> call, @NonNull Response<Course> response) {
+                Log.i("ADD NEW COURSE ====> ", response.toString());
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<Course> call, @NonNull Throwable t) {
+                Log.e("ERROR ====> ", t.toString());
+            }
+        });
+    }
 }

@@ -33,16 +33,15 @@ public class PersonalScoresActivity extends AppCompatActivity {
     private ActionBarDrawerToggle drawerToggle;
     private final String ACTION_BAR_TITLE = "Personal Scores";
     private final String ACTION_BAR_COLOR = "#000f00";
+    private ScoreRepository scoreRepository;
+    private ActivityPersonalScoresBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         removeWindowFeature();
 
-        ScoreRepository scoreRepository = new ScoreRepository();
-        List<Score> scoreList = new ArrayList<>();
-
-        ActivityPersonalScoresBinding binding = DataBindingUtil
+        binding = DataBindingUtil
                 .setContentView(this, R.layout.activity_personal_scores);
 
         DrawerLayout drawerLayout = findViewById(R.id.drawerLayout);
@@ -52,10 +51,14 @@ public class PersonalScoresActivity extends AppCompatActivity {
         setActionBarTitle(ACTION_BAR_TITLE);
         setActionBarColor(ACTION_BAR_COLOR);
         setNavigationViewIntents(navView);
+        getRecyclerView();
+    }
 
+    private void getRecyclerView() {
+        scoreRepository = new ScoreRepository();
+        List<Score> scoreList = new ArrayList<>();
         scoreRepository.setScoreList(scoreList);
         scoreRepository.setPersonalScoresBinding(binding);
-
         String username = SharedPreferencesManager
                 .getInstance(PersonalScoresActivity.this)
                 .getUsername();

@@ -54,4 +54,7 @@ public interface GolfMaxService {
     @PUT("/stats/{id}")
     Call<PlayerStatistics> updateUserStats(@Path("id") long userId,
                                            @Body PlayerStatistics playerStatistics);
+
+    @POST("/courses/new_course")
+    Call<Course> addNewCourse(@Body Course course);
 }

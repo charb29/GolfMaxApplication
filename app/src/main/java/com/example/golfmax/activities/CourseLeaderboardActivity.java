@@ -36,18 +36,17 @@ public class CourseLeaderboardActivity extends AppCompatActivity {
     private ActionBarDrawerToggle drawerToggle;
     private final String ACTION_BAR_TITLE = "Leaderboard";
     private final String ACTION_BAR_COLOR = "#000f00";
+    private ActivityCourseLeaderboardBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         removeWindowFeature();
 
-        ScoreRepository scoreRepository = new ScoreRepository();
         Score score = new Score();
         Course course = new Course();
-        List<Score> scoreList = new ArrayList<>();
 
-        ActivityCourseLeaderboardBinding binding = DataBindingUtil
+        binding = DataBindingUtil
                 .setContentView(this, R.layout.activity_course_leaderboard);
 
         DrawerLayout drawerLayout = findViewById(R.id.drawerLayout);
@@ -58,18 +57,20 @@ public class CourseLeaderboardActivity extends AppCompatActivity {
         setActionBarColor(ACTION_BAR_COLOR);
         setNavigationViewIntents(navView);
 
+        course.setCourseName(CourseListRV.staticCourseName);
+        score.setCourse(course);
+        binding.setScore(score);
+
+        getRecyclerView();
+    }
+
+    private void getRecyclerView() {
+        long courseId = getCourseIdByCourseName(CourseListRV.staticCourseName);
+        List<Score> scoreList = new ArrayList<>();
+        ScoreRepository scoreRepository = new ScoreRepository();
         scoreRepository.setScoreList(scoreList);
         scoreRepository.setCourseLeaderboardBinding(binding);
-
-        long courseId = getCourseIdByCourseName(CourseListRV.staticCourseName);
-
-        course.setCourseName(CourseListRV.staticCourseName);
-
         scoreRepository.getScoresByCourseId(CourseLeaderboardActivity.this, courseId);
-
-        score.setCourse(course);
-
-        binding.setScore(score);
     }
 
     private void removeWindowFeature() {

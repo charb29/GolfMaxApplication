@@ -3,6 +3,7 @@ package com.example.golfmax.activities;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.ActionBarDrawerToggle;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -31,16 +32,17 @@ public class NewRoundActivity extends AppCompatActivity {
     private ActionBarDrawerToggle drawerToggle;
     private final String ACTION_BAR_TITLE = "New Round";
     private final String ACTION_BAR_COLOR = "#000f00";
+    private CourseRepository courseRepository;
+    private ActivityNewRoundBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         removeWindowFeature();
 
-        CourseRepository courseRepository = new CourseRepository();
-        List<Course> courseNamesList = new ArrayList<>();
+        courseRepository = new CourseRepository();
 
-        ActivityNewRoundBinding binding = DataBindingUtil
+        binding = DataBindingUtil
                 .setContentView(this,  R.layout.activity_new_round);
 
         DrawerLayout drawerLayout = findViewById(R.id.drawerLayout);
@@ -50,7 +52,11 @@ public class NewRoundActivity extends AppCompatActivity {
         setActionBarTitle(ACTION_BAR_TITLE);
         setActionBarColor(ACTION_BAR_COLOR);
         setNavigationViewIntents(navView);
+        getRecyclerView();
+    }
 
+    private void getRecyclerView() {
+        List<Course> courseNamesList = new ArrayList<>();
         courseRepository.setNewRoundBinding(binding);
         courseRepository.setCourseNamesList(courseNamesList);
         courseRepository.getCourseNamesForNewRound(NewRoundActivity.this);
@@ -83,13 +89,12 @@ public class NewRoundActivity extends AppCompatActivity {
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem menuItem) {
+    public boolean onOptionsItemSelected(@NonNull MenuItem menuItem) {
         return drawerToggle.onOptionsItemSelected(menuItem);
     }
 
     private void setNavigationViewIntents(@NonNull NavigationView navigationView) {
         navigationView.setNavigationItemSelectedListener(item -> {
-
             if (item.getItemId() == R.id.navHome) {
                 Intent goToHomeActivity = new Intent(NewRoundActivity.this,
                         HomeActivity.class);
@@ -118,5 +123,4 @@ public class NewRoundActivity extends AppCompatActivity {
             }
         });
     }
-
 }

@@ -31,16 +31,14 @@ public class CourseListActivity extends AppCompatActivity {
     private ActionBarDrawerToggle drawerToggle;
     private final String ACTION_BAR_TITLE = "Course List";
     private final String ACTION_BAR_COLOR = "#000f00";
+    private  ActivityCourseListBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         removeWindowFeature();
 
-        CourseRepository courseRepository = new CourseRepository();
-        List<Course> courseNamesList = new ArrayList<>();
-
-        ActivityCourseListBinding binding = DataBindingUtil
+        binding = DataBindingUtil
                 .setContentView(this,  R.layout.activity_course_list);
 
         DrawerLayout drawerLayout = findViewById(R.id.drawerLayout);
@@ -50,7 +48,12 @@ public class CourseListActivity extends AppCompatActivity {
         setActionBarTitle(ACTION_BAR_TITLE);
         setActionBarColor(ACTION_BAR_COLOR);
         setNavigationViewIntents(navView);
+        getRecyclerView();
+    }
 
+    private void getRecyclerView() {
+        CourseRepository courseRepository = new CourseRepository();
+        List<Course> courseNamesList = new ArrayList<>();
         courseRepository.setCourseNamesList(courseNamesList);
         courseRepository.setCourseListBinding(binding);
         courseRepository.getCourseNamesForLeaderboard(CourseListActivity.this);

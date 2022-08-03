@@ -13,6 +13,7 @@ public class Course extends BaseObservable {
 
     @SerializedName("courseName")
     private String courseName;
+    private int overallPar;
     @SerializedName("courseRating")
     private String courseRating;
     @SerializedName("slopeRating")
@@ -64,6 +65,14 @@ public class Course extends BaseObservable {
     public void setCourseName(String courseName) {
         this.courseName = courseName;
         notifyPropertyChanged(BR.courseName);
+    }
+
+    public int getOverallPar() {
+        return overallPar;
+    }
+
+    public void setOverallPar(int overallPar) {
+        this.overallPar = overallPar;
     }
 
     @Bindable
