@@ -67,15 +67,15 @@ public class NewRoundRV extends RecyclerView.Adapter<NewRoundRV.NewRoundViewHold
             binding.textViewCourseName.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Intent intent = new Intent(context,
+                    Intent goToScoreCardFront9Activity = new Intent(context,
                             ScoreCardFront9Activity.class);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-
+                    goToScoreCardFront9Activity.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                     staticCourseName = binding.getCourse().getCourseName();
 
-                    context.startActivity(intent);
+                    context.startActivity(goToScoreCardFront9Activity);
                 }
             });
+
         }
     }
 }

@@ -20,29 +20,38 @@ import com.example.golfmax.models.User;
 
 public class HomeActivity extends Activity implements PlayerStatisticsContract.View {
 
+    private final PlayerStatisticsRepository playerStatisticsRepository = new PlayerStatisticsRepository();
+    private final User user = new User();
+    private final PlayerStatistics stats = new PlayerStatistics();
+    private final String username = SharedPreferencesManager
+            .getInstance(HomeActivity.this)
+            .getUsername();
+
+    @Override
+    public void onRestart() {
+        super.onRestart();
+        long userId = getUserIdByUsername(username);
+
+        user.setId(userId);
+        stats.setUser(user);
+        playerStatisticsRepository.updateUserStats(stats, user.getId());
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         removeWindowFeature();
 
-        PlayerStatisticsRepository playerStatisticsRepository = new PlayerStatisticsRepository();
-        User user = new User();
-        PlayerStatistics stats = new PlayerStatistics();
-
         ActivityHomeBinding binding = DataBindingUtil
                 .setContentView(this, R.layout.activity_home);
 
-        String username = SharedPreferencesManager
-                .getInstance(HomeActivity.this)
-                .getUsername();
         long userId = getUserIdByUsername(username);
 
         user.setId(userId);
 
         stats.setUser(user);
-
-        playerStatisticsRepository.updateUserStats(stats, user.getId());
         binding.setStats(playerStatisticsRepository.displayStatsSummary(userId));
+        playerStatisticsRepository.updateUserStats(stats, user.getId());
     }
 
     private void removeWindowFeature() {
