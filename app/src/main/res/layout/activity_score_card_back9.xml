@@ -1,9 +1,1186 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".activities.ScoreCardBack9Activity">
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <data>
+        <variable
+            name="user"
+            type="com.example.golfmax.models.User" />
+        <variable
+            name="guest1"
+            type="com.example.golfmax.models.User" />
+        <variable
+            name="guest2"
+            type="com.example.golfmax.models.User" />
+        <variable
+            name="guest3"
+            type="com.example.golfmax.models.User" />
+        <variable
+            name="userScore"
+            type="com.example.golfmax.models.Score" />
+        <variable
+            name="guest1Score"
+            type="com.example.golfmax.models.Score" />
+        <variable
+            name="guest2Score"
+            type="com.example.golfmax.models.Score" />
+        <variable
+            name="guest3Score"
+            type="com.example.golfmax.models.Score" />
+        <variable
+            name="course"
+            type="com.example.golfmax.models.Course" />
+        <variable
+            name="userPresenter"
+            type="com.example.golfmax.presenters.UserPresenter" />
+        <variable
+            name="guest1Presenter"
+            type="com.example.golfmax.presenters.UserPresenter" />
+        <variable
+            name="guest2Presenter"
+            type="com.example.golfmax.presenters.UserPresenter" />
+        <variable
+            name="guest3Presenter"
+            type="com.example.golfmax.presenters.UserPresenter" />
+        <variable
+            name="scorePresenter"
+            type="com.example.golfmax.presenters.ScorePresenter" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="#000f00">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="18dip"
+                android:text="@={course.courseName}"
+                android:fontFamily="sans-serif-black"
+                android:hint="Course Name"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"/>
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1"/>
+
+            <Button
+                android:id="@+id/button_done"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:backgroundTint="#000f00"
+                android:fontFamily="sans-serif-black"
+                android:text="Done"
+                android:textColor="@color/white"
+                android:textAllCaps="false"
+                android:gravity="center"/>
+
+        </LinearLayout>
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TableRow
+                    android:id="@+id/table_row_hole"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="125dp"
+                        android:layout_height="match_parent"
+                        android:background="#013220"
+                        android:padding="18dip"
+                        android:text="Hole"
+                        android:textColor="@color/white"
+                        android:fontFamily="sans-serif-black"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#013220"
+                        android:padding="18dip"
+                        android:gravity="center"
+                        android:text="10"
+                        android:textColor="@color/white"
+                        android:fontFamily="sans-serif-black"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#013220"
+                        android:padding="18dip"
+                        android:text="11"
+                        android:gravity="center"
+                        android:textColor="@color/white"
+                        android:fontFamily="sans-serif-black"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#013220"
+                        android:padding="18dip"
+                        android:text="12"
+                        android:gravity="center"
+                        android:textColor="@color/white"
+                        android:fontFamily="sans-serif-black"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#013220"
+                        android:padding="18dip"
+                        android:text="13"
+                        android:gravity="center"
+                        android:textColor="@color/white"
+                        android:fontFamily="sans-serif-black"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#013220"
+                        android:padding="18dip"
+                        android:text="14"
+                        android:gravity="center"
+                        android:textColor="@color/white"
+                        android:fontFamily="sans-serif-black"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#013220"
+                        android:padding="18dip"
+                        android:text="15"
+                        android:gravity="center"
+                        android:textColor="@color/white"
+                        android:fontFamily="sans-serif-black"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#013220"
+                        android:padding="18dip"
+                        android:text="16"
+                        android:gravity="center"
+                        android:textColor="@color/white"
+                        android:fontFamily="sans-serif-black"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#013220"
+                        android:padding="18dip"
+                        android:text="17"
+                        android:gravity="center"
+                        android:textColor="@color/white"
+                        android:fontFamily="sans-serif-black"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#013220"
+                        android:padding="18dip"
+                        android:text="18"
+                        android:gravity="center"
+                        android:textColor="@color/white"
+                        android:fontFamily="sans-serif-black"/>
+
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/table_row_par"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#013220">
+
+                    <TextView
+                        android:layout_width="125dp"
+                        android:layout_height="match_parent"
+                        android:background="#013220"
+                        android:padding="18dip"
+                        android:text="Par"
+                        android:textColor="@color/white"
+                        android:fontFamily="sans-serif-black"/>
+
+                    <TextView
+                        android:id="@+id/text_view_par1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#013220"
+                        android:padding="18dip"
+                        android:text="@{String.valueOf(course.hole10)}"
+                        android:hint="0"
+                        android:gravity="center"
+                        android:textColor="@color/white"
+                        android:fontFamily="sans-serif-black"/>
+
+                    <TextView
+                        android:id="@+id/text_view_par2"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#013220"
+                        android:padding="18dip"
+                        android:gravity="center"
+                        android:text="@{String.valueOf(course.hole11)}"
+                        android:hint="0"
+                        android:textColor="@color/white"
+                        android:fontFamily="sans-serif-black"/>
+
+                    <TextView
+                        android:id="@+id/text_view_par3"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#013220"
+                        android:padding="18dip"
+                        android:text="@{String.valueOf(course.hole12)}"
+                        android:hint="0"
+                        android:gravity="center"
+                        android:textColor="@color/white"
+                        android:fontFamily="sans-serif-black"/>
+
+                    <TextView
+                        android:id="@+id/text_view_par4"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#013220"
+                        android:padding="18dip"
+                        android:gravity="center"
+                        android:text="@{String.valueOf(course.hole13)}"
+                        android:hint="0"
+                        android:textColor="@color/white"
+                        android:fontFamily="sans-serif-black"/>
+
+                    <TextView
+                        android:id="@+id/text_view_par5"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#013220"
+                        android:padding="18dip"
+                        android:gravity="center"
+                        android:text="@{String.valueOf(course.hole14)}"
+                        android:hint="0"
+                        android:textColor="@color/white"
+                        android:fontFamily="sans-serif-black"/>
+
+                    <TextView
+                        android:id="@+id/text_view_par6"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#013220"
+                        android:padding="18dip"
+                        android:text="@{String.valueOf(course.hole15)}"
+                        android:hint="0"
+                        android:gravity="center"
+                        android:textColor="@color/white"
+                        android:fontFamily="sans-serif-black"/>
+
+                    <TextView
+                        android:id="@+id/text_view_par7"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#013220"
+                        android:padding="18dip"
+                        android:gravity="center"
+                        android:text="@{String.valueOf(course.hole16)}"
+                        android:hint="0"
+                        android:textColor="@color/white"
+                        android:fontFamily="sans-serif-black"/>
+
+                    <TextView
+                        android:id="@+id/text_view_par8"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#013220"
+                        android:padding="18dip"
+                        android:gravity="center"
+                        android:text="@{String.valueOf(course.hole17)}"
+                        android:hint="0"
+                        android:textColor="@color/white"
+                        android:fontFamily="sans-serif-black"/>
+
+                    <TextView
+                        android:id="@+id/text_view_par9"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="#013220"
+                        android:padding="18dip"
+                        android:text="@{String.valueOf(course.hole18)}"
+                        android:hint="0"
+                        android:gravity="center"
+                        android:textColor="@color/white"
+                        android:fontFamily="sans-serif-black"/>
+
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/table_row_user"
+                    android:layout_width="fill_parent"
+                    android:imeOptions="actionNext"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/text_view_username"
+                        android:layout_height="match_parent"
+                        android:layout_width="match_parent"
+                        android:text="@={user.username}"
+                        android:hint="Username"
+                        android:padding="18dip"
+                        android:textColor="@color/black"
+                        android:fontFamily="sans-serif-black"
+                        android:textSize="15dp"/>
+
+                    <EditText
+                        android:id="@+id/edit_text_hole1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/white"
+                        android:fontFamily="sans-serif-black"
+                        android:hint="00"
+                        android:onClick="@{() -> scorePresenter.onShowUserScore(userScore)}"
+                        android:imeOptions="actionNext"
+                        android:inputType="number"
+                        android:padding="18dip"
+                        android:singleLine="true"
+                        android:text="@={userScore.hole10}"
+                        android:textColor="@color/black"
+                        android:textSize="15dp" />
+
+                    <EditText
+                        android:id="@+id/edit_text_hole2"
+                        android:layout_height="match_parent"
+                        android:layout_width="match_parent"
+                        android:hint="00"
+                        android:text="@={userScore.hole11}"
+                        android:onClick="@{() -> scorePresenter.onShowUserScore(userScore)}"
+                        android:inputType="number"
+                        android:singleLine="true"
+                        android:imeOptions="actionNext"
+                        android:padding="18dip"
+                        android:fontFamily="sans-serif-black"
+                        android:background="@color/white"
+                        android:textColor="@color/black"
+                        android:textSize="15dp"/>
+
+                    <EditText
+                        android:id="@+id/edit_text_hole3"
+                        android:layout_height="match_parent"
+                        android:layout_width="match_parent"
+                        android:hint="00"
+                        android:onClick="@{() -> scorePresenter.onShowUserScore(userScore)}"
+                        android:text="@={userScore.hole12}"
+                        android:inputType="number"
+                        android:singleLine="true"
+                        android:imeOptions="actionNext"
+                        android:padding="18dip"
+                        android:fontFamily="sans-serif-black"
+                        android:background="@color/white"
+                        android:textColor="@color/black"
+                        android:textSize="15dp"/>
+
+                    <EditText
+                        android:id="@+id/edit_text_hole4"
+                        android:layout_height="match_parent"
+                        android:layout_width="match_parent"
+                        android:hint="00"
+                        android:text="@={userScore.hole13}"
+                        android:onClick="@{() -> scorePresenter.onShowUserScore(userScore)}"
+                        android:singleLine="true"
+                        android:imeOptions="actionNext"
+                        android:padding="18dip"
+                        android:inputType="number"
+                        android:fontFamily="sans-serif-black"
+                        android:background="@color/white"
+                        android:textColor="@color/black"
+                        android:textSize="15dp"/>
+
+                    <EditText
+                        android:id="@+id/edit_text_hole5"
+                        android:layout_height="match_parent"
+                        android:layout_width="match_parent"
+                        android:hint="00"
+                        android:text="@={userScore.hole14}"
+                        android:onClick="@{() -> scorePresenter.onShowUserScore(userScore)}"
+                        android:singleLine="true"
+                        android:imeOptions="actionNext"
+                        android:padding="18dip"
+                        android:inputType="number"
+                        android:fontFamily="sans-serif-black"
+                        android:background="@color/white"
+                        android:textColor="@color/black"
+                        android:textSize="15dp"/>
+
+                    <EditText
+                        android:id="@+id/edit_text_hole6"
+                        android:layout_height="match_parent"
+                        android:layout_width="match_parent"
+                        android:hint="00"
+                        android:text="@={userScore.hole15}"
+                        android:onClick="@{() -> scorePresenter.onShowUserScore(userScore)}"
+                        android:singleLine="true"
+                        android:inputType="number"
+                        android:imeOptions="actionNext"
+                        android:padding="18dip"
+                        android:fontFamily="sans-serif-black"
+                        android:background="@color/white"
+                        android:textColor="@color/black"
+                        android:textSize="15dp"/>
+
+                    <EditText
+                        android:id="@+id/edit_text_hole7"
+                        android:layout_height="match_parent"
+                        android:layout_width="match_parent"
+                        android:hint="00"
+                        android:text="@={userScore.hole16}"
+                        android:onClick="@{() -> scorePresenter.onShowUserScore(userScore)}"
+                        android:inputType="number"
+                        android:singleLine="true"
+                        android:imeOptions="actionNext"
+                        android:padding="18dip"
+                        android:fontFamily="sans-serif-black"
+                        android:background="@color/white"
+                        android:textColor="@color/black"
+                        android:textSize="15dp"/>
+
+                    <EditText
+                        android:id="@+id/edit_text_hole8"
+                        android:layout_height="match_parent"
+                        android:layout_width="match_parent"
+                        android:hint="00"
+                        android:text="@={userScore.hole17}"
+                        android:onClick="@{() -> scorePresenter.onShowUserScore(userScore)}"
+                        android:inputType="number"
+                        android:singleLine="true"
+                        android:imeOptions="actionNext"
+                        android:padding="18dip"
+                        android:fontFamily="sans-serif-black"
+                        android:background="@color/white"
+                        android:textColor="@color/black"
+                        android:textSize="15dp"/>
+
+                    <EditText
+                        android:id="@+id/edit_text_hole9"
+                        android:layout_height="match_parent"
+                        android:layout_width="match_parent"
+                        android:hint="00"
+                        android:text="@={userScore.hole18}"
+                        android:onClick="@{() -> scorePresenter.onShowUserScore(userScore)}"
+                        android:inputType="number"
+                        android:singleLine="true"
+                        android:imeOptions="actionNext"
+                        android:padding="18dip"
+                        android:fontFamily="sans-serif-black"
+                        android:background="@color/white"
+                        android:textColor="@color/black"
+                        android:textSize="15dp"/>
+
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/table_row_guest1"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#D3D3D3">
+
+                    <TextView
+                        android:id="@+id/text_view_guest1_name"
+                        android:layout_width="125dp"
+                        android:background="#D3D3D3"
+                        android:padding="18dip"
+                        android:singleLine="true"
+                        android:imeOptions="actionNext"
+                        android:hint="Guest 1"
+                        android:text="@={guest1.username}"
+                        android:fontFamily="sans-serif-black"
+                        android:textColor="@color/black"
+                        android:textSize="15dp"/>
+
+                    <EditText
+                        android:id="@+id/edit_text_hole1_guest1"
+                        android:layout_height="match_parent"
+                        android:layout_width="match_parent"
+                        android:hint="00"
+                        android:text="@={guest1Score.hole10}"
+                        android:onClick="@{() -> scorePresenter.onShowGuest1Score(guest1Score)}"
+                        android:inputType="number"
+                        android:singleLine="true"
+                        android:imeOptions="actionNext"
+                        android:padding="18dip"
+                        android:fontFamily="sans-serif-black"
+                        android:background="#D3D3D3"
+                        android:textColor="@color/black"
+                        android:textSize="15dp"/>
+
+                    <EditText
+                        android:id="@+id/edit_text_hole2_guest1"
+                        android:layout_height="match_parent"
+                        android:layout_width="match_parent"
+                        android:hint="00"
+                        android:text="@={guest1Score.hole11}"
+                        android:onClick="@{() -> scorePresenter.onShowGuest1Score(guest1Score)}"
+                        android:inputType="number"
+                        android:singleLine="true"
+                        android:imeOptions="actionNext"
+                        android:padding="18dip"
+                        android:fontFamily="sans-serif-black"
+                        android:background="#D3D3D3"
+                        android:textColor="@color/black"
+                        android:textSize="15dp"/>
+
+                    <EditText
+                        android:id="@+id/edit_text_hole3_guest1"
+                        android:layout_height="match_parent"
+                        android:layout_width="match_parent"
+                        android:hint="00"
+                        android:text="@={guest1Score.hole12}"
+                        android:onClick="@{() -> scorePresenter.onShowGuest1Score(guest1Score)}"
+                        android:inputType="number"
+                        android:singleLine="true"
+                        android:imeOptions="actionNext"
+                        android:padding="18dip"
+                        android:fontFamily="sans-serif-black"
+                        android:background="#D3D3D3"
+                        android:textColor="@color/black"
+                        android:textSize="15dp"/>
+
+                    <EditText
+                        android:id="@+id/edit_text_hole4_guest1"
+                        android:layout_height="match_parent"
+                        android:layout_width="match_parent"
+                        android:hint="00"
+                        android:text="@={guest1Score.hole13}"
+                        android:onClick="@{() -> scorePresenter.onShowGuest1Score(guest1Score)}"
+                        android:imeOptions="actionNext"
+                        android:padding="18dip"
+                        android:inputType="number"
+                        android:fontFamily="sans-serif-black"
+                        android:background="#D3D3D3"
+                        android:singleLine="true"
+                        android:textColor="@color/black"
+                        android:textSize="15dp"/>
+
+                    <EditText
+                        android:id="@+id/edit_text_hole5_guest1"
+                        android:layout_height="match_parent"
+                        android:layout_width="match_parent"
+                        android:hint="00"
+                        android:text="@={guest1Score.hole14}"
+                        android:onClick="@{() -> scorePresenter.onShowGuest1Score(guest1Score)}"
+                        android:imeOptions="actionNext"
+                        android:padding="18dip"
+                        android:inputType="number"
+                        android:fontFamily="sans-serif-black"
+                        android:background="#D3D3D3"
+                        android:textColor="@color/black"
+                        android:singleLine="true"
+                        android:textSize="15dp"/>
+
+                    <EditText
+                        android:id="@+id/edit_text_hole6_guest1"
+                        android:layout_height="match_parent"
+                        android:layout_width="match_parent"
+                        android:hint="00"
+                        android:text="@={guest1Score.hole15}"
+                        android:onClick="@{() -> scorePresenter.onShowGuest1Score(guest1Score)}"
+                        android:inputType="number"
+                        android:imeOptions="actionNext"
+                        android:padding="18dip"
+                        android:singleLine="true"
+                        android:fontFamily="sans-serif-black"
+                        android:background="#D3D3D3"
+                        android:textColor="@color/black"
+                        android:textSize="15dp"/>
+
+                    <EditText
+                        android:id="@+id/edit_text_hole7_guest1"
+                        android:layout_height="match_parent"
+                        android:layout_width="match_parent"
+                        android:hint="00"
+                        android:text="@={guest1Score.hole16}"
+                        android:onClick="@{() -> scorePresenter.onShowGuest1Score(guest1Score)}"
+                        android:inputType="number"
+                        android:padding="18dip"
+                        android:singleLine="true"
+                        android:imeOptions="actionNext"
+                        android:fontFamily="sans-serif-black"
+                        android:background="#D3D3D3"
+                        android:textColor="@color/black"
+                        android:textSize="15dp"/>
+
+                    <EditText
+                        android:id="@+id/edit_text_hole8_guest1"
+                        android:layout_height="match_parent"
+                        android:layout_width="match_parent"
+                        android:hint="00"
+                        android:text="@={guest1Score.hole17}"
+                        android:onClick="@{() -> scorePresenter.onShowGuest1Score(guest1Score)}"
+                        android:inputType="number"
+                        android:imeOptions="actionNext"
+                        android:padding="18dip"
+                        android:fontFamily="sans-serif-black"
+                        android:background="#D3D3D3"
+                        android:singleLine="true"
+                        android:textColor="@color/black"
+                        android:textSize="15dp"/>
+
+                    <EditText
+                        android:id="@+id/edit_text_hole9_guest1"
+                        android:layout_height="match_parent"
+                        android:layout_width="match_parent"
+                        android:hint="00"
+                        android:text="@={guest1Score.hole18}"
+                        android:onClick="@{() -> scorePresenter.onShowGuest1Score(guest1Score)}"
+                        android:imeOptions="actionNext"
+                        android:singleLine="true"
+                        android:inputType="number"
+                        android:padding="18dip"
+                        android:fontFamily="sans-serif-black"
+                        android:background="#D3D3D3"
+                        android:textColor="@color/black"
+                        android:textSize="15dp"/>
+
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/table_row_guest2"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@color/white">
+
+                    <TextView
+                        android:id="@+id/text_input_edit_text_guest2"
+                        android:layout_width="125dp"
+                        android:padding="18dip"
+                        android:singleLine="true"
+                        android:imeOptions="actionNext"
+                        android:hint="Guest 2"
+                        android:text="@={guest2.username}"
+                        android:fontFamily="sans-serif-black"
+                        android:textColor="@color/black"
+                        android:textSize="15dp"/>
+
+                    <EditText
+                        android:id="@+id/edit_text_hole1_guest2"
+                        android:layout_height="match_parent"
+                        android:layout_width="match_parent"
+                        android:hint="00"
+                        android:text="@={guest2Score.hole10}"
+                        android:onClick="@{() -> scorePresenter.onShowGuest2Score(guest2Score)}"
+                        android:inputType="number"
+                        android:singleLine="true"
+                        android:imeOptions="actionNext"
+                        android:background="@color/white"
+                        android:padding="18dip"
+                        android:fontFamily="sans-serif-black"
+                        android:textColor="@color/black"
+                        android:textSize="15dp"/>
+
+                    <EditText
+                        android:id="@+id/edit_text_hole2_guest2"
+                        android:layout_height="match_parent"
+                        android:layout_width="match_parent"
+                        android:hint="00"
+                        android:text="@={guest2Score.hole11}"
+                        android:onClick="@{() -> scorePresenter.onShowGuest2Score(guest2Score)}"
+                        android:inputType="number"
+                        android:singleLine="true"
+                        android:imeOptions="actionNext"
+                        android:padding="18dip"
+                        android:fontFamily="sans-serif-black"
+                        android:background="@color/white"
+                        android:textColor="@color/black"
+                        android:textSize="15dp"/>
+
+                    <EditText
+                        android:id="@+id/edit_text_hole3_guest2"
+                        android:layout_height="match_parent"
+                        android:layout_width="match_parent"
+                        android:hint="00"
+                        android:text="@={guest2Score.hole12}"
+                        android:onClick="@{() -> scorePresenter.onShowGuest2Score(guest2Score)}"
+                        android:inputType="number"
+                        android:singleLine="true"
+                        android:imeOptions="actionNext"
+                        android:padding="18dip"
+                        android:fontFamily="sans-serif-black"
+                        android:background="@color/white"
+                        android:textColor="@color/black"
+                        android:textSize="15dp"/>
+
+                    <EditText
+                        android:id="@+id/edit_text_hole4_guest2"
+                        android:layout_height="match_parent"
+                        android:layout_width="match_parent"
+                        android:hint="00"
+                        android:text="@={guest2Score.hole13}"
+                        android:onClick="@{() -> scorePresenter.onShowGuest2Score(guest2Score)}"
+                        android:imeOptions="actionNext"
+                        android:padding="18dip"
+                        android:inputType="number"
+                        android:fontFamily="sans-serif-black"
+                        android:background="@color/white"
+                        android:singleLine="true"
+                        android:textColor="@color/black"
+                        android:textSize="15dp"/>
+
+                    <EditText
+                        android:id="@+id/edit_text_hole5_guest2"
+                        android:layout_height="match_parent"
+                        android:layout_width="match_parent"
+                        android:hint="00"
+                        android:text="@={guest2Score.hole14}"
+                        android:onClick="@{() -> scorePresenter.onShowGuest2Score(guest2Score)}"
+                        android:imeOptions="actionNext"
+                        android:padding="18dip"
+                        android:inputType="number"
+                        android:fontFamily="sans-serif-black"
+                        android:background="@color/white"
+                        android:textColor="@color/black"
+                        android:singleLine="true"
+                        android:textSize="15dp"/>
+
+                    <EditText
+                        android:id="@+id/edit_text_hole6_guest2"
+                        android:layout_height="match_parent"
+                        android:layout_width="match_parent"
+                        android:hint="00"
+                        android:text="@={guest2Score.hole15}"
+                        android:onClick="@{() -> scorePresenter.onShowGuest2Score(guest2Score)}"
+                        android:inputType="number"
+                        android:imeOptions="actionNext"
+                        android:padding="18dip"
+                        android:singleLine="true"
+                        android:fontFamily="sans-serif-black"
+                        android:background="@color/white"
+                        android:textColor="@color/black"
+                        android:textSize="15dp"/>
+
+                    <EditText
+                        android:id="@+id/edit_text_hole7_guest2"
+                        android:layout_height="match_parent"
+                        android:layout_width="match_parent"
+                        android:hint="00"
+                        android:text="@={guest2Score.hole16}"
+                        android:onClick="@{() -> scorePresenter.onShowGuest2Score(guest2Score)}"
+                        android:inputType="number"
+                        android:padding="18dip"
+                        android:singleLine="true"
+                        android:imeOptions="actionNext"
+                        android:fontFamily="sans-serif-black"
+                        android:background="@color/white"
+                        android:textColor="@color/black"
+                        android:textSize="15dp"/>
+
+                    <EditText
+                        android:id="@+id/edit_text_hole8_guest2"
+                        android:layout_height="match_parent"
+                        android:layout_width="match_parent"
+                        android:hint="00"
+                        android:text="@={guest2Score.hole17}"
+                        android:onClick="@{() -> scorePresenter.onShowGuest2Score(guest2Score)}"
+                        android:inputType="number"
+                        android:imeOptions="actionNext"
+                        android:padding="18dip"
+                        android:fontFamily="sans-serif-black"
+                        android:background="@color/white"
+                        android:singleLine="true"
+                        android:textColor="@color/black"
+                        android:textSize="15dp"/>
+
+                    <EditText
+                        android:id="@+id/edit_text_hole9_guest2"
+                        android:layout_height="match_parent"
+                        android:layout_width="match_parent"
+                        android:hint="00"
+                        android:text="@={guest2Score.hole18}"
+                        android:onClick="@{() -> scorePresenter.onShowGuest2Score(guest2Score)}"
+                        android:imeOptions="actionNext"
+                        android:singleLine="true"
+                        android:inputType="number"
+                        android:padding="18dip"
+                        android:fontFamily="sans-serif-black"
+                        android:background="@color/white"
+                        android:textColor="@color/black"
+                        android:textSize="15dp"/>
+
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/table_row_guest3"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#D3D3D3">
+
+                    <TextView
+                        android:id="@+id/text_input_edit_text_guest3"
+                        android:layout_width="125dp"
+                        android:background="#D3D3D3"
+                        android:padding="18dip"
+                        android:singleLine="true"
+                        android:imeOptions="actionNext"
+                        android:hint="Guest 3"
+                        android:text="@={guest3.username}"
+                        android:fontFamily="sans-serif-black"
+                        android:textColor="@color/black"
+                        android:textSize="15dp"/>
+
+                    <EditText
+                        android:id="@+id/edit_text_hole1_guest3"
+                        android:layout_height="match_parent"
+                        android:layout_width="match_parent"
+                        android:hint="00"
+                        android:text="@={guest3Score.hole10}"
+                        android:onClick="@{() -> scorePresenter.onShowGuest3Score(guest3Score)}"
+                        android:inputType="number"
+                        android:singleLine="true"
+                        android:imeOptions="actionNext"
+                        android:padding="18dip"
+                        android:fontFamily="sans-serif-black"
+                        android:background="#D3D3D3"
+                        android:textColor="@color/black"
+                        android:textSize="15dp"/>
+
+                    <EditText
+                        android:id="@+id/edit_text_hole2_guest3"
+                        android:layout_height="match_parent"
+                        android:layout_width="match_parent"
+                        android:hint="00"
+                        android:text="@={guest3Score.hole11}"
+                        android:onClick="@{() -> scorePresenter.onShowGuest3Score(guest3Score)}"
+                        android:inputType="number"
+                        android:singleLine="true"
+                        android:imeOptions="actionNext"
+                        android:padding="18dip"
+                        android:fontFamily="sans-serif-black"
+                        android:background="#D3D3D3"
+                        android:textColor="@color/black"
+                        android:textSize="15dp"/>
+
+                    <EditText
+                        android:id="@+id/edit_text_hole3_guest3"
+                        android:layout_height="match_parent"
+                        android:layout_width="match_parent"
+                        android:hint="00"
+                        android:text="@={guest3Score.hole12}"
+                        android:onClick="@{() -> scorePresenter.onShowGuest3Score(guest3Score)}"
+                        android:inputType="number"
+                        android:singleLine="true"
+                        android:imeOptions="actionNext"
+                        android:padding="18dip"
+                        android:fontFamily="sans-serif-black"
+                        android:background="#D3D3D3"
+                        android:textColor="@color/black"
+                        android:textSize="15dp"/>
+
+                    <EditText
+                        android:id="@+id/edit_text_hole4_guest3"
+                        android:layout_height="match_parent"
+                        android:layout_width="match_parent"
+                        android:hint="00"
+                        android:text="@={guest3Score.hole13}"
+                        android:onClick="@{() -> scorePresenter.onShowGuest3Score(guest3Score)}"
+                        android:imeOptions="actionNext"
+                        android:padding="18dip"
+                        android:inputType="number"
+                        android:fontFamily="sans-serif-black"
+                        android:background="#D3D3D3"
+                        android:singleLine="true"
+                        android:textColor="@color/black"
+                        android:textSize="15dp"/>
+
+                    <EditText
+                        android:id="@+id/edit_text_hole5_guest3"
+                        android:layout_height="match_parent"
+                        android:layout_width="match_parent"
+                        android:hint="00"
+                        android:text="@={guest3Score.hole14}"
+                        android:onClick="@{() -> scorePresenter.onShowGuest3Score(guest3Score)}"
+                        android:imeOptions="actionNext"
+                        android:padding="18dip"
+                        android:inputType="number"
+                        android:fontFamily="sans-serif-black"
+                        android:background="#D3D3D3"
+                        android:textColor="@color/black"
+                        android:singleLine="true"
+                        android:textSize="15dp"/>
+
+                    <EditText
+                        android:id="@+id/edit_text_hole6_guest3"
+                        android:layout_height="match_parent"
+                        android:layout_width="match_parent"
+                        android:hint="00"
+                        android:text="@={guest3Score.hole15}"
+                        android:onClick="@{() -> scorePresenter.onShowGuest3Score(guest3Score)}"
+                        android:inputType="number"
+                        android:imeOptions="actionNext"
+                        android:padding="18dip"
+                        android:singleLine="true"
+                        android:fontFamily="sans-serif-black"
+                        android:background="#D3D3D3"
+                        android:textColor="@color/black"
+                        android:textSize="15dp"/>
+
+                    <EditText
+                        android:id="@+id/edit_text_hole7_guest3"
+                        android:layout_height="match_parent"
+                        android:layout_width="match_parent"
+                        android:hint="00"
+                        android:text="@={guest3Score.hole16}"
+                        android:onClick="@{() -> scorePresenter.onShowGuest3Score(guest3Score)}"
+                        android:inputType="number"
+                        android:padding="18dip"
+                        android:singleLine="true"
+                        android:imeOptions="actionNext"
+                        android:fontFamily="sans-serif-black"
+                        android:background="#D3D3D3"
+                        android:textColor="@color/black"
+                        android:textSize="15dp"/>
+
+                    <EditText
+                        android:id="@+id/edit_text_hole8_guest3"
+                        android:layout_height="match_parent"
+                        android:layout_width="match_parent"
+                        android:hint="00"
+                        android:text="@={guest3Score.hole17}"
+                        android:onClick="@{() -> scorePresenter.onShowGuest3Score(guest3Score)}"
+                        android:inputType="number"
+                        android:imeOptions="actionNext"
+                        android:padding="18dip"
+                        android:fontFamily="sans-serif-black"
+                        android:background="#D3D3D3"
+                        android:singleLine="true"
+                        android:textColor="@color/black"
+                        android:textSize="15dp"/>
+
+                    <EditText
+                        android:id="@+id/edit_text_hole9_guest3"
+                        android:layout_height="match_parent"
+                        android:layout_width="match_parent"
+                        android:hint="00"
+                        android:text="@={guest3Score.hole18}"
+                        android:onClick="@{() -> scorePresenter.onShowGuest3Score(guest3Score)}"
+                        android:imeOptions="actionNext"
+                        android:singleLine="true"
+                        android:inputType="number"
+                        android:padding="18dip"
+                        android:fontFamily="sans-serif-black"
+                        android:background="#D3D3D3"
+                        android:textColor="@color/black"
+                        android:textSize="15dp"/>
+
+                </TableRow>
+
+            </TableLayout>
+
+        </HorizontalScrollView>
+
+        <GridLayout
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:layout_marginTop="-325dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:columnCount="2"
+            android:rowCount="2"
+            android:layout_gravity="center">
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="2"
+                app:cardBackgroundColor="#000f00"
+                android:layout_gravity="fill"
+                android:layout_columnWeight="1"
+                android:layout_rowWeight="1"
+                android:layout_row="0"
+                android:layout_column="0"
+                android:layout_margin="10dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="5dp">
+
+                    <TextView
+                        android:id="@+id/text_view_current_score_user"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:fontFamily="sans-serif-black"
+                        android:gravity="center"
+                        android:text="0"
+                        android:textColor="@color/white"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+
+                    <TextView
+                        android:id="@+id/text_view_current_score_username"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/text_view_current_score_user"
+                        android:layout_centerInParent="true"
+                        android:fontFamily="sans-serif-black"
+                        android:text="@={user.username}"
+                        android:textColor="@color/white"
+                        android:textSize="15sp" />
+
+                </RelativeLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="0dp"
+                android:layout_height="125dp"
+                android:layout_weight="5"
+                app:cardBackgroundColor="#000f00"
+                android:layout_gravity="fill"
+                android:layout_columnWeight="1"
+                android:layout_rowWeight="1"
+                android:layout_row="1"
+                android:layout_column="1"
+                android:layout_margin="10dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="5dp">
+
+                    <TextView
+                        android:id="@+id/text_view_current_score_guest3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:fontFamily="sans-serif-black"
+                        android:gravity="center"
+                        android:text="0"
+                        android:textColor="@color/white"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+
+                    <TextView
+                        android:id="@+id/text_view_current_score_guest3_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/text_view_current_score_guest3"
+                        android:layout_centerInParent="true"
+                        android:fontFamily="sans-serif-black"
+                        android:text="@={guest3.username}"
+                        android:textColor="@color/white"
+                        android:textSize="15sp" />
+
+                </RelativeLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="0dp"
+                android:layout_height="125dp"
+                android:layout_weight="5"
+                app:cardBackgroundColor="#000f00"
+                android:layout_row="1"
+                android:layout_rowWeight="1"
+                android:layout_column="0"
+                android:layout_columnWeight="1"
+                android:layout_gravity="fill"
+                android:layout_margin="10dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="5dp">
+
+                    <TextView
+                        android:id="@+id/text_view_current_score_guest2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:fontFamily="sans-serif-black"
+                        android:gravity="center"
+                        android:text="0"
+                        android:textColor="@color/white"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+
+                    <TextView
+                        android:id="@+id/text_view_current_score_guest2_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/text_view_current_score_guest2"
+                        android:layout_centerInParent="true"
+                        android:fontFamily="sans-serif-black"
+                        android:text="@={guest2.username}"
+                        android:textColor="@color/white"
+                        android:textSize="15sp" />
+
+                </RelativeLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="0dp"
+                android:layout_height="125dp"
+                android:layout_weight="5"
+                app:cardBackgroundColor="#000f00"
+                android:layout_gravity="fill"
+                android:layout_columnWeight="1"
+                android:layout_rowWeight="1"
+                android:layout_row="0"
+                android:layout_column="1"
+                android:layout_margin="10dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:padding="5dp">
+
+                    <TextView
+                        android:id="@+id/text_view_current_score_guest1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:fontFamily="sans-serif-black"
+                        android:gravity="center"
+                        android:text="0"
+                        android:textColor="@color/white"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+
+                    <TextView
+                        android:id="@+id/text_view_current_score_guest1_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/text_view_current_score_guest1"
+                        android:layout_centerInParent="true"
+                        android:fontFamily="sans-serif-black"
+                        android:text="@={guest1.username}"
+                        android:textColor="@color/white"
+                        android:textSize="15sp" />
+
+                </RelativeLayout>
+
+            </com.google.android.material.card.MaterialCardView>
+
+        </GridLayout>
+
+    </LinearLayout>
+
+</layout>
