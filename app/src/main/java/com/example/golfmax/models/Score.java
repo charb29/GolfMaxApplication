@@ -31,7 +31,17 @@ public class Score extends BaseObservable {
     private String hole7;
     private String hole8;
     private String hole9;
+    private String hole10;
+    private String hole11;
+    private String hole12;
+    private String hole13;
+    private String hole14;
+    private String hole15;
+    private String hole16;
+    private String hole17;
+    private String hole18;
     private String front9Score;
+    private String back9Score;
     private double courseRating;
     private double slopeRating;
 
@@ -167,6 +177,96 @@ public class Score extends BaseObservable {
     }
 
     @Bindable
+    public String getHole10() {
+        return hole10;
+    }
+
+    public void setHole10(String hole10) {
+        this.hole10 = hole10;
+        notifyPropertyChanged(BR.hole10);
+    }
+
+    @Bindable
+    public String getHole11() {
+        return hole11;
+    }
+
+    public void setHole11(String hole11) {
+        this.hole11 = hole11;
+        notifyPropertyChanged(BR.hole11);
+    }
+
+    @Bindable
+    public String getHole12() {
+        return hole12;
+    }
+
+    public void setHole12(String hole12) {
+        this.hole12 = hole12;
+        notifyPropertyChanged(BR.hole12);
+    }
+
+    @Bindable
+    public String getHole13() {
+        return hole13;
+    }
+
+    public void setHole13(String hole13) {
+        this.hole13 = hole13;
+        notifyPropertyChanged(BR.hole13);
+    }
+
+    @Bindable
+    public String getHole14() {
+        return hole14;
+    }
+
+    public void setHole14(String hole14) {
+        this.hole14 = hole14;
+        notifyPropertyChanged(BR.hole14);
+    }
+
+    @Bindable
+    public String getHole15() {
+        return hole15;
+    }
+
+    public void setHole15(String hole15) {
+        this.hole15 = hole15;
+        notifyPropertyChanged(BR.hole15);
+    }
+
+    @Bindable
+    public String getHole16() {
+        return hole16;
+    }
+
+    public void setHole16(String hole16) {
+        this.hole16 = hole16;
+        notifyPropertyChanged(BR.hole16);
+    }
+
+    @Bindable
+    public String getHole17() {
+        return hole17;
+    }
+
+    public void setHole17(String hole17) {
+        this.hole17 = hole17;
+        notifyPropertyChanged(BR.hole17);
+    }
+
+    @Bindable
+    public String getHole18() {
+        return hole18;
+    }
+
+    public void setHole18(String hole18) {
+        this.hole18 = hole18;
+        notifyPropertyChanged(BR.hole18);
+    }
+
+    @Bindable
     public String getFront9Score() {
         return front9Score;
     }
@@ -174,6 +274,15 @@ public class Score extends BaseObservable {
     public void setFront9Score(String front9Score) {
         this.front9Score = front9Score;
         notifyPropertyChanged(BR.front9Score);
+    }
+
+    @Bindable
+    public String getBack9Score() {
+        return front9Score;
+    }
+
+    public void setBack9Score(String back9Score) {
+        this.back9Score = back9Score;
     }
 
     public double getCourseRating() {
@@ -192,7 +301,7 @@ public class Score extends BaseObservable {
         this.slopeRating = slopeRating;
     }
 
-    public List<String> getListOfEnteredScores() {
+    public List<String> getListOfEnteredFront9Scores() {
         List<String> userScores = new ArrayList<>();
         userScores.add(getHole1());
         userScores.add(getHole2());
@@ -207,4 +316,18 @@ public class Score extends BaseObservable {
         return userScores;
     }
 
+    public List<String> getListOFEnteredBack9Scores() {
+        List<String> userScores = new ArrayList<>();
+        userScores.add(getHole10());
+        userScores.add(getHole11());
+        userScores.add(getHole12());
+        userScores.add(getHole13());
+        userScores.add(getHole14());
+        userScores.add(getHole15());
+        userScores.add(getHole16());
+        userScores.add(getHole17());
+        userScores.add(getHole18());
+
+        return userScores;
+    }
 }

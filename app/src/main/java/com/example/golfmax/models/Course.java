@@ -38,23 +38,23 @@ public class Course extends BaseObservable {
     @SerializedName("hole9")
     private int hole9 = 0;
     @SerializedName("hole10")
-    private String hole10;
+    private int hole10;
     @SerializedName("hole11")
-    private String hole11;
+    private int hole11;
     @SerializedName("hole12")
-    private String hole12;
+    private int hole12;
     @SerializedName("hole13")
-    private String hole13;
+    private int hole13;
     @SerializedName("hole14")
-    private String hole14;
+    private int hole14;
     @SerializedName("hole15")
-    private String hole15;
+    private int hole15;
     @SerializedName("hole16")
-    private String hole16;
+    private int hole16;
     @SerializedName("hole17")
-    private String hole17;
+    private int hole17;
     @SerializedName("hole18")
-    private String hole18;
+    private int hole18;
 
     public Course() {}
 
@@ -183,91 +183,91 @@ public class Course extends BaseObservable {
     }
 
     @Bindable
-    public String getHole10() {
+    public int getHole10() {
         return hole10;
     }
 
-    public void setHole10(String hole10) {
+    public void setHole10(int hole10) {
         this.hole10 = hole10;
         notifyPropertyChanged(BR.hole10);
     }
 
     @Bindable
-    public String getHole11() {
+    public int getHole11() {
         return hole11;
     }
 
-    public void setHole11(String hole11) {
+    public void setHole11(int hole11) {
         this.hole11 = hole11;
         notifyPropertyChanged(BR.hole11);
     }
 
     @Bindable
-    public String getHole12() {
+    public int getHole12() {
         return hole12;
     }
 
-    public void setHole12(String hole12) {
+    public void setHole12(int hole12) {
         this.hole12 = hole12;
         notifyPropertyChanged(BR.hole12);
     }
 
     @Bindable
-    public String getHole13() {
+    public int getHole13() {
         return hole13;
     }
 
-    public void setHole13(String hole13) {
+    public void setHole13(int hole13) {
         this.hole13 = hole13;
         notifyPropertyChanged(BR.hole13);
     }
 
     @Bindable
-    public String getHole14() {
+    public int getHole14() {
         return hole14;
     }
 
-    public void setHole14(String hole14) {
+    public void setHole14(int hole14) {
         this.hole14 = hole14;
         notifyPropertyChanged(BR.hole14);
     }
 
     @Bindable
-    public String getHole15() {
+    public int getHole15() {
         return hole15;
     }
 
-    public void setHole15(String hole15) {
+    public void setHole15(int hole15) {
         this.hole15 = hole15;
         notifyPropertyChanged(BR.hole15);
     }
 
     @Bindable
-    public String getHole16() {
+    public int getHole16() {
         return hole16;
     }
 
-    public void setHole16(String hole16) {
+    public void setHole16(int hole16) {
         this.hole16 = hole16;
         notifyPropertyChanged(BR.hole16);
     }
 
     @Bindable
-    public String getHole17() {
+    public int getHole17() {
         return hole17;
     }
 
-    public void setHole17(String hole17) {
+    public void setHole17(int hole17) {
         this.hole17 = hole17;
         notifyPropertyChanged(BR.hole17);
     }
 
     @Bindable
-    public String getHole18() {
+    public int getHole18() {
         return hole18;
     }
 
-    public void setHole18(String hole18) {
+    public void setHole18(int hole18) {
         this.hole18 = hole18;
         notifyPropertyChanged(BR.hole18);
     }
@@ -287,6 +287,21 @@ public class Course extends BaseObservable {
         return courseParsList;
     }
 
+    public List<Integer> getBack9ParsList() {
+        List<Integer> courseParsList = new ArrayList<>();
+        courseParsList.add(getHole10());
+        courseParsList.add(getHole11());
+        courseParsList.add(getHole12());
+        courseParsList.add(getHole13());
+        courseParsList.add(getHole14());
+        courseParsList.add(getHole15());
+        courseParsList.add(getHole16());
+        courseParsList.add(getHole17());
+        courseParsList.add(getHole18());
+
+        return courseParsList;
+    }
+
     public int getSumOfFront9Pars() {
         int front9ParTotal = 0;
         for (int i = 0; i < getFront9ParsList().size(); i++) {
@@ -294,5 +309,14 @@ public class Course extends BaseObservable {
         }
 
         return front9ParTotal;
+    }
+
+    public int getSumOfBack9Pars() {
+        int back9ParTotal = 0;
+        for (int i = 0; i < getBack9ParsList().size(); i++) {
+            back9ParTotal += i;
+        }
+
+        return back9ParTotal;
     }
 }
