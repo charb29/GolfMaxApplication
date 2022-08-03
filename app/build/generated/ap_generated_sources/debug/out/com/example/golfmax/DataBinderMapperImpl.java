@@ -13,6 +13,7 @@ import com.example.golfmax.databinding.ActivityLoginBindingImpl;
 import com.example.golfmax.databinding.ActivityNewRoundBindingImpl;
 import com.example.golfmax.databinding.ActivityPersonalScoresBindingImpl;
 import com.example.golfmax.databinding.ActivityRegistrationBindingImpl;
+import com.example.golfmax.databinding.ActivityScoreCardBack9BindingImpl;
 import com.example.golfmax.databinding.ActivityScoreCardFront9BindingImpl;
 import com.example.golfmax.databinding.ActivityUserProfileBindingImpl;
 import com.example.golfmax.databinding.CourseLeaderboardRecyclerViewBindingImpl;
@@ -44,19 +45,21 @@ public class DataBinderMapperImpl extends DataBinderMapper {
 
   private static final int LAYOUT_ACTIVITYREGISTRATION = 7;
 
-  private static final int LAYOUT_ACTIVITYSCORECARDFRONT9 = 8;
+  private static final int LAYOUT_ACTIVITYSCORECARDBACK9 = 8;
 
-  private static final int LAYOUT_ACTIVITYUSERPROFILE = 9;
+  private static final int LAYOUT_ACTIVITYSCORECARDFRONT9 = 9;
 
-  private static final int LAYOUT_COURSELEADERBOARDRECYCLERVIEW = 10;
+  private static final int LAYOUT_ACTIVITYUSERPROFILE = 10;
 
-  private static final int LAYOUT_COURSELISTRECYCLERVIEW = 11;
+  private static final int LAYOUT_COURSELEADERBOARDRECYCLERVIEW = 11;
 
-  private static final int LAYOUT_NEWROUNDRECYCLERVIEW = 12;
+  private static final int LAYOUT_COURSELISTRECYCLERVIEW = 12;
 
-  private static final int LAYOUT_PERSONALSCORESRECYCLERVIEW = 13;
+  private static final int LAYOUT_NEWROUNDRECYCLERVIEW = 13;
 
-  private static final SparseIntArray INTERNAL_LAYOUT_ID_LOOKUP = new SparseIntArray(13);
+  private static final int LAYOUT_PERSONALSCORESRECYCLERVIEW = 14;
+
+  private static final SparseIntArray INTERNAL_LAYOUT_ID_LOOKUP = new SparseIntArray(14);
 
   static {
     INTERNAL_LAYOUT_ID_LOOKUP.put(com.example.golfmax.R.layout.activity_course_leaderboard, LAYOUT_ACTIVITYCOURSELEADERBOARD);
@@ -66,6 +69,7 @@ public class DataBinderMapperImpl extends DataBinderMapper {
     INTERNAL_LAYOUT_ID_LOOKUP.put(com.example.golfmax.R.layout.activity_new_round, LAYOUT_ACTIVITYNEWROUND);
     INTERNAL_LAYOUT_ID_LOOKUP.put(com.example.golfmax.R.layout.activity_personal_scores, LAYOUT_ACTIVITYPERSONALSCORES);
     INTERNAL_LAYOUT_ID_LOOKUP.put(com.example.golfmax.R.layout.activity_registration, LAYOUT_ACTIVITYREGISTRATION);
+    INTERNAL_LAYOUT_ID_LOOKUP.put(com.example.golfmax.R.layout.activity_score_card_back9, LAYOUT_ACTIVITYSCORECARDBACK9);
     INTERNAL_LAYOUT_ID_LOOKUP.put(com.example.golfmax.R.layout.activity_score_card_front9, LAYOUT_ACTIVITYSCORECARDFRONT9);
     INTERNAL_LAYOUT_ID_LOOKUP.put(com.example.golfmax.R.layout.activity_user_profile, LAYOUT_ACTIVITYUSERPROFILE);
     INTERNAL_LAYOUT_ID_LOOKUP.put(com.example.golfmax.R.layout.course_leaderboard_recycler_view, LAYOUT_COURSELEADERBOARDRECYCLERVIEW);
@@ -124,6 +128,12 @@ public class DataBinderMapperImpl extends DataBinderMapper {
             return new ActivityRegistrationBindingImpl(component, view);
           }
           throw new IllegalArgumentException("The tag for activity_registration is invalid. Received: " + tag);
+        }
+        case  LAYOUT_ACTIVITYSCORECARDBACK9: {
+          if ("layout/activity_score_card_back9_0".equals(tag)) {
+            return new ActivityScoreCardBack9BindingImpl(component, view);
+          }
+          throw new IllegalArgumentException("The tag for activity_score_card_back9 is invalid. Received: " + tag);
         }
         case  LAYOUT_ACTIVITYSCORECARDFRONT9: {
           if ("layout/activity_score_card_front9_0".equals(tag)) {
@@ -206,60 +216,61 @@ public class DataBinderMapperImpl extends DataBinderMapper {
   }
 
   private static class InnerBrLookup {
-    static final SparseArray<String> sKeys = new SparseArray<String>(46);
+    static final SparseArray<String> sKeys = new SparseArray<String>(47);
 
     static {
       sKeys.put(0, "_all");
       sKeys.put(1, "averageScore");
-      sKeys.put(2, "course");
-      sKeys.put(3, "courseName");
-      sKeys.put(4, "courseRating");
-      sKeys.put(5, "email");
-      sKeys.put(6, "front9Score");
-      sKeys.put(7, "guest1");
-      sKeys.put(8, "guest1Presenter");
-      sKeys.put(9, "guest1Score");
-      sKeys.put(10, "guest2");
-      sKeys.put(11, "guest2Presenter");
-      sKeys.put(12, "guest2Score");
-      sKeys.put(13, "guest3");
-      sKeys.put(14, "guest3Presenter");
-      sKeys.put(15, "guest3Score");
-      sKeys.put(16, "handicapIndex");
-      sKeys.put(17, "hole1");
-      sKeys.put(18, "hole10");
-      sKeys.put(19, "hole11");
-      sKeys.put(20, "hole12");
-      sKeys.put(21, "hole13");
-      sKeys.put(22, "hole14");
-      sKeys.put(23, "hole15");
-      sKeys.put(24, "hole16");
-      sKeys.put(25, "hole17");
-      sKeys.put(26, "hole18");
-      sKeys.put(27, "hole2");
-      sKeys.put(28, "hole3");
-      sKeys.put(29, "hole4");
-      sKeys.put(30, "hole5");
-      sKeys.put(31, "hole6");
-      sKeys.put(32, "hole7");
-      sKeys.put(33, "hole8");
-      sKeys.put(34, "hole9");
-      sKeys.put(35, "password");
-      sKeys.put(36, "presenter");
-      sKeys.put(37, "roundsPlayed");
-      sKeys.put(38, "score");
-      sKeys.put(39, "scorePresenter");
-      sKeys.put(40, "slopeRating");
-      sKeys.put(41, "stats");
-      sKeys.put(42, "user");
-      sKeys.put(43, "userPresenter");
-      sKeys.put(44, "userScore");
-      sKeys.put(45, "username");
+      sKeys.put(2, "back9Score");
+      sKeys.put(3, "course");
+      sKeys.put(4, "courseName");
+      sKeys.put(5, "courseRating");
+      sKeys.put(6, "email");
+      sKeys.put(7, "front9Score");
+      sKeys.put(8, "guest1");
+      sKeys.put(9, "guest1Presenter");
+      sKeys.put(10, "guest1Score");
+      sKeys.put(11, "guest2");
+      sKeys.put(12, "guest2Presenter");
+      sKeys.put(13, "guest2Score");
+      sKeys.put(14, "guest3");
+      sKeys.put(15, "guest3Presenter");
+      sKeys.put(16, "guest3Score");
+      sKeys.put(17, "handicapIndex");
+      sKeys.put(18, "hole1");
+      sKeys.put(19, "hole10");
+      sKeys.put(20, "hole11");
+      sKeys.put(21, "hole12");
+      sKeys.put(22, "hole13");
+      sKeys.put(23, "hole14");
+      sKeys.put(24, "hole15");
+      sKeys.put(25, "hole16");
+      sKeys.put(26, "hole17");
+      sKeys.put(27, "hole18");
+      sKeys.put(28, "hole2");
+      sKeys.put(29, "hole3");
+      sKeys.put(30, "hole4");
+      sKeys.put(31, "hole5");
+      sKeys.put(32, "hole6");
+      sKeys.put(33, "hole7");
+      sKeys.put(34, "hole8");
+      sKeys.put(35, "hole9");
+      sKeys.put(36, "password");
+      sKeys.put(37, "presenter");
+      sKeys.put(38, "roundsPlayed");
+      sKeys.put(39, "score");
+      sKeys.put(40, "scorePresenter");
+      sKeys.put(41, "slopeRating");
+      sKeys.put(42, "stats");
+      sKeys.put(43, "user");
+      sKeys.put(44, "userPresenter");
+      sKeys.put(45, "userScore");
+      sKeys.put(46, "username");
     }
   }
 
   private static class InnerLayoutIdLookup {
-    static final HashMap<String, Integer> sKeys = new HashMap<String, Integer>(13);
+    static final HashMap<String, Integer> sKeys = new HashMap<String, Integer>(14);
 
     static {
       sKeys.put("layout/activity_course_leaderboard_0", com.example.golfmax.R.layout.activity_course_leaderboard);
@@ -269,6 +280,7 @@ public class DataBinderMapperImpl extends DataBinderMapper {
       sKeys.put("layout/activity_new_round_0", com.example.golfmax.R.layout.activity_new_round);
       sKeys.put("layout/activity_personal_scores_0", com.example.golfmax.R.layout.activity_personal_scores);
       sKeys.put("layout/activity_registration_0", com.example.golfmax.R.layout.activity_registration);
+      sKeys.put("layout/activity_score_card_back9_0", com.example.golfmax.R.layout.activity_score_card_back9);
       sKeys.put("layout/activity_score_card_front9_0", com.example.golfmax.R.layout.activity_score_card_front9);
       sKeys.put("layout/activity_user_profile_0", com.example.golfmax.R.layout.activity_user_profile);
       sKeys.put("layout/course_leaderboard_recycler_view_0", com.example.golfmax.R.layout.course_leaderboard_recycler_view);
