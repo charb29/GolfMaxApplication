@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:tools="http://schemas.android.com/tools"
+<layout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
@@ -658,17 +658,16 @@
                 <TableRow
                         android:id="@+id/table_row_guest2"
                         android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:background="#D3D3D3">
+                        android:layout_height="wrap_content">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/text_input_edit_text_guest2"
                             android:layout_width="125dp"
-                            android:background="#D3D3D3"
                             android:padding="18dip"
                             android:singleLine="true"
                             android:imeOptions="actionNext"
                             android:hint="Guest 2"
+                            android:background="@color/white"
                             android:text="@={guest2.username}"
                             android:fontFamily="sans-serif-black"
                             android:textColor="@color/black"
@@ -686,7 +685,7 @@
                             android:imeOptions="actionNext"
                             android:padding="18dip"
                             android:fontFamily="sans-serif-black"
-                            android:background="#D3D3D3"
+                            android:background="@color/white"
                             android:textColor="@color/black"
                             android:textSize="15dp"/>
 
@@ -702,7 +701,7 @@
                             android:imeOptions="actionNext"
                             android:padding="18dip"
                             android:fontFamily="sans-serif-black"
-                            android:background="#D3D3D3"
+                            android:background="@color/white"
                             android:textColor="@color/black"
                             android:textSize="15dp"/>
 
@@ -718,7 +717,7 @@
                             android:imeOptions="actionNext"
                             android:padding="18dip"
                             android:fontFamily="sans-serif-black"
-                            android:background="#D3D3D3"
+                            android:background="@color/white"
                             android:textColor="@color/black"
                             android:textSize="15dp"/>
 
@@ -733,7 +732,7 @@
                             android:padding="18dip"
                             android:inputType="number"
                             android:fontFamily="sans-serif-black"
-                            android:background="#D3D3D3"
+                            android:background="@color/white"
                             android:singleLine="true"
                             android:textColor="@color/black"
                             android:textSize="15dp"/>
@@ -749,7 +748,7 @@
                             android:padding="18dip"
                             android:inputType="number"
                             android:fontFamily="sans-serif-black"
-                            android:background="#D3D3D3"
+                            android:background="@color/white"
                             android:textColor="@color/black"
                             android:singleLine="true"
                             android:textSize="15dp"/>
@@ -766,7 +765,7 @@
                             android:padding="18dip"
                             android:singleLine="true"
                             android:fontFamily="sans-serif-black"
-                            android:background="#D3D3D3"
+                            android:background="@color/white"
                             android:textColor="@color/black"
                             android:textSize="15dp"/>
 
@@ -782,7 +781,7 @@
                             android:singleLine="true"
                             android:imeOptions="actionNext"
                             android:fontFamily="sans-serif-black"
-                            android:background="#D3D3D3"
+                            android:background="@color/white"
                             android:textColor="@color/black"
                             android:textSize="15dp"/>
 
@@ -797,7 +796,7 @@
                             android:imeOptions="actionNext"
                             android:padding="18dip"
                             android:fontFamily="sans-serif-black"
-                            android:background="#D3D3D3"
+                            android:background="@color/white"
                             android:singleLine="true"
                             android:textColor="@color/black"
                             android:textSize="15dp"/>
@@ -814,7 +813,7 @@
                             android:inputType="number"
                             android:padding="18dip"
                             android:fontFamily="sans-serif-black"
-                            android:background="#D3D3D3"
+                            android:background="@color/white"
                             android:textColor="@color/black"
                             android:textSize="15dp"/>
 
