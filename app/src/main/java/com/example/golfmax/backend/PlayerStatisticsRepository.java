@@ -5,7 +5,6 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 
 import com.example.golfmax.models.PlayerStatistics;
-import com.example.golfmax.models.User;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -59,7 +58,7 @@ public class PlayerStatisticsRepository {
         return PlayerStatistics;
     }
 
-    public void updateUserStats(@NonNull PlayerStatistics playerStatistics, @NonNull long userId) {
+    public void updateUserStats(@NonNull PlayerStatistics playerStatistics, long userId) {
         Call<PlayerStatistics> statsCall = GolfMaxHttpClient
                 .getApiInterface()
                 .updateUserStats(userId, playerStatistics);

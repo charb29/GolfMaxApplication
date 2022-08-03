@@ -6,6 +6,7 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.example.golfmax.databinding.ActivityScoreCardBack9Binding;
 import com.example.golfmax.models.Course;
 import com.example.golfmax.recyclerViews.CourseListRV;
 import com.example.golfmax.recyclerViews.NewRoundRV;
@@ -24,6 +25,7 @@ public class CourseRepository {
     private ActivityCourseListBinding courseListBinding;
     private ActivityNewRoundBinding newRoundBinding;
     private ActivityScoreCardFront9Binding scoreCardFront9Binding;
+    private ActivityScoreCardBack9Binding scoreCardBack9Binding;
     private List<Course> courseNamesList;
     private Course course;
 
@@ -53,6 +55,14 @@ public class CourseRepository {
 
     public void setScoreCardFront9Binding(ActivityScoreCardFront9Binding scoreCardFront9Binding) {
         this.scoreCardFront9Binding = scoreCardFront9Binding;
+    }
+
+    public ActivityScoreCardBack9Binding getScoreCardBack9Binding() {
+        return scoreCardBack9Binding;
+    }
+
+    public void setScoreCardBack9Binding(ActivityScoreCardBack9Binding scoreCardBack9Binding) {
+        this.scoreCardBack9Binding = scoreCardBack9Binding;
     }
 
     public Course getCourse() {
@@ -115,7 +125,7 @@ public class CourseRepository {
         });
     }
 
-    public void getCourseInfoById(long courseId) {
+    public void getCourseFront9InfoByCourseId(long courseId) {
         Call<Course> courseCall = GolfMaxHttpClient.getApiInterface().getCourseById(courseId);
 
         courseCall.enqueue(new Callback<Course>() {
@@ -124,6 +134,25 @@ public class CourseRepository {
                                    @NonNull Response<Course> response) {
                 setCourse(response.body());
                 scoreCardFront9Binding.setCourse(getCourse());
+                Log.i("COURSE INFO ====> ", getCourse().toString());
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<Course> call, @NonNull Throwable t) {
+                Log.e("ERROR ====> ", t.toString());
+            }
+        });
+    }
+
+    public void getCourseBack9InfoByCourseId(long courseId) {
+        Call<Course> courseCall = GolfMaxHttpClient.getApiInterface().getCourseById(courseId);
+
+        courseCall.enqueue(new Callback<Course>() {
+            @Override
+            public void onResponse(@NonNull Call<Course> call,
+                                   @NonNull Response<Course> response) {
+                setCourse(response.body());
+                scoreCardBack9Binding.setCourse(getCourse());
                 Log.i("COURSE INFO ====> ", getCourse().toString());
             }
 
