@@ -17,6 +17,7 @@ public class ActivityRegistrationBindingImpl extends ActivityRegistrationBinding
         sViewsWithIds.put(R.id.text_input_layout_username, 5);
         sViewsWithIds.put(R.id.text_input_layout_password, 6);
         sViewsWithIds.put(R.id.text_input_layout_email, 7);
+        sViewsWithIds.put(R.id.button_login, 8);
     }
     // views
     @NonNull
@@ -115,10 +116,11 @@ public class ActivityRegistrationBindingImpl extends ActivityRegistrationBinding
     };
 
     public ActivityRegistrationBindingImpl(@Nullable androidx.databinding.DataBindingComponent bindingComponent, @NonNull View root) {
-        this(bindingComponent, root, mapBindings(bindingComponent, root, 8, sIncludes, sViewsWithIds));
+        this(bindingComponent, root, mapBindings(bindingComponent, root, 9, sIncludes, sViewsWithIds));
     }
     private ActivityRegistrationBindingImpl(androidx.databinding.DataBindingComponent bindingComponent, View root, Object[] bindings) {
         super(bindingComponent, root, 1
+            , (android.widget.Button) bindings[8]
             , (com.google.android.material.textfield.TextInputLayout) bindings[7]
             , (com.google.android.material.textfield.TextInputLayout) bindings[6]
             , (com.google.android.material.textfield.TextInputLayout) bindings[5]
