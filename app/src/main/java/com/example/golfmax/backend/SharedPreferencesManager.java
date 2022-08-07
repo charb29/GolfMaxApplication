@@ -9,8 +9,8 @@ public class SharedPreferencesManager {
 
     private static final String MyPREFERENCES = "MyPreferences";
     private static final String USERNAME = "username";
-    private SharedPreferences sharedPreferences;
-    private static  SharedPreferencesManager instance;
+    private final SharedPreferences sharedPreferences;
+    private static SharedPreferencesManager instance;
 
     private SharedPreferencesManager(@NonNull Context context) {
         sharedPreferences = context
