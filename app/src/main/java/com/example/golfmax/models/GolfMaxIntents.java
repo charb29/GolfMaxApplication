@@ -3,7 +3,7 @@ package com.example.golfmax.models;
 import android.content.Context;
 import android.content.Intent;
 
-import com.example.golfmax.activities.CourseLeaderboardActivity;
+import com.example.golfmax.activities.CourseListActivity;
 import com.example.golfmax.activities.HomeActivity;
 import com.example.golfmax.activities.LoginActivity;
 import com.example.golfmax.activities.NewRoundActivity;
@@ -33,10 +33,10 @@ public class GolfMaxIntents {
         context.startActivity(goToPersonalScoresActivity);
     }
 
-    public void goToCourseLeaderBoardActivity() {
+    public void goToCourseListActivity() {
         Intent goToCourseLeaderBoardActivity = new Intent(
                 context.getApplicationContext(),
-                CourseLeaderboardActivity.class);
+                CourseListActivity.class);
         context.startActivity(goToCourseLeaderBoardActivity);
     }
 

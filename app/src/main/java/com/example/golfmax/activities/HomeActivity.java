@@ -13,13 +13,12 @@ import com.example.golfmax.R;
 import com.example.golfmax.backend.GolfMaxLocalDatabase;
 import com.example.golfmax.backend.PlayerStatisticsRepository;
 import com.example.golfmax.backend.SharedPreferencesManager;
-import com.example.golfmax.contracts.PlayerStatisticsContract;
 import com.example.golfmax.databinding.ActivityHomeBinding;
 import com.example.golfmax.models.GolfMaxIntents;
 import com.example.golfmax.models.PlayerStatistics;
 import com.example.golfmax.models.User;
 
-public class HomeActivity extends Activity implements PlayerStatisticsContract.View {
+public class HomeActivity extends Activity {
 
     private final PlayerStatisticsRepository playerStatisticsRepository = new PlayerStatisticsRepository();
     private final User user = new User();
@@ -27,7 +26,7 @@ public class HomeActivity extends Activity implements PlayerStatisticsContract.V
     private final String username = SharedPreferencesManager
             .getInstance(HomeActivity.this)
             .getUsername();
-    private GolfMaxIntents golfMaxIntents = new GolfMaxIntents(this);
+    private final GolfMaxIntents golfMaxIntents = new GolfMaxIntents(this);
 
     @Override
     public void onRestart() {
@@ -61,9 +60,6 @@ public class HomeActivity extends Activity implements PlayerStatisticsContract.V
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
     }
 
-    @Override
-    public void showData(PlayerStatistics playerStatistics) {}
-
     private long getUserIdByUsername(String username) {
         GolfMaxLocalDatabase db = new GolfMaxLocalDatabase(this);
         return db.getUserId(username);
@@ -78,7 +74,7 @@ public class HomeActivity extends Activity implements PlayerStatisticsContract.V
     }
 
     public void goToCourseLeaderboardsActivity(View view) {
-        golfMaxIntents.goToCourseLeaderBoardActivity();
+        golfMaxIntents.goToCourseListActivity();
     }
 
     public void goToUserProfileActivity(View view) {

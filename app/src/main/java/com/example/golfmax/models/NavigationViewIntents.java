@@ -24,7 +24,7 @@ public class NavigationViewIntents {
             if (item.getItemId() == R.id.navHome)
                 golfMaxIntents.goToHomeActivity();
             if (item.getItemId() == R.id.navLeaderboard)
-                golfMaxIntents.goToCourseLeaderBoardActivity();
+                golfMaxIntents.goToCourseListActivity();
             if (item.getItemId() == R.id.navMyScores)
                 golfMaxIntents.goToPersonalScoresActivity();
             if (item.getItemId() == R.id.navPlayRound)
