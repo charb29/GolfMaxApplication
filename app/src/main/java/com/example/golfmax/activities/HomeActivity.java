@@ -15,6 +15,7 @@ import com.example.golfmax.backend.PlayerStatisticsRepository;
 import com.example.golfmax.backend.SharedPreferencesManager;
 import com.example.golfmax.contracts.PlayerStatisticsContract;
 import com.example.golfmax.databinding.ActivityHomeBinding;
+import com.example.golfmax.models.GolfMaxIntents;
 import com.example.golfmax.models.PlayerStatistics;
 import com.example.golfmax.models.User;
 
@@ -26,6 +27,7 @@ public class HomeActivity extends Activity implements PlayerStatisticsContract.V
     private final String username = SharedPreferencesManager
             .getInstance(HomeActivity.this)
             .getUsername();
+    private GolfMaxIntents golfMaxIntents = new GolfMaxIntents(this);
 
     @Override
     public void onRestart() {
@@ -48,7 +50,6 @@ public class HomeActivity extends Activity implements PlayerStatisticsContract.V
         long userId = getUserIdByUsername(username);
 
         user.setId(userId);
-
         stats.setUser(user);
         binding.setStats(playerStatisticsRepository.displayStatsSummary(userId));
         playerStatisticsRepository.updateUserStats(stats, user.getId());
@@ -69,30 +70,18 @@ public class HomeActivity extends Activity implements PlayerStatisticsContract.V
     }
 
     public void goToPersonalScoresActivity(View view) {
-        Intent goToPersonalScoresActivity = new Intent(
-                HomeActivity.this,
-                PersonalScoresActivity.class);
-        startActivity(goToPersonalScoresActivity);
+        golfMaxIntents.goToPersonalScoresActivity();
     }
 
     public void goToNewRoundActivity(View view) {
-        Intent goToNewRoundActivity = new Intent(
-                HomeActivity.this,
-                NewRoundActivity.class);
-        startActivity(goToNewRoundActivity);
+        golfMaxIntents.goToPlayRoundActivity();
     }
 
     public void goToCourseLeaderboardsActivity(View view) {
-        Intent goToCourseLeaderboardsActivity = new Intent(
-                HomeActivity.this,
-                CourseListActivity.class);
-        startActivity(goToCourseLeaderboardsActivity);
+        golfMaxIntents.goToCourseLeaderBoardActivity();
     }
 
     public void goToUserProfileActivity(View view) {
-        Intent goToUserProfileActivity = new Intent(
-                HomeActivity.this,
-                UserProfileActivity.class);
-        startActivity(goToUserProfileActivity);
+        golfMaxIntents.goToUserProfileActivity();
     }
 }
