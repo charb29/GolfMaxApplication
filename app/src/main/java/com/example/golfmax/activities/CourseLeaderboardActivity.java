@@ -37,14 +37,17 @@ public class CourseLeaderboardActivity extends AppCompatActivity {
     private final String ACTION_BAR_TITLE = "Leaderboard";
     private final String ACTION_BAR_COLOR = "#000f00";
     private ActivityCourseLeaderboardBinding binding;
+    private String courseName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         removeWindowFeature();
 
+        Intent getCourseName = getIntent();
         Score score = new Score();
         Course course = new Course();
+        courseName = getCourseName.getStringExtra("Course name");
 
         binding = DataBindingUtil
                 .setContentView(this, R.layout.activity_course_leaderboard);
@@ -57,7 +60,7 @@ public class CourseLeaderboardActivity extends AppCompatActivity {
         setActionBarColor(ACTION_BAR_COLOR);
         setNavigationViewIntents(navView);
 
-        course.setCourseName(CourseListRV.staticCourseName);
+        course.setCourseName(courseName);
         score.setCourse(course);
         binding.setScore(score);
 
@@ -65,7 +68,7 @@ public class CourseLeaderboardActivity extends AppCompatActivity {
     }
 
     private void getRecyclerView() {
-        long courseId = getCourseIdByCourseName(CourseListRV.staticCourseName);
+        long courseId = getCourseIdByCourseName(courseName);
         List<Score> scoreList = new ArrayList<>();
         ScoreRepository scoreRepository = new ScoreRepository();
         scoreRepository.setScoreList(scoreList);
@@ -101,10 +104,6 @@ public class CourseLeaderboardActivity extends AppCompatActivity {
 
     private long getCourseIdByCourseName(String courseName) {
         GolfMaxLocalDatabase db = new GolfMaxLocalDatabase(this);
-
-        Log.i("COURSE NAME ====> ", courseName);
-        Log.i("COURSE ID ====> ", String.valueOf(db.getCourseId(courseName)));
-
         return db.getCourseId(courseName);
     }
 
@@ -115,7 +114,6 @@ public class CourseLeaderboardActivity extends AppCompatActivity {
 
     private void setNavigationViewIntents(@NonNull NavigationView navigationView) {
         navigationView.setNavigationItemSelectedListener(item -> {
-
             if (item.getItemId() == R.id.navHome) {
                 Intent goToHomeActivity = new Intent(CourseLeaderboardActivity.this,
                         HomeActivity.class);

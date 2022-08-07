@@ -22,13 +22,11 @@ public class CourseListRV extends RecyclerView.Adapter<CourseListRV.CourseListVi
 
     Context context;
     List<Course> courseNamesList;
-    public static String staticCourseName;
 
     public CourseListRV(Context context, List<Course> courseNamesList) {
         this.context = context;
         this.courseNamesList = courseNamesList;
     }
-
 
     @NonNull
     @Override
@@ -71,9 +69,7 @@ public class CourseListRV extends RecyclerView.Adapter<CourseListRV.CourseListVi
                     Intent intent = new Intent(context,
                             CourseLeaderboardActivity.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-
-                    staticCourseName = binding.getCourse().getCourseName();
-
+                    intent.putExtra("Course name", binding.getCourse().getCourseName());
                     context.startActivity(intent);
                 }
             });
