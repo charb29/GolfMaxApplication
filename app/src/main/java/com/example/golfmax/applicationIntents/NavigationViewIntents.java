@@ -1,20 +1,15 @@
-package com.example.golfmax.models;
-
-import android.content.Context;
+package com.example.golfmax.applicationIntents;
 
 import com.example.golfmax.R;
 import com.google.android.material.navigation.NavigationView;
 
 public class NavigationViewIntents {
 
-    private final Context context;
     private final NavigationView navigationView;
     private final GolfMaxIntents golfMaxIntents;
 
-    public NavigationViewIntents(Context context,
-                                 NavigationView navigationView,
+    public NavigationViewIntents(NavigationView navigationView,
                                  GolfMaxIntents golfMaxIntents) {
-        this.context = context;
         this.navigationView = navigationView;
         this.golfMaxIntents = golfMaxIntents;
     }
