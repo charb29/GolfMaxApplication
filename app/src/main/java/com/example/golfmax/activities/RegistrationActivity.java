@@ -22,7 +22,6 @@ import com.google.android.material.textfield.TextInputLayout;
 
 public class RegistrationActivity extends Activity implements RegistrationContract.View {
 
-    private TextInputLayout textInputLayoutUsername, textInputLayoutEmail;
     private GolfMaxIntents golfMaxIntents = new GolfMaxIntents(this);
     private ActivityRegistrationBinding binding;
 
@@ -36,9 +35,6 @@ public class RegistrationActivity extends Activity implements RegistrationContra
 
         binding = DataBindingUtil
                 .setContentView(this, R.layout.activity_registration);
-
-        textInputLayoutUsername = findViewById(R.id.text_input_layout_username);
-        textInputLayoutEmail = findViewById(R.id.text_input_layout_email);
 
         binding.setUser(user);
         binding.setPresenter(presenter);

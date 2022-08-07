@@ -14,6 +14,7 @@ import androidx.databinding.DataBindingUtil;
 import com.example.golfmax.backend.SharedPreferencesManager;
 import com.example.golfmax.backend.UserRepository;
 import com.example.golfmax.contracts.LoginContract;
+import com.example.golfmax.models.GolfMaxIntents;
 import com.example.golfmax.models.User;
 import com.example.golfmax.presenters.LoginPresenter;
 import com.example.golfmax.requests.LoginRequest;
@@ -23,21 +24,19 @@ import com.google.android.material.textfield.TextInputLayout;
 
 public class LoginActivity extends Activity implements LoginContract.View {
 
-    private TextInputLayout textInputLayoutUsername, textInputLayoutPassword;
+    private ActivityLoginBinding binding;
+    private GolfMaxIntents golfMaxIntents = new GolfMaxIntents(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         removeWindowFeature();
 
-        ActivityLoginBinding binding = DataBindingUtil
+        binding = DataBindingUtil
                 .setContentView(this, R.layout.activity_login);
 
         LoginPresenter presenter = new LoginPresenter(this);
         User user = new User();
-
-        textInputLayoutUsername = findViewById(R.id.text_input_layout_username);
-        textInputLayoutPassword = findViewById(R.id.text_input_layout_password);
 
         binding.setUser(user);
         binding.setPresenter(presenter);
@@ -53,10 +52,8 @@ public class LoginActivity extends Activity implements LoginContract.View {
     public void loginUser(@NonNull User user) {
         LoginRequest loginRequest = new LoginRequest();
         UserRepository userRepository = new UserRepository();
-
         loginRequest.setUsername(user.getUsername());
         loginRequest.setPassword(user.getPassword());
-
         SharedPreferencesManager
                 .getInstance(LoginActivity.this)
                 .setUsername(user.getUsername());
@@ -64,14 +61,13 @@ public class LoginActivity extends Activity implements LoginContract.View {
 
         Log.i("SHARED PREF USERNAME > ", username);
 
-        userRepository.loginUser(loginRequest, textInputLayoutUsername,
-                textInputLayoutPassword, LoginActivity.this);
+        userRepository.loginUser(loginRequest,
+                binding.textInputLayoutUsername,
+                binding.textInputLayoutPassword,
+                LoginActivity.this);
     }
 
     public void goToRegistrationActivity(View view) {
-        Intent goToRegistrationActivity = new Intent(
-                LoginActivity.this,
-                RegistrationActivity.class);
-        startActivity(goToRegistrationActivity);
+        golfMaxIntents.goToLoginActivity();
     }
 }
