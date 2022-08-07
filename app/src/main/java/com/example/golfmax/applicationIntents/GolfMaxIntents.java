@@ -1,4 +1,4 @@
-package com.example.golfmax.models;
+package com.example.golfmax.applicationIntents;
 
 import android.content.Context;
 import android.content.Intent;
