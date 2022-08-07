@@ -12,7 +12,7 @@ import androidx.test.ext.junit.runners.AndroidJUnit4;
 import com.example.golfmax.activities.UserProfileActivity;
 
 @RunWith(AndroidJUnit4.class)
-public class UserProfileActivityTest {
+public class UserProfileActivityTests {
 
     @Rule
     public IntentsTestRule<UserProfileActivity> userProfileRule =
