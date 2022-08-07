@@ -82,29 +82,20 @@ public class GolfMaxLocalDatabase extends SQLiteOpenHelper {
         ContentValues contentValues = new ContentValues();
         contentValues.put(courseId, id);
         contentValues.put(course, courseName);
-
         db.insert(courseTable, null, contentValues);
-
-        Log.i("DB SAVE COURSE ====> ",
-                "course name: " + courseName
-                        + " || " + "course Id: " + id);
     }
 
     public long getCourseId(@NonNull String courseName) {
-        Log.i("DB COURSE NAME ====> ", courseName);
-
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.rawQuery("SELECT id FROM courses WHERE courseName = ?",
-                new String[] {courseName});
+        Cursor cursor = db.rawQuery
+                ("SELECT id FROM courses WHERE courseName = ?", new String[] {courseName});
         long id = -1;
-
-        if (cursor.moveToFirst()) {
+        if (cursor.moveToFirst())
             do {
                 id = cursor.getLong(0);
             } while (cursor.moveToNext());
-        }
         db.close();
-
+        cursor.close();
         return id;
     }
 }
