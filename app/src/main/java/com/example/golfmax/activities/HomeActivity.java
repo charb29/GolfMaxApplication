@@ -1,7 +1,6 @@
 package com.example.golfmax.activities;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -14,7 +13,7 @@ import com.example.golfmax.backend.GolfMaxLocalDatabase;
 import com.example.golfmax.backend.PlayerStatisticsRepository;
 import com.example.golfmax.backend.SharedPreferencesManager;
 import com.example.golfmax.databinding.ActivityHomeBinding;
-import com.example.golfmax.models.GolfMaxIntents;
+import com.example.golfmax.applicationIntents.GolfMaxIntents;
 import com.example.golfmax.models.PlayerStatistics;
 import com.example.golfmax.models.User;
 

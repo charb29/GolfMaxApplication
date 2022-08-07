@@ -1,7 +1,6 @@
 package com.example.golfmax.activities;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -12,13 +11,12 @@ import androidx.databinding.DataBindingUtil;
 
 import com.example.golfmax.backend.UserRepository;
 import com.example.golfmax.contracts.RegistrationContract;
-import com.example.golfmax.models.GolfMaxIntents;
+import com.example.golfmax.applicationIntents.GolfMaxIntents;
 import com.example.golfmax.models.User;
 import com.example.golfmax.presenters.RegistrationPresenter;
 import com.example.golfmax.requests.RegistrationRequest;
 import com.example.golfmax.R;
 import com.example.golfmax.databinding.ActivityRegistrationBinding;
-import com.google.android.material.textfield.TextInputLayout;
 
 public class RegistrationActivity extends Activity implements RegistrationContract.View {
 

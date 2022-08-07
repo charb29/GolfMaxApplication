@@ -1,7 +1,6 @@
 package com.example.golfmax.activities;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -14,13 +13,12 @@ import androidx.databinding.DataBindingUtil;
 import com.example.golfmax.backend.SharedPreferencesManager;
 import com.example.golfmax.backend.UserRepository;
 import com.example.golfmax.contracts.LoginContract;
-import com.example.golfmax.models.GolfMaxIntents;
+import com.example.golfmax.applicationIntents.GolfMaxIntents;
 import com.example.golfmax.models.User;
 import com.example.golfmax.presenters.LoginPresenter;
 import com.example.golfmax.requests.LoginRequest;
 import com.example.golfmax.R;
 import com.example.golfmax.databinding.ActivityLoginBinding;
-import com.google.android.material.textfield.TextInputLayout;
 
 public class LoginActivity extends Activity implements LoginContract.View {
 
