@@ -22,6 +22,7 @@ import com.example.golfmax.backend.PlayerStatisticsRepository;
 import com.example.golfmax.backend.SharedPreferencesManager;
 import com.example.golfmax.backend.UserRepository;
 import com.example.golfmax.contracts.PlayerStatisticsContract;
+import com.example.golfmax.models.GolfMaxIntents;
 import com.example.golfmax.models.PlayerStatistics;
 import com.example.golfmax.models.User;
 import com.example.golfmax.R;
@@ -38,6 +39,7 @@ public class UserProfileActivity extends AppCompatActivity implements PlayerStat
     private UserRepository userRepository;
     private final String ACTION_BAR_TITLE = "User Profile";
     private final String ACTION_BAR_COLOR = "#000f00";
+    private GolfMaxIntents golfMaxIntents = new GolfMaxIntents(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -113,9 +115,8 @@ public class UserProfileActivity extends AppCompatActivity implements PlayerStat
 
     @Override
     public boolean onOptionsItemSelected(MenuItem menuItem) {
-        if (drawerToggle.onOptionsItemSelected(menuItem)) {
+        if (drawerToggle.onOptionsItemSelected(menuItem))
             return true;
-        }
         return super.onOptionsItemSelected(menuItem);
     }
 
@@ -129,29 +130,20 @@ public class UserProfileActivity extends AppCompatActivity implements PlayerStat
 
     private void setNavigationViewIntents(@NonNull NavigationView navigationView) {
         navigationView.setNavigationItemSelectedListener(item -> {
-
             if (item.getItemId() == R.id.navHome) {
-                Intent goToHomeActivity  = new Intent(UserProfileActivity.this,
-                        HomeActivity.class);
-                startActivity(goToHomeActivity);
+                golfMaxIntents.goToHomeActivity();
                 return true;
             }
             if (item.getItemId() == R.id.navLeaderboard) {
-                Intent goToCourseListActivity = new Intent(UserProfileActivity.this,
-                        CourseListActivity.class);
-                startActivity(goToCourseListActivity);
+                golfMaxIntents.goToCourseLeaderBoardActivity();
                 return true;
             }
             if (item.getItemId() == R.id.navMyScores) {
-                Intent goToPersonalScoresActivity = new Intent(UserProfileActivity.this,
-                        PersonalScoresActivity.class);
-                startActivity(goToPersonalScoresActivity);
+                golfMaxIntents.goToPersonalScoresActivity();
                 return true;
             }
             if (item.getItemId() == R.id.navPlayRound) {
-                Intent goToNewRoundActivity = new Intent(UserProfileActivity.this,
-                        NewRoundActivity.class);
-                startActivity(goToNewRoundActivity);
+                golfMaxIntents.goToPlayRoundActivity();
                 return true;
             } else {
                 return false;
