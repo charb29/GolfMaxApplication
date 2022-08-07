@@ -17,8 +17,8 @@ import android.view.WindowManager;
 import com.example.golfmax.backend.GolfMaxLocalDatabase;
 import com.example.golfmax.backend.ScoreRepository;
 import com.example.golfmax.backend.SharedPreferencesManager;
-import com.example.golfmax.models.GolfMaxIntents;
-import com.example.golfmax.models.NavigationViewIntents;
+import com.example.golfmax.applicationIntents.GolfMaxIntents;
+import com.example.golfmax.applicationIntents.NavigationViewIntents;
 import com.example.golfmax.models.Score;
 import com.example.golfmax.R;
 import com.example.golfmax.databinding.ActivityPersonalScoresBinding;
@@ -101,7 +101,7 @@ public class PersonalScoresActivity extends AppCompatActivity {
 
     private void setNavigationViewIntents(@NonNull NavigationView navigationView) {
         NavigationViewIntents navigationViewIntents = new NavigationViewIntents
-                (this, navigationView, golfMaxIntents);
+                (navigationView, golfMaxIntents);
         navigationViewIntents.setNavigationViewIntents();
     }
 }

@@ -21,8 +21,8 @@ import com.example.golfmax.backend.PlayerStatisticsRepository;
 import com.example.golfmax.backend.SharedPreferencesManager;
 import com.example.golfmax.backend.UserRepository;
 import com.example.golfmax.contracts.PlayerStatisticsContract;
-import com.example.golfmax.models.GolfMaxIntents;
-import com.example.golfmax.models.NavigationViewIntents;
+import com.example.golfmax.applicationIntents.GolfMaxIntents;
+import com.example.golfmax.applicationIntents.NavigationViewIntents;
 import com.example.golfmax.models.PlayerStatistics;
 import com.example.golfmax.models.User;
 import com.example.golfmax.R;
@@ -124,7 +124,7 @@ public class UserProfileActivity extends AppCompatActivity implements PlayerStat
 
     private void setNavigationViewIntents(@NonNull NavigationView navigationView) {
         NavigationViewIntents navigationViewIntents = new NavigationViewIntents
-                (this, navigationView, golfMaxIntents);
+                (navigationView, golfMaxIntents);
         navigationViewIntents.setNavigationViewIntents();
     }
 }

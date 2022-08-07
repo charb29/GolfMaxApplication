@@ -19,8 +19,8 @@ import com.example.golfmax.backend.CourseRepository;
 import com.example.golfmax.models.Course;
 import com.example.golfmax.R;
 import com.example.golfmax.databinding.ActivityNewRoundBinding;
-import com.example.golfmax.models.GolfMaxIntents;
-import com.example.golfmax.models.NavigationViewIntents;
+import com.example.golfmax.applicationIntents.GolfMaxIntents;
+import com.example.golfmax.applicationIntents.NavigationViewIntents;
 import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
@@ -91,7 +91,7 @@ public class NewRoundActivity extends AppCompatActivity {
 
     private void setNavigationViewIntents(@NonNull NavigationView navigationView) {
         NavigationViewIntents navigationViewIntents = new NavigationViewIntents
-                (this, navigationView, golfMaxIntents);
+                (navigationView, golfMaxIntents);
         navigationViewIntents.setNavigationViewIntents();
     }
 }
