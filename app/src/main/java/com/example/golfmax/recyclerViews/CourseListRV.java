@@ -3,7 +3,6 @@ package com.example.golfmax.recyclerViews;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -63,15 +62,12 @@ public class CourseListRV extends RecyclerView.Adapter<CourseListRV.CourseListVi
             this.binding = binding;
             this.context = context;
 
-            binding.textViewCourseName.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent intent = new Intent(context,
-                            CourseLeaderboardActivity.class);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    intent.putExtra("Course name", binding.getCourse().getCourseName());
-                    context.startActivity(intent);
-                }
+            binding.textViewCourseName.setOnClickListener(v -> {
+                Intent intent = new Intent(context,
+                        CourseLeaderboardActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                intent.putExtra("Course name", binding.getCourse().getCourseName());
+                context.startActivity(intent);
             });
         }
     }
