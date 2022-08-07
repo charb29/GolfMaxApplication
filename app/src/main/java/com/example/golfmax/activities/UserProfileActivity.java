@@ -1,6 +1,5 @@
 package com.example.golfmax.activities;
 
-import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -23,6 +22,7 @@ import com.example.golfmax.backend.SharedPreferencesManager;
 import com.example.golfmax.backend.UserRepository;
 import com.example.golfmax.contracts.PlayerStatisticsContract;
 import com.example.golfmax.models.GolfMaxIntents;
+import com.example.golfmax.models.NavigationViewIntents;
 import com.example.golfmax.models.PlayerStatistics;
 import com.example.golfmax.models.User;
 import com.example.golfmax.R;
@@ -52,14 +52,10 @@ public class UserProfileActivity extends AppCompatActivity implements PlayerStat
         binding = DataBindingUtil
                 .setContentView(this, R.layout.activity_user_profile);
 
-        DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
-        NavigationView navView = findViewById(R.id.navigation_view_user_profile);
-        Button buttonUpdateUserInfo = findViewById(R.id.button_update_info);
-
-        setDrawerToggleActions(drawerLayout);
+        setDrawerToggleActions(binding.drawerLayout);
         setActionBarTitle(ACTION_BAR_TITLE);
         setActionBarColor(ACTION_BAR_COLOR);
-        setNavigationViewIntents(navView);
+        setNavigationViewIntents(binding.navigationViewUserProfile);
 
         String username = SharedPreferencesManager
                 .getInstance(UserProfileActivity.this)
@@ -71,7 +67,7 @@ public class UserProfileActivity extends AppCompatActivity implements PlayerStat
         binding.setUser(userRepository.getUserInfoById(userId));
         binding.setStats(playerStatisticsRepository.displayRoundsPlayed(userId));
 
-        updateUserInfoOnButtonClick(buttonUpdateUserInfo);
+        updateUserInfoOnButtonClick(binding.buttonUpdateInfo);
     }
 
     private void removeWindowFeature() {
@@ -83,12 +79,10 @@ public class UserProfileActivity extends AppCompatActivity implements PlayerStat
     private void updateUserInfoOnButtonClick(@NonNull Button button) {
         button.setOnClickListener(v -> {
             User user = new User();
-
             user.setUsername(binding.getUser().getUsername());
             user.setEmail(binding.getUser().getEmail());
             user.setPassword(binding.getUser().getPassword());
             user.setId(getUserIdByUsername(binding.getUser().getUsername()));
-
             userRepository.updateUserInfo(user, UserProfileActivity.this);
         });
     }
@@ -97,7 +91,7 @@ public class UserProfileActivity extends AppCompatActivity implements PlayerStat
         drawerToggle = new ActionBarDrawerToggle(
                 this, drawerLayout,
                 R.string.navOpen, R.string.navClose );
-        drawerLayout.addDrawerListener(drawerToggle);
+        binding.drawerLayout.addDrawerListener(drawerToggle);
         drawerToggle.syncState();
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
     }
@@ -129,25 +123,8 @@ public class UserProfileActivity extends AppCompatActivity implements PlayerStat
     }
 
     private void setNavigationViewIntents(@NonNull NavigationView navigationView) {
-        navigationView.setNavigationItemSelectedListener(item -> {
-            if (item.getItemId() == R.id.navHome) {
-                golfMaxIntents.goToHomeActivity();
-                return true;
-            }
-            if (item.getItemId() == R.id.navLeaderboard) {
-                golfMaxIntents.goToCourseLeaderBoardActivity();
-                return true;
-            }
-            if (item.getItemId() == R.id.navMyScores) {
-                golfMaxIntents.goToPersonalScoresActivity();
-                return true;
-            }
-            if (item.getItemId() == R.id.navPlayRound) {
-                golfMaxIntents.goToPlayRoundActivity();
-                return true;
-            } else {
-                return false;
-            }
-        });
+        NavigationViewIntents navigationViewIntents = new NavigationViewIntents
+                (this, navigationView, golfMaxIntents);
+        navigationViewIntents.setNavigationViewIntents();
     }
 }
