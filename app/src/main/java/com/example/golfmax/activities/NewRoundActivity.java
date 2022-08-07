@@ -8,7 +8,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.drawerlayout.widget.DrawerLayout;
 
-import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -20,6 +19,8 @@ import com.example.golfmax.backend.CourseRepository;
 import com.example.golfmax.models.Course;
 import com.example.golfmax.R;
 import com.example.golfmax.databinding.ActivityNewRoundBinding;
+import com.example.golfmax.models.GolfMaxIntents;
+import com.example.golfmax.models.NavigationViewIntents;
 import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
@@ -30,10 +31,9 @@ public class NewRoundActivity extends AppCompatActivity {
 
     private ActionBar actionBar;
     private ActionBarDrawerToggle drawerToggle;
-    private final String ACTION_BAR_TITLE = "New Round";
-    private final String ACTION_BAR_COLOR = "#000f00";
     private CourseRepository courseRepository;
     private ActivityNewRoundBinding binding;
+    private final GolfMaxIntents golfMaxIntents = new GolfMaxIntents(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,17 +41,13 @@ public class NewRoundActivity extends AppCompatActivity {
         removeWindowFeature();
 
         courseRepository = new CourseRepository();
-
         binding = DataBindingUtil
                 .setContentView(this,  R.layout.activity_new_round);
 
-        DrawerLayout drawerLayout = findViewById(R.id.drawerLayout);
-        NavigationView navView = findViewById(R.id.navigation_view_play_round);
-
-        setDrawerToggleActions(drawerLayout);
-        setActionBarTitle(ACTION_BAR_TITLE);
-        setActionBarColor(ACTION_BAR_COLOR);
-        setNavigationViewIntents(navView);
+        setDrawerToggleActions(binding.drawerLayout);
+        setActionBarTitle();
+        setActionBarColor();
+        setNavigationViewIntents(binding.navigationViewPlayRound);
         getRecyclerView();
     }
 
@@ -77,14 +73,14 @@ public class NewRoundActivity extends AppCompatActivity {
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
     }
 
-    private void setActionBarTitle(String title) {
+    private void setActionBarTitle() {
         actionBar = getSupportActionBar();
         assert actionBar != null;
-        actionBar.setTitle(title);
+        actionBar.setTitle("New Round");
     }
 
-    private void setActionBarColor(String color) {
-        ColorDrawable colorDrawable = new ColorDrawable(Color.parseColor(color));
+    private void setActionBarColor() {
+        ColorDrawable colorDrawable = new ColorDrawable(Color.parseColor("#000f00"));
         actionBar.setBackgroundDrawable(colorDrawable);
     }
 
@@ -94,33 +90,8 @@ public class NewRoundActivity extends AppCompatActivity {
     }
 
     private void setNavigationViewIntents(@NonNull NavigationView navigationView) {
-        navigationView.setNavigationItemSelectedListener(item -> {
-            if (item.getItemId() == R.id.navHome) {
-                Intent goToHomeActivity = new Intent(NewRoundActivity.this,
-                        HomeActivity.class);
-                startActivity(goToHomeActivity);
-                return true;
-            }
-            if (item.getItemId() == R.id.navMyScores) {
-                Intent goToPersonalScoresActivity = new Intent(NewRoundActivity.this,
-                        PersonalScoresActivity.class);
-                startActivity(goToPersonalScoresActivity);
-                return true;
-            }
-            if (item.getItemId() == R.id.navLeaderboard) {
-                Intent goToLeaderboardActivity = new Intent(NewRoundActivity.this,
-                        CourseListActivity.class);
-                startActivity(goToLeaderboardActivity);
-                return true;
-            }
-            if (item.getItemId() == R.id.navUserProfile) {
-                Intent goToUserProfileActivity = new Intent(NewRoundActivity.this,
-                        UserProfileActivity.class);
-                startActivity(goToUserProfileActivity);
-                return true;
-            } else {
-                return false;
-            }
-        });
+        NavigationViewIntents navigationViewIntents = new NavigationViewIntents
+                (this, navigationView, golfMaxIntents);
+        navigationViewIntents.setNavigationViewIntents();
     }
 }

@@ -7,7 +7,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.drawerlayout.widget.DrawerLayout;
 
-import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -18,6 +17,8 @@ import android.view.WindowManager;
 import com.example.golfmax.backend.GolfMaxLocalDatabase;
 import com.example.golfmax.backend.ScoreRepository;
 import com.example.golfmax.backend.SharedPreferencesManager;
+import com.example.golfmax.models.GolfMaxIntents;
+import com.example.golfmax.models.NavigationViewIntents;
 import com.example.golfmax.models.Score;
 import com.example.golfmax.R;
 import com.example.golfmax.databinding.ActivityPersonalScoresBinding;
@@ -31,10 +32,8 @@ public class PersonalScoresActivity extends AppCompatActivity {
 
     private ActionBar actionBar;
     private ActionBarDrawerToggle drawerToggle;
-    private final String ACTION_BAR_TITLE = "Personal Scores";
-    private final String ACTION_BAR_COLOR = "#000f00";
-    private ScoreRepository scoreRepository;
     private ActivityPersonalScoresBinding binding;
+    private final GolfMaxIntents golfMaxIntents = new GolfMaxIntents(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,18 +43,15 @@ public class PersonalScoresActivity extends AppCompatActivity {
         binding = DataBindingUtil
                 .setContentView(this, R.layout.activity_personal_scores);
 
-        DrawerLayout drawerLayout = findViewById(R.id.drawerLayout);
-        NavigationView navView = findViewById(R.id.navigation_view_personal_scores);
-
-        setDrawerToggleActions(drawerLayout);
-        setActionBarTitle(ACTION_BAR_TITLE);
-        setActionBarColor(ACTION_BAR_COLOR);
-        setNavigationViewIntents(navView);
+        setDrawerToggleActions(binding.drawerLayout);
+        setActionBarTitle();
+        setActionBarColor();
+        setNavigationViewIntents(binding.navigationViewPersonalScores);
         getRecyclerView();
     }
 
     private void getRecyclerView() {
-        scoreRepository = new ScoreRepository();
+        ScoreRepository scoreRepository = new ScoreRepository();
         List<Score> scoreList = new ArrayList<>();
         scoreRepository.setScoreList(scoreList);
         scoreRepository.setPersonalScoresBinding(binding);
@@ -82,14 +78,14 @@ public class PersonalScoresActivity extends AppCompatActivity {
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
     }
 
-    private void setActionBarTitle(String title) {
+    private void setActionBarTitle() {
         actionBar = getSupportActionBar();
         assert actionBar != null;
-        actionBar.setTitle(title);
+        actionBar.setTitle("Personal Scores");
     }
 
-    private void setActionBarColor(String color) {
-        ColorDrawable colorDrawable = new ColorDrawable(Color.parseColor(color));
+    private void setActionBarColor() {
+        ColorDrawable colorDrawable = new ColorDrawable(Color.parseColor("#000f00"));
         actionBar.setBackgroundDrawable(colorDrawable);
     }
 
@@ -104,34 +100,8 @@ public class PersonalScoresActivity extends AppCompatActivity {
     }
 
     private void setNavigationViewIntents(@NonNull NavigationView navigationView) {
-        navigationView.setNavigationItemSelectedListener(item -> {
-
-            if (item.getItemId() == R.id.navHome) {
-                Intent goToHomeActivity = new Intent(PersonalScoresActivity.this,
-                        HomeActivity.class);
-                startActivity(goToHomeActivity);
-                return true;
-            }
-            if (item.getItemId() == R.id.navLeaderboard) {
-                Intent goToLeaderBoardActivity = new Intent(PersonalScoresActivity.this,
-                        CourseListActivity.class);
-                startActivity(goToLeaderBoardActivity);
-                return true;
-            }
-            if (item.getItemId() == R.id.navPlayRound) {
-                Intent goToPlayRoundActivity = new Intent(PersonalScoresActivity.this,
-                        NewRoundActivity.class);
-                startActivity(goToPlayRoundActivity);
-                return true;
-            }
-            if (item.getItemId() == R.id.navUserProfile) {
-                Intent goToUserProfileActivity = new Intent(PersonalScoresActivity.this,
-                        UserProfileActivity.class);
-                startActivity(goToUserProfileActivity);
-                return true;
-            } else {
-                return false;
-            }
-        });
+        NavigationViewIntents navigationViewIntents = new NavigationViewIntents
+                (this, navigationView, golfMaxIntents);
+        navigationViewIntents.setNavigationViewIntents();
     }
 }
