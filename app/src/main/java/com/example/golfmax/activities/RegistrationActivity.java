@@ -12,6 +12,7 @@ import androidx.databinding.DataBindingUtil;
 
 import com.example.golfmax.backend.UserRepository;
 import com.example.golfmax.contracts.RegistrationContract;
+import com.example.golfmax.models.GolfMaxIntents;
 import com.example.golfmax.models.User;
 import com.example.golfmax.presenters.RegistrationPresenter;
 import com.example.golfmax.requests.RegistrationRequest;
@@ -22,6 +23,8 @@ import com.google.android.material.textfield.TextInputLayout;
 public class RegistrationActivity extends Activity implements RegistrationContract.View {
 
     private TextInputLayout textInputLayoutUsername, textInputLayoutEmail;
+    private GolfMaxIntents golfMaxIntents = new GolfMaxIntents(this);
+    private ActivityRegistrationBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +34,7 @@ public class RegistrationActivity extends Activity implements RegistrationContra
         RegistrationPresenter presenter = new RegistrationPresenter(this);
         User user = new User();
 
-        ActivityRegistrationBinding binding = DataBindingUtil
+        binding = DataBindingUtil
                 .setContentView(this, R.layout.activity_registration);
 
         textInputLayoutUsername = findViewById(R.id.text_input_layout_username);
@@ -56,13 +59,13 @@ public class RegistrationActivity extends Activity implements RegistrationContra
         registrationRequest.setPassword(user.getPassword());
         registrationRequest.setEmail(user.getEmail());
 
-        userRepository.registerUser(registrationRequest, textInputLayoutUsername,
-                textInputLayoutEmail, RegistrationActivity.this);
+        userRepository.registerUser(registrationRequest,
+                binding.textInputLayoutUsername,
+                binding.textInputLayoutEmail,
+                RegistrationActivity.this);
     }
 
     public void goToLoginActivity(View view) {
-        Intent goToLoginActivity = new Intent(RegistrationActivity.this,
-                LoginActivity.class);
-        startActivity(goToLoginActivity);
+        golfMaxIntents.goToLoginActivity();
     }
 }
